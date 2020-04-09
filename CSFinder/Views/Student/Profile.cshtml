@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Profile";
+}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+<style>
+
+    img {
+        margin: 20px;
+        width: 500px;
+    }
+
+    .card-img {
+        border-radius: 50%;
+        margin: 20px;
+        width: 200px;
+    }
+
+    .text {
+        border-left: 2px solid gray;
+    }
+</style>
+
+
+<div style="display: flex;">
+    <div class="text-left">
+        <div class="profile">
+            <img class="card-img" src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" /><br />
+            <p><b>ชื่อ:</b> @ViewBag.studentName</p>
+            <p><b>สถานะ:</b> @ViewBag.studentStatus  </p>
+            <button>แก้ไขโปรไฟล์</button>
+        </div>
+    </div>
+    <div class="text">
+        <div class="profile" style="margin: 10%; margin-top:10%">
+            <p><b>ชื่อ:</b> @ViewBag.studentFirstname <b>นามสกุล:</b> @ViewBag.studentLastname</p>
+            <p><b>ที่อยู่:</b> @ViewBag.studentAddress  </p>
+            <p><b>เบอร์โทรศัพท์:</b> @ViewBag.studentPhone  </p>
+            <p><b>Facebook:</b> @ViewBag.studentFacebook  </p>
+            <p><b>Email:</b> @ViewBag.studentEmail  </p>
+            <p><b>อันดับที่เลือก:</b> @ViewBag.studentRanking  </p>
+            <p><b>Resume:</b></p><img src="https://sv1.picz.in.th/images/2020/04/09/QFmsH1.jpg" alt="Resume" border="0" />
+            <p><b>Transcript:</b></p><img src="https://sv1.picz.in.th/images/2020/04/09/QFmsH1.jpg" alt="Resume" border="0" />
+        </div>
+    </div>
+</div>

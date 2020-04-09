@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+<style>
+    img {
+        border-radius: 50%;
+        margin: 20px;
+        width: 200px;
+    }
+
+    .detail {
+    }
+</style>
+
+
+<div class="text-left">
+    <div class="profile">
+        <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" /><br />
+        <p><b>ชื่อ</b> @ViewBag.StudentName</p>
+        <p><b>สถานะ:</b> </p>
+        <button>แก้ไขโปรไฟล์</button>
+    </div>
+    <div class="text-right">
+        <button class="detail" type="button">Detail</button>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "UserDashBoard";
+}
+
+
+@if (ViewBag.IDType == "Student")
+{
+    <p>Welcome @ViewBag.UserID.ToString()</p>
+    <p>Name : @ViewBag.Name.ToString()</p>
+    <p>ID Type : @ViewBag.IDType.ToString()</p>
+    <p>Status : @ViewBag.Status.ToString()</p>
+
+}

@@ -1,0 +1,62 @@
+﻿@model CSFinder.Models.Account
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+@using (Html.BeginForm("Login", "Student", FormMethod.Post))
+{
+    <br>
+    <br>
+    <br>
+    <div align='center'>
+        <div class="head" style="display: grid; width:60%; grid-template-columns: 50% 90%;">
+            <img src="https://s3-ap-southeast-1.amazonaws.com/img-in-th/c72f73e5ef319a9bc0fbb10a73b7ac68.jpg" alt="c72f73e5ef319a9bc0fbb10a73b7ac68.jpg" width="400" height="425" border="0" alt="csfinder" />
+
+            <div class="body" style="place-self: center;">
+                <div style="line-height: 80%;">
+                    <h1>Welcome Back!</h1>
+                </div>
+                <div style="line-height: 90%;">
+                    <h2>Login Your Account</h2>
+                </div><br>
+
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @if (@ViewBag.Message != null)
+                {
+                    <div style="border: 1px solid red">
+                        @ViewBag.Message
+                    </div>
+                }
+                <div class="Login">
+                    <table>
+                        <tr>
+                            <td>@Html.LabelFor(a => a.ID)</td>
+                            <td>@Html.TextBoxFor(a => a.ID)</td>
+                            <td>@Html.ValidationMessageFor(a => a.ID)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.LabelFor(a => a.Password)</td>
+                            <td>@Html.PasswordFor(a => a.Password)</td>
+                            <td>@Html.ValidationMessageFor(a => a.Password)</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <input type="submit" value="Login" /> <b></b>
+                                    <p>
+                                        Create New Accout for
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="RegisLogin" asp-action="RegisStudent">student</a>
+                                        or
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="RegisLogin" asp-action="RegisCompany">company</a>
+                                    </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div><br>
+            </div>
+        </div>
+    </div>
+}  

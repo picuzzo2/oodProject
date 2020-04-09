@@ -1,0 +1,119 @@
+﻿@{
+    ViewData["Title"] = "EditProfile";
+}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+<style>
+
+    img {
+        margin: 20px;
+        width: 500px;
+    }
+
+    .card-img {
+        border-radius: 50%;
+        margin: 20px;
+        width: 200px;
+    }
+
+    .profile {
+        width: 100%;
+    }
+
+    .text {
+        border-left: 2px solid gray;
+    }
+
+    input {
+        width: 100%;
+    }
+</style>
+
+
+<div style="display: flex;">
+    <div class="text-left">
+        <div class="profile">
+            <img class="card-img" src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" /><br />
+            <p><b>ชื่อ:</b> @ViewBag.studentName</p>
+            <p><b>สถานะ:</b> @ViewBag.studentStatus  </p>
+        </div>
+    </div>
+    <div class="text">
+        <div class="profile" style="margin: 20%; margin-top:10% ">
+            <p><b>ชื่อ:</b>&nbsp<input id="studentFirstname" type="text" /></p>
+            <p><b>นามสกุล:</b>&nbsp<input id="studentLastname" type="text" /></p>
+            <p><b>ที่อยู่:</b>&nbsp<input id="studentAddress" type="text" /></p>
+            <p><b>เบอร์โทรศัพท์:</b>&nbsp<input id="studentPhone" type="text" /></p>
+            <p><b>Facebook:</b>&nbsp<input id="studentFacebook " type="text" /> </p>
+            <p><b>Email:</b>&nbsp<input id="studentEmail  " type="text" /></p>
+            <p>
+                <b>อันดับที่เลือก:</b><br><input id="studentRanking " type="text" />
+                <br><input id="studentRanking2 " type="text" />
+                <br><input id="studentRanking3 " type="text" />
+            </p>
+            <p><b>Resume:</b></p>
+            <div class="file-upload">
+                <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
+                <script>
+                    Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
+                        const hiddenInput = button.parentElement.querySelector('.file-upload__input');
+                        const label = button.parentElement.querySelector('.file-upload__label');
+                        const defaultLabelText = 'No file(s) selected';
+
+                        label.textContent = defaultLabelText;
+                        label.title = defaultLabelText;
+
+                        button.addEventListener("click", function () {
+                            hiddenInput.click();
+                        });
+
+                        hiddenInput.addEventListener("change", function () {
+                            console.log(hiddenInput.files);
+                            const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
+                                return file.name;
+                            });
+
+                            label.textContent = filenameList.join(',') || defaultLabelText;
+                            label.title = label.textContent;
+
+                        });
+                </script>
+            </div><br>
+
+            <p><b>Transcript:</b></p>
+            <div class="file-upload">
+                <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
+                <script>
+                    Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
+                        const hiddenInput = button.parentElement.querySelector('.file-upload__input');
+                        const label = button.parentElement.querySelector('.file-upload__label');
+                        const defaultLabelText = 'No file(s) selected';
+
+                        label.textContent = defaultLabelText;
+                        label.title = defaultLabelText;
+
+                        button.addEventListener("click", function () {
+                            hiddenInput.click();
+                        });
+
+                        hiddenInput.addEventListener("change", function () {
+                            console.log(hiddenInput.files);
+                            const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
+                                return file.name;
+                            });
+
+                            label.textContent = filenameList.join(',') || defaultLabelText;
+                            label.title = label.textContent;
+
+                        });
+                </script>
+            </div>
+
+        </div>
+    </div>
+</div>
+
