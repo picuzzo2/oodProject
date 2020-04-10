@@ -1,6 +1,4 @@
-﻿
-
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
@@ -18,11 +16,10 @@ namespace CSFinder.Models
 #nullable enable
         public int? Type { get; set; }
 #nullable disable
-        public string Email { get; set; }
         public string Phone { get; set; }
 #nullable enable
         public string? Detail { get; set; }
 #nullable disable
-        public string Status { get; set; }
+        public string Status { get; set; } = "Waiting for matching";
     }
 }

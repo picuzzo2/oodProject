@@ -14,5 +14,22 @@ namespace CSFinder.Controllers
         {
             return View();
         }
+        [Route("Home")]
+        public IActionResult Home()
+        {
+            return View();
+        }
+        [Route("Notification")]
+        public IActionResult Notification()
+        {
+            return View();
+        }
+        [Route("Logout")]
+        public IActionResult Logout()
+        {
+            return RedirectToAction("Login", "RegisLogin"); ;
+        }
     }
+}
+}
 }

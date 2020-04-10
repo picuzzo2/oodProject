@@ -1,68 +1,133 @@
 ﻿@model CSFinder.Models.StudentAccount
 @{
     ViewData["Title"] = "RegisStudent";
+    Layout = "_RegisLayout";
 }
 
-<h1>RegisStudent</h1>
-@using (Html.BeginForm("Login", "Student", FormMethod.Post))
-{
-    <div class="RegisStudent">
-        <table>
-            <tr>
-                <td>@Html.LabelFor(a => a.ID)</td>
-                <td>@Html.TextBoxFor(a => a.ID)</td>
-                <td>@Html.ValidationMessageFor(a => a.ID)</td>
-            </tr>
-        
-            <tr>
-                <td>@Html.LabelFor(a => a.Password)</td>
-                <td>@Html.TextBoxFor(a => a.Password)</td>
-                <td>@Html.ValidationMessageFor(a => a.Password)</td>
-            </tr>
-        
-            <tr>
-                <td>@Html.LabelFor(a => a.ConfirmPassword)</td>
-                <td>@Html.TextBoxFor(a => a.ConfirmPassword)</td>
-                <td>@Html.ValidationMessageFor(a => a.ConfirmPassword)</td>
-            </tr>
-        
-            <tr>
-                <td>@Html.LabelFor(a => a.SID)</td>
-                <td>@Html.TextBoxFor(a => a.SID)</td>
-                <td>@Html.ValidationMessageFor(a => a.SID)</td>
-            </tr>
-        
-            <tr>
-                <td>@Html.LabelFor(a => a.Name)</td>
-                <td>@Html.TextBoxFor(a => a.Name)</td>
-                <td>@Html.ValidationMessageFor(a => a.Name)</td>
-            </tr>
-       
-            <tr>
-                <td>@Html.LabelFor(a => a.Email)</td>
-                <td>@Html.TextBoxFor(a => a.Email)</td>
-                <td>@Html.ValidationMessageFor(a => a.Email)</td>
-            </tr>
-        
-            <tr>
-                <td>@Html.LabelFor(a => a.Phone)</td>
-                <td>@Html.TextBoxFor(a => a.Phone)</td>
-                <td>@Html.ValidationMessageFor(a => a.Phone)</td>
-            </tr>
-        
-            <tr>
-                <td>@Html.LabelFor(a => a.Detail)</td>
-                <td>@Html.TextBoxFor(a => a.Detail)</td>
-                <td>@Html.ValidationMessageFor(a => a.Detail)</td>
-            </tr>
-        </table>
+
+<div class="col-md-9">
+    <form id="myForm">
+        <div class="form-group">
+            <div class="col-md-12">
+                <h4>Regsiter for Student account</h4>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <span>@Html.LabelFor(a => a.ID)</span>
+                <span>
+                    @Html.TextBoxFor(a => a.ID, new { @class = "form-control", @placeholder = "Username" })
+                    @Html.ValidationMessageFor(a => a.ID, "", new { @class = "text-danger" })
+                </span>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <span>@Html.LabelFor(a => a.Password)</span>
+                <span>
+                    @Html.PasswordFor(a => a.Password, new { @class = "form-control", @placeholder = "Password" })
+                    @Html.ValidationMessageFor(a => a.Password, "", new { @class = "text-danger" })
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <span>@Html.LabelFor(a => a.ConfirmPassword, new { @placeholder = "Confirm Password" }) </span>
+                <span>
+                    @Html.PasswordFor(a => a.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                    @Html.ValidationMessageFor(a => a.ConfirmPassword, "", new { @class = "text-danger" })
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <span>@Html.LabelFor(a => a.SID)</span>
+                <span>
+                    @Html.TextBoxFor(a => a.SID, new { @class = "form-control", @placeholder = "Student ID" })
+                @Html.ValidationMessageFor(a => a.SID, "", new { @class = "text-danger" })
+            </span>
+        </div>
     </div>
-    <br>
-    <tr>
-        <td>
-            <input type="submit" value="Register" /> <b></b>
-        </td>
-    </tr>
+    <div class="form-group">
+        <div class="col-md-12">
+            <span>@Html.LabelFor(a => a.Name)</span>
+            <span>
+                @Html.TextBoxFor(a => a.Name, new { @class = "form-control", @placeholder = "Firstname Lastname" })
+            @Html.ValidationMessageFor(a => a.Name, "", new { @class = "text-danger" })
+        </span>
+    </div>
+</div>
 
-}
+<div class="form-group">
+    <div class="col-md-12">
+        <span>@Html.LabelFor(a => a.Email)</span>
+        <span>
+            @Html.TextBoxFor(a => a.Email, new { @class = "form-control", @placeholder = "Email" })
+        @Html.ValidationMessageFor(a => a.Email, "", new { @class = "text-danger" })
+    </span>
+</div>
+</div>
+<div class="form-group">
+    <div class="col-md-12">
+        <span>@Html.LabelFor(a => a.Phone)</span>
+        <span>
+            @Html.TextBoxFor(a => a.Phone, new { @class = "form-control", @placeholder = "Phone number" })
+        @Html.ValidationMessageFor(a => a.Phone, "", new { @class = "text-danger" })
+    </span>
+</div>
+</div>
+<div class="form-group">
+    <div class="col-md-12">
+        <span>@Html.LabelFor(a => a.Detail)</span>
+        <span>
+            @Html.TextBoxFor(a => a.Detail, new { @class = "form-control", @placeholder = "More Details" })
+    </span>
+</div>
+</div>
 
+
+
+<div class="form-group">
+    <div class="col-md-12">
+        <a href="#" class="btn btn-primary " onclick="RegisStudent()">Register</a>
+    </div>
+</div>
+</form>
+
+</div>
+
+<script>
+    var RegisStudent = function ()  {
+        debugger
+        var data = $("#myForm").serialize();
+        if (!$("#myForm").valid()) {
+
+            return false;
+        }
+
+        $.ajax({
+            type: "Post",
+            url: "/RegisLogin/RegisStudent",
+            data: data,
+            success: function (response) {
+                
+                if (response == "fail") {
+                    window.location.href = "/RegisLogin/RegisStudent";
+                }
+                else if (response.success)
+                {
+                    alert(response.responseText);
+                    window.location.href = "/RegisLogin/Login";
+                }
+                else if (!response.success)
+                {
+                    alert(response.responseText);
+                    window.location.href = "/RegisLogin/RegisStudent";
+                }
+                debugger
+            }
+        })
+    }
+</script>
