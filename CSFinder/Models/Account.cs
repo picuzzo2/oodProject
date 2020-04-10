@@ -14,5 +14,6 @@ namespace CSFinder.Models
         public string ID { get; set; }
         public string Password { get; set; }
         public string IDtype { get; set; }
+        public string Email { get; set; }
     }
 }
