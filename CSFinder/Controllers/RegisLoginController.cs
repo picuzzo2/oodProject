@@ -62,6 +62,10 @@ namespace CSFinder.Controllers
                 else if (IDType == "Company")
                 {
                     var obj = db.Companies.Where(a => a.ID.Equals(HttpContext.Session.GetString("UserID"))).FirstOrDefault();
+                    HttpContext.Session.SetString("CID", obj.CID.ToString());
+                    HttpContext.Session.SetString("Name", obj.Name.ToString());
+
+                    return RedirectToAction("Home", "Company");
 
                 }
 
