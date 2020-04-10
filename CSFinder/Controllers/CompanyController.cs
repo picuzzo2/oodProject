@@ -6,15 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CSFinder.Controllers
 {
-    [Route("Company")]
     public class CompanyController : Controller
     {
-        [Route("Details")]
         public IActionResult Details()
         {
             return View();
         }
-        [Route("Home")]
         public IActionResult Home()
         {
             ViewBag.companyName = "บริษัท ปูนซีเมนต์ไทย จำกัด (มหาชน)";
@@ -25,14 +22,13 @@ namespace CSFinder.Controllers
             ViewBag.companyPostDetail = "บริษัท HandyWings เปิดรับสมัคร เพื่อนร่วมทีม เพิ่มเติมหลายอัตราเพื่อรองรับการขยายงาน";
             return View();
         }
-        [Route("Notification")]
         public IActionResult Notification()
         {
             return View();
         }
-        [Route("Logout")]
         public IActionResult Logout()
         {
+            HttpContext.Session.Clear();
             return RedirectToAction("Login", "RegisLogin"); ;
         }
     }

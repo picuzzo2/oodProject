@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace CSFinder.Controllers
 {
-    
+
     public class StudentController : Controller
     {
         private CSFinderContext db;
@@ -30,10 +30,16 @@ namespace CSFinder.Controllers
 
         public IActionResult History()
         {
+            ViewBag.studentName = "Anicha Harnpa";
+            ViewBag.rankFist = "บริษัท ปูนซีเมนต์ไทย จำกัด (มหาชน)";
+            ViewBag.rankSec = "บริษัท ไอแอนด์ไอ กรุ๊ป จำกัด (มหาชน)";
+            ViewBag.rankLast = "บริษัท ซีพี ออล์ จำกัด (มหาชน)";
+            ViewBag.rankComplete = "บริษัท ปูน...";
+            ViewBag.studentStatus = "รอนัดสัมภาษณ์";
             return View();
         }
 
-        
+
         public IActionResult Profile()
         {
             ViewBag.studentName = "Anicha Harnpa";
@@ -49,7 +55,7 @@ namespace CSFinder.Controllers
             return View();
         }
 
-        
+
         public IActionResult EditProfile()
         {
             ViewBag.studentName = "Anicha Harnpa";

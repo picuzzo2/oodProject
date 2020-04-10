@@ -21,5 +21,6 @@ namespace CSFinder.Models
             modelBuilder.Entity<Matching>()
                 .HasKey(e => new { e.SID, e.CID });
         }
+
     }
 }
