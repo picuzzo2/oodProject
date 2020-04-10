@@ -20,6 +20,7 @@ namespace CSFinder.Controllers
             ViewBag.companyLine = "@scg.contact.center";
             ViewBag.companyPostName = "บริษัท HandyWings";
             ViewBag.companyPostDetail = "บริษัท HandyWings เปิดรับสมัคร เพื่อนร่วมทีม เพิ่มเติมหลายอัตราเพื่อรองรับการขยายงาน";
+            ViewBag.Post1Img = "https://sv1.picz.in.th/images/2020/04/10/QMlEgD.jpg";
             return View();
         }
         public IActionResult Notification()

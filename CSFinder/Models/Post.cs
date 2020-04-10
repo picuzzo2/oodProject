@@ -16,6 +16,5 @@ namespace CSFinder.Models
         public string Detail { get; set; }
         public int TrainneeNeed { get; set; }
         public int CoopNeed { get; set; }
-
     }
 }

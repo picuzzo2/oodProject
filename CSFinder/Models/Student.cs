@@ -21,5 +21,6 @@ namespace CSFinder.Models
         public string? Detail { get; set; }
 #nullable disable
         public string Status { get; set; } = "Waiting for matching";
+        public string ImgProfile { get; set; } = "https://www.w3schools.com/howto/img_avatar.png";
     }
 }
