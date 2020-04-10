@@ -20,9 +20,9 @@ namespace CSFinder.Models
 #nullable disable
         public int TrainneeNeed { get; set; }
         public int CoopNeed { get; set; }
-<<<<<<< Updated upstream
-=======
+
         public string ImgProfile { get; set; } = "https://www.w3schools.com/howto/img_avatar.png";
->>>>>>> Stashed changes
+
+        public string ImgProfile { get; set; } = https://www.w3schools.com/howto/img_avatar.png;
     }
 }
