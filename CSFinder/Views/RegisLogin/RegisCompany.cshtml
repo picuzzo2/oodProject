@@ -1,79 +1,124 @@
-﻿@model CSFinder.Models.Company
+﻿@model CSFinder.Models.CompanyAccount
 @{
     ViewData["Title"] = "RegisCompany";
+    Layout = "_RegisLayout";
 }
 
-<h1>RegisCompany</h1>
-<div class="RegisCompany">
-    <table>
-        <tr>
-            <td>@Html.LabelFor(a => a.CID)</td>
-            <td>@Html.TextBoxFor(a => a.CID)</td>
-            <td>@Html.ValidationMessageFor(a => a.CID)</td>
-        </tr>
-    </table>
+
+<div class="col-md-9">
+    <form id="myForm">
+        <div class="form-group">
+            <div class="col-md-12">
+                <h4>Register for Company account</h4>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <span>@Html.LabelFor(a => a.ID)</span>
+                <span>
+                    @Html.TextBoxFor(a => a.ID, new { @class = "form-control", @placeholder = "Username" })
+                    @Html.ValidationMessageFor(a => a.ID, "", new { @class = "text-danger" })
+                </span>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <span>@Html.LabelFor(a => a.Password)</span>
+                <span>
+                    @Html.PasswordFor(a => a.Password, new { @class = "form-control", @placeholder = "Password" })
+                    @Html.ValidationMessageFor(a => a.Password, "", new { @class = "text-danger" })
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <span>@Html.LabelFor(a => a.ConfirmPassword, new { @placeholder = "Confirm Password" }) </span>
+                <span>
+                    @Html.PasswordFor(a => a.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                    @Html.ValidationMessageFor(a => a.ConfirmPassword, "", new { @class = "text-danger" })
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <span>@Html.LabelFor(a => a.Name)</span>
+                <span>
+                    @Html.TextBoxFor(a => a.Name, new { @class = "form-control", @placeholder = "Company's name" })
+                    @Html.ValidationMessageFor(a => a.Name, "", new { @class = "text-danger" })
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <span>@Html.LabelFor(a => a.Email)</span>
+                <span>
+                    @Html.TextBoxFor(a => a.Email, new { @class = "form-control", @placeholder = "Email" })
+                    @Html.ValidationMessageFor(a => a.Email, "", new { @class = "text-danger" })
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <span>@Html.LabelFor(a => a.Phone)</span>
+                <span>
+                    @Html.TextBoxFor(a => a.Phone, new { @class = "form-control", @placeholder = "Phone number" })
+                    @Html.ValidationMessageFor(a => a.Phone, "", new { @class = "text-danger" })
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <span>@Html.LabelFor(a => a.Detail)</span>
+                <span>
+                    @Html.TextBoxFor(a => a.Detail, new { @class = "form-control", @placeholder = "More Details" })
+                </span>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <a href="#" class="btn btn-primary " onclick="RegisCompany()">Register</a>
+            </div>
+        </div>
+    </form>
+
 </div>
-<br>
-<div class="RegisCompany">
-    <table>
-        <tr>
-            <td>@Html.LabelFor(a => a.Name)</td>
-            <td>@Html.TextBoxFor(a => a.Name)</td>
-            <td>@Html.ValidationMessageFor(a => a.Name)</td>
-        </tr>
-    </table>
-</div>
-<br>
-<div class="RegisCompany">
-    <table>
-        <tr>
-            <td>@Html.LabelFor(a => a.Email)</td>
-            <td>@Html.TextBoxFor(a => a.Email)</td>
-            <td>@Html.ValidationMessageFor(a => a.Email)</td>
-        </tr>
-    </table>
-</div>
-<br>
-<div class="RegisCompany">
-    <table>
-        <tr>
-            <td>@Html.LabelFor(a => a.Phone)</td>
-            <td>@Html.TextBoxFor(a => a.Phone)</td>
-            <td>@Html.ValidationMessageFor(a => a.Phone)</td>
-        </tr>
-    </table>
-</div>
-<br>
-<div class="RegisCompany">
-    <table>
-        <tr>
-            <td>@Html.LabelFor(a => a.Detail)</td>
-            <td>@Html.TextBoxFor(a => a.Detail)</td>
-            <td>@Html.ValidationMessageFor(a => a.Detail)</td>
-        </tr>
-    </table>
-</div>
-<br>
-<div class="RegisCompany">
-    <table>
-        <tr>
-            <td>@Html.LabelFor(a => a.TrainneeNeed)</td>
-            <td>@Html.TextBoxFor(a => a.TrainneeNeed)</td>
-            <td>@Html.ValidationMessageFor(a => a.TrainneeNeed)</td>
-        </tr>
-    </table>
-</div>
-<br>
-<div class="RegisCompany">
-    <table>
-        <tr>
-            <td>@Html.LabelFor(a => a.CoopNeed)</td>
-            <td>@Html.TextBoxFor(a => a.CoopNeed)</td>
-            <td>@Html.ValidationMessageFor(a => a.CoopNeed)</td>
-        </tr>
-    </table>
-</div>
-<br>
-<tr>
-    <td>
-        <input type="submit" value="Register" /> <b>
+
+<script>
+    var RegisCompany = function ()  {
+        debugger
+        var data = $("#myForm").serialize();
+        if (!$("#myForm").valid()) {
+
+            return false;
+        }
+
+        $.ajax({
+            type: "Post",
+            url: "/RegisLogin/RegisCompany",
+            data: data,
+            success: function (response) {
+
+                if (response == "fail") {
+                    window.location.href = "/RegisLogin/RegisCompany";
+                }
+                else if (response.success)
+                {
+                    alert(response.responseText);
+                    window.location.href = "/RegisLogin/Login";
+                }
+                else if (!response.success)
+                {
+                    alert(response.responseText);
+                    window.location.href = "/RegisLogin/RegisCompany";
+                }
+                debugger
+            }
+        })
+    }
+</script>
