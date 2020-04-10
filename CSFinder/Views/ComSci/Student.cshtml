@@ -3,4 +3,128 @@
     ViewData["Title"] = "Student";
 }
 
-<h1>Student</h1>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+<style>
+    img {
+        margin: 20px;
+        width: 500px;
+    }
+
+    .card-img {
+        border-radius: 50%;
+        margin: 20px;
+        width: 200px;
+    }
+
+    .text {
+        border-left: 2px solid gray;
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .head-table, .numOfStudent,
+    th {
+        text-align: center;
+    }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 10px;
+    }
+
+    table#t01 th {
+        background-color: black;
+        color: white;
+    }
+
+    table#t02 th {
+        background-color: black;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    th {
+        width: 250px;
+    }
+</style>
+
+
+<div style="display: flex;">
+    <div class="text-left">
+        <div class="profile">
+            <img class="card-img" src="https://s3-ap-southeast-1.amazonaws.com/img-in-th/5427180f9317b3cdb29de237acf52fcf.th.png" alt="ComSciLogo" /><br />
+            <p><b>ภาควิชาคอมพิวเตอร์ คณะวิทยาศาสตร์</b></p>
+            <p><b>มหาวิทยาลัยเชียงใหม่</b></p>
+            <p><b>ที่อยู่ติดต่อ: </b> @ViewBag.comSciAddress </p>
+            <p><b>เบอร์ติดต่อ: </b> @ViewBag.comSciTel </p>
+            <p><b>อีเมล: </b> @ViewBag.comSciEmail </p>
+            <button>แก้ไขโปรไฟล์</button>
+        </div>
+    </div>
+    <div class="text">
+        <div class="profile" style="margin: 10%; margin-top:10%">
+            <table id="t01">
+                <tr>
+                    <th class="head-table">รายชื่อบริษัทที่ลงทะเบียน</th>
+                    <th class="head-table">จำนวน(คน)</th>
+                </tr>
+                <tr>
+                    <td>@ViewBag.companyName1</td>
+                    <td class="numOfStudent">@ViewBag.numberOfStudent1</td>
+                </tr>
+                <tr>
+                    <td>@ViewBag.companyName2</td>
+                    <td class="numOfStudent">@ViewBag.numberOfStudent2</td>
+                </tr>
+                <tr>
+                    <td>@ViewBag.companyName3</td>
+                    <td class="numOfStudent">@ViewBag.numberOfStudent3</td>
+                </tr>
+                <tr>
+                    <td>@ViewBag.companyName4</td>
+                    <td class="numOfStudent">@ViewBag.numberOfStudent4</td>
+                </tr>
+                <tr>
+                    <td>@ViewBag.companyName5</td>
+                    <td class="numOfStudent">@ViewBag.numberOfStudent5</td>
+                </tr>
+            </table><br>
+            <table id="t02">
+                <tr>
+                    <th class="head-table">รายชื่อนักศึกษา</th>
+                    <th class="head-table">สถานะ</th>
+                </tr>
+                <tr>
+                    <td>@ViewBag.studentName1</td>
+                    <td>@ViewBag.studentStatus1</td>
+                </tr>
+                <tr>
+                    <td>@ViewBag.studentName2</td>
+                    <td>@ViewBag.studentStatus2</td>
+                </tr>
+                <tr>
+                    <td>@ViewBag.studentName3</td>
+                    <td>@ViewBag.studentStatus3</td>
+                </tr>
+                <tr>
+                    <td>@ViewBag.studentName4</td>
+                    <td>@ViewBag.studentStatus4</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
