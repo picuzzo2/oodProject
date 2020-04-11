@@ -1,3 +1,4 @@
+@model CSFinder.Models.CompanyAccount
 @{
     ViewData["Title"] = "Home";
     Layout = "_CompanyLayout";
@@ -50,9 +51,10 @@
             border: 0;
             border-top: 1px solid #9da7b1;
         }
-       .box{
-           width:700px;
-       }
+
+        .box {
+            width: 700px;
+        }
 
 
         * {
@@ -84,36 +86,97 @@
             padding: 20px;
         }
 
+        .box {
+            width: 620px;
+            padding: 10px;
+            border: 5px solid #CACFD2;
+            margin: 0;
+            border-radius: 10px;
+            background-color: #D7DBDD;
+        }
+
     </style>
 </head>
 <body>
-    
-        <!-- The flexible grid (content) -->
-        <div class="row">
-            <div class="side">
-                <img class="card-img" src="@ViewBag.Post1Img" border="0" /><br />
-                <p><b>@ViewBag.companyName</b></p>
-                <p><b>ที่อยู่ : </b>@ViewBag.companyAddress</p>
-                <p><b>โทร : </b>@ViewBag.companyPhone</p>
-                <p><b>Email : </b>@ViewBag.companyEmail</p>
-                <button>แก้ไขข้อมูล</button>
+
+    <!-- The flexible grid (content) -->
+    <div class="row">
+        <div class="side">
+            <img class="card-img" src="@ViewBag.Post1Img" border="0" /><br />
+            <p><b>@ViewBag.companyName</b></p>
+            <p><b>ที่อยู่ : </b>@ViewBag.companyAddress</p>
+            <p><b>โทร : </b>@ViewBag.companyPhone</p>
+            <p><b>Email : </b>@ViewBag.companyEmail</p>
+            <button>แก้ไขข้อมูล</button>
+        </div>
+        <div class="main">
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    <div class="box">
+                        <div id="Post">
+                            @Html.TextBoxFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
+                        </div>
+                        <a href="home" class="btn btn-primary" onclick="PostImgCompany()">Upload image</a><br />
+                        
+                        <div>
+                            <b>จำนวนนักศึกษา: </b>@ViewBag.AllStudent
+                        </div>
+                        <div>
+                            <b>สหกิจ: </b>@ViewBag.CooStudent
+                        </div>
+                        <div>
+                            <b>ฝึกงาน: </b>@ViewBag.TrainStudent
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="main">
-           
 
-                        <input id="Post" type="text" />
-                        <button>PICTURE</button>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <a href="home" class="btn btn-primary" onclick="PostCompany()">Post</a>
+                </div>
+            </div>
 
-                        <div style="text-align:right"><button>POST</button></div>
-                    
-                
 
+            <div class="oneOfPost">
                 <img class="card-img1" src="@ViewBag.ProfileOtherCompanyPost" border="0">
                 <b>@ViewBag.companyPostName</b><br>
                 <p style="margin-left: 10%;">@ViewBag.companyPostDetail</p>
                 <img style="margin-left: 10%;" src="@ViewBag.PhotoOfOtherCompanyPost" border="0">
             </div>
         </div>
-    
+    </div>
+
 </body>
 </html>
+<script>
+    var PostCompany = function () {
+        debugger
+        var data = $("#myForm").serialize();
+        if (!$("#myForm").valid()) {
+
+            return false;
+        }
+
+        $.ajax({
+            type: "Post",
+            url: "/Company/Home",
+            data: data,
+            success: function (response) {
+
+                if (response == "fail") {
+                    window.location.href = "/Company/Home";
+                }
+                else if (response.success) {
+                    alert(response.responseText);
+                    window.location.href = "/Company/Home";
+                }
+                else if (!response.success) {
+                    alert(response.responseText);
+                    window.location.href = "/Company/Home"
+                debugger
+            }
+        })
+    }
+</script>

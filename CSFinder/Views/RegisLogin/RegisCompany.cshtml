@@ -1,4 +1,4 @@
-﻿@model CSFinder.Models.CompanyAccount
+@model CSFinder.Models.CompanyAccount
 @{
     ViewData["Title"] = "RegisCompany";
     Layout = "_RegisLayout";
@@ -9,13 +9,13 @@
         <br> 
         <div class="col-md-9">
             <form id="myForm">
-                <div class="form-group">
-                    <div class="col-md-12">
+                <div class="form-group">  
+                    <div class="col-md-12">  
                         <h3>Register for Company account</h3>
                     </div>
                 </div>
 
-                <div class="form-group" style=" width: 280px; background-color: #f8f8f8; height: 90px; border: 2px solid #ccc; border-radius: 4px;">
+                <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
                     <div align="left" class="col-md-12">
                         <span>@Html.LabelFor(a => a.ID)</span>
                         <span>
@@ -25,7 +25,7 @@
 
                     </div>
                 </div>
-                <div class="form-group" style=" width: 280px; background-color: #f8f8f8; height: 90px; border: 2px solid #ccc; border-radius: 4px;">
+                <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
                     <div align="left" class="col-md-12">
                         <span>@Html.LabelFor(a => a.Password)</span>
                         <span>
@@ -34,7 +34,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="form-group" style=" width: 280px; background-color: #f8f8f8; height: 90px; border: 2px solid #ccc; border-radius: 4px;">
+                <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
                     <div align="left" class="col-md-12">
                         <span>@Html.LabelFor(a => a.ConfirmPassword, new { @placeholder = "Confirm Password" }) </span>
                         <span>
@@ -43,7 +43,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="form-group" style=" width: 280px; background-color: #f8f8f8; height: 90px; border: 2px solid #ccc; border-radius: 4px;">
+                <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
                     <div align="left" class="col-md-12">
                         <span>@Html.LabelFor(a => a.Name)</span>
                         <span>
@@ -53,7 +53,7 @@
                     </div>
                 </div>
 
-                <div class="form-group" style=" width: 280px; background-color: #f8f8f8; height: 90px; border: 2px solid #ccc; border-radius: 4px;">
+                <div class="form-group" style="width: 320px; background-color: #f8f8f8;height: 100px;border: 2px solid #ccc;border-radius: 6px;">
                     <div align="left" class="col-md-12">
                         <span>@Html.LabelFor(a => a.Email)</span>
                         <span>
@@ -62,7 +62,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="form-group" style=" width: 280px; background-color: #f8f8f8; height: 90px; border: 2px solid #ccc; border-radius: 4px;">
+                <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
                     <div align="left" class="col-md-12">
                         <span>@Html.LabelFor(a => a.Phone)</span>
                         <span>
@@ -71,7 +71,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="form-group" style=" width: 280px; background-color: #f8f8f8; height: 90px; border: 2px solid #ccc; border-radius: 4px;">
+                <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
                     <div align="left" class="col-md-12">
                         <span>@Html.LabelFor(a => a.Detail)</span>
                         <span>
@@ -123,3 +123,4 @@
             }
         </script>
 </div>
+
