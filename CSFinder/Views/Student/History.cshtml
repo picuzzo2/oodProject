@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
 <style>
+
     img {
         border-radius: 50%;
         margin: 20px;
@@ -15,13 +16,45 @@
     }
 </style>
 
+<div style="display: flex;">
+    <div class="text-left">
+        <div class="profile">
+            <img src="@ViewBag.user.ImgProfile" alt="Avatar" /><br />
+            <p><b>ชื่อ: @ViewBag.user.Name</b> </p>
+            <p><b>สถานะ: @ViewBag.user.Status</b> </p>
+            <button>แก้ไขโปรไฟล์</button>
+        </div>
+    </div>
 
-<div class="text-left">
-    <div class="profile">
-        <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" /><br />
-        <p><b>ชื่อ</b> </p>
-        <p><b>สถานะ:</b> </p>
-        <button>แก้ไขโปรไฟล์</button>
+    <div class="text" style="width: 200px;height: 200px;position: absolute;top: 35%;left: 50%;margin-top: -100px;margin-left: -100px;">
+
+        <div class="history">
+            <table width=250% cellpadding="4" cellspacing="1"
+                   style="border:1px solid #D3D3D3;">
+                <tr>
+                    <td bgcolor="#D3D3D3"
+                        style="border-style:solid;
+                        border-width:4px;
+                        border-color:#D3D3D3 gray gray #D3D3D3;">
+                        <p><b>รอบที่ 1 (12/12/2562)</b></p>
+                        <hr>
+                        <p><b>อันดับที่เลือก</b></p>
+                        <p align='center'>
+                            <b>อันดับ 1 : </b><p1 style="color:#333399;">@ViewBag.Rank1</p1><br>
+                            <b>อันดับ 2 : </b><p1 style="color:#333399;">@ViewBag.Rank2</p1><br>
+                            <b>อันดับ 3 : </b><p1 style="color:#333399;">@ViewBag.Rank3</p1><br>
+                        </p>
+                        <br>
+                        <p align='right'>
+                            <b>บริษัทที่ได้ :</b> <p1 style="color:#333399;">@ViewBag.rankComplete</p1><br>
+                            <b>สถานะ : @ViewBag.user.Status</b>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
+
+
 
