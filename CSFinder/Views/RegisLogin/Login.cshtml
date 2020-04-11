@@ -29,34 +29,37 @@
                         @ViewBag.Message
                     </div>
                 }
-            <div class="Login">
-                <table>
-                    <tr>
-                        <td width="30%">@Html.LabelFor(a => a.ID)</td>
-                        <td>@Html.TextBoxFor(a => a.ID, new { style = "width:200px; border-radius: 5px;" })</td>
-                        <td>@Html.ValidationMessageFor(a => a.ID)</td>
-                    </tr>
+                <div class="Login">
+                    <table>
+                        <tr>
+                            <td width="30%">@Html.LabelFor(a => a.ID)</td>
+                            <td>@Html.TextBoxFor(a => a.ID, new { style = "width:200px; border-radius: 5px;" })</td>
+                            <td>@Html.ValidationMessageFor(a => a.ID)</td>
+                        </tr>
 
-                    <tr>
-                        <td>@Html.LabelFor(a => a.Password)</td>
-                        <td>@Html.PasswordFor(a => a.Password, new { style = "width:200px; border-radius: 5px;" })</td>
-                        <td>@Html.ValidationMessageFor(a => a.Password)</td>
-                    </tr>
-                </table>
+                        <tr>
+                            <td>@Html.LabelFor(a => a.Password)</td>
+                            <td>@Html.PasswordFor(a => a.Password, new { style = "width:200px; border-radius: 5px;" })</td>
+                            <td>@Html.ValidationMessageFor(a => a.Password)</td>
+                        </tr>
+                    </table>
 
-                <div align="right" style="margin-top:3%;">
-                    <input type="submit" style=" border-radius: 5px;"  value="Login" />
-                </div>
+                    <div align="right" style="margin:3%;">
+                        <input type="submit" style=" border-radius: 5px;" value="Login" />
+                    </div>
 
 
-
-                <p style="width:100%">
-                    Create New Accout for
-                    <a class="nav-link text-dark" asp-area="" asp-controller="RegisLogin" asp-action="RegisStudent">student</a>
-                    or
-                    <a class="nav-link text-dark" asp-area="" asp-controller="RegisLogin" asp-action="RegisCompany">company</a>
-                </p>
-            </div><br>
+                    <table>
+                        <p style="width:100%;">
+                            <ul style=" display:inline">
+                                Create New Accout for
+                                <li style=" display:inline"><a class="nav-link text-dark" asp-area="" asp-controller="RegisLogin" asp-action="RegisStudent">student</a></li>
+                                or
+                                <li style=" display:inline"><a class="nav-link text-dark" asp-area="" asp-controller="RegisLogin" asp-action="RegisCompany">company</a></li>
+                            </ul>
+                        </p>
+                    </table>
+                </div><br>
             </div>
         </div>
     </div>
