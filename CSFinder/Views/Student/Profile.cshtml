@@ -30,21 +30,25 @@
     <div class="text-left">
         <div class="profile">
             <img class="card-img" src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" /><br />
-            <p><b>ชื่อ:</b> @ViewBag.studentName</p>
-            <p><b>สถานะ:</b> @ViewBag.studentStatus  </p>
-            <button>แก้ไขโปรไฟล์</button>
+            <p><b>ชื่อ:</b> @ViewBag.user.Name</p>
+            <p><b>สถานะ:</b> @ViewBag.user.Status  </p>
+            <input type="button" value="Edit Profile" onclick="location.href='@Url.Action("EditProfile", "Student")'" />
         </div>
     </div>
     <div class="text">
         <div class="profile" style="margin: 10%; margin-top:10%">
-            <p><b>ชื่อ:</b> @ViewBag.studentFirstname <b>นามสกุล:</b> @ViewBag.studentLastname</p>
-            <p><b>ที่อยู่:</b> @ViewBag.studentAddress  </p>
-            <p><b>เบอร์โทรศัพท์:</b> @ViewBag.studentPhone  </p>
-            <p><b>Facebook:</b> @ViewBag.studentFacebook  </p>
-            <p><b>Email:</b> @ViewBag.studentEmail  </p>
-            <p><b>อันดับที่เลือก:</b> @ViewBag.studentRanking  </p>
-            <p><b>Resume:</b></p><img src="https://sv1.picz.in.th/images/2020/04/09/QFmsH1.jpg" alt="Resume" border="0" />
-            <p><b>Transcript:</b></p><img src="https://sv1.picz.in.th/images/2020/04/09/QFmsH1.jpg" alt="Resume" border="0" />
+            <p><b>ชื่อ:</b> @ViewBag.user.Name </p>
+            <p><b>เบอร์โทรศัพท์:</b> @ViewBag.user.Phone  </p>
+            <p><b>Email:</b> @ViewBag.userEmail  </p>
+            <p><b>อันดับที่เลือก:</b> @ViewBag.user.Rank1  </p>
+            @if (ViewBag.user.ImgResume != null)
+            {
+            <p><b>Resume:</b></p><img src="@ViewBag.user.ImgResume" alt="Resume" border="0" />
+            }
+            @if (ViewBag.user.ImgTranscript != null)
+            {
+            <p><b>Transcript:</b></p><img src="@ViewBag.user.ImgTranscript" alt="transcript" border="0" />
+            }
         </div>
     </div>
 </div>

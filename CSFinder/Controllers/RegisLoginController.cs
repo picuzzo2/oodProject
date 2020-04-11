@@ -18,7 +18,7 @@ namespace CSFinder.Controllers
         }
         public IActionResult Login()
         {
-            Debug.WriteLine("Debug Login");
+            if (HttpContext.Session.GetString("UserID") != null) return RedirectToAction("UserDashBoard", "RegisLogin");
             return View();
         }
         [HttpPost]
@@ -49,19 +49,12 @@ namespace CSFinder.Controllers
             {
 
                 if (IDType == "Student")
-                {
-                    var obj = db.Students.Where(a => a.ID.Equals(HttpContext.Session.GetString("UserID"))).FirstOrDefault();
-                    
-                    HttpContext.Session.SetString("SID", obj.SID.ToString());
-                    HttpContext.Session.SetString("Name", obj.Name.ToString());
-                    HttpContext.Session.SetString("Status", obj.Status.ToString());
-
-
-                    return RedirectToAction("StudentDashBoard", "Student");
+                { 
+                    return RedirectToAction("Index", "Student");
                 }
                 else if (IDType == "Company")
                 {
-                    var obj = db.Companies.Where(a => a.ID.Equals(HttpContext.Session.GetString("UserID"))).FirstOrDefault();
+                    return RedirectToAction("Home", "Company");
 
                 }
 

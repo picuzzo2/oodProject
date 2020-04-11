@@ -7,25 +7,100 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
 <style>
-    img {
-        border-radius: 50%;
-        margin: 20px;
-        width: 200px;
-    }
+        .card-img1 {
+            border-radius: 50%;
+            margin: 3px;
+            margin-left: 10%;
+            width: 50px;
+        }
 
-    .detail {
-    }
+        img {
+            margin: 20px;
+            width: 500px;
+        }
+
+        .card-img {
+            border-radius: 50%;
+            margin: 20px;
+            width: 200px;
+        }
+
+
+        input {
+            position: relative;
+            width: 700px;
+            height: 120px;
+            background: #ced6e0;
+            border: 3px solid #22a6b3;
+            border-radius: 10px;
+            margin-bottom: 3px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        button {
+            border: 3px solid #22a6b3;
+            border-radius: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+            *
+            body {
+                font-family: Arial;
+                margin: 0;
+            }
+        /* Column container */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Sidebar/left column */
+        .side {
+            flex: 30%;
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+
+        /* Main column */
+        .main {
+            flex: 70%;
+            background-color: white;
+            padding: 20px;
+        }
+        p{
+            margin:0;
+        }
+
 </style>
 
 
-<div class="text-left">
-    <div class="profile">
-        <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" /><br />
-        <p><b>ชื่อ</b> @ViewBag.StudentName</p>
-        <p><b>สถานะ:</b> </p>
-        <button>แก้ไขโปรไฟล์</button>
+<div class="row">
+    <div class="side">
+        <img class ="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" /><br />
+        <p><b>ชื่อ</b> @ViewBag.user.Name</p>
+        <p><b>สถานะ:</b> @ViewBag.user.Status </p>
+        
     </div>
-    <div class="text-right">
-        <button class="detail" type="button">Detail</button>
-    </div>
+    <div class="main">
+            @foreach (PostCompany pc in ViewBag.postCompanyList)
+            {
+                <table>
+                    <tr>
+                        <p><img class ="card-img1" src="@pc.company.ImgProfile" />
+                         @pc.company.Name</p>
+                    </tr>
+                    <tr>
+                        <div style="margin-left: 10%;">@pc.post.Detail</div>
+                    </tr>
+                    <tr>
+                        <img style="margin-left: 20%;" src="@pc.post.ImgLink" />
+                    </tr>
+                </table>
+            }
+            </div>
+    
 </div>

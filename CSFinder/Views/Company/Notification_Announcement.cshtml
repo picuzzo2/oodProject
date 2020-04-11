@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewData["Title"] = "Notification_Announcement";
+    Layout = "_CompanyLayout";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        img {
+            margin: 20px;
+            width: 500px;
+        }
+
+        .card-img {
+            border-radius: 50%;
+            margin-top: 10px;
+            margin-left: 10px;
+            width: 200px;
+        }
+
+        .card-img1 {
+            border-radius: 50%;
+            margin-top: 35px;
+            margin-left: 35px;
+            margin-bottom: 15px;
+            width: 100px;
+        }
+
+        input {
+            position: relative;
+            width: 700px;
+            height: 120px;
+            background: #ced6e0;
+            border: 3px solid #22a6b3;
+            border-radius: 10px;
+            margin-bottom: 3px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        button {
+            border: 3px solid #22a6b3;
+            border-radius: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+            *
+            body {
+                font-family: Arial;
+                margin: 0;
+            }
+        /* Column container */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Sidebar/left column */
+        .side {
+            flex: 30%;
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+
+        /* Main column */
+        .main {
+            flex: 70%;
+            background-color: white;
+            padding: 20px;
+        }
+
+        .box {
+            width: 500px;
+            height: 600px;
+            background-color: #f1f1f1;
+            margin-top: 10px;
+        }
+
+        .student {
+            margin-left: 180px;
+            margin-top: -90px;
+        }
+
+        .header {
+            margin-left: 90px;
+        }
+        .Wait{
+            color: gray;
+        }
+        .Pass{
+            color: green;
+        }
+        .Failed{
+            color: red;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- The flexible grid (content) -->
+    <div class="row">
+        <div class="side">
+            <img class="card-img" src="@ViewBag.Post1Img" border="0" /><br />
+            <p><b>@ViewBag.companyName</b></p>
+            <p><b>ที่อยู่ : </b>@ViewBag.companyAddress</p>
+            <p><b>โทร : </b>@ViewBag.companyPhone</p>
+            <p><b>Email : </b>@ViewBag.companyEmail</p>
+            <button>แก้ไขข้อมูล</button>
+        </div>
+        <div class="main">
+            <b class="header">รายชื่อนักศึกษาที่สนใจฝึกงาน/สหกิจศึกษา</b><br>
+            <div class="box">
+                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
+                <div class="student">
+                    @ViewBag.studentInterestName1<br>
+                    <a href="">ข้อมูลนักศึกษา</a>
+                    <label for="status">สถานะ : </label>
+                    <select id="status">
+                        <option class="Wait" value="Wait_Status">@ViewBag.studentInterestStatus1</option>
+                        <option class="Pass" value="Pass_Status">@ViewBag.studentInterestStatus2</option>
+                        <option class="Failed" value="Failed_Status">@ViewBag.studentInterestStatus3</option>
+                    </select>
+                </div>
+                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
+                <div class="student">
+                    @ViewBag.studentInterestName2<br>
+                    <a href="">ข้อมูลนักศึกษา</a>
+                </div>
+                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
+                <div class="student">
+                    @ViewBag.studentInterestName3<br>
+                    <a href="">ข้อมูลนักศึกษา</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
