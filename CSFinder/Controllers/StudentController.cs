@@ -9,27 +9,53 @@ using Microsoft.AspNetCore.Http;
 
 namespace CSFinder.Controllers
 {
-
+    
     public class StudentController : Controller
     {
         private CSFinderContext db;
+        private Student user;
+        private string userEmail;
         public StudentController(CSFinderContext _db)
         {
             db = _db;
+
+        }
+        private bool setUser()
+        {
+            if (HttpContext.Session.GetString("UserID") == null)
+            {
+                return false;
+            }
+            else if (user == null)
+            {
+                
+                user = db.Students.Where(u => u.ID.Equals((HttpContext.Session.GetString("UserID")))).FirstOrDefault();
+                userEmail = db.Accounts.Where(u => u.ID.Equals(user.ID)).FirstOrDefault().Email;
+                return true;
+            }
+            else
+            {
+                return true;
+            }
+            
         }
 
         public IActionResult StudentDashBoard()
         {
-            ViewBag.UserID = HttpContext.Session.GetString("UserID");
-            ViewBag.IDType = HttpContext.Session.GetString("IDType");
-            ViewBag.SID = HttpContext.Session.GetString("SID");
-            ViewBag.Name = HttpContext.Session.GetString("Name");
-            ViewBag.Status = HttpContext.Session.GetString("Status");
+            if (!setUser() || HttpContext.Session.GetString("IDType") != "Student") { return RedirectToAction("Login", "RegisLogin"); }
+            Debug.WriteLine(HttpContext.Session.GetString("UserID"));
+            Debug.WriteLine(user.ID);
+            ViewBag.UserID = user.ID;
+            ViewBag.Email =userEmail;
+            ViewBag.SID = user.SID;
+            ViewBag.Name = user.Name;
+            ViewBag.Status = user.Status;
             return View();
         }
 
         public IActionResult History()
         {
+            if (!setUser() || HttpContext.Session.GetString("IDType") != "Student") { return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.studentName = "Anicha Harnpa";
             ViewBag.rankFist = "บริษัท ปูนซีเมนต์ไทย จำกัด (มหาชน)";
             ViewBag.rankSec = "บริษัท ไอแอนด์ไอ กรุ๊ป จำกัด (มหาชน)";
@@ -42,6 +68,7 @@ namespace CSFinder.Controllers
 
         public IActionResult Profile()
         {
+            if (!setUser() || HttpContext.Session.GetString("IDType") != "Student") { return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.studentName = "Anicha Harnpa";
             ViewBag.studentStatus = "รอนัดสัมภาษณ์";
             ViewBag.studentFirstname = "อณิชา";
@@ -58,6 +85,7 @@ namespace CSFinder.Controllers
 
         public IActionResult EditProfile()
         {
+            if (!setUser() || HttpContext.Session.GetString("IDType") != "Student") { return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.studentName = "Anicha Harnpa";
             ViewBag.studentStatus = "รอนัดสัมภาษณ์";
             ViewBag.studentFirstname = "อณิชา";
@@ -73,6 +101,7 @@ namespace CSFinder.Controllers
         }
         public IActionResult Index()
         {
+            if (!setUser() || HttpContext.Session.GetString("IDType") != "Student") { return RedirectToAction("Login", "RegisLogin"); }
             return View();
         }
         public IActionResult Logout()
@@ -80,12 +109,6 @@ namespace CSFinder.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Login", "RegisLogin");
         }
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-
 
     }
 }

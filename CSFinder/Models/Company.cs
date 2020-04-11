@@ -23,6 +23,5 @@ namespace CSFinder.Models
 
         public string ImgProfile { get; set; } = "https://www.w3schools.com/howto/img_avatar.png";
 
-        public string ImgProfile { get; set; } = https://www.w3schools.com/howto/img_avatar.png;
     }
 }
