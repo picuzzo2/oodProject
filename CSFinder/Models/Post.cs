@@ -15,5 +15,7 @@ namespace CSFinder.Models
         public string CID { get; set; }
         public string Detail { get; set; }
 
+        public string ImgLink { get; set; }
+
     }
 }
