@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CSFinder.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CSFinder.Controllers
@@ -13,7 +14,7 @@ namespace CSFinder.Controllers
         {
             return View();
         }
-        public IActionResult Home()
+        public IActionResult Home(CompanyAccount objUser)
         {
             ViewBag.companyName = "บริษัท เอ็ม เอฟ อี ซี จำกัด (มหาชน)";
             ViewBag.companyAddress = "699 อาคารโมเดอร์นฟอร์มทาวเวอร์ ชั้น 27 ถนนศรีนครินทร์ แขวงพัฒนาการ เขตสวนหลวง กรุงเทพมหานคร 10250";
@@ -24,6 +25,10 @@ namespace CSFinder.Controllers
             ViewBag.ProfileOtherCompanyPost = "https://sv1.picz.in.th/images/2020/04/10/QMv1uZ.jpg";
             ViewBag.Post1Img = "https://sv1.picz.in.th/images/2020/04/11/UWg8eR.jpg";
             ViewBag.PhotoOfOtherCompanyPost = "https://sv1.picz.in.th/images/2020/04/10/QMvKII.jpg";
+
+            ViewBag.AllStudent = "18";
+            ViewBag.CooStudent = "8";
+            ViewBag.TrainStudent = "10";
             return View();
         }
         public IActionResult Notification()
