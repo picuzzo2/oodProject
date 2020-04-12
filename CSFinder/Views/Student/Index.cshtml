@@ -7,100 +7,186 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
 <style>
-        .card-img1 {
-            border-radius: 50%;
-            margin: 3px;
-            margin-left: 10%;
-            width: 50px;
+
+    .card-img1 {
+        border-radius: 50%;
+        margin: 3px;
+        margin-left: 10%;
+        width: 50px;
+    }
+
+    img {
+        margin: 20px;
+        width: 500px;
+    }
+
+    .card-img {
+        border-radius: 50%;
+        margin: 20px;
+        width: 200px;
+    }
+
+
+    input {
+        position: relative;
+        height: 50px;
+        background: #f1f1f1;
+        border: 3px solid #ced6e0;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-left: 100px;
+        width: 60%;
+        padding: 20px;
+    }
+
+    button {
+        border: 3px solid #22a6b3;
+        border-radius: 10px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+        *
+        body {
+            font-family: Arial;
+            margin: 0;
         }
+    /* Column container */
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
 
-        img {
-            margin: 20px;
-            width: 500px;
-        }
+    /* Sidebar/left column */
+    .side {
+        flex: 30%;
+        background-color: #f1f1f1;
+        padding: 20px;
+    }
 
-        .card-img {
-            border-radius: 50%;
-            margin: 20px;
-            width: 200px;
-        }
+    /* Main column */
+    .main {
+        flex: 70%;
+        background-color: white;
+        padding: 20px;
+    }
 
+    p {
+        margin: 0;
+    }
 
-        input {
-            position: relative;
-            width: 700px;
-            height: 120px;
-            background: #ced6e0;
-            border: 3px solid #22a6b3;
-            border-radius: 10px;
-            margin-bottom: 3px;
-            width: 100%;
-            padding: 20px;
-        }
+    .collapsible {
+        background-color: #ced6e0;
+        color: lightslategray;
+        border: none;
+        margin-left: 130px;
+        border-radius: 4px;
+        cursor: pointer;
+        
+    }
 
-        button {
-            border: 3px solid #22a6b3;
-            border-radius: 10px;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-            *
-            body {
-                font-family: Arial;
-                margin: 0;
-            }
-        /* Column container */
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        /* Sidebar/left column */
-        .side {
-            flex: 30%;
+        .collapsible:hover {
             background-color: #f1f1f1;
-            padding: 20px;
         }
 
-        /* Main column */
-        .main {
-            flex: 70%;
-            background-color: white;
-            padding: 20px;
-        }
-        p{
-            margin:0;
+        .collapsible:disabled {
+            background-color: #f1f1f1;
+            color: #aaa;
+            cursor: auto;
         }
 
+    #myDIV {
+        padding: 0 18px;
+        display: none;
+        overflow: hidden;
+        background-color: #f1f1f1;
+    }
+
+    .collapsible1 {
+        background-color: #ced6e0;
+        color: lightslategray;
+        border: none;
+        margin-left: 3px;
+        border-radius: 4px;
+        cursor: pointer;
+        cursor: hand;
+    }
+
+        .collapsible1:hover {
+            background-color: #f1f1f1;
+        }
+
+        .collapsible1:disabled {
+            background-color: #f1f1f1;
+            color: #aaa;
+            cursor: auto;
+        }
+
+    #myDIV1 {
+        padding: 0 18px;
+        display: none;
+        overflow: hidden;
+        background-color: #f1f1f1;
+    }
 </style>
 
 
 <div class="row">
     <div class="side">
-        <img class ="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" /><br />
+        <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" /><br />
         <p><b>ชื่อ</b> @ViewBag.user.Name</p>
         <p><b>สถานะ:</b> @ViewBag.user.Status </p>
-        
+
     </div>
     <div class="main">
-            @foreach (PostCompany pc in ViewBag.postCompanyList)
-            {
-                <table>
-                    <tr>
-                        <p><img class ="card-img1" src="@pc.company.ImgProfile" />
-                         @pc.company.Name</p>
-                    </tr>
-                    <tr>
-                        <div style="margin-left: 10%;">@pc.post.Detail</div>
-                    </tr>
-                    <tr>
-                        <img style="margin-left: 20%;" src="@pc.post.ImgLink" />
-                    </tr>
-                </table>
+        @foreach (PostCompany pc in ViewBag.postCompanyList)
+        {
+            
+
+                <p>
+                    <img class="card-img1" src="@pc.company.ImgProfile" />
+                    @pc.company.Name
+                </p>
+
+                <button onclick="myFunction()" class="collapsible">More Detail</button>
+                <button onclick="myFunction1()" class="collapsible1">Ranking</button>
+
+                <div id="myDIV" style="margin-left: 10%;">
+                    @pc.post.Detail
+                </div>
+
+                <div id="myDIV1" style="margin-left: 10%;">
+                    <input id="Rank1" type="text" placeholder="อันดับที่1" />
+                    <input id="Rank2" type="text" placeholder="อันดับที่2" />
+                    <input id="Rank3" type="text" placeholder="อันดับที่3" />
+                </div>
+                <img style="margin-left: 20%;" src="@pc.post.ImgLink" />
+
+            
+        }
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myDIV");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
             }
-            </div>
-    
+        </script>
+        <script>
+            function myFunction1() {
+                var x = document.getElementById("myDIV1");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+        </script>
+    </div>
+
+
 </div>
