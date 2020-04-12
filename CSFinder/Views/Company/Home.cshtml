@@ -95,6 +95,10 @@
             background-color: #D7DBDD;
         }
 
+        .float-right {
+            margin: 0px 110px 0px 80px;
+        }
+
     </style>
 </head>
 <body>
@@ -115,7 +119,8 @@
                 <div class="col-md-12">
                     <div class="box">
                         <div id="Post">
-                            @Html.TextBoxFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
+                            Create Post
+                            @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
                         </div>
                         <a href="home" class="btn btn-primary" onclick="PostImgCompany()">Upload image</a><br />
                     </div>
@@ -124,9 +129,9 @@
 
             <div class="form-group">
                 <div class="col-md-12">
-                    <a href="home" class="btn btn-primary" onclick="PostCompany()">Post</a>
+                    <a href="home" class="btn btn-primary float-right" onclick="PostCompany()">Post</a>
                 </div>
-            </div>
+            </div><br />
 
             @foreach (PostCompany p in ViewBag.postCompanyList)
             {
