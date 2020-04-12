@@ -12,9 +12,9 @@ namespace CSFinder.Controllers
 {
     public class CompanyController : Controller
     {
-        Company user;
-        CSFinderContext db;
-        string userEmail;
+        private Company user;
+        private CSFinderContext db;
+        private string userEmail;
         public CompanyController(CSFinderContext _db)
         {
             db = _db;

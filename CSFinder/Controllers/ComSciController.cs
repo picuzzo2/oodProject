@@ -9,19 +9,40 @@ using Microsoft.AspNetCore.Http;
 
 namespace CSFinder.Controllers
 {
-    
     public class ComSciController : Controller
     {
+        private Admin user;
         private CSFinderContext db;
+        private string userEmail;
         public ComSciController(CSFinderContext _db)
         {
             db = _db;
         }
+        private bool setUser()
+        {
+            if (HttpContext.Session.GetString("UserID") == null)
+            {
+                return false;
+            }
+            else if (HttpContext.Session.GetString("IDType") != "Admin")
+            {
+                return false;
+            }
+            else
+            {
+                Debug.WriteLine("Set User");
+                Debug.WriteLine(user == null);
+                user = db.Admins.Where(u => u.ID.Equals(HttpContext.Session.GetString("UserID"))).FirstOrDefault();
+                userEmail = db.Accounts.Where(u => u.ID.Equals(user.ID)).FirstOrDefault().Email;
+                return true;
+            }
+
+        }
 
 
-        
         public IActionResult Home()
         {
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.studentName = "Earn";
             ViewBag.kuy = "kuy";
             return View();
@@ -29,6 +50,7 @@ namespace CSFinder.Controllers
         
         public IActionResult Company()
         {
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.Com1 = "บริษัท ซีเอสไอ ประเทศไทย จำกัด";
             ViewBag.Com2 = "บริษัท ซีเอสลอกอินโฟ จำกัด";
             ViewBag.Com3 = "บริษัท ลานนาคอม จำกัด";
@@ -44,6 +66,10 @@ namespace CSFinder.Controllers
         
         public IActionResult Student()
         {
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+            ViewBag.student = db.Students;
+            ViewBag.comsci = user;
+            ViewBag.userEmail = userEmail;
             ViewBag.comSciAddress = "239 ถนนห้วยแก้ว ต.สุเทพ อ.เมือง จ.เชียงใหม่ 50200";
             ViewBag.comSciTel = "053-222180";
             ViewBag.comSciEmail = "Compsci@cmu.ac.th";

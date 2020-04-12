@@ -16,6 +16,8 @@ namespace CSFinder.Models
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<Matching> Matchings { get; set; }
 
+        public virtual DbSet<Admin> Admins { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Matching>()
