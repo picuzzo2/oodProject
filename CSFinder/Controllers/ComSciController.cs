@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace CSFinder.Controllers
 {
-    [Route("ComSci")]
+    
     public class ComSciController : Controller
     {
         private CSFinderContext db;
@@ -19,14 +19,14 @@ namespace CSFinder.Controllers
         }
 
 
-        [Route("Home")]
+        
         public IActionResult Home()
         {
             ViewBag.studentName = "Earn";
             ViewBag.kuy = "kuy";
             return View();
         }
-        [Route("Company")]
+        
         public IActionResult Company()
         {
             ViewBag.Com1 = "บริษัท ซีเอสไอ ประเทศไทย จำกัด";
@@ -41,7 +41,7 @@ namespace CSFinder.Controllers
             ViewBag.Com10 = "ธนาคารไทยพาณิชย์(มหาชน) จำกัด";
             return View();
         }
-        [Route("Student")]
+        
         public IActionResult Student()
         {
             ViewBag.comSciAddress = "239 ถนนห้วยแก้ว ต.สุเทพ อ.เมือง จ.เชียงใหม่ 50200";
@@ -69,7 +69,7 @@ namespace CSFinder.Controllers
             ViewBag.studentStatus4 = "-";
             return View();
         }
-        [Route("Logout")]
+        
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();

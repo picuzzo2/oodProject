@@ -1,3 +1,4 @@
+@model CSFinder.Models.StudentAccount
 @{
     ViewData["Title"] = "RegisStudent";
     Layout = "_RegisLayout";
@@ -6,7 +7,7 @@
         <img src="https://s3-ap-southeast-1.amazonaws.com/img-in-th/1d76f93a492d8a84475e08654ea78536.png" alt="1d76f93a492d8a84475e08654ea78536.png" width="170" height="160" border="0"  />
         <br>
         <div class="col-md-9">  
-            <form id="myForm">  
+            <form id="myForm">
                 <div class="form-group">
                     <div class="col-md-12">
                         <h3>Regsiter for Student account</h3>
@@ -75,6 +76,14 @@
                         <span>
                             @Html.TextBoxFor(a => a.Phone, new { @class = "form-control", @placeholder = "Phone number" })
                             @Html.ValidationMessageFor(a => a.Phone, "", new { @class = "text-danger" })
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group" style="width:320px; background-color: #f8f8f8; height:100px; border: 2px solid #ccc; border-radius: 6px;">
+                    <div align="left" class="col-md-12">
+                        <span>@Html.LabelFor(a => a.Address)</span>
+                        <span>
+                            @Html.TextBoxFor(a => a.Address, new { @class = "form-control", @placeholder = "More Details" })
                         </span>
                     </div>
                 </div>

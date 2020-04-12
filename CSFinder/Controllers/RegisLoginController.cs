@@ -43,7 +43,6 @@ namespace CSFinder.Controllers
         }
         public IActionResult UserDashBoard()
         {
-            string userID = HttpContext.Session.GetString("UserID");
             string IDType = HttpContext.Session.GetString("IDType");
             if (IDType != null)
             {
@@ -56,6 +55,10 @@ namespace CSFinder.Controllers
                 {
                     return RedirectToAction("Home", "Company");
 
+                }
+                else if(IDType == "Admin")
+                {
+                    return RedirectToAction("Home", "ComSci");
                 }
 
                 return RedirectToAction("Login");

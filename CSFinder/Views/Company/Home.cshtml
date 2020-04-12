@@ -102,11 +102,11 @@
     <!-- The flexible grid (content) -->
     <div class="row">
         <div class="side">
-            <img class="card-img" src="@ViewBag.Post1Img" border="0" /><br />
-            <p><b>@ViewBag.companyName</b></p>
-            <p><b>ที่อยู่ : </b>@ViewBag.companyAddress</p>
-            <p><b>โทร : </b>@ViewBag.companyPhone</p>
-            <p><b>Email : </b>@ViewBag.companyEmail</p>
+            <img class="card-img" src="@ViewBag.company.ImgProfile" border="0" /><br />
+            <p><b>@ViewBag.company.Name</b></p>
+            <p><b>ที่อยู่ : </b>@ViewBag.company.Address</p>
+            <p><b>โทร : </b>@ViewBag.company.Phone</p>
+            <p><b>Email : </b>@ViewBag.userEmail</p>
             <button>แก้ไขข้อมูล</button>
         </div>
         <div class="main">
@@ -118,16 +118,6 @@
                             @Html.TextBoxFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
                         </div>
                         <a href="home" class="btn btn-primary" onclick="PostImgCompany()">Upload image</a><br />
-                        
-                        <div>
-                            <b>จำนวนนักศึกษา: </b>@ViewBag.AllStudent
-                        </div>
-                        <div>
-                            <b>สหกิจ: </b>@ViewBag.CooStudent
-                        </div>
-                        <div>
-                            <b>ฝึกงาน: </b>@ViewBag.TrainStudent
-                        </div>
                     </div>
                 </div>
             </div>
@@ -138,13 +128,15 @@
                 </div>
             </div>
 
-
+            @foreach (PostCompany p in ViewBag.postCompanyList)
+            {
             <div class="oneOfPost">
-                <img class="card-img1" src="@ViewBag.ProfileOtherCompanyPost" border="0">
-                <b>@ViewBag.companyPostName</b><br>
-                <p style="margin-left: 10%;">@ViewBag.companyPostDetail</p>
-                <img style="margin-left: 10%;" src="@ViewBag.PhotoOfOtherCompanyPost" border="0">
+                <img class="card-img1" src="@p.company.ImgProfile" border="0">
+                <b>@p.company.Name</b><br>
+                <p style="margin-left: 10%;">@p.post.Detail</p>
+                <img style="margin-left: 10%;" src="@p.post.ImgLink" border="0">
             </div>
+            }
         </div>
     </div>
 
@@ -159,7 +151,8 @@
             return false;
         }
 
-        $.ajax({
+        $.ajax
+        ({
             type: "Post",
             url: "/Company/Home",
             data: data,
@@ -175,7 +168,8 @@
                 else if (!response.success) {
                     alert(response.responseText);
                     window.location.href = "/Company/Home"
-                debugger
+                    debugger
+                }
             }
         })
     }

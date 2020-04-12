@@ -30,5 +30,6 @@ namespace CSFinder.Models
         public string? Rank2 { get; set; } = "";
         public string? Rank3 { get; set; } = "";
 #nullable disable
+        public string Address { get; set; }
     }
 }
