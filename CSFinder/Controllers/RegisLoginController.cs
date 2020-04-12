@@ -127,6 +127,7 @@ namespace CSFinder.Controllers
                     addstu.SID = objUser.SID;
                     addstu.Phone = objUser.Phone;
                     addstu.Detail = objUser.Detail;
+                    addstu.Address = objUser.Address;
                     db.Students.Add(addstu);
                     db.SaveChanges();
 
@@ -205,6 +206,7 @@ namespace CSFinder.Controllers
                     addcom.Name = objUser.Name;
                     addcom.Phone = objUser.Phone;
                     addcom.Detail = objUser.Detail;
+                    addcom.Address = objUser.Address;
                     db.Companies.Add(addcom);
                     db.SaveChanges();
 
