@@ -20,7 +20,7 @@
     }
 
     .card-img {
-       border-radius: 50%;
+        border-radius: 50%;
         margin: 20px;
         border: 1px solid #ddd;
         padding: 5px;
@@ -57,7 +57,7 @@
         }
     /* Column container */
     .row {
-        display: flex;
+        display: table;
         content: "";
         clear: both;
     }
@@ -75,18 +75,19 @@
 
     .column1 {
         float: left;
-        width: 35%;
-        padding: 10px;
-        height:100%;
+        width: 25%;
+        padding-right: 10px;
+        height: 50%;
         background-color: #f1f1f1;
-        padding: 20px;
+        position: fixed;
+        border-radius: 30px;
     }
 
     .column2 {
         float: left;
-        width: 65%;
-        padding: 10px;
-        height:100%;
+        width: 100%;
+        padding-left: 35%;
+        height: 100%;
     }
 </style>
 
@@ -94,9 +95,9 @@
 
 <div class="row">
     <div class="column1" align='center'>
-        <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" align='center' /><br/>
-            <p><b>ชื่อ</b> @ViewBag.user.Name</p>
-            <p><b>สถานะ:</b> @ViewBag.user.Status </p>
+        <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" align='center' /><br />
+        <p><b>ชื่อ</b> @ViewBag.user.Name</p>
+        <p><b>สถานะ:</b> @ViewBag.user.Status </p>
     </div>
 
     <div class="column2">
@@ -114,7 +115,8 @@
                         <div style="margin-left: 10%;">@pc.post.Detail</div>
                     </tr>
                     <tr>
-                        <img style="margin-left: 20%;" src="@pc.post.ImgLink" />
+                        <img style="margin-left: 20%;
+" src="@pc.post.ImgLink" />
                     </tr>
                 </table>
             }
