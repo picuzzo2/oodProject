@@ -1,4 +1,4 @@
-@model CSFinder.Models.CompanyAccount
+@model CSFinder.Models.Post
 @{
     ViewData["Title"] = "Home";
     Layout = "_CompanyLayout";
@@ -114,44 +114,48 @@
             <button>แก้ไขข้อมูล</button>
         </div>
         <div class="main">
-
-            <div class="form-group">
-                <div class="col-md-12">
-                    <div class="box">
-                        <div id="Post">
-                            Create Post
-                            @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
+            <form id="postForm">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="box">
+                            <div id="Post">
+                                Create Post
+                                @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
+                                @Html.TextBoxFor(a => a.ImgLink, new { @class = "form-control", @placeholder = "Link something..." })
+                            </div>
+                            <a href="home" class="btn btn-primary" onclick="PostImgCompany()">Upload image</a><br />
                         </div>
-                        <a href="home" class="btn btn-primary" onclick="PostImgCompany()">Upload image</a><br />
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <div class="col-md-12">
-                    <a href="home" class="btn btn-primary float-right" onclick="PostCompany()">Post</a>
-                </div>
-            </div><br />
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <a href="home" class="btn btn-primary float-right" onclick="PostCompany()">Post</a>
+                    </div>
+                </div><br />
+            </form>
 
-            @foreach (PostCompany p in ViewBag.postCompanyList)
-            {
-            <div class="oneOfPost">
-                <img class="card-img1" src="@p.company.ImgProfile" border="0">
-                <b>@p.company.Name</b><br>
-                <p style="margin-left: 10%;">@p.post.Detail</p>
-                <img style="margin-left: 10%;" src="@p.post.ImgLink" border="0">
-            </div>
-            }
-        </div>
+                    @foreach (PostCompany p in ViewBag.postCompanyList)
+                    {
+                        <div class="oneOfPost">
+                            <img class="card-img1" src="@p.company.ImgProfile" border="0">
+                            <b>@p.company.Name</b><br>
+                            <p style="margin-left: 10%;">@p.post.Detail</p>
+                            <img style="margin-left: 10%;" src="@p.post.ImgLink" border="0">
+                        </div>
+                    }
+</div>
     </div>
 
 </body>
 </html>
 <script>
     var PostCompany = function () {
+        
+        var data = $("#postForm").serialize();
+        console.log(data);
         debugger
-        var data = $("#myForm").serialize();
-        if (!$("#myForm").valid()) {
+        if (!$("#postForm").valid()) {
 
             return false;
         }
