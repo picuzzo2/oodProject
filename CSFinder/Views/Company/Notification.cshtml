@@ -9,6 +9,15 @@
 <html>
 <head>
     <style>
+        .card-img1 {
+            border-radius: 50%;
+            margin: 3px;
+            margin-left: 10%;
+            width: 50px;
+            height: 50px;
+            border: 1px solid #ddd;
+        }
+
         img {
             margin: 20px;
             width: 500px;
@@ -16,16 +25,11 @@
 
         .card-img {
             border-radius: 50%;
-            margin-top: 10px;
-            margin-left: 10px;
-            width: 200px;
-        }
-        .card-img1 {
-            border-radius: 50%;
-            margin-top: 35px;
-            margin-left: 35px;
-            margin-bottom: 15px;
-            width: 100px;
+            margin: 20px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            width: 150px;
+            height: 150px;
         }
 
         input {
@@ -60,14 +64,6 @@
             flex-wrap: wrap;
         }
 
-        /* Sidebar/left column */
-        .side {
-            flex: 30%;
-            background-color: #f1f1f1;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
         /* Main column */
         .main {
             flex: 70%;
@@ -88,6 +84,27 @@
         .header{
             margin-left: 90px;
         }
+          p {
+        margin: 0;
+    }
+
+    .column1 {
+        float: left;
+        width: 25%;
+        padding-right: 10px;
+        height: 50%;
+        background-color: #f1f1f1;
+        position: fixed;
+        border-radius: 30px;
+
+    }
+
+    .column2 {
+        float: left;
+        width: 100%;
+        padding-left: 35%;
+        height: 100%;
+    }
 
     </style>
 </head>
@@ -95,7 +112,7 @@
 
     <!-- The flexible grid (content) -->
     <div class="row">
-        <div class="side">
+        <div class="column1" align='center'>
             <img class="card-img" src="@ViewBag.Post1Img" border="0" /><br />
             <p><b>@ViewBag.companyName</b></p>
             <p><b>ที่อยู่ : </b>@ViewBag.companyAddress</p>
@@ -103,27 +120,44 @@
             <p><b>Email : </b>@ViewBag.companyEmail</p>
             <button>แก้ไขข้อมูล</button>
         </div>
-        <div class="main">
-            <b class="header">รายชื่อนักศึกษาที่สนใจฝึกงาน/สหกิจศึกษา</b><br>
-            <div class="box">
-                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
-                <div class="student">
-                    @ViewBag.studentInterestName1<br>
-                    <a href="">ข้อมูลนักศึกษา</a>
-                </div>
-                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
-                <div class="student">
-                    @ViewBag.studentInterestName2<br>
-                    <a href="">ข้อมูลนักศึกษา</a>
-                </div>
-                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
-                <div class="student">
-                    @ViewBag.studentInterestName3<br>
-                    <a href="">ข้อมูลนักศึกษา</a>
+
+        <div class="column2">
+            <div class="main">
+                <b class="header">รายชื่อนักศึกษาที่สนใจฝึกงาน/สหกิจศึกษา</b><br>
+                <div class="box">
+                    <table>
+                        <tr>
+                            <td>
+                                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
+                                <div class="student">
+                                    @ViewBag.studentInterestName1<br>
+                                    <a href="">ข้อมูลนักศึกษา</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
+                                <div class="student">
+                                    @ViewBag.studentInterestName2<br>
+                                    <a href="">ข้อมูลนักศึกษา</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
+                                <div class="student">
+                                    @ViewBag.studentInterestName3<br>
+                                    <a href="">ข้อมูลนักศึกษา</a>
+                            </td>
+                        </tr>
+                    </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 
 </body>
 </html>
