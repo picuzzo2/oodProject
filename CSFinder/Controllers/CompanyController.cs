@@ -58,6 +58,19 @@ namespace CSFinder.Controllers
             ViewBag.studentInterestStatus3 = "ไม่ผ่าน";
             return View();
         }
+
+        public IActionResult ProfileStudentInterest()
+        {
+            ViewBag.studentName = "อณิชา หารป่า";
+            ViewBag.studentFirstname = "อณิชา";
+            ViewBag.studentLastname = "หารป่า";
+            ViewBag.studentAddress = "4 หมู่9 ต.หางดง อ.หางดง จ.เชียงใหม่ 50230";
+            ViewBag.studentPhone = "0903186625";
+            ViewBag.studentFacebook = "Anicha Harnpa";
+            ViewBag.studentEmail = "anicha_h@gmail.com";
+            ViewBag.studentResume = "https://sv1.picz.in.th/images/2020/04/09/QFmsH1.jpg";
+            return View();
+        }
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
