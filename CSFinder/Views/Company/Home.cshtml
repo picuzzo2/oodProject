@@ -120,8 +120,14 @@
                         <div class="box">
                             <div id="Post">
                                 Create Post
+                                @{Model.CID = "1";}
+                                @{Model.PID = 1;}
+                                @Html.HiddenFor(a => a.CID);
+                                @Html.HiddenFor(a => a.PID);
                                 @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
+                                @Html.ValidationMessageFor(a => a.Detail)
                                 @Html.TextBoxFor(a => a.ImgLink, new { @class = "form-control", @placeholder = "Link something..." })
+                                @Html.ValidationMessageFor(a => a.Detail)
                             </div>
                             <a href="home" class="btn btn-primary" onclick="PostImgCompany()">Upload image</a><br />
                         </div>
@@ -153,33 +159,18 @@
     var PostCompany = function () {
         
         var data = $("#postForm").serialize();
-        console.log(data);
-        debugger
-        if (!$("#postForm").valid()) {
-
-            return false;
-        }
-
-        $.ajax
-        ({
+        
+        $.ajax({
             type: "Post",
             url: "/Company/Home",
             data: data,
             success: function (response) {
+                alert(response.responseText);
+                window.location.href = "/RegisLogin/Login";
+                }
 
-                if (response == "fail") {
-                    window.location.href = "/Company/Home";
-                }
-                else if (response.success) {
-                    alert(response.responseText);
-                    window.location.href = "/Company/Home";
-                }
-                else if (!response.success) {
-                    alert(response.responseText);
-                    window.location.href = "/Company/Home"
-                    debugger
-                }
-            }
+            
         })
+        debugger
     }
 </script>

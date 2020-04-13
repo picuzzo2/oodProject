@@ -48,10 +48,11 @@ namespace CSFinder.Controllers
                 Company c = db.Companies.Where(a => a.CID.Equals(p.CID)).FirstOrDefault();
                 pc.Add(new PostCompany(c, p));
             }
+            Post newPost = new Post();
             ViewBag.postCompanyList = pc;
             ViewBag.company = user;
             ViewBag.userEmail = userEmail;
-            return View();
+            return View(newPost);
         }
         [HttpPost]
         public IActionResult Home(Post objPost)
