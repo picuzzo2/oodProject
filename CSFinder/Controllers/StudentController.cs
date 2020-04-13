@@ -31,13 +31,16 @@ namespace CSFinder.Controllers
             {
                 return false;
             }
-            else 
+            else
             {
                 Debug.WriteLine("Set User");
                 Debug.WriteLine(user == null);
+                
                 user = db.Students.Where(u => u.ID.Equals((HttpContext.Session.GetString("UserID")))).FirstOrDefault();
                 userEmail = db.Accounts.Where(u => u.ID.Equals(user.ID)).FirstOrDefault().Email;
+                Debug.WriteLine(user.SID);
                 return true;
+
             }
             
         }

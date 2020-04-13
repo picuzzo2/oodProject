@@ -62,6 +62,7 @@ namespace CSFinder.Controllers
         public IActionResult Notification()
         {
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+            ViewBag.user = user;
             ViewBag.companyName = "บริษัท เอ็ม เอฟ อี ซี จำกัด (มหาชน)";
             ViewBag.companyAddress = "699 อาคารโมเดอร์นฟอร์มทาวเวอร์ ชั้น 27 ถนนศรีนครินทร์ แขวงพัฒนาการ เขตสวนหลวง กรุงเทพมหานคร 10250";
             ViewBag.companyPhone = "+66 (0) 2821-7999";

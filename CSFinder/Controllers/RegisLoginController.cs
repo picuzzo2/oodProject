@@ -78,7 +78,7 @@ namespace CSFinder.Controllers
         public IActionResult RegisStudent(StudentAccount objUser)
         {
             Debug.WriteLine(ModelState.IsValid);
-            
+
             if (ModelState.IsValid)
             {
                 String msg = "";
