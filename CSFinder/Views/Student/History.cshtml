@@ -1,7 +1,6 @@
 ﻿@{
     ViewData["Title"] = "History";
 }
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,8 +12,6 @@
         margin: 3px;
         margin-left: 10%;
         width: 50px;
-        height: 50px;
-        border: 1px solid #ddd;
     }
 
     img {
@@ -30,7 +27,6 @@
         width: 150px;
         height: 150px;
     }
-
 
     input {
         position: relative;
@@ -60,19 +56,10 @@
         }
     /* Column container */
     .row {
-        display: flex;
+        display: table;
         content: "";
         clear: both;
     }
-
-    /* Sidebar/left column */
-    .side {
-        flex: 30%;
-        background-color: #f1f1f1;
-        padding: 20px;
-        width: 300px;
-    }
-
     /* Main column */
     .main {
         flex: 70%;
@@ -113,7 +100,7 @@
     <div class="column2">
         <div class="main">
             <div class="text" style="width: 200px;height: 200px;position: absolute;top: 35%;left: 50%; margin-top: -170px; margin-left: -75px;">
-
+                <br />
                 <div class="history">
                     <table width=250% cellpadding="4" cellspacing="1"
                            style="border:1px solid #D3D3D3; margin-left: 10%;">
@@ -122,7 +109,7 @@
                                 style="border-style:solid;
                         border-width:4px;
                         border-color:#D3D3D3 gray gray #D3D3D3;">
-                                <p><b>รอบที่ 1 (12/12/2562)</b></p>
+                                <p><b>รอบที่ 1 @ViewBag.Dates</b></p>
                                 <hr>
                                 <p><b>อันดับที่เลือก</b></p>
                                 <p align='center'>
@@ -132,8 +119,8 @@
                                 </p>
                                 <br>
                                 <p align='right'>
-                                    <b>บริษัทที่ได้ :</b> <p1 style="color:#333399;">@ViewBag.rankComplete</p1><br>
-                                    <b>สถานะ : @ViewBag.user.Status</b>
+                                    <b>บริษัทที่ได้ :</b> <p1 style="color:#333399;">@ViewBag.RankComplete</p1><br>
+                                    <b>สถานะ : @ViewBag.Status</b>
                                 </p>
                             </td>
                         </tr>

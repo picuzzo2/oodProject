@@ -63,10 +63,35 @@ namespace CSFinder.Controllers
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.user = user;
             ViewBag.Matchs = db.Matchings;
-            ViewBag.rankComplete = "บริษัท ปูน...";
+            ViewBag.Dates = "(12/12/2562)";
+            ViewBag.Rank1 = "บ.ปูน";
+            ViewBag.Rank2 = "บ.ไอ";
+            ViewBag.Rank3 = "บ.ไม่รู้";
+            ViewBag.RankComplete = "บริษัท ปูน...";
+            ViewBag.Status = user.Status;
+
             return View();
         }
+        public IActionResult ReplyHistory()
+        {
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+            ViewBag.user = user;
+            ViewBag.Dates = "(12/12/2562)";
+            ViewBag.RankComplete = "บริษัท ปูน...";
+            ViewBag.Status = user.Status;
 
+            return View();
+        }
+        public IActionResult CompleteHistory()
+        {
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+            ViewBag.user = user;
+            ViewBag.Dates = "(12/12/2562)";
+            ViewBag.RankComplete = "บริษัท ปูน...";
+            ViewBag.Status = user.Status;
+
+            return View();
+        }
 
         public IActionResult Profile()
         {
