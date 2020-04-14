@@ -189,6 +189,7 @@ namespace CSFinder.Controllers
                     addacc.IDtype = "Company";
                     addacc.Email = objUser.Email;
                     
+
                     string LastCID = LastCID = db.Companies.Max(p => p.CID); ;
 
                     Debug.WriteLine("LastCid = " + LastCID);
@@ -206,7 +207,7 @@ namespace CSFinder.Controllers
                     addcom.Name = objUser.Name;
                     addcom.Phone = objUser.Phone;
                     addcom.Detail = objUser.Detail;
-                    addcom.Address = objUser.Address;
+                    addcom.Address = objUser.Address;                   
                     db.Companies.Add(addcom);
                     db.SaveChanges();
 

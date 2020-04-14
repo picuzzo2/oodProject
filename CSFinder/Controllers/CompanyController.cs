@@ -12,7 +12,7 @@ namespace CSFinder.Controllers
 {
     public class CompanyController : Controller
     {
-        private Company user;
+        private Company user;        
         private CSFinderContext db;
         private string userEmail;
         public CompanyController(CSFinderContext _db)
@@ -32,16 +32,15 @@ namespace CSFinder.Controllers
             }
             else
             {
-                Debug.WriteLine("Set User");
-                Debug.WriteLine(user == null);
                 user = db.Companies.Where(u => u.ID.Equals((HttpContext.Session.GetString("UserID")))).FirstOrDefault();
                 userEmail = db.Accounts.Where(u => u.ID.Equals(user.ID)).FirstOrDefault().Email;
                 return true;
             }
 
         }
-        public IActionResult Home(CompanyAccount objUser)
+        public IActionResult Home()
         {
+            Debug.WriteLine("homepost5555555555");
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             List<PostCompany> pc = new List<PostCompany>();
             foreach (Post p in db.Posts)
@@ -49,16 +48,77 @@ namespace CSFinder.Controllers
                 Company c = db.Companies.Where(a => a.CID.Equals(p.CID)).FirstOrDefault();
                 pc.Add(new PostCompany(c, p));
             }
+            Post newPost = new Post();
             ViewBag.postCompanyList = pc;
             ViewBag.company = user;
             ViewBag.userEmail = userEmail;
-
-
-            ViewBag.AllStudent = "18";
-            ViewBag.CooStudent = "8";
-            ViewBag.TrainStudent = "10";
-            return View();
+            return View(newPost);
         }
+        [HttpPost]
+        public IActionResult Home(Post objPost)
+        {
+            Debug.WriteLine("homepost11111111111111111111111111");
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+           
+
+            if (ModelState.IsValid)
+            {
+                List<PostCompany> pc = new List<PostCompany>();
+                foreach (Post p in db.Posts)
+                {
+                    Company c = db.Companies.Where(a => a.CID.Equals(p.CID)).FirstOrDefault();
+                    pc.Add(new PostCompany(c, p));
+                }
+                ViewBag.postCompanyList = pc;
+                ViewBag.company = user;
+                ViewBag.userEmail = userEmail;
+
+
+                ViewBag.AllStudent = "18";
+                ViewBag.CooStudent = "8";
+                ViewBag.TrainStudent = "10";
+                Debug.WriteLine("5555555555555555555555555555555");
+                Debug.WriteLine(objPost.Detail);
+                Debug.WriteLine(objPost.ImgLink);
+                Debug.WriteLine(ModelState.IsValid);
+                String msg = "";
+
+                Post addpost = new Post();
+                Post userP = new Post();
+                int LastPID = LastPID = db.Posts.Max(p => p.PID);
+
+                userP.CID = user.CID;
+                if (LastPID == 0)
+                {
+                    userP.PID = 1;
+                }
+                else
+                {
+                    userP.PID = LastPID + 1;
+                }
+                Debug.WriteLine(objPost.Detail);
+                if (msg == "")                   
+                {
+                    addpost.CID = user.CID;
+                    addpost.PID = userP.PID;
+                    addpost.Detail = objPost.Detail;
+                    addpost.ImgLink = objPost.ImgLink;
+
+                    db.Posts.Add(addpost);
+                    db.SaveChanges();
+
+                    msg = "Post Success";
+
+                    return Json(new { success = true, responseText = msg });
+                }
+                else
+                {
+                    return Json(new { success = false, responseText = msg });
+                }
+            }
+                    return View(objPost);
+        }
+     
         public IActionResult Notification()
         {
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
