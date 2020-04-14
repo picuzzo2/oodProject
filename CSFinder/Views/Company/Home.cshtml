@@ -13,6 +13,8 @@
             margin: 3px;
             margin-left: 10%;
             width: 50px;
+            height: 50px;
+            border: 1px solid #ddd;
         }
 
         img {
@@ -23,7 +25,10 @@
         .card-img {
             border-radius: 50%;
             margin: 20px;
-            width: 200px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            width: 150px;
+            height: 150px;
         }
 
 
@@ -99,13 +104,34 @@
             margin: 0px 110px 0px 80px;
         }
 
+              p {
+        margin: 0;
+    }
+
+        .column1 {
+            float: left;
+            width: 25%;
+            padding-right: 10px;
+            height: 50%;
+            background-color: #f1f1f1;
+            position: fixed;
+            border-radius: 30px;
+        }
+
+    .column2 {
+        float: left;
+        width: 100%;
+        padding-left: 35%;
+        height: 100%;
+    }
+
     </style>
 </head>
 <body>
 
     <!-- The flexible grid (content) -->
     <div class="row">
-        <div class="side">
+        <div class="column1" align='center'>
             <img class="card-img" src="@ViewBag.company.ImgProfile" border="0" /><br />
             <p><b>@ViewBag.company.Name</b></p>
             <p><b>ที่อยู่ : </b>@ViewBag.company.Address</p>
@@ -113,45 +139,48 @@
             <p><b>Email : </b>@ViewBag.userEmail</p>
             <button>แก้ไขข้อมูล</button>
         </div>
-        <div class="main">
-            <form id="postForm">
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <div class="box">
-                            <div id="Post">
-                                Create Post
-                                @{Model.CID = "1";}
-                                @{Model.PID = 1;}
-                                @Html.HiddenFor(a => a.CID);
-                                @Html.HiddenFor(a => a.PID);
-                                @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
-                                @Html.ValidationMessageFor(a => a.Detail)
-                                @Html.TextBoxFor(a => a.ImgLink, new { @class = "form-control", @placeholder = "Link something..." })
-                                @Html.ValidationMessageFor(a => a.Detail)
+
+        <div class="column2">
+            <div class="main">
+                <form id="postForm">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="box">
+                                <div id="Post">
+                                    Create Post
+                                    @{Model.CID = "1";}
+                                    @{Model.PID = 1;}
+                                    @Html.HiddenFor(a => a.CID);
+                                    @Html.HiddenFor(a => a.PID);
+                                    @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
+                                    @Html.ValidationMessageFor(a => a.Detail)
+                                    @Html.TextBoxFor(a => a.ImgLink, new { @class = "form-control", @placeholder = "Link something..." })
+                                    @Html.ValidationMessageFor(a => a.Detail)
+                                </div>
+                                <a href="home" class="btn btn-primary" onclick="PostImgCompany()">Upload image</a><br />
                             </div>
-                            <a href="home" class="btn btn-primary" onclick="PostImgCompany()">Upload image</a><br />
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <a href="home" class="btn btn-primary float-right" onclick="PostCompany()">Post</a>
-                    </div>
-                </div><br />
-            </form>
-
-                    @foreach (PostCompany p in ViewBag.postCompanyList)
-                    {
-                        <div class="oneOfPost">
-                            <img class="card-img1" src="@p.company.ImgProfile" border="0">
-                            <b>@p.company.Name</b><br>
-                            <p style="margin-left: 10%;">@p.post.Detail</p>
-                            <img style="margin-left: 10%;" src="@p.post.ImgLink" border="0">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <a href="home" class="btn btn-primary float-right" onclick="PostCompany()">Post</a>
                         </div>
-                    }
-</div>
-    </div>
+                    </div><br />
+                </form>
+
+                @foreach (PostCompany p in ViewBag.postCompanyList)
+                {
+                    <div class="oneOfPost">
+                        <img class="card-img1" src="@p.company.ImgProfile" border="0">
+                        <b>@p.company.Name</b><br>
+                        <p style="margin-left: 10%;">@p.post.Detail</p>
+                        <img style="margin-left: 10%;" src="@p.post.ImgLink" border="0">
+                    </div>
+                }
+            </div>
+        </div>
+        </div>
 
 </body>
 </html>
