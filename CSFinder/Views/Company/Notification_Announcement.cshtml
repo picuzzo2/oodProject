@@ -100,7 +100,7 @@
             float: left;
             width: 25%;
             padding-right: 10px;
-            height: 50%;
+            height: 75%;
             background-color: #f1f1f1;
             position: fixed;
             border-radius: 30px;
@@ -128,10 +128,12 @@
             <p><b>Email : </b>@ViewBag.companyEmail</p>
             <button>แก้ไขข้อมูล</button>
         </div>
+
         <div class="column2">
             <div class="main">
                 <b class="header">รายชื่อนักศึกษาที่สนใจฝึกงาน/สหกิจศึกษา</b><br>
                 <div class="box">
+
                     <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
                     <div class="student">
                         @ViewBag.studentInterestName1<br>
@@ -144,11 +146,20 @@
                         </select>
                         <input id="Detail" type="text" placeholder="more details" />
                     </div>
+
                     <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
                     <div class="student">
                         @ViewBag.studentInterestName2<br>
-                        <a href="">ข้อมูลนักศึกษา</a>
+                        <a href="">ข้อมูลนักศึกษา</a><br>
+                        <label for="status">สถานะ : </label>
+                        <select id="status">
+                            <option class="Wait" value="Wait_Status">@ViewBag.studentInterestStatus1</option>
+                            <option class="Pass" value="Pass_Status">@ViewBag.studentInterestStatus2</option>
+                            <option class="Failed" value="Failed_Status">@ViewBag.studentInterestStatus3</option>
+                        </select>
+                        <input id="Detail" type="text" placeholder="more details" />
                     </div>
+
                     <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
                     <div class="student">
                         @ViewBag.studentInterestName3<br>
@@ -165,6 +176,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
 </body>
 </html>
