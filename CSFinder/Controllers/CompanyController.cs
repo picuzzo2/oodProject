@@ -43,6 +43,7 @@ namespace CSFinder.Controllers
             ViewBag.studentInterestName1 = "นางสาวอณิชา หารป่า";
             ViewBag.studentInterestName2 = "นางสาวปานระวี ไชยสิทธิ์";
             ViewBag.studentInterestName3 = "นายภรัญยู วงศ์แสง";
+            ViewBag.studentInterestName4 = "";
             return View();
         }
 
