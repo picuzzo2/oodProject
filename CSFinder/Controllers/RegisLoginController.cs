@@ -43,7 +43,6 @@ namespace CSFinder.Controllers
         }
         public IActionResult UserDashBoard()
         {
-            string userID = HttpContext.Session.GetString("UserID");
             string IDType = HttpContext.Session.GetString("IDType");
             if (IDType != null)
             {
@@ -56,6 +55,10 @@ namespace CSFinder.Controllers
                 {
                     return RedirectToAction("Home", "Company");
 
+                }
+                else if(IDType == "Admin")
+                {
+                    return RedirectToAction("Home", "ComSci");
                 }
 
                 return RedirectToAction("Login");
@@ -75,7 +78,7 @@ namespace CSFinder.Controllers
         public IActionResult RegisStudent(StudentAccount objUser)
         {
             Debug.WriteLine(ModelState.IsValid);
-            
+
             if (ModelState.IsValid)
             {
                 String msg = "";
@@ -124,6 +127,7 @@ namespace CSFinder.Controllers
                     addstu.SID = objUser.SID;
                     addstu.Phone = objUser.Phone;
                     addstu.Detail = objUser.Detail;
+                    addstu.Address = objUser.Address;
                     db.Students.Add(addstu);
                     db.SaveChanges();
 
@@ -202,6 +206,7 @@ namespace CSFinder.Controllers
                     addcom.Name = objUser.Name;
                     addcom.Phone = objUser.Phone;
                     addcom.Detail = objUser.Detail;
+                    addcom.Address = objUser.Address;
                     db.Companies.Add(addcom);
                     db.SaveChanges();
 

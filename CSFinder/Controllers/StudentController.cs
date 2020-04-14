@@ -27,20 +27,27 @@ namespace CSFinder.Controllers
             {
                 return false;
             }
-            else 
+            else if(HttpContext.Session.GetString("IDType") != "Student")
+            {
+                return false;
+            }
+            else
             {
                 Debug.WriteLine("Set User");
                 Debug.WriteLine(user == null);
+                
                 user = db.Students.Where(u => u.ID.Equals((HttpContext.Session.GetString("UserID")))).FirstOrDefault();
                 userEmail = db.Accounts.Where(u => u.ID.Equals(user.ID)).FirstOrDefault().Email;
+                Debug.WriteLine(user.SID);
                 return true;
+
             }
             
         }
 
         public IActionResult StudentDashBoard()
         {
-            if (!setUser() || HttpContext.Session.GetString("IDType") != "Student") { return RedirectToAction("Login", "RegisLogin"); }
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             Debug.WriteLine(HttpContext.Session.GetString("UserID"));
             Debug.WriteLine(user.ID);
             ViewBag.UserID = user.ID;
@@ -53,7 +60,7 @@ namespace CSFinder.Controllers
 
         public IActionResult History()
         {
-            if (!setUser() || HttpContext.Session.GetString("IDType") != "Student") { return RedirectToAction("Login", "RegisLogin"); }
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.user = user;
             ViewBag.Matchs = db.Matchings;
             ViewBag.rankComplete = "บริษัท ปูน...";
@@ -63,7 +70,7 @@ namespace CSFinder.Controllers
 
         public IActionResult Profile()
         {
-            if (!setUser() || HttpContext.Session.GetString("IDType") != "Student") { return RedirectToAction("Login", "RegisLogin"); }
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.user = user;
             ViewBag.userEmail = userEmail;
             ViewBag.studentName = "Anicha Harnpa";
@@ -82,13 +89,13 @@ namespace CSFinder.Controllers
 
         public IActionResult EditProfile()
         {
-            if (!setUser() || HttpContext.Session.GetString("IDType") != "Student") { return RedirectToAction("Login", "RegisLogin"); }
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.user = user;
             return View();
         }
         public IActionResult Index()
         {
-            if (!setUser() || HttpContext.Session.GetString("IDType") != "Student") { return RedirectToAction("Login", "RegisLogin"); }
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
 
             List<PostCompany> pc = new List<PostCompany>();
             foreach(Post p in db.Posts)

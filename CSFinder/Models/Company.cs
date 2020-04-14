@@ -18,10 +18,13 @@ namespace CSFinder.Models
 #nullable enable
         public string? Detail { get; set; }
 #nullable disable
-        public int TrainneeNeed { get; set; }
-        public int CoopNeed { get; set; }
+        public int TrainneeNeed { get; set; } = 0;
+        public int CoopNeed { get; set; } = 0;
 
         public string ImgProfile { get; set; } = "https://www.w3schools.com/howto/img_avatar.png";
+        public string Address { get; set; }
+        public int TrainneeGot { get; set; } = 0;
+        public int CoopGot { get; set; } = 0;
 
     }
 }

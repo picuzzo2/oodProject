@@ -1,3 +1,4 @@
+@model CSFinder.Models.CompanyAccount
 @{
     ViewData["Title"] = "Home";
     Layout = "_CompanyLayout";
@@ -12,6 +13,8 @@
             margin: 3px;
             margin-left: 10%;
             width: 50px;
+            height: 50px;
+            border: 1px solid #ddd;
         }
 
         img {
@@ -22,8 +25,12 @@
         .card-img {
             border-radius: 50%;
             margin: 20px;
-            width: 200px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            width: 150px;
+            height: 150px;
         }
+
 
 
         input {
@@ -50,17 +57,10 @@
             border: 0;
             border-top: 1px solid #9da7b1;
         }
-       .box{
-           width:700px;
-       }
-    </style>
-    <div style="display: flex;">
-        <div class="text-left" style="width: 20%">
-            <div class="home">
 
-                <img class="card-img" src="https://sv1.picz.in.th/images/2020/04/10/QMlEgD.jpg" alt="SCG.jpg" border="0" /><br />
-
-
+        .box {
+            width: 700px;
+        }
 
 
         * {
@@ -78,13 +78,6 @@
             flex-wrap: wrap;
         }
 
-        /* Sidebar/left column */
-        .side {
-            flex: 30%;
-            background-color: #f1f1f1;
-            padding: 20px;
-        }
-
         /* Main column */
         .main {
             flex: 70%;
@@ -92,40 +85,115 @@
             padding: 20px;
         }
 
-        .proflie {
-            display: grid-template-columns: 25% 75%;
+        .box {
+            width: 620px;
+            padding: 10px;
+            border: 5px solid #CACFD2;
+            margin: 0;
+            border-radius: 10px;
+            background-color: #D7DBDD;
         }
+        p {
+        margin: 0;
+    }
+
+    .column1 {
+        float: left;
+        width: 25%;
+        padding-right: 10px;
+        height: 50%;
+        background-color: #f1f1f1;
+        position: fixed;
+        border-radius: 30px;
+
+    }
+
+    .column2 {
+        float: left;
+        width: 100%;
+        padding-left: 35%;
+        height: 100%;
+    }
+
     </style>
 </head>
 <body>
-    
-        <!-- The flexible grid (content) -->
-        <div class="row">
-            <div class="side">
-                <img class="card-img" src="@ViewBag.Post1Img" border="0" /><br />
-                <img class="card-img" src="@ViewBag.Post1Img" alt="SCG.jpg" border="0" /><br />
-                <p><b>@ViewBag.companyName</b></p>
-                <p><b>ที่อยู่ : </b>@ViewBag.companyAddress</p>
-                <p><b>โทร : </b>@ViewBag.companyPhone</p>
-                <p><b>Email : </b>@ViewBag.companyEmail</p>
-                <button>แก้ไขข้อมูล</button>
-            </div>
+
+    <!-- The flexible grid (content) -->
+    <div class="row">
+        <div class="column1" align='center'>
+            <img class="card-img" src="@ViewBag.company.ImgProfile" border="0"  /><br />
+            <p align='left' style="margin-left:40px;"><b>@ViewBag.company.Name</b></p>
+            <p align='left' style="margin-left:40px;"><b>ที่อยู่ : </b>@ViewBag.company.Address</p>
+            <p align='left' style="margin-left:40px;"><b>โทร : </b>@ViewBag.company.Phone</p>
+            <p align='left' style="margin-left:40px;"><b>Email : </b>@ViewBag.userEmail</p><br/>
+            <button >แก้ไขข้อมูล</button>
+        </div>
+
+        <div class="column2">
             <div class="main">
-           
 
-                        <input id="Post" type="text" />
-                        <button>PICTURE</button>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="box">
+                            <div id="Post">
+                                @Html.TextBoxFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
+                            </div>
+                            <a href="home" class="btn btn-primary" onclick="PostImgCompany()">Upload image</a><br />
+                        </div>
+                    </div>
+                </div>
 
-                        <div style="text-align:right"><button>POST</button></div>
-                    
-                
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <a href="home" class="btn btn-primary" onclick="PostCompany()">Post</a>
+                    </div>
+                </div>
 
-                <img class="card-img1" src="@ViewBag.ProfileOtherCompanyPost" border="0">
-                <b>@ViewBag.companyPostName</b><br>
-                <p style="margin-left: 10%;">@ViewBag.companyPostDetail</p>
-                <img style="margin-left: 10%;" src="@ViewBag.PhotoOfOtherCompanyPost" border="0">
+                @foreach (PostCompany p in ViewBag.postCompanyList)
+                {
+                    <div class="oneOfPost">
+                        <img class="card-img1" src="@p.company.ImgProfile" border="0">
+                        <b>@p.company.Name</b><br>
+                        <p style="margin-left: 10%;">@p.post.Detail</p>
+                        <img style="margin-left: 10%;" src="@p.post.ImgLink" border="0">
+                    </div>
+                }
             </div>
         </div>
-    
+    </div>
+
 </body>
 </html>
+<script>
+    var PostCompany = function () {
+        debugger
+        var data = $("#myForm").serialize();
+        if (!$("#myForm").valid()) {
+
+            return false;
+        }
+
+        $.ajax
+        ({
+            type: "Post",
+            url: "/Company/Home",
+            data: data,
+            success: function (response) {
+
+                if (response == "fail") {
+                    window.location.href = "/Company/Home";
+                }
+                else if (response.success) {
+                    alert(response.responseText);
+                    window.location.href = "/Company/Home";
+                }
+                else if (!response.success) {
+                    alert(response.responseText);
+                    window.location.href = "/Company/Home"
+                    debugger
+                }
+            }
+        })
+    }
+</script>

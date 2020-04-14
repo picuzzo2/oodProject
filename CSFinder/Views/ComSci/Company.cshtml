@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Company";
+    Layout = "_ComSciLayout";
 }
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,111 +9,196 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
 <style>
+.card-img1 {
+        border-radius: 50%;
+        margin: 3px;
+        margin-left: 10%;
+        width: 50px;
+        height: 50px;
+        border: 1px solid #ddd;
+    }
 
     img {
+        margin: 20px;
+        width: 500px;
+    }
+
+    .card-img {
         border-radius: 50%;
         margin: 20px;
-        width: 200px;
+        border: 1px solid #ddd;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+
+
+    input {
+        position: relative;
+        width: 700px;
+        height: 120px;
+        background: #ced6e0;
+        border: 3px solid #22a6b3;
+        border-radius: 10px;
+        margin-bottom: 3px;
+        width: 100%;
+        padding: 20px;
+    }
+
+    button {
+        border: 3px solid #22a6b3;
+        border-radius: 10px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+        *
+        body {
+            margin: 0;
+        }
+
+    /* Column container */
+    .row {
+        display: flex;
+        content: "";
+        clear: both;
+    }
+
+    /* Main column */
+    .main {
+        flex: 70%;
+        background-color: white;
+        padding: 20px;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .column1 {
+        float: left;
+        width: 25%;
+        padding-right: 10px;
+        height: 50%;
+        background-color: #f1f1f1;
+        position: fixed;
+        border-radius: 30px;
+    }
+
+    .column2 {
+        float: left;
+        width: 100%;
+        padding-left: 35%;
+        height: 100%;
     }
 </style>
 
-<div style="display: flex;">
-    <div class="text-left">
-        <div class="profile">
-            <img src="https://sv1.picz.in.th/images/2020/04/10/QMoxDI.th.png" alt="QMoxDI.png" border="0" />
-            <p>
-                <b>ภาควิชาวิทยาการคอมพิวเตอร์</b> <br>
-                คณะวิทยาศาสตร์ มหาวิทยาลัยเชียงใหม่
-            </p>
-            <p><b>ที่อยู่ติดต่อ:</b> 239 ถนนห้วยแก้ว ต.สุเทพ <br>
-                อ.เมือง จ.เชียงใหม่ 50200 <br>
-               <b>เบอร์ติดต่อ:</b> 053-222180 <br>
-               <b>E-mail:</b> Comsci@cmu.ac.th
-            </p>
+<div class="row">
+    <div class="column1" align='center'>
+
+                    <img class="card-img" src="https://sv1.picz.in.th/images/2020/04/10/QMoxDI.th.png" alt="QMoxDI.png" border="0" />
+                    <p>
+                        <b>ภาควิชาวิทยาการคอมพิวเตอร์</b> <br>
+                        คณะวิทยาศาสตร์ มหาวิทยาลัยเชียงใหม่
+                    </p>
+                    <p>
+                        <b>ที่อยู่ติดต่อ:</b> 239 ถนนห้วยแก้ว ต.สุเทพ <br>
+                        อ.เมือง จ.เชียงใหม่ 50200 <br>
+                        <b>เบอร์ติดต่อ:</b> 053-222180 <br>
+                        <b>E-mail:</b> Comsci@cmu.ac.th
+                    </p>
+                </div>
+
+
+
+        <div class="column2">
+            <div class="main">
+                <div class="text" style="position: absolute;top: 35%;left: 44%;margin-top: -150px; margin-left: -5px;">
+                    <div class="table1">
+                        <style>
+                            table {
+                                font-family: arial, sans-serif;
+                                border-collapse: collapse;
+                                width: 100%;
+                            }
+
+                            td, th {
+                                border: 2px solid #dddddd;
+                                text-align: left;
+                                padding: 8px;
+                            }
+
+                            tr:nth-child(even) {
+                                background-color: #dddddd;
+                            }
+                        </style>
+
+                        <h2>รายชื่อบริษัท</h2>
+                        <table>
+                            <tr>
+                                <th>รายชื่อบริษัทที่ลงทะเบียน</th>
+                                <th>จำนวนที่รับ (คน)</th>
+                                <th>จำนวนที่ได้ (คน)</th>
+                            </tr>
+                            <tr>
+                                <td>@ViewBag.Com1</td>
+                                <td>4</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>@ViewBag.Com2</td>
+                                <td>3</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>@ViewBag.Com3</td>
+                                <td>2</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>@ViewBag.Com4</td>
+                                <td>4</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>@ViewBag.Com5</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>@ViewBag.Com6</td>
+                                <td>2</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>@ViewBag.Com7</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>@ViewBag.Com8</td>
+                                <td>3</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>@ViewBag.Com9</td>
+                                <td>2</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>@ViewBag.Com10</td>
+                                <td>2</td>
+                                <td>2</td>
+                            </tr>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="text" style="position: absolute;top: 35%;left: 44%;margin-top: -100px;margin-left: -100px;"> 
-        <div class="table1">
-                <style>
-                    table {
-                        font-family: arial, sans-serif;
-                        border-collapse: collapse;
-                        width: 100%;
-                    }
-                    td, th {
-                        border: 2px solid #dddddd;
-                        text-align: left;
-                        padding: 8px;
-                    }
-                    tr:nth-child(even) {
-                        background-color: #dddddd;
-                    }
-                </style>
-
-                <h2>รายชื่อบริษัท</h2>
-                <table>
-                    <tr>
-                        <th>รายชื่อบริษัทที่ลงทะเบียน</th>
-                        <th>จำนวนที่รับ (คน)</th>
-                        <th>จำนวนที่ได้ (คน)</th>
-                    </tr>
-                    <tr>
-                        <td>@ViewBag.Com1</td>
-                        <td>4</td>
-                        <td>4</td>
-                    </tr>
-                    <tr>
-                        <td>@ViewBag.Com2</td>
-                        <td>3</td>
-                        <td>2</td>
-                    </tr>
-                    <tr>
-                        <td>@ViewBag.Com3</td>
-                        <td>2</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>@ViewBag.Com4</td>
-                        <td>4</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>@ViewBag.Com5</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>@ViewBag.Com6</td>
-                        <td>2</td>
-                        <td>2</td>
-                    </tr>
-                    <tr>
-                        <td>@ViewBag.Com7</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>@ViewBag.Com8</td>
-                        <td>3</td>
-                        <td>2</td>
-                    </tr>
-                    <tr>
-                        <td>@ViewBag.Com9</td>
-                        <td>2</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>@ViewBag.Com10</td>
-                        <td>2</td>
-                        <td>2</td>
-                    </tr>
-                </table>
-
-
-        </div>
-    </div>
-</div>
 
 
 

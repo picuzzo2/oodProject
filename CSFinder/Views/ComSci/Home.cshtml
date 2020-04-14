@@ -1,8 +1,127 @@
 ﻿
 @{
     ViewData["Title"] = "Home";
-    Layout = "_Layout1";
+    Layout = "_ComSciLayout";
 }
 
-<h1>Home</h1>
-<p>@ViewBag.studentName</p>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+<style>
+    .card-img1 {
+        border-radius: 50%;
+        margin: 3px;
+        margin-left: 10%;
+        width: 50px;
+        height: 50px;
+        border: 1px solid #ddd;
+    }
+
+    img {
+        margin: 20px;
+        width: 500px;
+    }
+
+    .card-img {
+        border-radius: 50%;
+        margin: 20px;
+        border: 1px solid #ddd;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .head-table, .numOfStudent,
+    th {
+        text-align: center;
+    }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 10px;
+    }
+
+    table#t01 th {
+        background-color: black;
+        color: white;
+    }
+
+    table#t02 th {
+        background-color: black;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    th {
+        width: 250px;
+    }
+
+    .row {
+        display: flex;
+        content: "";
+        clear: both;
+    }
+
+    /* Main column */
+    .main {
+        flex: 70%;
+        background-color: white;
+        padding: 20px;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .column1 {
+        float: left;
+        width: 25%;
+        padding-right: 10px;
+        height: 50%;
+        background-color: #f1f1f1;
+        position: fixed;
+        border-radius: 30px;
+    }
+
+    .column2 {
+        float: left;
+        width: 100%;
+        padding-left: 75%;
+        height: 100%;
+    }
+</style>
+
+
+<div class="row">
+    <div class="column1" align='center'>
+        <img class="card-img" src="https://sv1.picz.in.th/images/2020/04/10/QMoxDI.th.png" alt="QMoxDI.png" border="0" />
+        <p>
+            <b>ภาควิชาวิทยาการคอมพิวเตอร์</b> <br>
+            คณะวิทยาศาสตร์ มหาวิทยาลัยเชียงใหม่
+        </p>
+        <p>
+            <b>ที่อยู่ติดต่อ:</b> 239 ถนนห้วยแก้ว ต.สุเทพ <br>
+            อ.เมือง จ.เชียงใหม่ 50200 <br>
+            <b>เบอร์ติดต่อ:</b> 053-222180 <br>
+            <b>E-mail:</b> Comsci@cmu.ac.th
+        </p>
+    </div>
+
+    <div class="column2">
+
+    </div>
+</div>

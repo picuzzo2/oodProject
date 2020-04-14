@@ -1,21 +1,22 @@
-﻿@model CSFinder.Models.CompanyAccount
+@model CSFinder.Models.CompanyAccount
 @{
     ViewData["Title"] = "RegisCompany";
     Layout = "_RegisLayout";
 }
-    <div class="head" style="display: grid; width:60%; grid-template-columns: 50% 90%;">
-        <img src="https://s3-ap-southeast-1.amazonaws.com/img-in-th/c72f73e5ef319a9bc0fbb10a73b7ac68.jpg" alt="c72f73e5ef319a9bc0fbb10a73b7ac68.jpg" width="400" height="425" border="0" alt="csfinder" />
-        <div class="col-md-9">
 
+    <div align='center'> 
+        <img src="https://s3-ap-southeast-1.amazonaws.com/img-in-th/1d76f93a492d8a84475e08654ea78536.png" alt="1d76f93a492d8a84475e08654ea78536.png" width="170" height="160" border="0" />
+        <br> 
+        <div class="col-md-9">
             <form id="myForm">
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <h4>Register for Company account</h4>
+                <div class="form-group">  
+                    <div class="col-md-12">  
+                        <h3>Register for Company account</h3>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="col-md-12">
+                <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
+                    <div align="left" class="col-md-12">
                         <span>@Html.LabelFor(a => a.ID)</span>
                         <span>
                             @Html.TextBoxFor(a => a.ID, new { @class = "form-control", @placeholder = "Username" })
@@ -24,8 +25,8 @@
 
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-12">
+                <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
+                    <div align="left" class="col-md-12">
                         <span>@Html.LabelFor(a => a.Password)</span>
                         <span>
                             @Html.PasswordFor(a => a.Password, new { @class = "form-control", @placeholder = "Password" })
@@ -33,8 +34,8 @@
                         </span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-12">
+                <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
+                    <div align="left" class="col-md-12">
                         <span>@Html.LabelFor(a => a.ConfirmPassword, new { @placeholder = "Confirm Password" }) </span>
                         <span>
                             @Html.PasswordFor(a => a.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
@@ -42,8 +43,8 @@
                         </span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-12">
+                <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
+                    <div align="left" class="col-md-12">
                         <span>@Html.LabelFor(a => a.Name)</span>
                         <span>
                             @Html.TextBoxFor(a => a.Name, new { @class = "form-control", @placeholder = "Company's name" })
@@ -52,8 +53,8 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="col-md-12">
+                <div class="form-group" style="width: 320px; background-color: #f8f8f8;height: 100px;border: 2px solid #ccc;border-radius: 6px;">
+                    <div align="left" class="col-md-12">
                         <span>@Html.LabelFor(a => a.Email)</span>
                         <span>
                             @Html.TextBoxFor(a => a.Email, new { @class = "form-control", @placeholder = "Email" })
@@ -61,8 +62,8 @@
                         </span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-12">
+                <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
+                    <div align="left" class="col-md-12">
                         <span>@Html.LabelFor(a => a.Phone)</span>
                         <span>
                             @Html.TextBoxFor(a => a.Phone, new { @class = "form-control", @placeholder = "Phone number" })
@@ -70,27 +71,19 @@
                         </span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-12">
+                <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
+                    <div align="left" class="col-md-12">
+                        <span>@Html.LabelFor(a => a.Address)</span>
+                        <span>
+                            @Html.TextBoxFor(a => a.Address, new { @class = "form-control", @placeholder = "More Details" })
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
+                    <div align="left" class="col-md-12">
                         <span>@Html.LabelFor(a => a.Detail)</span>
                         <span>
                             @Html.TextBoxFor(a => a.Detail, new { @class = "form-control", @placeholder = "More Details" })
-                        </span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <span>@Html.LabelFor(a => a.TrainneeNeed)</span>
-                        <span>
-                            @Html.TextBoxFor(a => a.TrainneeNeed, new { @class = "form-control", @placeholder = "Number of Train" })
-                        </span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <span>@Html.LabelFor(a => a.CoopNeed)</span>
-                        <span>
-                            @Html.TextBoxFor(a => a.CoopNeed, new { @class = "form-control", @placeholder = "Number of Cooperative" })
                         </span>
                     </div>
                 </div>
@@ -137,3 +130,5 @@
                 })
             }
         </script>
+</div>
+
