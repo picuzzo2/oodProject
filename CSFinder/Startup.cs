@@ -1,5 +1,7 @@
 ﻿
 using CSFinder.Models;
+using Hangfire;
+using Hangfire.SQLite;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -26,11 +28,20 @@ namespace CSFinder
             services.AddSession();
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<CSFinderContext>(options => options.UseSqlite(connection));
+            var sqliteOptions = new SQLiteStorageOptions();
+            services.AddHangfire(configuration => configuration
+                //.UseMemoryStorage(new MemoryStorageOptions { JobExpirationCheckInterval = TimeSpan.FromMinutes(10) })
+                .UseSQLiteStorage("Filename=../HangFireDB.db;", sqliteOptions)
+            );
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            var option = new BackgroundJobServerOptions { WorkerCount = 1 };
+            app.UseHangfireServer(option);
+            app.UseHangfireDashboard();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
