@@ -14,7 +14,8 @@ namespace CSFinder.Models
         public int PID { get; set; }
         public string CID { get; set; }
         public string Detail { get; set; }
-        public int TrainneeNeed { get; set; }
-        public int CoopNeed { get; set; }
+
+        public string ImgLink { get; set; }
+
     }
 }

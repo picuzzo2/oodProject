@@ -18,7 +18,7 @@ namespace CSFinder.Controllers
         }
         public IActionResult Login()
         {
-            Debug.WriteLine("Debug Login");
+            if (HttpContext.Session.GetString("UserID") != null) return RedirectToAction("UserDashBoard", "RegisLogin");
             return View();
         }
         [HttpPost]
@@ -43,30 +43,22 @@ namespace CSFinder.Controllers
         }
         public IActionResult UserDashBoard()
         {
-            string userID = HttpContext.Session.GetString("UserID");
             string IDType = HttpContext.Session.GetString("IDType");
             if (IDType != null)
             {
 
                 if (IDType == "Student")
-                {
-                    var obj = db.Students.Where(a => a.ID.Equals(HttpContext.Session.GetString("UserID"))).FirstOrDefault();
-                    
-                    HttpContext.Session.SetString("SID", obj.SID.ToString());
-                    HttpContext.Session.SetString("Name", obj.Name.ToString());
-                    HttpContext.Session.SetString("Status", obj.Status.ToString());
-
-
-                    return RedirectToAction("StudentDashBoard", "Student");
+                { 
+                    return RedirectToAction("Index", "Student");
                 }
                 else if (IDType == "Company")
                 {
-                    var obj = db.Companies.Where(a => a.ID.Equals(HttpContext.Session.GetString("UserID"))).FirstOrDefault();
-                    HttpContext.Session.SetString("CID", obj.CID.ToString());
-                    HttpContext.Session.SetString("Name", obj.Name.ToString());
-
                     return RedirectToAction("Home", "Company");
 
+                }
+                else if(IDType == "Admin")
+                {
+                    return RedirectToAction("Home", "ComSci");
                 }
 
                 return RedirectToAction("Login");
@@ -86,7 +78,7 @@ namespace CSFinder.Controllers
         public IActionResult RegisStudent(StudentAccount objUser)
         {
             Debug.WriteLine(ModelState.IsValid);
-            
+
             if (ModelState.IsValid)
             {
                 String msg = "";
@@ -135,6 +127,7 @@ namespace CSFinder.Controllers
                     addstu.SID = objUser.SID;
                     addstu.Phone = objUser.Phone;
                     addstu.Detail = objUser.Detail;
+                    addstu.Address = objUser.Address;
                     db.Students.Add(addstu);
                     db.SaveChanges();
 
@@ -196,6 +189,7 @@ namespace CSFinder.Controllers
                     addacc.IDtype = "Company";
                     addacc.Email = objUser.Email;
                     
+
                     string LastCID = LastCID = db.Companies.Max(p => p.CID); ;
 
                     Debug.WriteLine("LastCid = " + LastCID);
@@ -213,6 +207,7 @@ namespace CSFinder.Controllers
                     addcom.Name = objUser.Name;
                     addcom.Phone = objUser.Phone;
                     addcom.Detail = objUser.Detail;
+                    addcom.Address = objUser.Address;                   
                     db.Companies.Add(addcom);
                     db.SaveChanges();
 

@@ -1,13 +1,20 @@
 ﻿@{
     ViewData["Title"] = "Profile";
 }
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
 <style>
+    .card-img1 {
+        border-radius: 50%;
+        margin: 3px;
+        margin-left: 10%;
+        width: 50px;
+        height: 50px;
+        border: 1px solid #ddd;
+    }
 
     img {
         margin: 20px;
@@ -17,34 +24,118 @@
     .card-img {
         border-radius: 50%;
         margin: 20px;
-        width: 200px;
+        border: 1px solid #ddd;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
     }
 
-    .text {
-        border-left: 2px solid gray;
+
+    input {
+        position: relative;
+        width: 700px;
+        height: 120px;
+        background: #ced6e0;
+        border: 3px solid #22a6b3;
+        border-radius: 10px;
+        margin-bottom: 3px;
+        width: 100%;
+        padding: 20px;
+    }
+
+    button {
+        border: 3px solid #22a6b3;
+        border-radius: 10px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+        *
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+    /* Column container */
+    .row {
+        display: flex;
+        content: "";
+        clear: both;
+    }
+
+    /* Sidebar/left column */
+    .side {
+        flex: 30%;
+        background-color: #f1f1f1;
+        padding: 20px;
+        width: 300px;
+
+    }
+
+    /* Main column */
+    .main {
+        flex: 70%;
+        background-color: white;
+        padding: 20px;
+    }
+
+    p {
+        margin: 0;
+    }
+
+ .column1 {
+        float: left;
+        width: 25%;
+        padding-right: 10px;
+        height: 50%;
+        background-color: #f1f1f1;
+        position: fixed;
+        border-radius: 30px;
+    }
+
+    .column2 {
+        float: left;
+        width: 100%;
+        padding-left: 40%;
+        height: 100%;
     }
 </style>
 
 
-<div style="display: flex;">
-    <div class="text-left">
-        <div class="profile">
-            <img class="card-img" src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" /><br />
-            <p><b>ชื่อ:</b> @ViewBag.studentName</p>
-            <p><b>สถานะ:</b> @ViewBag.studentStatus  </p>
-            <button>แก้ไขโปรไฟล์</button>
-        </div>
+<div class="row">
+    <div class="column1" align='center'>
+
+            <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar"  align='center' /><br />
+            <p><b>ชื่อ</b> @ViewBag.user.Name</p>
+            <p><b>สถานะ:</b> @ViewBag.user.Status </p>
+
     </div>
-    <div class="text">
-        <div class="profile" style="margin: 10%; margin-top:10%">
-            <p><b>ชื่อ:</b> @ViewBag.studentFirstname <b>นามสกุล:</b> @ViewBag.studentLastname</p>
-            <p><b>ที่อยู่:</b> @ViewBag.studentAddress  </p>
-            <p><b>เบอร์โทรศัพท์:</b> @ViewBag.studentPhone  </p>
-            <p><b>Facebook:</b> @ViewBag.studentFacebook  </p>
-            <p><b>Email:</b> @ViewBag.studentEmail  </p>
-            <p><b>อันดับที่เลือก:</b> @ViewBag.studentRanking  </p>
-            <p><b>Resume:</b></p><img src="https://sv1.picz.in.th/images/2020/04/09/QFmsH1.jpg" alt="Resume" border="0" />
-            <p><b>Transcript:</b></p><img src="https://sv1.picz.in.th/images/2020/04/09/QFmsH1.jpg" alt="Resume" border="0" />
+
+
+    <div class="column2">
+        <div class="main" >
+                <table>
+                    <tr  style="margin-left: 10%;">
+                        <p><b>ชื่อ:</b> @ViewBag.user.Name </p>
+                        <p><b>เบอร์โทรศัพท์:</b> @ViewBag.user.Phone  </p>
+                        <p><b>Email:</b> @ViewBag.userEmail  </p>
+                        <p><b>อันดับที่เลือก:</b> @ViewBag.user.Rank1  </p>
+                    </tr>
+                    <tr>
+                        @if (ViewBag.user.ImgResume != null)
+                        {
+                            <p><b>Resume:</b></p>
+                            <img src="@ViewBag.user.ImgResume" alt="Resume" border="0" />
+                        }
+                        @if (ViewBag.user.ImgTranscript != null)
+                        {
+                            <p><b>Transcript:</b></p>
+                            <img src="@ViewBag.user.ImgTranscript" alt="transcript" border="0" />
+                        }
+                    </tr>
+                </table>
         </div>
     </div>
 </div>
+

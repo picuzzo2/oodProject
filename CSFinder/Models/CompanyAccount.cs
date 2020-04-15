@@ -30,7 +30,6 @@ namespace CSFinder.Models
         [DisplayName("Detail (Optional)")]
         public string? Detail { get; set; }
 #nullable disable
-        public int TrainneeNeed { get; set; } = 0;
-        public int CoopNeed { get; set; } = 0;
+        public string Address { get; set; }
     }
 }

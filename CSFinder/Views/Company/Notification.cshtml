@@ -9,24 +9,19 @@
 <html>
 <head>
     <style>
+
         img {
             margin: 20px;
             width: 500px;
         }
 
-        .card-img {
-            border-radius: 50%;
-            margin-top: 10px;
-            margin-left: 10px;
-            width: 200px;
-        }
-
         .card-img1 {
             border-radius: 50%;
-            margin-top: 35px;
-            margin-left: 35px;
-            margin-bottom: 15px;
-            width: 100px;
+            margin: 20px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            width: 150px;
+            height: 150px;
         }
 
         input {
@@ -84,6 +79,27 @@
         .header {
             margin-left: 90px;
         }
+          p {
+        margin: 0;
+    }
+
+    .column1 {
+        float: left;
+        width: 25%;
+        padding-right: 10px;
+        height: 50%;
+        background-color: #f1f1f1;
+        position: fixed;
+        border-radius: 30px;
+
+    }
+
+    .column2 {
+        float: left;
+        width: 100%;
+        padding-left: 35%;
+        height: 100%;
+    }
 
         .column1 {
             float: left;
@@ -133,11 +149,11 @@
                     <div class="student">
                         @ViewBag.studentInterestName3<br>
                         <a href="">ข้อมูลนักศึกษา</a>
+
                     </div>
                 </div>
             </div>
         </div>
-
 </body>
 </html>
 

@@ -36,5 +36,6 @@ namespace CSFinder.Models
         public string? Detail { get; set; }
 #nullable disable
         public string Status { get; set; }
+        public string Address { get; set; }
     }
 }
