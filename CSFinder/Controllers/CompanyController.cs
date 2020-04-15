@@ -155,6 +155,19 @@ namespace CSFinder.Controllers
             return View();
         }
 
+        public IActionResult Profile()
+        {
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+            ViewBag.user = user;
+            ViewBag.companyName = "บริษัท เอ็ม เอฟ อี ซี จำกัด (มหาชน)";
+            ViewBag.companyAddress = "699 อาคารโมเดอร์นฟอร์มทาวเวอร์ ชั้น 27 ถนนศรีนครินทร์ แขวงพัฒนาการ เขตสวนหลวง กรุงเทพมหานคร 10250";
+            ViewBag.companyPhone = "+66 (0) 2821-7999";
+            ViewBag.companyEmail = "sales@mfec.com";
+            ViewBag.Post1Img = "https://sv1.picz.in.th/images/2020/04/11/UWg8eR.jpg";
+
+            return View();
+        }
+
         public IActionResult ProfileStudentInterest()
         {
             ViewBag.studentName = "อณิชา หารป่า";
@@ -167,6 +180,18 @@ namespace CSFinder.Controllers
             ViewBag.studentResume = "https://sv1.picz.in.th/images/2020/04/09/QFmsH1.jpg";
             return View();
         }
+        public IActionResult EditProfile()
+        {
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+            ViewBag.user = user;
+            ViewBag.companyName = "บริษัท เอ็ม เอฟ อี ซี จำกัด (มหาชน)";
+            ViewBag.companyAddress = "699 อาคารโมเดอร์นฟอร์มทาวเวอร์ ชั้น 27 ถนนศรีนครินทร์ แขวงพัฒนาการ เขตสวนหลวง กรุงเทพมหานคร 10250";
+            ViewBag.companyPhone = "+66 (0) 2821-7999";
+            ViewBag.companyEmail = "sales@mfec.com";
+            ViewBag.Post1Img = "https://sv1.picz.in.th/images/2020/04/11/UWg8eR.jpg";
+            return View();
+        }
+
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();

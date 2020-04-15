@@ -1,0 +1,154 @@
+﻿@{
+    ViewData["Title"] = "EditProfile";
+    Layout = "_CompanyLayout";
+}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+<style>
+    .card-img1 {
+        border-radius: 50%;
+        margin: 3px;
+        margin-left: 10%;
+        width: 50px;
+        height: 50px;
+        border: 1px solid #ddd;
+    }
+
+    img {
+        margin: 20px;
+        width: 500px;
+    }
+
+    .card-img1 {
+        border-radius: 50%;
+        margin: 20px;
+        border: 1px solid #ddd;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+
+
+    input {
+        position: relative;
+        width: 100%;
+    }
+
+    button {
+        border: 3px solid #22a6b3;
+        border-radius: 10px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+        *
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+    /* Column container */
+    .row {
+        display: flex;
+        content: "";
+        clear: both;
+    }
+
+    /* Sidebar/left column */
+    .side {
+        flex: 30%;
+        background-color: #f1f1f1;
+        padding: 20px;
+        width: 300px;
+    }
+
+    /* Main column */
+    .main {
+        flex: 70%;
+        background-color: white;
+        padding: 20px;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .column1 {
+        float: left;
+        width: 25%;
+        padding-right: 10px;
+        height: 50%;
+        background-color: #f1f1f1;
+        position: fixed;
+        border-radius: 30px;
+    }
+
+    .column2 {
+        float: left;
+        width: 100%;
+        padding-left: 40%;
+        height: 100%;
+    }
+</style>
+
+
+
+<div class="row">
+    <div class="column1" align='center'>
+        <img class="card-img1" src="@ViewBag.Post1Img" border="0" /><br />
+        <p><b>@ViewBag.companyName</b></p>
+        <p><b>ที่อยู่ : </b>@ViewBag.companyAddress</p>
+        <p><b>โทร : </b>@ViewBag.companyPhone</p>
+        <p><b>Email : </b>@ViewBag.companyEmail</p>
+    </div>
+
+    <div class="column2">
+        <div class="main">
+            <div class="text">
+                <div class="profile" style="margin: 20%; margin-top:10% ">
+                    <p style="padding: 10px;"><b>ชื่อบริษัท:</b>&nbsp<input id="CompanyName" type="text" /></p>
+                    <p style="padding: 10px;"><b>ที่อยู่:</b>&nbsp<input id="CompanyAddress" type="text" style="padding: 20px;" /></p>
+                    <p style="padding: 10px;"><b>เบอร์โทรศัพท์:</b>&nbsp<input id="CompanyPhone" type="text" /></p>
+                    <p style="padding: 10px;"><b>Email:</b>&nbsp<input id="CompanyEmail  " type="text" /></p>
+                    <p style="padding: 10px;"><b>Poster:</b></p>
+                    <div class="file-upload">
+                        <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
+                        <script>
+                            Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
+                                const hiddenInput = button.parentElement.querySelector('.file-upload__input');
+                                const label = button.parentElement.querySelector('.file-upload__label');
+                                const defaultLabelText = 'No file(s) selected';
+
+                                label.textContent = defaultLabelText;
+                                label.title = defaultLabelText;
+
+                                button.addEventListener("click", function () {
+                                    hiddenInput.click();
+                                });
+
+                                hiddenInput.addEventListener("change", function () {
+                                    console.log(hiddenInput.files);
+                                    const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
+                                        return file.name;
+                                    });
+
+                                    label.textContent = filenameList.join(',') || defaultLabelText;
+                                    label.title = label.textContent;
+
+                                });
+                        </script>
+                    </div><br>
+                    <a href="Profile" class="btn btn-primary float-right" style="margin-top : 10px;" onclick="">Save</a>
+
+
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </div>
