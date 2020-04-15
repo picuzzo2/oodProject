@@ -32,4 +32,5 @@ namespace CSFinder.Models
 #nullable disable
         public string Address { get; set; }
     }
+
 }

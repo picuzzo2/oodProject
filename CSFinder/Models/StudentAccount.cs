@@ -22,7 +22,7 @@ namespace CSFinder.Models
         [RegularExpression(@"^[A-Za-z]+\s[A-Za-z]+$", ErrorMessage = "Name is not valid")]
         public string Name { get; set; }
 #nullable enable
-        public int? Type { get; set; }
+        public Types Type { get; set; }
 #nullable disable
         [Required(ErrorMessage = "Please enter an Email")]
         [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" + @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" + @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Email is not valid")]
@@ -37,5 +37,10 @@ namespace CSFinder.Models
 #nullable disable
         public string Status { get; set; }
         public string Address { get; set; }
+    }
+    public enum Types
+    {
+        Internship,
+        Cooperative
     }
 }
