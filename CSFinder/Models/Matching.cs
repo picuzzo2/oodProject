@@ -19,5 +19,10 @@ namespace CSFinder.Models
         public string CID { get; set; }
         public int Type { get; set; }
         public string Result { get; set; } = "";
+#nullable enable
+        public string? sRank1 { get; set; }
+        public string? sRank2 { get; set; }
+        public string? sRank3 { get; set; }
+#nullable disable
     }
 }

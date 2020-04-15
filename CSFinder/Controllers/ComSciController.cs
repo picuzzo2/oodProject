@@ -139,6 +139,10 @@ namespace CSFinder.Controllers
                                 addMatch.CID = com.CID;
                                 addMatch.SID = stu.SID;
                                 addMatch.Type = stu.Type;
+                                addMatch.sRank1 = stu.Rank1;
+                                addMatch.sRank2 = stu.Rank2;
+                                addMatch.sRank3 = stu.Rank3;
+                                addMatch.Result = "Waiting for interview";
                                 db.Matchings.Add(addMatch);
                                 db.SaveChanges();
                                 stuMatch.Remove(stu);
@@ -163,6 +167,10 @@ namespace CSFinder.Controllers
                                 addMatch.CID = com.CID;
                                 addMatch.SID = stu.SID;
                                 addMatch.Type = stu.Type;
+                                addMatch.sRank1 = stu.Rank1;
+                                addMatch.sRank2 = stu.Rank2;
+                                addMatch.sRank3 = stu.Rank3;
+                                addMatch.Result = "Waiting for interview";
                                 db.Matchings.Add(addMatch);
                                 db.SaveChanges();
                                 stuMatch.Remove(stu);
@@ -191,6 +199,10 @@ namespace CSFinder.Controllers
                                 addMatch.CID = com.CID;
                                 addMatch.SID = stu.SID;
                                 addMatch.Type = stu.Type;
+                                addMatch.sRank1 = stu.Rank1;
+                                addMatch.sRank2 = stu.Rank2;
+                                addMatch.sRank3 = stu.Rank3;
+                                addMatch.Result = "Waiting for interview";
                                 db.Matchings.Add(addMatch);
                                 db.SaveChanges();
                                 stuMatch.Remove(stu);
@@ -216,6 +228,10 @@ namespace CSFinder.Controllers
                                 addMatch.CID = com.CID;
                                 addMatch.SID = stu.SID;
                                 addMatch.Type = stu.Type;
+                                addMatch.sRank1 = stu.Rank1;
+                                addMatch.sRank2 = stu.Rank2;
+                                addMatch.sRank3 = stu.Rank3;
+                                addMatch.Result = "Waiting for interview";
                                 db.Matchings.Add(addMatch);
                                 db.SaveChanges();
                                 stuMatch.Remove(stu);
@@ -244,6 +260,10 @@ namespace CSFinder.Controllers
                                 addMatch.CID = com.CID;
                                 addMatch.SID = stu.SID;
                                 addMatch.Type = stu.Type;
+                                addMatch.sRank1 = stu.Rank1;
+                                addMatch.sRank2 = stu.Rank2;
+                                addMatch.sRank3 = stu.Rank3;
+                                addMatch.Result = "Waiting for interview";
                                 db.Matchings.Add(addMatch);
                                 db.SaveChanges();
                                 stuMatch.Remove(stu);
@@ -269,6 +289,10 @@ namespace CSFinder.Controllers
                                 addMatch.CID = com.CID;
                                 addMatch.SID = stu.SID;
                                 addMatch.Type = stu.Type;
+                                addMatch.sRank1 = stu.Rank1;
+                                addMatch.sRank2 = stu.Rank2;
+                                addMatch.sRank3 = stu.Rank3;
+                                addMatch.Result = "Waiting for interview";
                                 db.Matchings.Add(addMatch);
                                 db.SaveChanges();
                                 stuMatch.Remove(stu);

@@ -1,10 +1,11 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Matching";
+    Layout = "_ComSciLayout";
 }
 
 <h1>Matching</h1>
-<input type="button" value="Start Matching" onclick="location.href='@Url.Action("AddMatchSchedule", "ComSci")'" />
+## Disble matching ##
+<input type="button" value="Start Matching" onclick="location.href='@Url.Action("Home", "ComSci")'" />
 <input type="button" value="Stop Matching" onclick="location.href='@Url.Action("Home", "ComSci")'" />
 
 @if(ViewBag.next != null) {
