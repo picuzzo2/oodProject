@@ -1,4 +1,5 @@
-﻿@{
+﻿@model CSFinder.Models.Student
+@{
     ViewData["Title"] = "Home Page";
 }
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -143,7 +144,7 @@
 
     .column1 {
         float: left;
-        width: 30%;
+        width: 25%;
         padding-right: 10px;
         height: 50%;
         background-color: #f1f1f1;
@@ -167,11 +168,22 @@
         <p><b>สถานะ:</b> @ViewBag.user.Status </p>
         <button onclick="myFunction()" class="rank">Ranking</button>
         <div id="myDIV" style="margin-left: 10%;">
-            <input id="Rank1" type="text" placeholder="อันดับที่1" />
-            <input id="Rank2" type="text" placeholder="อันดับที่2" />
-            <input id="Rank3" type="text" placeholder="อันดับที่3" />
-            <br />
-            <a href="History" class="btn btn-primary float-right" style="margin-top : 10px;" onclick="">Choose</a>
+            <span>
+                @Html.TextBoxFor(a => a.Rank1, new { @class = "form-control", @placeholder = "อันดับที่ 1" })
+                @Html.ValidationMessageFor(a => a.Rank1, "", new { @class = "text-danger" })
+            </span>
+
+            <span>
+                @Html.TextBoxFor(a => a.Rank2, new { @class = "form-control", @placeholder = "อันดับที่ 2" })
+                @Html.ValidationMessageFor(a => a.Rank2, "", new { @class = "text-danger" })
+            </span>
+
+            <span>
+                @Html.TextBoxFor(a => a.Rank3, new { @class = "form-control", @placeholder = "อันดับที่ 3" })
+                @Html.ValidationMessageFor(a => a.Rank3, "", new { @class = "text-danger" })
+            </span>
+
+            <a href="History" class="btn btn-primary float-right" style="margin-top : 10px;" onclick="ChooseRank()">Choose</a>
         </div>
         <script>
 
@@ -226,10 +238,28 @@
                     }
                 });
             }
+
+            var ChooseRank = function () {
+
+                var data = $("#RankForm").serialize();
+
+                $.ajax({
+                    type: "Post",
+                    url: "/Student/History",
+                    data: data,
+                    success: function (response) {
+                        alert(response.responseText);
+                        window.location.href = "/RegisLogin/Login";
+                    }
+
+
+                })
+                debugger
+            }
         </script>
 
     </div>
 
 
 </div>
-    </div>
+
