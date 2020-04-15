@@ -43,9 +43,19 @@ namespace CSFinder.Controllers
         public IActionResult Home()
         {
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
-            ViewBag.studentName = "Earn";
-            ViewBag.kuy = "kuy";
-            return View();
+            Debug.WriteLine("homepost5555555555");
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+            List<PostCompany> pc = new List<PostCompany>();
+            foreach (Post p in db.Posts)
+            {
+                Company c = db.Companies.Where(a => a.CID.Equals(p.CID)).FirstOrDefault();
+                pc.Add(new PostCompany(c, p));
+            }
+            Post newPost = new Post();
+            ViewBag.postCompanyList = pc;
+            ViewBag.company = user;
+            ViewBag.userEmail = userEmail;
+            return View(newPost);
         }
         
         public IActionResult Company()
@@ -95,12 +105,35 @@ namespace CSFinder.Controllers
             ViewBag.studentStatus4 = "-";
             return View();
         }
-        
+
+        public IActionResult Index()
+        {
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+
+            List<PostCompany> pc = new List<PostCompany>();
+            foreach (Post p in db.Posts)
+            {
+                Company c = db.Companies.Where(a => a.CID.Equals(p.CID)).FirstOrDefault();
+                pc.Add(new PostCompany(c, p));
+            }
+            ViewBag.postCompanyList = pc;
+            //ViewBag.Posts = db.Posts;
+            foreach (PostCompany p in pc)
+            {
+                Debug.WriteLine(p.post.PID);
+                Debug.WriteLine(p.company.Name);
+            }
+            ViewBag.user = user;
+            ViewBag.userEmail = userEmail;
+            return View();
+        }
+
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
             return RedirectToAction("Login", "RegisLogin");
         }
+
 
     }
 }

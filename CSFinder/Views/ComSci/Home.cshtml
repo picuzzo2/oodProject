@@ -10,14 +10,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
+
 <style>
+
     .card-img1 {
         border-radius: 50%;
         margin: 3px;
         margin-left: 10%;
         width: 50px;
-        height: 50px;
-        border: 1px solid #ddd;
     }
 
     img {
@@ -34,48 +34,38 @@
         height: 150px;
     }
 
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
+    input {
+        position: relative;
+        width: 700px;
+        height: 120px;
+        background: #ced6e0;
+        border: 3px solid #22a6b3;
+        border-radius: 10px;
+        margin-bottom: 3px;
         width: 100%;
+        padding: 20px;
     }
 
-    .head-table, .numOfStudent,
-    th {
-        text-align: center;
+    button {
+        border: 3px solid #22a6b3;
+        border-radius: 10px;
     }
 
-    td,
-    th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 10px;
+    * {
+        box-sizing: border-box;
     }
 
-    table#t01 th {
-        background-color: black;
-        color: white;
-    }
-
-    table#t02 th {
-        background-color: black;
-        color: white;
-    }
-
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-
-    th {
-        width: 250px;
-    }
-
+        *
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+    /* Column container */
     .row {
-        display: flex;
+        display: table;
         content: "";
         clear: both;
     }
-
     /* Main column */
     .main {
         flex: 70%;
@@ -100,14 +90,17 @@
     .column2 {
         float: left;
         width: 100%;
-        padding-left: 75%;
+        padding-left: 35%;
         height: 100%;
     }
 </style>
 
 
+
+
 <div class="row">
     <div class="column1" align='center'>
+
         <img class="card-img" src="https://sv1.picz.in.th/images/2020/04/10/QMoxDI.th.png" alt="QMoxDI.png" border="0" />
         <p>
             <b>ภาควิชาวิทยาการคอมพิวเตอร์</b> <br>
@@ -122,6 +115,31 @@
     </div>
 
     <div class="column2">
-
+        <div class="main">
+            @foreach (PostCompany pc in ViewBag.postCompanyList)
+            {
+                <table>
+                    <tr>
+                        <p>
+                            <img class="card-img1" src="@pc.company.ImgProfile" />
+                            @pc.company.Name
+                        </p>
+                    </tr>
+                    <tr>
+                        <div style="margin-left: 10%;">@pc.post.Detail</div>
+                    </tr>
+                    <tr>
+                        <img style="margin-left: 20%;
+" src="@pc.post.ImgLink" />
+                    </tr>
+                </table>
+            }
+        </div>
     </div>
+
 </div>
+
+
+
+
+
