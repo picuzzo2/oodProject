@@ -136,6 +136,7 @@ namespace CSFinder.Controllers
 
         }
 
+
         public IActionResult Notification_Announcement()
         {
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
@@ -173,4 +174,3 @@ namespace CSFinder.Controllers
         }
     }
 }
-

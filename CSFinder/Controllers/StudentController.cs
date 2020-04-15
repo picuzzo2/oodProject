@@ -63,6 +63,7 @@ namespace CSFinder.Controllers
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.user = user;
             ViewBag.Matchs = db.Matchings;
+
             ViewBag.Dates = "(12/12/2562)";
             ViewBag.Rank1 = "บ.ปูน";
             ViewBag.Rank2 = "บ.ไอ";
