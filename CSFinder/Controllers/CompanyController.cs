@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -134,7 +133,9 @@ namespace CSFinder.Controllers
             ViewBag.studentInterestName3 = "นายภรัญยู วงศ์แสง";
             ViewBag.studentInterestName4 = "";
             return View();
+
         }
+
 
         public IActionResult Notification_Announcement()
         {
