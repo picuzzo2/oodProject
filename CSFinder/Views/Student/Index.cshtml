@@ -1,3 +1,4 @@
+@model CSFinder.Models.Student
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -7,16 +8,21 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
 <style>
+
     .card-img1 {
         border-radius: 50%;
         margin: 3px;
         margin-left: 10%;
         width: 50px;
+        height: 50px;
+        border: 1px solid #ddd;
     }
+
     img {
         margin: 20px;
         width: 500px;
     }
+
     .card-img {
         border-radius: 50%;
         margin: 20px;
@@ -25,24 +31,28 @@
         width: 150px;
         height: 150px;
     }
+
+
     input {
         position: relative;
-        width: 700px;
-        height: 120px;
-        background: #ced6e0;
-        border: 3px solid #22a6b3;
+        background: #f1f1f1;
+        border: 3px solid #ced6e0;
         border-radius: 10px;
-        margin-bottom: 3px;
+        margin-top: 10px;
+        margin-left: 5px;
+        height: 40px;
         width: 100%;
-        padding: 20px;
     }
+
     button {
         border: 3px solid #22a6b3;
         border-radius: 10px;
     }
+
     * {
         box-sizing: border-box;
     }
+
         *
         body {
             font-family: Arial;
@@ -50,19 +60,88 @@
         }
     /* Column container */
     .row {
-        display: table;
-        content: "";
-        clear: both;
+        display: flex;
+        flex-wrap: wrap;
     }
+
+    /* Sidebar/left column */
+    .side {
+        flex: 30%;
+        background-color: #f1f1f1;
+        padding: 20px;
+    }
+
     /* Main column */
     .main {
         flex: 70%;
         background-color: white;
         padding: 20px;
     }
+
     p {
         margin: 0;
     }
+
+    .collapsible {
+        background-color: #ced6e0;
+        color: lightslategray;
+        border: none;
+        margin-left: 130px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .collapsible:hover {
+            background-color: #f1f1f1;
+        }
+
+        .collapsible:disabled {
+            background-color: #f1f1f1;
+            color: #aaa;
+            cursor: auto;
+        }
+
+    .rank {
+        background-color: #ced6e0;
+        color: lightslategray;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .rank:hover {
+            background-color: #f1f1f1;
+        }
+
+        .rank:disabled {
+            background-color: #f1f1f1;
+            color: #aaa;
+            cursor: auto;
+        }
+
+    .content {
+        padding: 0 18px;
+        display: none;
+        overflow: hidden;
+        background-color: #f1f1f1;
+    }
+
+    #myDIV {
+        padding: 0 18px;
+        display: none;
+        overflow: hidden;
+        background-color: #ced6e0;
+        height: 210px;
+        width: 360px;
+        border-radius: 10px;
+        margin-left: 20px;
+        margin-top: 3px;
+    }
+
+    p {
+        margin: 0;
+    }
+
     .column1 {
         float: left;
         width: 25%;
@@ -72,41 +151,110 @@
         position: fixed;
         border-radius: 30px;
     }
+
     .column2 {
         float: left;
         width: 100%;
-        padding-left: 35%;
+        padding-left: 30%;
         height: 100%;
     }
 </style>
 
+
 <div class="row">
     <div class="column1" align='center'>
-        <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" align='center' /><br />
+        <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" /><br />
         <p><b>ชื่อ</b> @ViewBag.user.Name</p>
         <p><b>สถานะ:</b> @ViewBag.user.Status </p>
+        <button onclick="myFunction()" class="rank">Ranking</button>
+        <div id="myDIV" style="margin-left: 10%;">
+            <span>
+                @Html.TextBoxFor(a => a.Rank1, new { @class = "form-control", @placeholder = "อันดับที่ 1" })
+                @Html.ValidationMessageFor(a => a.Rank1, "", new { @class = "text-danger" })
+            </span>
+
+            <span>
+                @Html.TextBoxFor(a => a.Rank2, new { @class = "form-control", @placeholder = "อันดับที่ 2" })
+                @Html.ValidationMessageFor(a => a.Rank2, "", new { @class = "text-danger" })
+            </span>
+
+            <span>
+                @Html.TextBoxFor(a => a.Rank3, new { @class = "form-control", @placeholder = "อันดับที่ 3" })
+                @Html.ValidationMessageFor(a => a.Rank3, "", new { @class = "text-danger" })
+            </span>
+
+            <a href="History" class="btn btn-primary float-right" style="margin-top : 10px;" onclick="ChooseRank()">Choose</a>
+        </div>
+        <script>
+
+            function myFunction() {
+                var x = document.getElementById("myDIV");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+        </script>
     </div>
 
-    <div class="column2">
-        <div class="main">
-            @foreach (PostCompany pc in ViewBag.postCompanyList)
-            {
-                <table>
-                    <tr>
-                        <p>
-                            <img class="card-img1" src="@pc.company.ImgProfile" />
-                            @pc.company.Name
-                        </p>
-                    </tr>
-                    <tr>
-                        <div style="margin-left: 10%;">@pc.post.Detail</div>
-                    </tr>
-                    <tr>
-                        <img style="margin-left: 20%;
-" src="@pc.post.ImgLink" />
-                    </tr>
-                </table>
+</div>
+
+<div class="column2">
+    <div class="main">
+        @foreach (PostCompany pc in ViewBag.postCompanyList)
+        {
+
+
+            <p>
+                <img class="card-img1" src="@pc.company.ImgProfile" />
+                @pc.company.Name
+            </p>
+
+            <button class="collapsible">More Detail</button>
+
+
+            <div class="content" style="margin-left: 10%;">
+                @pc.post.Detail
+            </div>
+
+            <img style="margin-left: 20%;" src="@pc.post.ImgLink" />
+
+
+        }
+
+        <script>
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                    } else {
+                        content.style.display = "block";
+                    }
+                });
             }
-        </div>
+
+            var ChooseRank = function () {
+
+                var data = $("#RankForm").serialize();
+
+                $.ajax({
+                    type: "Post",
+                    url: "/Student/History",
+                    data: data,
+                    success: function (response) {
+                        alert(response.responseText);
+                        window.location.href = "/RegisLogin/Login";
+                    }
+                })
+                debugger
+            }
+        </script>
+
     </div>
 </div>

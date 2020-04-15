@@ -1,6 +1,8 @@
-﻿@{
+@model CSFinder.Models.Student
+@{
     ViewData["Title"] = "History";
 }
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,7 +16,6 @@
         width: 50px;
         height: 50px;
         border: 1px solid #ddd;
-
     }
 
     img {
@@ -30,6 +31,7 @@
         width: 150px;
         height: 150px;
     }
+
 
     input {
         position: relative;
@@ -72,7 +74,6 @@
         width: 300px;
     }
 
-
     /* Main column */
     .main {
         flex: 70%;
@@ -104,6 +105,7 @@
 
 <div class="row">
     <div class="column1" align='center'>
+
         <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" align='center' /><br />
         <p><b>ชื่อ</b> @ViewBag.user.Name</p>
         <p><b>สถานะ:</b> @ViewBag.user.Status </p>
@@ -112,6 +114,7 @@
     <div class="column2">
         <div class="main">
             <div class="text" style="width: 200px;height: 200px;position: absolute;top: 35%;left: 50%; margin-top: -170px; margin-left: -75px;">
+
                 <div class="history">
                     <table width=250% cellpadding="4" cellspacing="1"
                            style="border:1px solid #D3D3D3; margin-left: 10%;">
@@ -120,7 +123,7 @@
                                 style="border-style:solid;
                         border-width:4px;
                         border-color:#D3D3D3 gray gray #D3D3D3;">
-                                <p><b>รอบที่ 1 @ViewBag.Dates</b></p>
+                                <p><b>รอบที่ 1 (12/12/2562)</b></p>
                                 <hr>
                                 <p><b>อันดับที่เลือก</b></p>
                                 <p align='center'>
@@ -141,6 +144,3 @@
         </div>
     </div>
 </div>
-
-
-
