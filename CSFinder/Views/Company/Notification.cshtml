@@ -1,4 +1,3 @@
-﻿
 @{
     ViewData["Title"] = "Notification";
     Layout = "_CompanyLayout";
@@ -9,6 +8,7 @@
 <html>
 <head>
     <style>
+
         .card-img1 {
             border-radius: 50%;
             margin: 3px;
@@ -18,12 +18,13 @@
             border: 1px solid #ddd;
         }
 
+
         img {
             margin: 20px;
             width: 500px;
         }
 
-        .card-img {
+        .card-img1 {
             border-radius: 50%;
             margin: 20px;
             border: 1px solid #ddd;
@@ -70,6 +71,7 @@
             background-color: white;
             padding: 20px;
         }
+
         .box {
             width: 500px;
             height: 600px;
@@ -77,11 +79,13 @@
             margin-top: 10px;
             border-radius: 10px;
         }
+
         .student {
             margin-left: 180px;
             margin-top: -90px;
         }
-        .header{
+
+        .header {
             margin-left: 90px;
         }
           p {
@@ -106,6 +110,22 @@
         height: 100%;
     }
 
+        .column1 {
+            float: left;
+            width: 25%;
+            padding-right: 10px;
+            height: 50%;
+            background-color: #f1f1f1;
+            position: fixed;
+            border-radius: 30px;
+        }
+
+        .column2 {
+            float: left;
+            width: 100%;
+            padding-left: 40%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -120,45 +140,29 @@
             <p><b>Email : </b>@ViewBag.companyEmail</p>
             <button>แก้ไขข้อมูล</button>
         </div>
-
         <div class="column2">
             <div class="main">
                 <b class="header">รายชื่อนักศึกษาที่สนใจฝึกงาน/สหกิจศึกษา</b><br>
                 <div class="box">
-                    <table>
-                        <tr>
-                            <td>
-                                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
-                                <div class="student">
-                                    @ViewBag.studentInterestName1<br>
-                                    <a href="">ข้อมูลนักศึกษา</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
-                                <div class="student">
-                                    @ViewBag.studentInterestName2<br>
-                                    <a href="">ข้อมูลนักศึกษา</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
-                                <div class="student">
-                                    @ViewBag.studentInterestName3<br>
-                                    <a href="">ข้อมูลนักศึกษา</a>
-                            </td>
-                        </tr>
-                    </table>
+                    <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
+                    <div class="student">
+                        @ViewBag.studentInterestName1<br>
+                        <a href="ProfileStudentInterest">ข้อมูลนักศึกษา</a>
+                    </div>
+                    <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
+                    <div class="student">
+                        @ViewBag.studentInterestName2<br>
+                        <a href="">ข้อมูลนักศึกษา</a>
+                    </div>
+                    <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
+                    <div class="student">
+                        @ViewBag.studentInterestName3<br>
+                        <a href="">ข้อมูลนักศึกษา</a>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-
+    </div>
 </body>
 </html>
 

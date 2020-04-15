@@ -31,13 +31,12 @@
 
         input {
             position: relative;
-            width: 700px;
-            height: 120px;
-            background: #ced6e0;
-            border: 3px solid #22a6b3;
+            width: 400px;
+            height: 20px;
+            background: #dfe4ea;
+            border: 3px solid #ced6e0;
             border-radius: 10px;
             margin-bottom: 3px;
-            width: 100%;
             padding: 20px;
         }
 
@@ -61,13 +60,6 @@
             flex-wrap: wrap;
         }
 
-        /* Sidebar/left column */
-        .side {
-            flex: 30%;
-            background-color: #f1f1f1;
-            padding: 20px;
-        }
-
         /* Main column */
         .main {
             flex: 70%;
@@ -76,7 +68,7 @@
         }
 
         .box {
-            width: 500px;
+            width: 700px;
             height: 600px;
             background-color: #f1f1f1;
             margin-top: 10px;
@@ -99,6 +91,28 @@
         .Failed{
             color: red;
         }
+        .submit{
+            margin-left: 580px;
+            margin-top: 20px;
+
+        }
+        .column1 {
+            float: left;
+            width: 25%;
+            padding-right: 10px;
+            height: 75%;
+            background-color: #f1f1f1;
+            position: fixed;
+            border-radius: 30px;
+        }
+
+        .column2 {
+            float: left;
+            width: 100%;
+            padding-left: 40%;
+            height: 100%;
+        }
+        
         
     </style>
 </head>
@@ -106,7 +120,7 @@
 
     <!-- The flexible grid (content) -->
     <div class="row">
-        <div class="side">
+        <div class="column1" align='center'>
             <img class="card-img" src="@ViewBag.Post1Img" border="0" /><br />
             <p><b>@ViewBag.companyName</b></p>
             <p><b>ที่อยู่ : </b>@ViewBag.companyAddress</p>
@@ -114,29 +128,51 @@
             <p><b>Email : </b>@ViewBag.companyEmail</p>
             <button>แก้ไขข้อมูล</button>
         </div>
-        <div class="main">
-            <b class="header">รายชื่อนักศึกษาที่สนใจฝึกงาน/สหกิจศึกษา</b><br>
-            <div class="box">
-                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
-                <div class="student">
-                    @ViewBag.studentInterestName1<br>
-                    <a href="">ข้อมูลนักศึกษา</a>
-                    <label for="status">สถานะ : </label>
-                    <select id="status">
-                        <option class="Wait" value="Wait_Status">@ViewBag.studentInterestStatus1</option>
-                        <option class="Pass" value="Pass_Status">@ViewBag.studentInterestStatus2</option>
-                        <option class="Failed" value="Failed_Status">@ViewBag.studentInterestStatus3</option>
-                    </select>
-                </div>
-                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
-                <div class="student">
-                    @ViewBag.studentInterestName2<br>
-                    <a href="">ข้อมูลนักศึกษา</a>
-                </div>
-                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
-                <div class="student">
-                    @ViewBag.studentInterestName3<br>
-                    <a href="">ข้อมูลนักศึกษา</a>
+
+        <div class="column2">
+            <div class="main">
+                <b class="header">รายชื่อนักศึกษาที่สนใจฝึกงาน/สหกิจศึกษา</b><br>
+                <div class="box">
+
+                    <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
+                    <div class="student">
+                        @ViewBag.studentInterestName1<br>
+                        <a href="">ข้อมูลนักศึกษา</a><br>
+                        <label for="status">สถานะ : </label>
+                        <select id="status">
+                            <option class="Wait" value="Wait_Status">@ViewBag.studentInterestStatus1</option>
+                            <option class="Pass" value="Pass_Status">@ViewBag.studentInterestStatus2</option>
+                            <option class="Failed" value="Failed_Status">@ViewBag.studentInterestStatus3</option>
+                        </select>
+                        <input id="Detail" type="text" placeholder="more details" />
+                    </div>
+
+                    <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
+                    <div class="student">
+                        @ViewBag.studentInterestName2<br>
+                        <a href="">ข้อมูลนักศึกษา</a><br>
+                        <label for="status">สถานะ : </label>
+                        <select id="status">
+                            <option class="Wait" value="Wait_Status">@ViewBag.studentInterestStatus1</option>
+                            <option class="Pass" value="Pass_Status">@ViewBag.studentInterestStatus2</option>
+                            <option class="Failed" value="Failed_Status">@ViewBag.studentInterestStatus3</option>
+                        </select>
+                        <input id="Detail" type="text" placeholder="more details" />
+                    </div>
+
+                    <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
+                    <div class="student">
+                        @ViewBag.studentInterestName3<br>
+                        <a href="">ข้อมูลนักศึกษา</a><br>
+                        <label for="status">สถานะ : </label>
+                        <select id="status">
+                            <option class="Wait" value="Wait_Status">@ViewBag.studentInterestStatus1</option>
+                            <option class="Pass" value="Pass_Status">@ViewBag.studentInterestStatus2</option>
+                            <option class="Failed" value="Failed_Status">@ViewBag.studentInterestStatus3</option>
+                        </select>
+                        <input id="Detail" type="text" placeholder="more details" />
+                    </div>
+                    <button class="submit">ยืนยัน</button>
                 </div>
             </div>
         </div>
