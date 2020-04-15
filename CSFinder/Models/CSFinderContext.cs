@@ -21,7 +21,7 @@ namespace CSFinder.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Matching>()
-                .HasKey(e => new { e.SID, e.CID });
+                .HasKey(e => new { e.MID, e.SID, e.CID });
         }
 
     }
