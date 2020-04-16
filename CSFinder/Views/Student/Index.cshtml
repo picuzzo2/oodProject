@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream
 @model CSFinder.Models.Student
 @{
+=======
+﻿@model CSFinder.Models.Student
+﻿@{
+>>>>>>> Stashed changes
     ViewData["Title"] = "Home Page";
 }
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -101,6 +106,7 @@
             cursor: auto;
         }
 
+<<<<<<< Updated upstream
     .rank {
         background-color: #ced6e0;
         color: lightslategray;
@@ -126,10 +132,13 @@
         background-color: #f1f1f1;
     }
 
+=======
+>>>>>>> Stashed changes
     #myDIV {
         padding: 0 18px;
         display: none;
         overflow: hidden;
+<<<<<<< Updated upstream
         background-color: #ced6e0;
         height: 210px;
         width: 360px;
@@ -258,3 +267,182 @@
 
     </div>
 </div>
+=======
+        background-color: #f1f1f1;
+    }
+
+
+.open-button { 
+  background-color: #555; 
+  color: white; 
+  padding: 16px 20px; 
+  border: none; 
+  cursor: pointer; 
+  opacity: 0.8; 
+  padding: 0 18px; 
+        display: none; 
+        overflow: hidden; 
+         
+ 
+} 
+ 
+/* The popup form - hidden by default */ 
+.form-popup { 
+  display: none; 
+ 
+  border: 3px solid #f1f1f1; 
+  z-index: 9; 
+} 
+ 
+    .content { 
+        padding: 0 18px; 
+        display: none; 
+        overflow: hidden; 
+        background-color: #f1f1f1; 
+    } 
+ 
+    #myDIV { 
+        padding: 0 18px; 
+        display: none; 
+        overflow: hidden; 
+        background-color: #ced6e0; 
+        height: 210px; 
+        width: 670px; 
+        border-radius: 10px; 
+        margin-left: 20px; 
+        margin-top: 3px; 
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .column1 {
+        float: left;
+        width: 25%;
+        padding-right: 10px;
+        height: 50%;
+        background-color: #f1f1f1;
+        position: fixed;
+        border-radius: 30px;
+    }
+
+    .column2 {
+        float: left;
+        width: 100%;
+        padding-left: 30%;
+        height: 100%;
+    }
+    .rank{
+        width:80%; 
+        height:30px; 
+        background-color: #ced6e0; 
+        color: lightslategray; 
+        border-radius: 4px; 
+        margin-bottom:3px; 
+        margin-top: -31px; 
+        margin-left: 83px;
+    }
+</style>
+
+
+<div class="row">
+    <div class="column1" align='center'>
+        <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" /><br />
+        <p><b>ชื่อ</b> @ViewBag.user.Name</p>
+        <p><b>สถานะ:</b> @ViewBag.user.Status </p>
+    </div>
+
+</div>
+
+<div class="column2">
+    <div class="main"> 
+        @foreach (PostCompany pc in ViewBag.postCompanyList) 
+        { 
+ 
+ 
+            <p> 
+                <img class="card-img1" src="@pc.company.ImgProfile" /> 
+                @pc.company.Name 
+            </p> 
+            <div> 
+                <button class="collapsible">More Detail</button> 
+                <div class="content" style="margin-left: 10%;"> 
+                    @pc.post.Detail <br> 
+                    <button class="collapsible" style="margin-left:0px">Ranking</button> 
+ 
+                    <div class="content"> 
+                        <b>อันดับ 1</b><br> 
+                        <button onclick="" style="margin:0px;">Choose</button> 
+                        <div class="rank"> 
+                            @ViewBag.user.Rank1 
+ 
+                        </div> 
+ 
+                        <b>อันดับ 2</b><br> 
+                        <button style="margin:0px;">Choose</button> 
+                        <div class="rank">
+                            @ViewBag.user.Rank2
+                        </div> 
+                           
+                            <b>อันดับ 3</b><br> 
+                            <button style="margin:0px;">Choose</button> 
+                            <div class="rank">
+                                @ViewBag.user.Rank3
+                            </div> 
+                             
+ 
+ 
+                        </div> 
+ 
+                    <script> 
+                        function openForm() { 
+                            document.getElementById("myForm").style.display = "block"; 
+                        } 
+ 
+                        function closeForm() { 
+                            document.getElementById("myForm").style.display = "none"; 
+                        } 
+                    </script> 
+                </div> 
+                </div> 
+            <img style="margin-left: 20%;" src="@pc.post.ImgLink" /> 
+ 
+ 
+        } 
+ 
+        <script> 
+ 
+            function myFunction() { 
+                var x = document.getElementById("myDIV"); 
+                if (x.style.display === "none") { 
+                    x.style.display = "block"; 
+                } else { 
+                    x.style.display = "none"; 
+                } 
+            } 
+ 
+            var coll = document.getElementsByClassName("collapsible"); 
+            var i; 
+ 
+            for (i = 0; i < coll.length; i++) { 
+                coll[i].addEventListener("click", function () { 
+                    this.classList.toggle("active"); 
+                    var content = this.nextElementSibling; 
+                    if (content.style.display === "block") { 
+                        content.style.display = "none"; 
+                    } else { 
+                        content.style.display = "block"; 
+                    } 
+                }); 
+            } 
+ 
+ 
+        </script> 
+ 
+ 
+ 
+ 
+    </div>
+</div>
+>>>>>>> Stashed changes
