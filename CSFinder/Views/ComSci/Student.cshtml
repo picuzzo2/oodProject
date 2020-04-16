@@ -90,7 +90,7 @@
         float: left;
         width: 25%;
         padding-right: 10px;
-        height: 50%;
+        height: 52%;
         background-color: #f1f1f1;
         position: fixed;
         border-radius: 30px;
@@ -114,50 +114,27 @@
         <p><b>ที่อยู่ติดต่อ: </b> @ViewBag.comsci.Address </p>
         <p><b>เบอร์ติดต่อ: </b> @ViewBag.comsci.Phone </p>
         <p><b>อีเมล: </b> @ViewBag.userEmail </p>
-        </div>
+    </div>
 
-            <div class="column2">
-                <table id="t01">
-                    <tr>
-                        <th class="head-table">รายชื่อบริษัทที่ลงทะเบียน</th>
-                        <th class="head-table">จำนวน(คน)</th>
-                    </tr>
-                    <tr>
-                        <td>@ViewBag.companyName1</td>
-                        <td class="numOfStudent">@ViewBag.numberOfStudent1</td>
-                    </tr>
-                    <tr>
-                        <td>@ViewBag.companyName2</td>
-                        <td class="numOfStudent">@ViewBag.numberOfStudent2</td>
-                    </tr>
-                    <tr>
-                        <td>@ViewBag.companyName3</td>
-                        <td class="numOfStudent">@ViewBag.numberOfStudent3</td>
-                    </tr>
-                    <tr>
-                        <td>@ViewBag.companyName4</td>
-                        <td class="numOfStudent">@ViewBag.numberOfStudent4</td>
-                    </tr>
-                    <tr>
-                        <td>@ViewBag.companyName5</td>
-                        <td class="numOfStudent">@ViewBag.numberOfStudent5</td>
-                    </tr>
-                </table><br>
-                <table id="t02">
-                    <tr>
-                        <th class="head-table">รายชื่อนักศึกษา</th>
-                        <th class="head-table">สถานะ</th>
-                    </tr>
-                    @foreach (Student s in ViewBag.student)
-                    {
-                        <tr>
-                            <td>@s.Name</td>
-                            <td>@s.Status</td>
-                        </tr>
-                    }
+    <div class="column2">
 
-                </table>
-            </div>
-        </div>
+        <table id="t02">
+            <tr>
+                <th class="head-table">รายชื่อนักศึกษา</th>
+                <th class="head-table">สถานะ</th>
+            </tr>
+            @foreach (Student s in ViewBag.student)
+            {
+                <tr>
+                    <td>@Html.ActionLink(s.Name, "GetStudent", "Public", new { id = s.SID }, new { target = "_blank" })</td>
+                    <td>@s.Status</td>
+                </tr>
+            }
+
+        </table>
+        
+    </div>
+    
+</div>
 
 

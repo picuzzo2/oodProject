@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,7 +11,7 @@ namespace CSFinder.Controllers
 {
     public class CompanyController : Controller
     {
-        private Company user;
+        private Company user;        
         private CSFinderContext db;
         private string userEmail;
         public CompanyController(CSFinderContext _db)
@@ -32,16 +31,15 @@ namespace CSFinder.Controllers
             }
             else
             {
-                Debug.WriteLine("Set User");
-                Debug.WriteLine(user == null);
                 user = db.Companies.Where(u => u.ID.Equals((HttpContext.Session.GetString("UserID")))).FirstOrDefault();
                 userEmail = db.Accounts.Where(u => u.ID.Equals(user.ID)).FirstOrDefault().Email;
                 return true;
             }
 
         }
-        public IActionResult Home(CompanyAccount objUser)
+        public IActionResult Home()
         {
+            Debug.WriteLine("homepost5555555555");
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             List<PostCompany> pc = new List<PostCompany>();
             foreach (Post p in db.Posts)
@@ -49,16 +47,77 @@ namespace CSFinder.Controllers
                 Company c = db.Companies.Where(a => a.CID.Equals(p.CID)).FirstOrDefault();
                 pc.Add(new PostCompany(c, p));
             }
+            Post newPost = new Post();
             ViewBag.postCompanyList = pc;
             ViewBag.company = user;
             ViewBag.userEmail = userEmail;
-
-
-            ViewBag.AllStudent = "18";
-            ViewBag.CooStudent = "8";
-            ViewBag.TrainStudent = "10";
-            return View();
+            return View(newPost);
         }
+        [HttpPost]
+        public IActionResult Home(Post objPost)
+        {
+            Debug.WriteLine("homepost11111111111111111111111111");
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+           
+
+            if (ModelState.IsValid)
+            {
+                List<PostCompany> pc = new List<PostCompany>();
+                foreach (Post p in db.Posts)
+                {
+                    Company c = db.Companies.Where(a => a.CID.Equals(p.CID)).FirstOrDefault();
+                    pc.Add(new PostCompany(c, p));
+                }
+                ViewBag.postCompanyList = pc;
+                ViewBag.company = user;
+                ViewBag.userEmail = userEmail;
+
+
+                ViewBag.AllStudent = "18";
+                ViewBag.CooStudent = "8";
+                ViewBag.TrainStudent = "10";
+                Debug.WriteLine("5555555555555555555555555555555");
+                Debug.WriteLine(objPost.Detail);
+                Debug.WriteLine(objPost.ImgLink);
+                Debug.WriteLine(ModelState.IsValid);
+                String msg = "";
+
+                Post addpost = new Post();
+                Post userP = new Post();
+                int LastPID = LastPID = db.Posts.Max(p => p.PID);
+
+                userP.CID = user.CID;
+                if (LastPID == 0)
+                {
+                    userP.PID = 1;
+                }
+                else
+                {
+                    userP.PID = LastPID + 1;
+                }
+                Debug.WriteLine(objPost.Detail);
+                if (msg == "")                   
+                {
+                    addpost.CID = user.CID;
+                    addpost.PID = userP.PID;
+                    addpost.Detail = objPost.Detail;
+                    addpost.ImgLink = objPost.ImgLink;
+
+                    db.Posts.Add(addpost);
+                    db.SaveChanges();
+
+                    msg = "Post Success";
+
+                    return Json(new { success = true, responseText = msg });
+                }
+                else
+                {
+                    return Json(new { success = false, responseText = msg });
+                }
+            }
+                    return View(objPost);
+        }
+     
         public IActionResult Notification()
         {
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
@@ -72,8 +131,11 @@ namespace CSFinder.Controllers
             ViewBag.studentInterestName1 = "นางสาวอณิชา หารป่า";
             ViewBag.studentInterestName2 = "นางสาวปานระวี ไชยสิทธิ์";
             ViewBag.studentInterestName3 = "นายภรัญยู วงศ์แสง";
+            ViewBag.studentInterestName4 = "";
             return View();
+
         }
+
 
         public IActionResult Notification_Announcement()
         {
@@ -92,6 +154,44 @@ namespace CSFinder.Controllers
             ViewBag.studentInterestStatus3 = "ไม่ผ่าน";
             return View();
         }
+
+        public IActionResult Profile()
+        {
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+            ViewBag.user = user;
+            ViewBag.companyName = "บริษัท เอ็ม เอฟ อี ซี จำกัด (มหาชน)";
+            ViewBag.companyAddress = "699 อาคารโมเดอร์นฟอร์มทาวเวอร์ ชั้น 27 ถนนศรีนครินทร์ แขวงพัฒนาการ เขตสวนหลวง กรุงเทพมหานคร 10250";
+            ViewBag.companyPhone = "+66 (0) 2821-7999";
+            ViewBag.companyEmail = "sales@mfec.com";
+            ViewBag.Post1Img = "https://sv1.picz.in.th/images/2020/04/11/UWg8eR.jpg";
+
+            return View();
+        }
+
+        public IActionResult ProfileStudentInterest()
+        {
+            ViewBag.studentName = "อณิชา หารป่า";
+            ViewBag.studentFirstname = "อณิชา";
+            ViewBag.studentLastname = "หารป่า";
+            ViewBag.studentAddress = "4 หมู่9 ต.หางดง อ.หางดง จ.เชียงใหม่ 50230";
+            ViewBag.studentPhone = "0903186625";
+            ViewBag.studentFacebook = "Anicha Harnpa";
+            ViewBag.studentEmail = "anicha_h@gmail.com";
+            ViewBag.studentResume = "https://sv1.picz.in.th/images/2020/04/09/QFmsH1.jpg";
+            return View();
+        }
+        public IActionResult EditProfile()
+        {
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+            ViewBag.user = user;
+            ViewBag.companyName = "บริษัท เอ็ม เอฟ อี ซี จำกัด (มหาชน)";
+            ViewBag.companyAddress = "699 อาคารโมเดอร์นฟอร์มทาวเวอร์ ชั้น 27 ถนนศรีนครินทร์ แขวงพัฒนาการ เขตสวนหลวง กรุงเทพมหานคร 10250";
+            ViewBag.companyPhone = "+66 (0) 2821-7999";
+            ViewBag.companyEmail = "sales@mfec.com";
+            ViewBag.Post1Img = "https://sv1.picz.in.th/images/2020/04/11/UWg8eR.jpg";
+            return View();
+        }
+
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
@@ -99,4 +199,3 @@ namespace CSFinder.Controllers
         }
     }
 }
-

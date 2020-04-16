@@ -17,103 +17,129 @@
     .card-img {
         border-radius: 50%;
         margin: 20px;
-        width: 200px;
+        border: 1px solid #ddd;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
     }
 
     .profile {
         width: 100%;
     }
 
-    .text {
-        border-left: 2px solid gray;
+   input {
+        position: relative;
+        width: 100%;
     }
 
-    input {
+    p {
+        margin: 0;
+    }
+
+    .column1 {
+        float: left;
+        width: 25%;
+        padding-right: 10px;
+        height: 50%;
+        background-color: #f1f1f1;
+        position: fixed;
+        border-radius: 30px;
+    }
+
+    .column2 {
+        float: left;
         width: 100%;
+        padding-left: 40%;
+        height: 100%;
     }
 </style>
 
+<div class="row">
+    <div class="column1" align='center'>
 
-<div style="display: flex;">
-    <div class="text-left">
-        <div class="profile">
-            <img class="card-img" src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" /><br />
-            <p><b>ชื่อ:</b> @ViewBag.user.Name</p>
-            <p><b>สถานะ:</b> @ViewBag.user.Status  </p>
-        </div>
+        <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" align='center' /><br />
+        <p><b>ชื่อ</b> @ViewBag.user.Name</p>
+        <p><b>สถานะ:</b> @ViewBag.user.Status </p>
     </div>
-    <div class="text">
-        <div class="profile" style="margin: 20%; margin-top:10% ">
-            <p><b>ชื่อ:</b>&nbsp<input id="studentFirstname" type="text" /></p>
-            <p><b>นามสกุล:</b>&nbsp<input id="studentLastname" type="text" /></p>
-            <p><b>ที่อยู่:</b>&nbsp<input id="studentAddress" type="text" /></p>
-            <p><b>เบอร์โทรศัพท์:</b>&nbsp<input id="studentPhone" type="text" /></p>
-            <p><b>Facebook:</b>&nbsp<input id="studentFacebook " type="text" /> </p>
-            <p><b>Email:</b>&nbsp<input id="studentEmail  " type="text" /></p>
-            <p>
-                <b>อันดับที่เลือก:</b><br><input id="studentRanking " type="text" />
-                <br><input id="studentRanking2 " type="text" />
-                <br><input id="studentRanking3 " type="text" />
-            </p>
-            <p><b>Resume:</b></p>
-            <div class="file-upload">
-                <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
-                <script>
-                    Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
-                        const hiddenInput = button.parentElement.querySelector('.file-upload__input');
-                        const label = button.parentElement.querySelector('.file-upload__label');
-                        const defaultLabelText = 'No file(s) selected';
 
-                        label.textContent = defaultLabelText;
-                        label.title = defaultLabelText;
 
-                        button.addEventListener("click", function () {
-                            hiddenInput.click();
-                        });
+    <div class="column2">
+        <div class="main">
+            <div class="text">
+                <div class="profile">
+                    <p style="padding: 10px;"><b>ชื่อ:</b>&nbsp<input id="studentFirstname" type="text" /></p>
+                    <p style="padding: 10px;"><b>นามสกุล:</b>&nbsp<input id="studentLastname" type="text" /></p>
+                    <p style="padding: 10px;"><b>ที่อยู่:</b>&nbsp<input id="studentAddress" type="text" style="padding: 20px;" /></p>
+                    <p style="padding: 10px;"><b>เบอร์โทรศัพท์:</b>&nbsp<input id="studentPhone" type="text" /></p>
+                    <p style="padding: 10px;"><b>Email:</b>&nbsp<input id="studentEmail  " type="text" /></p>
+                    <p style="padding: 10px;">
+                        <b>อันดับที่เลือก:</b><br><input id="studentRanking " type="text" /><br>
+                        <br><input id="studentRanking2 " type="text" /><br>
+                        <br><input id="studentRanking3 " type="text" />
+                    </p>
+                    <p><b>Resume:</b></p>
+                    <div class="file-upload">
+                        <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
+                        <script>
+                            Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
+                                const hiddenInput = button.parentElement.querySelector('.file-upload__input');
+                                const label = button.parentElement.querySelector('.file-upload__label');
+                                const defaultLabelText = 'No file(s) selected';
 
-                        hiddenInput.addEventListener("change", function () {
-                            console.log(hiddenInput.files);
-                            const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
-                                return file.name;
-                            });
+                                label.textContent = defaultLabelText;
+                                label.title = defaultLabelText;
 
-                            label.textContent = filenameList.join(',') || defaultLabelText;
-                            label.title = label.textContent;
+                                button.addEventListener("click", function () {
+                                    hiddenInput.click();
+                                });
 
-                        });
-                </script>
-            </div><br>
+                                hiddenInput.addEventListener("change", function () {
+                                    console.log(hiddenInput.files);
+                                    const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
+                                        return file.name;
+                                    });
 
-            <p><b>Transcript:</b></p>
-            <div class="file-upload">
-                <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
-                <script>
-                    Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
-                        const hiddenInput = button.parentElement.querySelector('.file-upload__input');
-                        const label = button.parentElement.querySelector('.file-upload__label');
-                        const defaultLabelText = 'No file(s) selected';
+                                    label.textContent = filenameList.join(',') || defaultLabelText;
+                                    label.title = label.textContent;
 
-                        label.textContent = defaultLabelText;
-                        label.title = defaultLabelText;
+                                });
+                        </script>
+                    </div><br>
 
-                        button.addEventListener("click", function () {
-                            hiddenInput.click();
-                        });
+                    <p><b>Transcript:</b></p>
+                    <div class="file-upload">
+                        <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
+                        <script>
+                            Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
+                                const hiddenInput = button.parentElement.querySelector('.file-upload__input');
+                                const label = button.parentElement.querySelector('.file-upload__label');
+                                const defaultLabelText = 'No file(s) selected';
 
-                        hiddenInput.addEventListener("change", function () {
-                            console.log(hiddenInput.files);
-                            const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
-                                return file.name;
-                            });
+                                label.textContent = defaultLabelText;
+                                label.title = defaultLabelText;
 
-                            label.textContent = filenameList.join(',') || defaultLabelText;
-                            label.title = label.textContent;
+                                button.addEventListener("click", function () {
+                                    hiddenInput.click();
+                                });
 
-                        });
-                </script>
+                                hiddenInput.addEventListener("change", function () {
+                                    console.log(hiddenInput.files);
+                                    const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
+                                        return file.name;
+                                    });
+
+                                    label.textContent = filenameList.join(',') || defaultLabelText;
+                                    label.title = label.textContent;
+
+                                });
+                        </script>
+                    </div>
+                    <a href="Profile" class="btn btn-primary float-right" style="margin-top : 10px;" onclick="">Save</a>
+
+                </div>
             </div>
-
         </div>
     </div>
 </div>
+
 

@@ -13,9 +13,9 @@ namespace CSFinder.Models
         public string Name { get; set; }
        
         public string ID { get; set; }
-#nullable enable
-        public int? Type { get; set; }
-#nullable disable
+
+        public int Type { get; set; }
+
         public string Phone { get; set; }
 #nullable enable
         public string? Detail { get; set; }
@@ -32,4 +32,5 @@ namespace CSFinder.Models
 #nullable disable
         public string Address { get; set; }
     }
+
 }

@@ -76,6 +76,12 @@
         clear: both;
     }
 
+    .row {
+        display: flex;
+        content: "";
+        clear: both;
+    }
+
     /* Main column */
     .main {
         flex: 70%;
@@ -86,12 +92,36 @@
     p {
         margin: 0;
     }
+    .collapsible {
+        background-color: #ced6e0;
+        color: lightslategray;
+        border: none;
+        margin-left: 130px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
 
+        .collapsible:hover {
+            background-color: #f1f1f1;
+        }
+
+        .collapsible:disabled {
+            background-color: #f1f1f1;
+            color: #aaa;
+            cursor: auto;
+        }
+
+    .content {
+        padding: 0 18px;
+        display: none;
+        overflow: hidden;
+        background-color: #f1f1f1;
+    }
     .column1 {
         float: left;
         width: 25%;
         padding-right: 10px;
-        height: 50%;
+        height: 52%;
         background-color: #f1f1f1;
         position: fixed;
         border-radius: 30px;
@@ -100,8 +130,9 @@
     .column2 {
         float: left;
         width: 100%;
-        padding-left: 75%;
+        padding-left: 40%;
         height: 100%;
+        margin-top: 3%;
     }
 </style>
 
@@ -122,6 +153,43 @@
     </div>
 
     <div class="column2">
+        <div class="main">
+            @foreach (PostCompany pc in ViewBag.postCompanyList)
+            {
+                <p>
+                    <img class="card-img1" src="@pc.company.ImgProfile" />
+                    @pc.company.Name
+                </p>
 
+                <button class="collapsible">More Detail</button>
+
+
+                <div class="content" style="margin-left: 10%;">
+                    @pc.post.Detail
+                </div>
+
+                <img style="margin-left: 20%;" src="@pc.post.ImgLink" />
+
+
+            }
+
+            <script>
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                    } else {
+                        content.style.display = "block";
+                    }
+                });
+                }
+            </script>
+        </div>
     </div>
+
 </div>

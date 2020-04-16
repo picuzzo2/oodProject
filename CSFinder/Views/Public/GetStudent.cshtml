@@ -1,6 +1,9 @@
-﻿@{
-    ViewData["Title"] = "Profile";
+﻿
+@{
+    ViewData["Title"] = "GetStudent";
+    Layout = "_RegisLayout";
 }
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -70,7 +73,6 @@
         background-color: #f1f1f1;
         padding: 20px;
         width: 300px;
-
     }
 
     /* Main column */
@@ -84,7 +86,7 @@
         margin: 0;
     }
 
- .column1 {
+    .column1 {
         float: left;
         width: 25%;
         padding-right: 10px;
@@ -106,37 +108,35 @@
 <div class="row">
     <div class="column1" align='center'>
 
-        <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" align='center' /><br />
-        <p><b>ชื่อ</b> @ViewBag.user.Name</p>
-        <p><b>สถานะ:</b> @ViewBag.user.Status </p>
-        <button onclick="window.location.href = '/Student/EditProfile';">แก้ไขข้อมูล</button>
+        <img class="card-img" src="@ViewBag.obj.ImgProfile" alt="Avatar" /><br />
+        <p><b>ชื่อ</b> @ViewBag.obj.Name</p>
+        <p><b>สถานะ:</b> @ViewBag.obj.Status </p>
 
     </div>
 
 
     <div class="column2">
-        <div class="main" >
-                <table>
-                    <tr  style="margin-left: 10%;">
-                        <p><b>ชื่อ:</b> @ViewBag.user.Name </p>
-                        <p><b>เบอร์โทรศัพท์:</b> @ViewBag.user.Phone  </p>
-                        <p><b>Email:</b> @ViewBag.userEmail  </p>
-                        <p><b>อันดับที่เลือก:</b> @ViewBag.user.Rank1  </p>
-                    </tr>
-                    <tr>
-                        @if (ViewBag.user.ImgResume != null)
-                        {
-                            <p><b>Resume:</b></p>
-                            <img src="@ViewBag.user.ImgResume" alt="Resume" border="0" />
-                        }
-                        @if (ViewBag.user.ImgTranscript != null)
-                        {
-                            <p><b>Transcript:</b></p>
+        <div class="main">
+            <table>
+                <tr style="margin-left: 10%;">
+                    <p><b>ชื่อ:</b> @ViewBag.obj.Name </p>
+                    <p><b>เบอร์โทรศัพท์:</b> @ViewBag.obj.Phone  </p>
+                    <p><b>Email:</b> @ViewBag.userEmail  </p>
+                    <p><b>อันดับที่เลือก:</b> @ViewBag.obj.Rank1  </p>
+                </tr>
+                <tr>
+                    @if (ViewBag.obj.ImgResume != null)
+                    {
+                        <p><b>Resume:</b></p>
+                        <img src="@ViewBag.obj.ImgResume" alt="Resume" border="0" />
+                    }
+                    @if (ViewBag.obj.ImgTranscript != null)
+                    {
+                        <p><b>Transcript:</b></p>
 
-                        }
-                    </tr>
-                </table>
+                    }
+                </tr>
+            </table>
         </div>
     </div>
 </div>
-

@@ -1,4 +1,4 @@
-@model CSFinder.Models.CompanyAccount
+@model CSFinder.Models.Post
 @{
     ViewData["Title"] = "Home";
     Layout = "_CompanyLayout";
@@ -30,7 +30,6 @@
             width: 150px;
             height: 150px;
         }
-
 
 
         input {
@@ -78,6 +77,13 @@
             flex-wrap: wrap;
         }
 
+        /* Sidebar/left column */
+        .side {
+            flex: 30%;
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+
         /* Main column */
         .main {
             flex: 70%;
@@ -93,20 +99,24 @@
             border-radius: 10px;
             background-color: #D7DBDD;
         }
-        p {
+
+        .float-right {
+            margin: 0px 110px 0px 80px;
+        }
+
+              p {
         margin: 0;
     }
 
-    .column1 {
-        float: left;
-        width: 25%;
-        padding-right: 10px;
-        height: 50%;
-        background-color: #f1f1f1;
-        position: fixed;
-        border-radius: 30px;
-
-    }
+        .column1 {
+            float: left;
+            width: 25%;
+            padding-right: 10px;
+            height: 50%;
+            background-color: #f1f1f1;
+            position: fixed;
+            border-radius: 30px;
+        }
 
     .column2 {
         float: left;
@@ -122,33 +132,41 @@
     <!-- The flexible grid (content) -->
     <div class="row">
         <div class="column1" align='center'>
-            <img class="card-img" src="@ViewBag.company.ImgProfile" border="0"  /><br />
-            <p align='left' style="margin-left:40px;"><b>@ViewBag.company.Name</b></p>
-            <p align='left' style="margin-left:40px;"><b>ที่อยู่ : </b>@ViewBag.company.Address</p>
-            <p align='left' style="margin-left:40px;"><b>โทร : </b>@ViewBag.company.Phone</p>
-            <p align='left' style="margin-left:40px;"><b>Email : </b>@ViewBag.userEmail</p><br/>
-            <button >แก้ไขข้อมูล</button>
+            <img class="card-img" src="@ViewBag.company.ImgProfile" border="0" /><br />
+            <p><b>@ViewBag.company.Name</b></p>
+            <p><b>ที่อยู่ : </b>@ViewBag.company.Address</p>
+            <p><b>โทร : </b>@ViewBag.company.Phone</p>
+            <p><b>Email : </b>@ViewBag.userEmail</p>
         </div>
 
         <div class="column2">
             <div class="main">
-
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <div class="box">
-                            <div id="Post">
-                                @Html.TextBoxFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
+                <form id="postForm">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="box">
+                                <div id="Post">
+                                    Create Post
+                                    @{Model.CID = "1";}
+                                    @{Model.PID = 1;}
+                                    @Html.HiddenFor(a => a.CID);
+                                    @Html.HiddenFor(a => a.PID);
+                                    @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
+                                    @Html.ValidationMessageFor(a => a.Detail)
+                                    @Html.TextBoxFor(a => a.ImgLink, new { @class = "form-control", @placeholder = "Link something..." })
+                                    @Html.ValidationMessageFor(a => a.Detail)
+                                </div>
+                                <a href="home" class="btn btn-primary" onclick="PostImgCompany()">Upload image</a><br />
                             </div>
-                            <a href="home" class="btn btn-primary" onclick="PostImgCompany()">Upload image</a><br />
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <a href="home" class="btn btn-primary" onclick="PostCompany()">Post</a>
-                    </div>
-                </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <a href="home" class="btn btn-primary float-right" onclick="PostCompany()">Post</a>
+                        </div>
+                    </div><br />
+                </form>
 
                 @foreach (PostCompany p in ViewBag.postCompanyList)
                 {
@@ -161,39 +179,26 @@
                 }
             </div>
         </div>
-    </div>
+        </div>
 
 </body>
 </html>
 <script>
     var PostCompany = function () {
-        debugger
-        var data = $("#myForm").serialize();
-        if (!$("#myForm").valid()) {
-
-            return false;
-        }
-
-        $.ajax
-        ({
+        
+        var data = $("#postForm").serialize();
+        
+        $.ajax({
             type: "Post",
             url: "/Company/Home",
             data: data,
             success: function (response) {
+                alert(response.responseText);
+                window.location.href = "/RegisLogin/Login";
+                }
 
-                if (response == "fail") {
-                    window.location.href = "/Company/Home";
-                }
-                else if (response.success) {
-                    alert(response.responseText);
-                    window.location.href = "/Company/Home";
-                }
-                else if (!response.success) {
-                    alert(response.responseText);
-                    window.location.href = "/Company/Home"
-                    debugger
-                }
-            }
+            
         })
+        debugger
     }
 </script>
