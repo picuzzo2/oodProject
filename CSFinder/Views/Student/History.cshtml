@@ -123,36 +123,24 @@
                                 style="border-style:solid;
                                 border-width:4px;
                                 border-color:#D3D3D3 gray gray #D3D3D3;">
-                                <p><b>รอบที่ 1 (12/12/2562)</b></p>
+                                @foreach (Matching i in @ViewBag.showMatch)
+                                {
+                                    <p><b>รอบที่ : @ViewBag.maxRound (@i.Date)</b></p>
                                 <hr>
                                 <p><b>อันดับที่เลือก</b></p>
                                 <p align='center'>
-                                    <b>อันดับ 1 : </b><p1 style="color:#333399;">@ViewBag.Rank1</p1><br>
-                                    <b>อันดับ 2 : </b><p1 style="color:#333399;">@ViewBag.Rank2</p1><br>
-                                    <b>อันดับ 3 : </b><p1 style="color:#333399;">@ViewBag.Rank3</p1><br>
+                                    <b>อันดับ 1 : </b><p1 style="color:#333399;">@i.sRank1</p1><br>
+                                    <b>อันดับ 2 : </b><p1 style="color:#333399;"> @i.sRank2</p1><br>
+                                    <b>อันดับ 3 : </b><p1 style="color:#333399;"> @i.sRank3</p1><br>
                                 </p>
                                 <br>
                                 <p align='right'>
-                                    <b>บริษัทที่ได้ :</b> <p1 style="color:#333399;">@ViewBag.rankComplete</p1><br>
-                                    <b>สถานะ : @ViewBag.user.Status</b>
+                                    <b>บริษัทที่ได้ :</b> <p1 style="color:#333399;">@i.CID</p1><br>
+                                    <b>สถานะ : @i.Result</b>
                                 </p>
+                                }
                             </td>
                         </tr>
-
-                        
-                        @foreach (Matching i in @ViewBag.showMatch)
-                        {
-                            <p>รอบที่ @ViewBag.maxRound (@i.Date)</p>
-
-                            <p>อันดับที่เลือก</p>
-                            <p>1. @i.sRank1</p>
-                            <p>2. @i.sRank2</p>
-                            <p>3. @i.sRank3</p>
-
-                            <p>บริษัทที่ได้: @i.CID</p>
-                            <p>สถานะ: @i.Result</p>
-
-                        }
                     </table>
                 </div>
             </div>
