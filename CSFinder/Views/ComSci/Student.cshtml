@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Roboto:ital@1&display=swap" rel="stylesheet">
 <style>
     .card-img1 {
         border-radius: 50%;
@@ -34,9 +34,10 @@
     }
 
     table {
-        font-family: arial, sans-serif;
+        font-family: 'Kanit', sans-serif;
         border-collapse: collapse;
         width: 100%;
+        box-shadow: 11px 13px  #95afc0;
     }
 
     .head-table, .numOfStudent,
@@ -46,23 +47,23 @@
 
     td,
     th {
-        border: 1px solid #dddddd;
-        text-align: left;
+        border: 4px solid #b2bec3;
+        text-align: center;
         padding: 10px;
     }
 
     table#t01 th {
-        background-color: black;
-        color: white;
+        background-color: white;
+        color: black;
     }
 
     table#t02 th {
-        background-color: black;
-        color: white;
+        background-color: white;
+        color: black;
     }
 
     tr:nth-child(even) {
-        background-color: #dddddd;
+        background-color: #dfe6e9;
     }
 
     th {
@@ -90,18 +91,20 @@
         float: left;
         width: 25%;
         padding-right: 10px;
-        height: 52%;
+        height: auto;
         background-color: #f1f1f1;
         position: fixed;
         border-radius: 30px;
+        font-family: 'Kanit', sans-serif;
     }
 
     .column2 {
         float: left;
         width: 100%;
-        padding-left: 40%;
+        padding-left: 35%;
         height: 100%;
         margin-top:3%;
+        font-family: 'Kanit', sans-serif;
     }
 </style>
 
@@ -113,11 +116,11 @@
         <p>@ViewBag.comsci.University</p>
         <p><b>ที่อยู่ติดต่อ: </b> @ViewBag.comsci.Address </p>
         <p><b>เบอร์ติดต่อ: </b> @ViewBag.comsci.Phone </p>
-        <p><b>อีเมล: </b> @ViewBag.userEmail </p>
+        <p><b>อีเมล: </b> @ViewBag.userEmail </p><br>
     </div>
 
     <div class="column2">
-
+        <h2>รายชื่อนักศึกษา</h2>
         <table id="t02">
             <tr>
                 <th class="head-table">รายชื่อนักศึกษา</th>
@@ -132,7 +135,7 @@
             }
 
         </table>
-        
+
     </div>
     
 </div>
