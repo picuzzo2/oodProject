@@ -114,7 +114,7 @@
             float: left;
             width: 25%;
             padding-right: 10px;
-            height: 50%;
+            height: 52%;
             background-color: #f1f1f1;
             position: fixed;
             border-radius: 30px;
@@ -125,6 +125,81 @@
             width: 100%;
             padding-left: 40%;
             height: 100%;
+        }
+
+        .open-button {
+            background-color: #555;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+            margin: 0px;
+            bottom: 23px;
+            right: 28px;
+            width: 280px;
+        }
+
+        /* The popup form - hidden by default */
+        .form-popup {
+            width: 400px;
+            hight: 600px;
+            display: none;
+            background-color: #bdc3c7;
+            bottom: 0;
+            right: 15px;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+        }
+
+        /* Add styles to the form container */
+        .form-container {
+            max-width: 300px;
+            padding: 10px;
+            background-color: #bdc3c7;
+        }
+
+
+
+            /* Set a style for the submit/login button */
+            .form-container .btn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px 20px;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                margin-bottom: 10px;
+                opacity: 0.8;
+                margin-top: 2px;
+                margin-left: 10px;
+            }
+
+            /* Add a red background color to the cancel button */
+            .form-container .cancel {
+                background-color: red;
+                margin-top: 10px;
+            }
+
+            /* Add some hover effects to buttons */
+            .form-container .btn:hover, .open-button:hover {
+                opacity: 1;
+            }
+
+        input {
+            position: relative;
+            background: #dfe4ea;
+            border: 3px solid #ced6e0;
+            border-radius: 10px;
+            margin-bottom: 3px;
+        }
+
+        .date {
+            position: relative;
+            background: #dfe4ea;
+            border: 3px solid #ced6e0;
+            border-radius: 10px;
+            margin-bottom: 3px;
         }
     </style>
 </head>
@@ -141,28 +216,40 @@
         </div>
 
         <div class="column2">
-            <div class="main">
-                <b class="header">รายชื่อนักศึกษาที่สนใจฝึกงาน/สหกิจศึกษา</b><br>
+            <div>
+            @foreach (StudentNameMatching sm in @ViewBag.StudentNameMatchingList)
+            {
+                <div class="main">
                 <div class="box">
                     <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
-                    <div class="student">
-                        @ViewBag.studentInterestName1<br>
-                        <a href="ProfileStudentInterest">ข้อมูลนักศึกษา</a>
+                    <p>@sm.student.Name</p>
+                    <a href="ProfileStudentInterest">ข้อมูลนักศึกษา</a>
+                    <button class="open-button" onclick="openForm()">นัดสัมภาษณ์</button>
+                    <div class="form-popup" id="myForm">
+                        <form action="/action_page.php" class="form-container">
+                            <label for="interview">วันที่นัดสัมภาษณ์</label>
+                            <input class="date" type="date" id="interview" name="interview"><br>
+                            <label for="interview">รายละเอียดในการนัดสัมภาษณ์</label>
+                            <input type="text" id="text" style="width:300px; ">
+                            <button type="button" class="btn cancel" onclick="closeForm()">ยืนยัน</button>
+                        </form>
                     </div>
-                    <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
-                    <div class="student">
-                        @ViewBag.studentInterestName2<br>
-                        <a href="">ข้อมูลนักศึกษา</a>
                     </div>
-                    <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
-                    <div class="student">
-                        @ViewBag.studentInterestName3<br>
-                        <a href="">ข้อมูลนักศึกษา</a>
                     </div>
+
+                    }
+
+                    <script>
+                        function openForm() {
+                            document.getElementById("myForm").style.display = "block";
+                        }
+
+                        function closeForm() {
+                            document.getElementById("myForm").style.display = "none";
+                        }
+                    </script>
                 </div>
             </div>
-        </div>
-    </div>
 </body>
 </html>
 

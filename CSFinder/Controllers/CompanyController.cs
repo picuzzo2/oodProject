@@ -11,7 +11,8 @@ namespace CSFinder.Controllers
 {
     public class CompanyController : Controller
     {
-        private Company user;        
+        private Company user;
+        private Student stu;
         private CSFinderContext db;
         private string userEmail;
         public CompanyController(CSFinderContext _db)
@@ -132,6 +133,18 @@ namespace CSFinder.Controllers
             ViewBag.studentInterestName2 = "นางสาวปานระวี ไชยสิทธิ์";
             ViewBag.studentInterestName3 = "นายภรัญยู วงศ์แสง";
             ViewBag.studentInterestName4 = "";
+
+            List<StudentNameMatching> sm = new List<StudentNameMatching>();
+            foreach (Matching m in db.Matchings)
+            {
+                if (m.CID == user.CID)
+                {
+                    Student s = db.Students.Where(b => b.SID.Equals(m.SID)).FirstOrDefault();
+                    sm.Add(new StudentNameMatching(s, m));
+                }
+            }
+            ViewBag.StudentNameMatchingList = sm;
+
             return View();
 
         }

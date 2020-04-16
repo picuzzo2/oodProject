@@ -1,11 +1,7 @@
-<<<<<<< Updated upstream
 @model CSFinder.Models.Student
 @{
-=======
-﻿@model CSFinder.Models.Student
-﻿@{
->>>>>>> Stashed changes
     ViewData["Title"] = "Home Page";
+    Layout = "_StudentLayout";
 }
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
@@ -13,7 +9,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
 <style>
-
     .card-img1 {
         border-radius: 50%;
         margin: 3px;
@@ -22,12 +17,10 @@
         height: 50px;
         border: 1px solid #ddd;
     }
-
     img {
         margin: 20px;
         width: 500px;
     }
-
     .card-img {
         border-radius: 50%;
         margin: 20px;
@@ -36,8 +29,6 @@
         width: 150px;
         height: 150px;
     }
-
-
     input {
         position: relative;
         background: #f1f1f1;
@@ -48,7 +39,6 @@
         height: 40px;
         width: 100%;
     }
-
     button {
         border: 3px solid #22a6b3;
         border-radius: 10px;
@@ -106,194 +96,8 @@
             cursor: auto;
         }
 
-<<<<<<< Updated upstream
-    .rank {
-        background-color: #ced6e0;
-        color: lightslategray;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-        .rank:hover {
-            background-color: #f1f1f1;
-        }
-
-        .rank:disabled {
-            background-color: #f1f1f1;
-            color: #aaa;
-            cursor: auto;
-        }
-
-    .content {
-        padding: 0 18px;
-        display: none;
-        overflow: hidden;
-        background-color: #f1f1f1;
-    }
-
-=======
->>>>>>> Stashed changes
-    #myDIV {
-        padding: 0 18px;
-        display: none;
-        overflow: hidden;
-<<<<<<< Updated upstream
-        background-color: #ced6e0;
-        height: 210px;
-        width: 360px;
-        border-radius: 10px;
-        margin-left: 20px;
-        margin-top: 3px;
-    }
-
-    p {
-        margin: 0;
-    }
-
-    .column1 {
-        float: left;
-        width: 25%;
-        padding-right: 10px;
-        height: 50%;
-        background-color: #f1f1f1;
-        position: fixed;
-        border-radius: 30px;
-    }
-
-    .column2 {
-        float: left;
-        width: 100%;
-        padding-left: 30%;
-        height: 100%;
-    }
-</style>
 
 
-<div class="row">
-    <div class="column1" align='center'>
-        <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" /><br />
-        <p><b>ชื่อ</b> @ViewBag.user.Name</p>
-        <p><b>สถานะ:</b> @ViewBag.user.Status </p>
-        <button onclick="myFunction()" class="rank">Ranking</button>
-        <div id="myDIV" style="margin-left: 10%;">
-            <span>
-                @Html.TextBoxFor(a => a.Rank1, new { @class = "form-control", @placeholder = "อันดับที่ 1" })
-                @Html.ValidationMessageFor(a => a.Rank1, "", new { @class = "text-danger" })
-            </span>
-
-            <span>
-                @Html.TextBoxFor(a => a.Rank2, new { @class = "form-control", @placeholder = "อันดับที่ 2" })
-                @Html.ValidationMessageFor(a => a.Rank2, "", new { @class = "text-danger" })
-            </span>
-
-            <span>
-                @Html.TextBoxFor(a => a.Rank3, new { @class = "form-control", @placeholder = "อันดับที่ 3" })
-                @Html.ValidationMessageFor(a => a.Rank3, "", new { @class = "text-danger" })
-            </span>
-
-            <a href="History" class="btn btn-primary float-right" style="margin-top : 10px;" onclick="ChooseRank()">Choose</a>
-        </div>
-        <script>
-
-            function myFunction() {
-                var x = document.getElementById("myDIV");
-                if (x.style.display === "none") {
-                    x.style.display = "block";
-                } else {
-                    x.style.display = "none";
-                }
-            }
-        </script>
-    </div>
-
-</div>
-
-<div class="column2">
-    <div class="main">
-        @foreach (PostCompany pc in ViewBag.postCompanyList)
-        {
-
-
-            <p>
-                <img class="card-img1" src="@pc.company.ImgProfile" />
-                @pc.company.Name
-            </p>
-
-            <button class="collapsible">More Detail</button>
-
-
-            <div class="content" style="margin-left: 10%;">
-                @pc.post.Detail
-            </div>
-
-            <img style="margin-left: 20%;" src="@pc.post.ImgLink" />
-
-
-        }
-
-        <script>
-            var coll = document.getElementsByClassName("collapsible");
-            var i;
-
-            for (i = 0; i < coll.length; i++) {
-                coll[i].addEventListener("click", function () {
-                    this.classList.toggle("active");
-                    var content = this.nextElementSibling;
-                    if (content.style.display === "block") {
-                        content.style.display = "none";
-                    } else {
-                        content.style.display = "block";
-                    }
-                });
-            }
-
-            var ChooseRank = function () {
-
-                var data = $("#RankForm").serialize();
-
-                $.ajax({
-                    type: "Post",
-                    url: "/Student/History",
-                    data: data,
-                    success: function (response) {
-                        alert(response.responseText);
-                        window.location.href = "/RegisLogin/Login";
-                    }
-                })
-                debugger
-            }
-        </script>
-
-    </div>
-</div>
-=======
-        background-color: #f1f1f1;
-    }
-
-
-.open-button { 
-  background-color: #555; 
-  color: white; 
-  padding: 16px 20px; 
-  border: none; 
-  cursor: pointer; 
-  opacity: 0.8; 
-  padding: 0 18px; 
-        display: none; 
-        overflow: hidden; 
-         
- 
-} 
- 
-/* The popup form - hidden by default */ 
-.form-popup { 
-  display: none; 
- 
-  border: 3px solid #f1f1f1; 
-  z-index: 9; 
-} 
- 
     .content { 
         padding: 0 18px; 
         display: none; 
@@ -301,18 +105,6 @@
         background-color: #f1f1f1; 
     } 
  
-    #myDIV { 
-        padding: 0 18px; 
-        display: none; 
-        overflow: hidden; 
-        background-color: #ced6e0; 
-        height: 210px; 
-        width: 670px; 
-        border-radius: 10px; 
-        margin-left: 20px; 
-        margin-top: 3px; 
-    }
-
     p {
         margin: 0;
     }
@@ -436,13 +228,8 @@
                     } 
                 }); 
             } 
- 
- 
+  
         </script> 
- 
- 
- 
- 
     </div>
 </div>
->>>>>>> Stashed changes
+
