@@ -71,6 +71,19 @@ namespace CSFinder.Controllers
             ViewBag.RankComplete = "บริษัท ปูน...";
             ViewBag.Status = user.Status;
 
+            int maxRound = int.Parse(db.Matchings.Max(p => p.MID));
+            ViewBag.maxRound = maxRound;
+
+            List<Matching> showMatch = new List<Matching>();
+            foreach(Matching mat in db.Matchings.ToList())
+            {           
+                if(mat.SID == user.SID)
+                {
+                    showMatch.Add(mat);
+                }
+            }
+            ViewBag.showMatch = showMatch;
+
             return View();
         }
         public IActionResult ReplyHistory()
