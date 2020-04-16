@@ -137,8 +137,11 @@ namespace CSFinder.Controllers
             List<StudentNameMatching> sm = new List<StudentNameMatching>();
             foreach (Matching m in db.Matchings)
             {
-                Student s = db.Students.Where(b => b.SID.Equals(m.SID)).FirstOrDefault();
-                sm.Add(new StudentNameMatching(s, m));
+                if (m.CID == user.CID)
+                {
+                    Student s = db.Students.Where(b => b.SID.Equals(m.SID)).FirstOrDefault();
+                    sm.Add(new StudentNameMatching(s, m));
+                }
             }
             ViewBag.StudentNameMatchingList = sm;
 
