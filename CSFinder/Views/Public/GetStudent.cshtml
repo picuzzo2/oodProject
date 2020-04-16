@@ -1,14 +1,14 @@
 ﻿
 @{
     ViewData["Title"] = "GetStudent";
-    Layout = "_RegisLayout";
+    Layout = "_ComSciLayout";
 }
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Roboto:ital@1&display=swap" rel="stylesheet">
 <style>
     .card-img1 {
         border-radius: 50%;
@@ -88,12 +88,13 @@
 
     .column1 {
         float: left;
-        width: 25%;
+        width: 35%;
         padding-right: 10px;
-        height: 50%;
+        height: 100%;
         background-color: #f1f1f1;
         position: fixed;
         border-radius: 30px;
+        font-family: 'Kanit', sans-serif;
     }
 
     .column2 {
@@ -101,6 +102,7 @@
         width: 100%;
         padding-left: 40%;
         height: 100%;
+        font-family: 'Roboto', sans-serif;
     }
 </style>
 
@@ -109,34 +111,37 @@
     <div class="column1" align='center'>
 
         <img class="card-img" src="@ViewBag.obj.ImgProfile" alt="Avatar" /><br />
-        <p><b>ชื่อ</b> @ViewBag.obj.Name</p>
+        <p><b>ชื่อ:</b> @ViewBag.obj.Name </p>
+        <p><b>รหัสนักศึกษา:</b> @ViewBag.obj.SID </p>
         <p><b>สถานะ:</b> @ViewBag.obj.Status </p>
+        <p><b>เบอร์โทรศัพท์:</b> @ViewBag.obj.Phone  </p>
+        <p><b>Email:</b> @ViewBag.userEmail  </p>
+        <p><b>รายละเอียดเพิ่มเติม:</b> @ViewBag.obj.Detail  </p>
 
     </div>
 
 
     <div class="column2">
         <div class="main">
-            <table>
-                <tr style="margin-left: 10%;">
-                    <p><b>ชื่อ:</b> @ViewBag.obj.Name </p>
-                    <p><b>เบอร์โทรศัพท์:</b> @ViewBag.obj.Phone  </p>
-                    <p><b>Email:</b> @ViewBag.userEmail  </p>
-                    <p><b>อันดับที่เลือก:</b> @ViewBag.obj.Rank1  </p>
-                </tr>
-                <tr>
+            
+                <div style=" height: auto; background-color: #f1f1f1; border-radius: 30px;">
                     @if (ViewBag.obj.ImgResume != null)
                     {
-                        <p><b>Resume:</b></p>
+                    <div style="background-color: #40739e; box-shadow: 5px 10px #273c75;">
+                        <p><b style=" margin-left: 10px; font-size: 20px; color: wheat;">Resume</b></p></div>
                         <img src="@ViewBag.obj.ImgResume" alt="Resume" border="0" />
                     }
+
+                </div>
+                <div>
                     @if (ViewBag.obj.ImgTranscript != null)
                     {
-                        <p><b>Transcript:</b></p>
+                <div style="background-color: #40739e; box-shadow: 5px 10px #273c75; ">
+                    <p><b style=" margin-left: 10px; font-size: 20px; color: wheat; margin-top: 10px;">Transcript</b></p></div>
 
                     }
-                </tr>
-            </table>
+                </div>
+            
         </div>
     </div>
 </div>
