@@ -237,16 +237,23 @@
                                 <img class="card-img1" src="@sm.student.ImgProfile" border="0" />
                                 <p>ชื่อ: @sm.student.Name</p>
                                 @Html.ActionLink("Student Detail", "GetStudent", "Public",new { id = sm.student.SID }, new {@class ="open-button1", target = "_blank" })
-                                <button class="open-button2" onclick="openForm()">นัดสัมภาษณ์</button>
-                                <div class="form-popup" id="myForm">
-                                    <form action="/action_page.php" class="form-container">
-                                        <label for="interview">วันที่นัดสัมภาษณ์</label>
-                                        <input class="date" type="date" id="interview" name="interview"><br>
-                                        <label for="interview">รายละเอียดในการนัดสัมภาษณ์</label>
-                                        <input type="text" id="text" style="width:300px; height:100px;">
-                                        <button type="button" class="btn cancel" onclick="closeForm()">ยืนยัน</button>
-                                    </form>
-                                </div>
+                                @if (sm.matching.Result == "Waiting for interview")
+                                {
+                                    <button class="open-button2" onclick="openForm()">นัดสัมภาษณ์</button>
+                                    <div class="form-popup" id="myForm">
+                                        <form action="/action_page.php" class="form-container">
+                                            <label for="interview">วันที่นัดสัมภาษณ์</label>
+                                            <input class="date" type="date" id="interview" name="interview"><br>
+                                            <label for="interview">รายละเอียดในการนัดสัมภาษณ์</label>
+                                            <input type="text" id="text" style="width:300px; height:100px;">
+                                            <button type="button" class="btn cancel" onclick="closeForm()">ยืนยัน</button>
+                                        </form>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <!--ทำยืนยันผลสัมภาษณ์-->
+                                }
                             </div>
                         </div>
                     </div>
