@@ -106,26 +106,25 @@
 
 <div class="row">
     <div class="column1" align='center'>
-        <img class="card-img1" src="@ViewBag.Post1Img" border="0" /><br />
-        <p><b>@ViewBag.companyName</b></p>
-        <p><b>ที่อยู่ : </b>@ViewBag.companyAddress</p>
-        <p><b>โทร : </b>@ViewBag.companyPhone</p>
-        <p><b>Email : </b>@ViewBag.companyEmail</p>
+        <img class="card-img1" src="@ViewBag.user.ImgProfile" border="0" /><br />
+        <p><b>@ViewBag.user.Name</b></p>
+        <p><b>ที่อยู่ : </b>@ViewBag.user.Address</p>
+        <p><b>โทร : </b>@ViewBag.user.Phone</p>
+        <p><b>Email : </b>@ViewBag.userEmail</p>
         <button onclick="window.location.href = '/Company/EditProfile';">แก้ไขข้อมูล</button>
     </div>
 
     <div class="column2">
         <div class="main">
-            <table>
-                <tr style="margin-left: 10%;">
-                    <p><b>ชื่อ:</b> @ViewBag.companyName </p>
-                    <p><b>ที่อยู่:</b> @ViewBag.companyAddress  </p>
-                    <p><b>เบอร์โทรศัพท์:</b> @ViewBag.user.Phone  </p>
-                    <p><b>Email:</b> @ViewBag.userEmail  </p>
-                    
-                </tr>
-          
-            </table>
+            @foreach(var post in ViewBag.posts)
+            {
+                <div>
+                    <img class="card-img1" src="@post.company.ImgProfile">
+                    @post.company.Name <br />
+                    @post.post.Detail <br />
+                    <img src="@post.post.ImgLink">
+                </div>
+            }
         </div>
     </div>
 </div>

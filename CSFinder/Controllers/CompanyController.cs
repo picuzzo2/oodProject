@@ -172,11 +172,14 @@ namespace CSFinder.Controllers
         {
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.user = user;
-            ViewBag.companyName = "บริษัท เอ็ม เอฟ อี ซี จำกัด (มหาชน)";
-            ViewBag.companyAddress = "699 อาคารโมเดอร์นฟอร์มทาวเวอร์ ชั้น 27 ถนนศรีนครินทร์ แขวงพัฒนาการ เขตสวนหลวง กรุงเทพมหานคร 10250";
-            ViewBag.companyPhone = "+66 (0) 2821-7999";
-            ViewBag.companyEmail = "sales@mfec.com";
-            ViewBag.Post1Img = "https://sv1.picz.in.th/images/2020/04/11/UWg8eR.jpg";
+            ViewBag.userEmail = userEmail;
+            List<PostCompany> userPosts = new List<PostCompany>();
+            foreach(Post p in db.Posts.Where(x => x.CID == user.CID).OrderByDescending(x => x.PID).ToList())
+            {
+                userPosts.Add(new PostCompany(user, p));
+            }
+            ViewBag.posts = userPosts;
+           
 
             return View();
         }
