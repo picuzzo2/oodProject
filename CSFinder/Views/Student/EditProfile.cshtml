@@ -1,4 +1,5 @@
-﻿@{
+﻿@model CSFinder.Models.StudentAccount
+@{
     ViewData["Title"] = "EditProfile";
 }
 
@@ -27,7 +28,7 @@
         width: 100%;
     }
 
-   input {
+    input {
         position: relative;
         width: 100%;
     }
@@ -65,81 +66,145 @@
 
     <div class="column2">
         <div class="main">
-            <div class="text">
-                <div class="profile">
-                    <p style="padding: 10px;"><b>ชื่อ:</b>&nbsp<input id="studentFirstname" type="text" /></p>
-                    <p style="padding: 10px;"><b>นามสกุล:</b>&nbsp<input id="studentLastname" type="text" /></p>
-                    <p style="padding: 10px;"><b>ที่อยู่:</b>&nbsp<input id="studentAddress" type="text" style="padding: 20px;" /></p>
-                    <p style="padding: 10px;"><b>เบอร์โทรศัพท์:</b>&nbsp<input id="studentPhone" type="text" /></p>
-                    <p style="padding: 10px;"><b>Email:</b>&nbsp<input id="studentEmail  " type="text" /></p>
-                    <p style="padding: 10px;">
-                        <b>อันดับที่เลือก:</b><br><input id="studentRanking " type="text" /><br>
-                        <br><input id="studentRanking2 " type="text" /><br>
-                        <br><input id="studentRanking3 " type="text" />
-                    </p>
-                    <p><b>Resume:</b></p>
-                    <div class="file-upload">
-                        <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
-                        <script>
-                            Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
-                                const hiddenInput = button.parentElement.querySelector('.file-upload__input');
-                                const label = button.parentElement.querySelector('.file-upload__label');
-                                const defaultLabelText = 'No file(s) selected';
-
-                                label.textContent = defaultLabelText;
-                                label.title = defaultLabelText;
-
-                                button.addEventListener("click", function () {
-                                    hiddenInput.click();
-                                });
-
-                                hiddenInput.addEventListener("change", function () {
-                                    console.log(hiddenInput.files);
-                                    const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
-                                        return file.name;
-                                    });
-
-                                    label.textContent = filenameList.join(',') || defaultLabelText;
-                                    label.title = label.textContent;
-
-                                });
-                        </script>
-                    </div><br>
-
-                    <p><b>Transcript:</b></p>
-                    <div class="file-upload">
-                        <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
-                        <script>
-                            Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
-                                const hiddenInput = button.parentElement.querySelector('.file-upload__input');
-                                const label = button.parentElement.querySelector('.file-upload__label');
-                                const defaultLabelText = 'No file(s) selected';
-
-                                label.textContent = defaultLabelText;
-                                label.title = defaultLabelText;
-
-                                button.addEventListener("click", function () {
-                                    hiddenInput.click();
-                                });
-
-                                hiddenInput.addEventListener("change", function () {
-                                    console.log(hiddenInput.files);
-                                    const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
-                                        return file.name;
-                                    });
-
-                                    label.textContent = filenameList.join(',') || defaultLabelText;
-                                    label.title = label.textContent;
-
-                                });
-                        </script>
+            <div class="col-md-9">
+                <form id="myForm">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <h3>Edit profile Student</h3>
+                        </div>
                     </div>
-                    <a href="Profile" class="btn btn-primary float-right" style="margin-top : 10px;" onclick="">Save</a>
 
+                    <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
+                        <div align="left" class="col-md-12">
+                            <span>@Html.LabelFor(a => a.Name)</span>
+                            <span>
+                                @Html.TextBoxFor(a => a.Name, new { @class = "form-control", @placeholder = "Edit Name" })
+                                @Html.ValidationMessageFor(a => a.Name, "", new { @class = "text-danger" })
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
+                        <div align="left" class="col-md-12">
+                            <span>@Html.LabelFor(a => a.Address)</span>
+                            <span>
+                                @Html.TextBoxFor(a => a.Address, new { @class = "form-control", @placeholder = "Edit Address" })
+                                @Html.ValidationMessageFor(a => a.Address, "", new { @class = "text-danger" })
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
+                        <div align="left" class="col-md-12">
+                            <span>@Html.LabelFor(a => a.Phone)</span>
+                            <span>
+                                @Html.TextBoxFor(a => a.Phone, new { @class = "form-control", @placeholder = "Edit Phone number" })
+                                @Html.ValidationMessageFor(a => a.Phone, "", new { @class = "text-danger" })
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
+                        <div align="left" class="col-md-12">
+                            <span>@Html.LabelFor(a => a.Email)</span>
+                            <span>
+                                @Html.TextBoxFor(a => a.Email, new { @class = "form-control", @placeholder = "Edit Email" })
+                                @Html.ValidationMessageFor(a => a.Email, "", new { @class = "text-danger" })
+                            </span>
+                        </div>
+                    </div>
+                </form>
+                <p><b>Resume:</b></p>
+                <div class="file-upload">
+                    <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
+                    <script>
+                        Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
+                            const hiddenInput = button.parentElement.querySelector('.file-upload__input');
+                            const label = button.parentElement.querySelector('.file-upload__label');
+                            const defaultLabelText = 'No file(s) selected';
+
+                            label.textContent = defaultLabelText;
+                            label.title = defaultLabelText;
+
+                            button.addEventListener("click", function () {
+                                hiddenInput.click();
+                            });
+
+                            hiddenInput.addEventListener("change", function () {
+                                console.log(hiddenInput.files);
+                                const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
+                                    return file.name;
+                                });
+
+                                label.textContent = filenameList.join(',') || defaultLabelText;
+                                label.title = label.textContent;
+
+                            });
+                    </script>
+                </div><br>
+
+                <p><b>Transcript:</b></p>
+                <div class="file-upload">
+                    <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
+                    <script>
+                        Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
+                            const hiddenInput = button.parentElement.querySelector('.file-upload__input');
+                            const label = button.parentElement.querySelector('.file-upload__label');
+                            const defaultLabelText = 'No file(s) selected';
+
+                            label.textContent = defaultLabelText;
+                            label.title = defaultLabelText;
+
+                            button.addEventListener("click", function () {
+                                hiddenInput.click();
+                            });
+
+                            hiddenInput.addEventListener("change", function () {
+                                console.log(hiddenInput.files);
+                                const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
+                                    return file.name;
+                                });
+
+                                label.textContent = filenameList.join(',') || defaultLabelText;
+                                label.title = label.textContent;
+
+                            });
+                    </script>
                 </div>
+                <a href="Profile" class="btn btn-primary float-right" style="margin-top : 10px;">Cancle</a>
+                <a href="Profile" class="btn btn-primary float-right" style="margin-top : 10px;" onclick="Save()">Save</a>&nbsp;
             </div>
         </div>
+        
     </div>
-</div>
+    </div>
+<script>
+    var Save = function () {
+        debugger
+        var data = $("#myForm").serialize();
+        if (!$("#myForm").valid()) {
+
+            return false;
+        }
+
+        $.ajax({
+            type: "Post",
+            url: "/Student/EditProfile",
+            data: data,
+            success: function (response) {
+
+                if (response == "fail") {
+                    window.location.href = "/Student/EditProfile";
+                }
+                else if (response.success) {
+                    alert(response.responseText);
+                    window.location.href = "/Student/Profile";
+                }
+                else if (!response.success) {
+                    alert(response.responseText);
+                    window.location.href = "/Student/EditProfile";
+                }
+                debugger
+            }
+        })
+    }
+</script>
 
 
