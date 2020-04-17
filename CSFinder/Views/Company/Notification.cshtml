@@ -242,6 +242,7 @@ color:white;
         <div class="column2">
             <div>
                 @{ int i = 0;
+                   int j = 1000;
                 @foreach (StudentNameMatching sm in @ViewBag.StudentNameMatchingList)
                 {
 
@@ -254,22 +255,24 @@ color:white;
                                 @if (sm.matching.Result == "Waiting for interview")
                                 {
                                     i++;
+                                    j++;
+                                    string interview = "interview"+j;
                                     { int target = i; 
-                                    <a href="#interview" class="btn btn-info" data-toggle="collapse">นัดสัมภาษณ์</a>
-                                    <div id ="interview" class="collapse">
+                                    <a href="#@interview" class="btn btn-info" data-toggle="collapse">นัดสัมภาษณ์</a>
+                                    <div id ="@interview" class="collapse">
                                         <form id="@i" class="form-container">
                                             <label for="interview">วันที่นัดสัมภาษณ์</label>
                                             @Html.EditorFor(model => model.Date, new { type = "date" })<br>
                                             <label for="interview">รายละเอียดในการนัดสัมภาษณ์</label>
-                                            @Html.EditorFor(model => model.Detail, null)
+                                            @Html.TextAreaFor(model => model.Detail, null)
 
                                             <button type="button" class="btn cancel" onclick="confirm(@target,@ViewBag.user.CID, @sm.matching.SID, @sm.matching.MID)">ยืนยัน</button>
                                         </form>
                                     </div>
                                 } }
-                                else
+                                else if(sm.matching.Result == "Waiting for interview result")
                                 {
-                                    <!--ทำยืนยันผลสัมภาษณ์-->
+                                    <div class="btn btn-info">Waiting for interview result</div>
                                 }
                             </div>  
                         </div>
@@ -293,6 +296,7 @@ color:white;
             url: "/Company/InterviewAppointment",
             success(response) {
                 alert(response);
+                window.location.href = "/Company/Notification";
             }
         })
     }

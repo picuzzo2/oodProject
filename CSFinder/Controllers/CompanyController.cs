@@ -148,8 +148,10 @@ namespace CSFinder.Controllers
             Debug.WriteLine(message.from);
             Debug.WriteLine(message.to);
             Debug.WriteLine(MID);
-
-            return Json("hi");
+            Matching m = db.Matchings.Where(x => x.MID == MID && x.SID == message.to && x.CID == message.from).FirstOrDefault();
+            m.Result = "Waiting for interview result";
+            db.SaveChanges();
+            return Json("The Email has send");
         }
 
 
