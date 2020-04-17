@@ -1,0 +1,169 @@
+﻿
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "_CompanyLayout";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Roboto:ital@1&display=swap" rel="stylesheet">
+<style>
+
+
+    .card-img1 {
+        border-radius: 50%;
+        margin: 3px;
+        width: 50px;
+        height: 50px;
+        border: 1px solid #ddd;
+    }
+
+    img {
+        margin: 20px;
+        width: 500px;
+    }
+
+    .card-img {
+        border-radius: 50%;
+        margin: 20px;
+        border: 1px solid #ddd;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+
+
+    input {
+        position: relative;
+        width: 700px;
+        height: 120px;
+        background: #ced6e0;
+        border: 3px solid #22a6b3;
+        border-radius: 10px;
+        margin-bottom: 3px;
+        width: 100%;
+        padding: 20px;
+    }
+
+    button {
+        background-color: #ced6e0;
+        color: lightslategray;
+        border: none;
+        margin-left: 130px;
+        border-radius: 4px;
+        font-family: 'Kanit', sans-serif;
+    }
+
+        button:hover {
+            background-color: #f1f1f1;
+        }
+
+        button:disabled {
+            background-color: #f1f1f1;
+            color: #aaa;
+            cursor: auto;
+        }
+
+    * {
+        box-sizing: border-box;
+    }
+
+        *
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+    /* Column container */
+    .row {
+        display: flex;
+        content: "";
+        clear: both;
+    }
+
+    /* Sidebar/left column */
+    .side {
+        flex: 30%;
+        background-color: #f1f1f1;
+        padding: 20px;
+        width: 300px;
+    }
+
+    /* Main column */
+    .main {
+        flex: 70%;
+        background-color: white;
+        padding: 20px;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .column1 {
+        float: left;
+        width: 25%;
+        padding-right: 10px;
+        height: auto;
+        background-color: #f1f1f1;
+        position: fixed;
+        border-radius: 30px;
+        font-family: 'Kanit', sans-serif;
+    }
+
+    .column2 {
+        float: left;
+        width: 100%;
+        padding-left: 35%;
+        height: 100%;
+        font-family: 'Kanit', sans-serif;
+    }
+
+    .detail {
+        padding: 15px;
+        height: auto;
+        background-color: #f1f1f1;
+        margin-top: 5px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        font-family: 'Kanit', sans-serif;
+    }
+    .head {
+        padding-left: 16px;
+        background-color: #40739e;
+        box-shadow: 5px 10px #273c75;
+        margin-left: 10px;
+        font-size: 20px;
+        color: wheat;
+    }
+</style>
+
+
+<div class="row">
+    <div class="column1" align='center'>
+        <img class="card-img" src="@ViewBag.user.ImgProfile" border="0" /><br />
+        <p><b>@ViewBag.user.Name</b></p>
+        <p><b>ที่อยู่ : </b>@ViewBag.user.Address</p>
+        <p><b>โทร : </b>@ViewBag.user.Phone</p>
+        <p><b>Email : </b>@ViewBag.userEmail</p>
+        <button onclick="window.location.href = '/Company/EditProfile';">แก้ไขข้อมูล</button>
+    </div>
+
+    <div class="column2">
+        <div class="main">
+            <div class="head">
+                <p><b>ALL YOUR POST</b></p>
+            </div>
+            @foreach (var post in ViewBag.posts)
+            {
+                <div  style="margin-top:20px; margin-bottom:30px;">
+                    <img class="card-img1" align='center' src="@post.company.ImgProfile">
+                    <b>@post.company.Name </b><br />
+                    <div class="detail">@post.post.Detail</div>
+                    <img src="@post.post.ImgLink"><hr>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
