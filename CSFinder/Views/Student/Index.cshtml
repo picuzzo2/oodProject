@@ -3,10 +3,7 @@
     ViewData["Title"] = "Home Page";
     Layout = "_StudentLayout";
 }
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
 
 <style>
     .card-img1 {
@@ -185,47 +182,44 @@
                 <img class="card-img1" src="@pc.company.ImgProfile" /> 
                 @pc.company.Name 
             </p> 
-            <div> 
-                <button class="collapsible">More Detail</button> 
-                <div class="content" style="margin-left: 10%;"> 
-                    @pc.post.Detail <br> 
-                    <button class="collapsible" style="margin-left:0px">Ranking</button> 
- 
-                    <div class="content"> 
-                        <b>อันดับ 1</b><br> 
-                        <button onclick="changeRank(1,@pc.post.CID)" style="margin:0px;">Choose</button> 
-                        <div class="rank"> 
-                            @ViewBag.rank1Name
-                            
-                        </div> 
- 
-                        <b>อันดับ 2</b><br> 
-                        <button onclick="changeRank(2,@pc.post.CID)" style="margin:0px;">Choose</button> 
-                        <div class="rank">
-                            @ViewBag.rank2Name
-                        </div> 
-                           
-                        <b>อันดับ 3</b><br> 
-                        <button onclick="changeRank(3,@pc.post.CID)" style="margin:0px;">Choose</button> 
-                        <div class="rank">
-                            @ViewBag.rank3Name
-                        </div> 
-                             
- 
- 
-                    </div> 
- 
-                    <script> 
-                        function openForm() { 
-                            document.getElementById("myForm").style.display = "block"; 
-                        } 
- 
-                        function closeForm() { 
-                            document.getElementById("myForm").style.display = "none"; 
-                        } 
-                    </script> 
-                </div> 
-                </div> 
+            <div>
+            <a href="#detail" class="btn btn-info" data-toggle="collapse">Detail</a>
+            <a href="#rank" class="btn btn-info" data-toggle="collapse">Rank</a>
+            <div id="detail" class="collapse" style="margin-left: 10%;">
+                @pc.post.Detail
+            </div>
+
+            <div id="rank" class="collapse">
+                <b>อันดับ 1</b><br>
+                <button onclick="changeRank(1,@pc.post.CID)" style="margin:0px;">Choose</button>
+                <div class="rank">
+                    @ViewBag.rank1Name
+                </div>
+
+                <b>อันดับ 2</b><br>
+                <button onclick="changeRank(2,@pc.post.CID)" style="margin:0px;">Choose</button>
+                <div class="rank">
+                    @ViewBag.rank2Name
+                </div>
+
+                <b>อันดับ 3</b><br>
+                <button onclick="changeRank(3,@pc.post.CID)" style="margin:0px;">Choose</button>
+                <div class="rank">
+                    @ViewBag.rank3Name
+                </div>
+            </div>
+
+                <script>
+                    function openForm() {
+                        document.getElementById("myForm").style.display = "block";
+                    }
+
+                    function closeForm() {
+                        document.getElementById("myForm").style.display = "none";
+                    }
+                </script>
+
+            </div> 
             <img style="margin-left: 20%;" src="@pc.post.ImgLink" /> 
  
  
