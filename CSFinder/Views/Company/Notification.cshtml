@@ -234,7 +234,7 @@
                     <div class="main">
                         <div class="box">
                             <div style="padding-left:10%;">
-                                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
+                                <img class="card-img1" src="@sm.student.ImgProfile" border="0" />
                                 <p>ชื่อ: @sm.student.Name</p>
                                 @Html.ActionLink("Student Detail", "GetStudent", "Public",new { id = sm.student.SID }, new {@class ="open-button1", target = "_blank" })
                                 <button class="open-button2" onclick="openForm()">นัดสัมภาษณ์</button>
