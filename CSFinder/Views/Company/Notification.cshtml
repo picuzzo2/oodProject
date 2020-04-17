@@ -208,11 +208,11 @@
     <!-- The flexible grid (content) -->
     <div class="row">
         <div class="column1" align='center'>
-            <img class="card-img1" src="@ViewBag.Post1Img" border="0" /><br />
-            <p><b>@ViewBag.companyName</b></p>
-            <p><b>ที่อยู่ : </b>@ViewBag.companyAddress</p>
-            <p><b>โทร : </b>@ViewBag.companyPhone</p>
-            <p><b>Email : </b>@ViewBag.companyEmail</p>
+            <img class="card-img1" src="@ViewBag.user.ImgProfile" border="0" /><br />
+            <p><b>@ViewBag.user.Name</b></p>
+            <p><b>ที่อยู่ : </b>@ViewBag.user.Address</p>
+            <p><b>โทร : </b>@ViewBag.user.Phone</p>
+            <p><b>Email : </b>@ViewBag.userEmail</p>
         </div>
 
         <div class="column2">
@@ -220,20 +220,20 @@
             @foreach (StudentNameMatching sm in @ViewBag.StudentNameMatchingList)
             {
                 <div class="main">
-                <div class="box">
-                    <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
-                    <p>@sm.student.Name</p>
-                    <a href="ProfileStudentInterest">ข้อมูลนักศึกษา</a>
-                    <button class="open-button" onclick="openForm()">นัดสัมภาษณ์</button>
-                    <div class="form-popup" id="myForm">
-                        <form action="/action_page.php" class="form-container">
-                            <label for="interview">วันที่นัดสัมภาษณ์</label>
-                            <input class="date" type="date" id="interview" name="interview"><br>
-                            <label for="interview">รายละเอียดในการนัดสัมภาษณ์</label>
-                            <input type="text" id="text" style="width:300px; ">
-                            <button type="button" class="btn cancel" onclick="closeForm()">ยืนยัน</button>
-                        </form>
-                    </div>
+                    <div class="box">
+                        <img class="card-img1" src="@sm.student.ImgProfile" border="0" />
+                        <p>@sm.student.Name</p>
+                        @Html.ActionLink("Student detail", "GetStudent", "Public", new { id = sm.student.SID }, new { target = "_blank" })
+                        <button class="open-button" onclick="openForm()">นัดสัมภาษณ์</button>
+                        <div class="form-popup" id="myForm">
+                            <form action="/action_page.php" class="form-container">
+                                <label for="interview">วันที่นัดสัมภาษณ์</label>
+                                <input class="date" type="date" id="interview" name="interview"><br>
+                                <label for="interview">รายละเอียดในการนัดสัมภาษณ์</label>
+                                <input type="text" id="text" style="width:300px; ">
+                                <button type="button" class="btn cancel" onclick="closeForm()">ยืนยัน</button>
+                            </form>
+                        </div>
                     </div>
                     </div>
 

@@ -123,16 +123,7 @@ namespace CSFinder.Controllers
         {
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.user = user;
-            ViewBag.companyName = "บริษัท เอ็ม เอฟ อี ซี จำกัด (มหาชน)";
-            ViewBag.companyAddress = "699 อาคารโมเดอร์นฟอร์มทาวเวอร์ ชั้น 27 ถนนศรีนครินทร์ แขวงพัฒนาการ เขตสวนหลวง กรุงเทพมหานคร 10250";
-            ViewBag.companyPhone = "+66 (0) 2821-7999";
-            ViewBag.companyEmail = "sales@mfec.com";
-            ViewBag.Post1Img = "https://sv1.picz.in.th/images/2020/04/11/UWg8eR.jpg";
-            ViewBag.studentPhotoexample = "https://www.w3schools.com/howto/img_avatar.png";
-            ViewBag.studentInterestName1 = "นางสาวอณิชา หารป่า";
-            ViewBag.studentInterestName2 = "นางสาวปานระวี ไชยสิทธิ์";
-            ViewBag.studentInterestName3 = "นายภรัญยู วงศ์แสง";
-            ViewBag.studentInterestName4 = "";
+            ViewBag.userEmail = userEmail;
 
             List<StudentNameMatching> sm = new List<StudentNameMatching>();
             foreach (Matching m in db.Matchings)
@@ -184,18 +175,6 @@ namespace CSFinder.Controllers
             return View();
         }
 
-        public IActionResult ProfileStudentInterest()
-        {
-            ViewBag.studentName = "อณิชา หารป่า";
-            ViewBag.studentFirstname = "อณิชา";
-            ViewBag.studentLastname = "หารป่า";
-            ViewBag.studentAddress = "4 หมู่9 ต.หางดง อ.หางดง จ.เชียงใหม่ 50230";
-            ViewBag.studentPhone = "0903186625";
-            ViewBag.studentFacebook = "Anicha Harnpa";
-            ViewBag.studentEmail = "anicha_h@gmail.com";
-            ViewBag.studentResume = "https://sv1.picz.in.th/images/2020/04/09/QFmsH1.jpg";
-            return View();
-        }
         public IActionResult EditProfile()
         {
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
