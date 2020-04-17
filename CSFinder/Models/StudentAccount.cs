@@ -38,11 +38,8 @@ namespace CSFinder.Models
         public string? Detail { get; set; }
 #nullable disable
         public string Status { get; set; }
+        [Required(ErrorMessage = "Please an address")]
         public string Address { get; set; }
     }
-    public enum Types
-    {
-        Internship,
-        Cooperative
-    }
+
 }

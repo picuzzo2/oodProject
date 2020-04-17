@@ -1,6 +1,7 @@
-﻿@model CSFinder.Models.StudentAccount
+﻿@model CSFinder.Models.Student
 @{
     ViewData["Title"] = "EditProfile";
+    Layout = "_StudentLayout";
 }
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,9 +59,9 @@
 <div class="row">
     <div class="column1" align='center'>
 
-        <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" align='center' /><br />
-        <p><b>ชื่อ</b> @ViewBag.user.Name</p>
-        <p><b>สถานะ:</b> @ViewBag.user.Status </p>
+        <img class="card-img" src="@Model.ImgProfile" alt="Avatar" align='center' /><br />
+        <p><b>ชื่อ</b> @Model.Name</p>
+        <p><b>สถานะ:</b> @Model.Status </p>
     </div>
 
 
@@ -76,37 +77,44 @@
 
                     <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
                         <div align="left" class="col-md-12">
-                            <span>@Html.LabelFor(a => a.Name)</span>
+                            <span>@Html.LabelFor(model => model.Name)</span>
                             <span>
-                                @Html.TextBoxFor(a => a.Name, new { @class = "form-control", @placeholder = "Edit Name" })
-                                @Html.ValidationMessageFor(a => a.Name, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @Value = Model.Name })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                             </span>
                         </div>
                     </div>
                     <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
                         <div align="left" class="col-md-12">
-                            <span>@Html.LabelFor(a => a.Address)</span>
+                            <span>@Html.LabelFor(model => model.Address)</span>
                             <span>
-                                @Html.TextBoxFor(a => a.Address, new { @class = "form-control", @placeholder = "Edit Address" })
-                                @Html.ValidationMessageFor(a => a.Address, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @Value = Model.Address })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                             </span>
                         </div>
                     </div>
                     <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
                         <div align="left" class="col-md-12">
-                            <span>@Html.LabelFor(a => a.Phone)</span>
+                            <span>@Html.LabelFor(model => model.Phone)</span>
                             <span>
-                                @Html.TextBoxFor(a => a.Phone, new { @class = "form-control", @placeholder = "Edit Phone number" })
-                                @Html.ValidationMessageFor(a => a.Phone, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @Value = Model.Phone })
+                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                             </span>
                         </div>
                     </div>
                     <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
                         <div align="left" class="col-md-12">
-                            <span>@Html.LabelFor(a => a.Email)</span>
+                            <span>@Html.LabelFor(model => model.Detail)</span>
                             <span>
-                                @Html.TextBoxFor(a => a.Email, new { @class = "form-control", @placeholder = "Edit Email" })
-                                @Html.ValidationMessageFor(a => a.Email, "", new { @class = "text-danger" })
+                                @Html.TextAreaFor(model => model.Detail, new { @class = "form-control", @Value = Model.Detail })
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group" style="width:320px; background-color: #f8f8f8; height:100px; border: 2px solid #ccc; border-radius: 6px;">
+                        <div align="left" class="col-md-12">
+                            <span>@Html.LabelFor(model => model.Type)</span>
+                            <span>
+                                @Html.DropDownListFor(model => model.Type, new SelectList(Enum.GetValues(typeof(Types))))
                             </span>
                         </div>
                     </div>
@@ -139,7 +147,6 @@
                             });
                     </script>
                 </div><br>
-
                 <p><b>Transcript:</b></p>
                 <div class="file-upload">
                     <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
@@ -168,32 +175,29 @@
                             });
                     </script>
                 </div>
-                <a href="Profile" class="btn btn-primary float-right" style="margin-top : 10px;">Cancle</a>
-                <a href="Profile" class="btn btn-primary float-right" style="margin-top : 10px;" onclick="Save()">Save</a>&nbsp;
+                <a href="Profile" class="btn btn-primary float-right" style="margin-top : 10px;">Cancel</a>
+                <a href="#" class="btn btn-primary float-right" style="margin-top : 10px;" onclick="Save()">Save</a>
             </div>
         </div>
         
     </div>
-    </div>
+</div>
 <script>
-    var Save = function () {
-        debugger
+    function Save() {
+
         var data = $("#myForm").serialize();
-        if (!$("#myForm").valid()) {
-
-            return false;
+        var myFrom = $("#myForm");
+        
+        if (!myFrom.valid()) {
+             return false;
         }
-
+        debugger
         $.ajax({
             type: "Post",
             url: "/Student/EditProfile",
             data: data,
             success: function (response) {
-
-                if (response == "fail") {
-                    window.location.href = "/Student/EditProfile";
-                }
-                else if (response.success) {
+                if (response.success) {
                     alert(response.responseText);
                     window.location.href = "/Student/Profile";
                 }

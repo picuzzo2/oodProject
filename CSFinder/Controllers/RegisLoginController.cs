@@ -128,14 +128,8 @@ namespace CSFinder.Controllers
                     addstu.Phone = objUser.Phone;
                     addstu.Detail = objUser.Detail;
                     addstu.Address = objUser.Address;
-                    if (objUser.Type.ToString() == "Internship")
-                    {
-                        addstu.Type = 0;
-                    }
-                    if (objUser.Type.ToString() == "Cooperative")
-                    {
-                        addstu.Type = 1;
-                    }
+                    addstu.Type = objUser.Type;
+                    
                     db.Students.Add(addstu);
                     db.SaveChanges();
 

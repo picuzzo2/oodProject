@@ -101,65 +101,28 @@ namespace CSFinder.Controllers
         }
         public IActionResult EditProfile()
         {
-            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+            if (!setUser()) { Debug.WriteLine("Redirecting");  return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.user = user;
-            return View();
+            Student model = user;
+            return View(model);
         }
         [HttpPost]
-        public IActionResult EditProfile(StudentAccount objStu)
+        public IActionResult EditProfile(Student objUser)
         {
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
-            ViewBag.user = user;
-            Debug.WriteLine("------------------------");
-            Debug.WriteLine(objStu.Email);
-            Debug.WriteLine(objStu.Name);
-            Debug.WriteLine(objStu.Address);
-            Debug.WriteLine(objStu.Phone);
-            Debug.WriteLine("------------------------");
+            Student model = user;
 
             if (ModelState.IsValid)
             {
-                String msg = "";
-                //check dup acc
-                //check dup sid
-                //check dup email
-              
-                if (msg == "")
-                {
-                    foreach (Account acc in db.Accounts)
-                    {
-                        if (acc.Email.Equals(objStu.Email))
-                        {
-                            msg = "Email: " + objStu.Email + " already exist";
-                            break;
-                        }
-                    }
-                }
-
-                if (msg == "")
-                {
-                    Account addacc = new Account();
-                    Student addstu = new Student();
-                    addacc.Email = objStu.Email;
-                    db.Accounts.Add(addacc);
-                    db.SaveChanges();
-
-                    addstu.Name = objStu.Name;
-                    addstu.Phone = objStu.Phone;
-                    addstu.Address = objStu.Address;
-                    db.Students.Add(addstu);
-                    db.SaveChanges();
-
-                    msg = "Edit profile complete!";
-
-                    return Json(new { success = true, responseText = msg });
-                }
-                else
-                {
-                    return Json(new { success = false, responseText = msg });
-                }
+                user.Name = objUser.Name;
+                user.Type = objUser.Type;
+                user.Detail = objUser.Detail;
+                user.Phone = objUser.Phone;
+                user.Address = objUser.Address;
+                string msg = "Profile information saved";
+                return Json(new { success = true, responseText = msg });
             }
-            return View();
+            return View(model);
         }
         public IActionResult Index()
         {
