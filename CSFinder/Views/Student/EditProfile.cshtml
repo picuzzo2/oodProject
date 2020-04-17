@@ -102,7 +102,7 @@
                             </span>
                         </div>
                     </div>
-                    <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
+                    <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 125px; border: 2px solid #ccc; border-radius: 6px;">
                         <div align="left" class="col-md-12">
                             <span>@Html.LabelFor(model => model.Detail)</span>
                             <span>
@@ -110,77 +110,86 @@
                             </span>
                         </div>
                     </div>
-                    <div class="form-group" style="width:320px; background-color: #f8f8f8; height:100px; border: 2px solid #ccc; border-radius: 6px;">
+                    <div class="form-group" style="width:150px; background-color: #f8f8f8; height:70px; border: 2px solid #ccc; border-radius: 6px;">
                         <div align="left" class="col-md-12">
                             <span>@Html.LabelFor(model => model.Type)</span>
-                            <span>
+                            <span><br>
                                 @Html.DropDownListFor(model => model.Type, new SelectList(Enum.GetValues(typeof(Types))))
                             </span>
                         </div>
                     </div>
                 </form>
-                <p><b>Resume:</b></p>
-                <div class="file-upload">
-                    <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
-                    <script>
-                        Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
-                            const hiddenInput = button.parentElement.querySelector('.file-upload__input');
-                            const label = button.parentElement.querySelector('.file-upload__label');
-                            const defaultLabelText = 'No file(s) selected';
+                <div class="form-group" style=" width: 320px; background-color: #F0F8FF; height: 65px; border: 2px solid #ADD8E6; border-radius: 6px;">
+                    <div align="left" class="col-md-12">
+                        <p><b>Resume:</b></p>
+                        <div class="file-upload">
+                            <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
+                            <script>
+                                Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
+                                    const hiddenInput = button.parentElement.querySelector('.file-upload__input');
+                                    const label = button.parentElement.querySelector('.file-upload__label');
+                                    const defaultLabelText = 'No file(s) selected';
 
-                            label.textContent = defaultLabelText;
-                            label.title = defaultLabelText;
+                                    label.textContent = defaultLabelText;
+                                    label.title = defaultLabelText;
 
-                            button.addEventListener("click", function () {
-                                hiddenInput.click();
-                            });
+                                    button.addEventListener("click", function () {
+                                        hiddenInput.click();
+                                    });
 
-                            hiddenInput.addEventListener("change", function () {
-                                console.log(hiddenInput.files);
-                                const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
-                                    return file.name;
-                                });
+                                    hiddenInput.addEventListener("change", function () {
+                                        console.log(hiddenInput.files);
+                                        const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
+                                            return file.name;
+                                        });
 
-                                label.textContent = filenameList.join(',') || defaultLabelText;
-                                label.title = label.textContent;
+                                        label.textContent = filenameList.join(',') || defaultLabelText;
+                                        label.title = label.textContent;
 
-                            });
-                    </script>
-                </div><br>
-                <p><b>Transcript:</b></p>
-                <div class="file-upload">
-                    <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
-                    <script>
-                        Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
-                            const hiddenInput = button.parentElement.querySelector('.file-upload__input');
-                            const label = button.parentElement.querySelector('.file-upload__label');
-                            const defaultLabelText = 'No file(s) selected';
-
-                            label.textContent = defaultLabelText;
-                            label.title = defaultLabelText;
-
-                            button.addEventListener("click", function () {
-                                hiddenInput.click();
-                            });
-
-                            hiddenInput.addEventListener("change", function () {
-                                console.log(hiddenInput.files);
-                                const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
-                                    return file.name;
-                                });
-
-                                label.textContent = filenameList.join(',') || defaultLabelText;
-                                label.title = label.textContent;
-
-                            });
-                    </script>
+                                    });
+                            </script>
+                        </div>
+                    </div>
                 </div>
-                <a href="Profile" class="btn btn-primary float-right" style="margin-top : 10px;">Cancel</a>
-                <a href="#" class="btn btn-primary float-right" style="margin-top : 10px;" onclick="Save()">Save</a>
+                        
+                        <div class="form-group" style=" width: 320px; background-color: #F0F8FF; height: 65px; border: 2px solid #ADD8E6; border-radius: 6px;">
+                            <div align="left" class="col-md-12">
+                                <p><b>Transcript:</b></p>
+                                <div class="file-upload">
+                                    <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
+                                    <script>
+                                        Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
+                                            const hiddenInput = button.parentElement.querySelector('.file-upload__input');
+                                            const label = button.parentElement.querySelector('.file-upload__label');
+                                            const defaultLabelText = 'No file(s) selected';
+
+                                            label.textContent = defaultLabelText;
+                                            label.title = defaultLabelText;
+
+                                            button.addEventListener("click", function () {
+                                                hiddenInput.click();
+                                            });
+
+                                            hiddenInput.addEventListener("change", function () {
+                                                console.log(hiddenInput.files);
+                                                const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
+                                                    return file.name;
+                                                });
+
+                                                label.textContent = filenameList.join(',') || defaultLabelText;
+                                                label.title = label.textContent;
+
+                                            });
+                                    </script>
+                                </div><br >
+                                <a href="Profile" class="btn btn-primary float-right" style="margin-top : 10px;background-color: #CD2E57;border: 2px solid #B22222;">Cancel</a>
+                                <a href="#" class="btn btn-primary float-right" style="margin-top : 10px;background-color: #6ED746;border: 2px solid #64CD3C;" onclick="Save()">Save</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>
-        
-    </div>
 </div>
 <script>
     function Save() {
