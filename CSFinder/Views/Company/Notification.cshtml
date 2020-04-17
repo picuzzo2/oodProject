@@ -241,9 +241,10 @@ color:white;
 
         <div class="column2">
             <div>
-
+                @{ int i = 0;
                 @foreach (StudentNameMatching sm in @ViewBag.StudentNameMatchingList)
                 {
+
                     <div class="main">
                         <div class="box">
                             <div style="padding-left:10%;">
@@ -252,18 +253,20 @@ color:white;
                                 @Html.ActionLink("Student Detail", "GetStudent", "Public", new { id = sm.student.SID }, new { @class = "open-button1", target = "_blank" })
                                 @if (sm.matching.Result == "Waiting for interview")
                                 {
+                                    i++;
+                                    { int target = i; 
                                     <a href="#interview" class="btn btn-info" data-toggle="collapse">นัดสัมภาษณ์</a>
                                     <div id ="interview" class="collapse">
-                                        <form id="intForm" class="form-container">
+                                        <form id="@i" class="form-container">
                                             <label for="interview">วันที่นัดสัมภาษณ์</label>
                                             @Html.EditorFor(model => model.Date, new { type = "date" })<br>
                                             <label for="interview">รายละเอียดในการนัดสัมภาษณ์</label>
-                                            @Html.EditorFor(model => model.Detail,null,"Date")
+                                            @Html.EditorFor(model => model.Detail, null)
 
-                                            <button type="button" class="btn cancel" onclick="confirm(@ViewBag.user.CID, @sm.matching.SID, @sm.matching.MID)">ยืนยัน</button>
+                                            <button type="button" class="btn cancel" onclick="confirm(@target,@ViewBag.user.CID, @sm.matching.SID, @sm.matching.MID)">ยืนยัน</button>
                                         </form>
                                     </div>
-                                }
+                                } }
                                 else
                                 {
                                     <!--ทำยืนยันผลสัมภาษณ์-->
@@ -272,14 +275,15 @@ color:white;
                         </div>
                     </div>
 
-                }
+                }}
             </div>
         </div>
 </body>
 </html>
 <script>
-    function confirm(from, to, MID) {
-        var data = $("#intForm").serialize();
+    function confirm(target, from, to, MID) {
+        
+        var data = $("#" + target).serialize();
         data = data + "&from=" + from;
         data = data + "&to=" + to;
         data = data + "&MID=" + MID;
