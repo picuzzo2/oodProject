@@ -143,6 +143,34 @@
         <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" /><br />
         <p><b>ชื่อ</b> @ViewBag.user.Name</p>
         <p><b>สถานะ:</b> @ViewBag.user.Status </p>
+        <p><b>Currently rank chose</b></p>
+        @if (ViewBag.rank1Name != null)
+        {
+            <p><b>Rank 1:</b> @ViewBag.rank1Name </p>
+        }
+        else
+        {
+            <p><b>Rank 1:</b> Not choosing yet </p>
+        }
+        @if (ViewBag.rank2Name != null)
+        {
+            <p><b>Rank 2:</b> @ViewBag.rank2Name </p>
+        }
+        else
+        {
+            <p><b>Rank 2:</b> Not choosing yet </p>
+        }
+        @if (ViewBag.rank3Name != null)
+        {
+            <p><b>Rank 3:</b> @ViewBag.rank3Name </p>
+        }
+        else
+        {
+            <p><b>Rank 3:</b> Not choosing yet </p>
+        }
+
+
+
     </div>
 
 </div>
@@ -165,27 +193,27 @@
  
                     <div class="content"> 
                         <b>อันดับ 1</b><br> 
-                        <button onclick="" style="margin:0px;">Choose</button> 
+                        <button onclick="changeRank(1,@pc.post.CID)" style="margin:0px;">Choose</button> 
                         <div class="rank"> 
-                            @ViewBag.user.Rank1 
- 
+                            @ViewBag.rank1Name
+                            
                         </div> 
  
                         <b>อันดับ 2</b><br> 
-                        <button style="margin:0px;">Choose</button> 
+                        <button onclick="changeRank(2,@pc.post.CID)" style="margin:0px;">Choose</button> 
                         <div class="rank">
-                            @ViewBag.user.Rank2
+                            @ViewBag.rank2Name
                         </div> 
                            
-                            <b>อันดับ 3</b><br> 
-                            <button style="margin:0px;">Choose</button> 
-                            <div class="rank">
-                                @ViewBag.user.Rank3
-                            </div> 
+                        <b>อันดับ 3</b><br> 
+                        <button onclick="changeRank(3,@pc.post.CID)" style="margin:0px;">Choose</button> 
+                        <div class="rank">
+                            @ViewBag.rank3Name
+                        </div> 
                              
  
  
-                        </div> 
+                    </div> 
  
                     <script> 
                         function openForm() { 
@@ -227,8 +255,21 @@
                         content.style.display = "block"; 
                     } 
                 }); 
-            } 
-  
+            }
+
+            function changeRank(rankchoose, to) {
+                
+                $.ajax({
+                    method: "POST",
+                    url: "/Student/changeRank",
+                    data: { change: rankchoose, to: to },
+                    success: function () {
+                        alert("Rank Saved");
+                        window.location.href = "/Student/Index";
+                    }
+                })
+                
+            }
         </script> 
     </div>
 </div>

@@ -219,15 +219,16 @@
     <!-- The flexible grid (content) -->
     <div class="row">
         <div class="column1" align='center'>
-            <img class="card-img1" src="@ViewBag.Post1Img" border="0" /><br />
-            <p><b>@ViewBag.companyName</b></p>
-            <p><b>ที่อยู่ : </b>@ViewBag.companyAddress</p>
-            <p><b>โทร : </b>@ViewBag.companyPhone</p>
-            <p><b>Email : </b>@ViewBag.companyEmail</p>
+            <img class="card-img1" src="@ViewBag.user.ImgProfile" border="0" /><br />
+            <p><b>@ViewBag.user.Name</b></p>
+            <p><b>ที่อยู่ : </b>@ViewBag.user.Address</p>
+            <p><b>โทร : </b>@ViewBag.user.Phone</p>
+            <p><b>Email : </b>@ViewBag.userEmail</p>
         </div>
 
         <div class="column2">
             <div>
+
                 @foreach (StudentNameMatching sm in @ViewBag.StudentNameMatchingList)
                 {
                     <div class="main">

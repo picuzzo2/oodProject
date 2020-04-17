@@ -45,30 +45,11 @@ namespace CSFinder.Controllers
             
         }
 
-        public IActionResult StudentDashBoard()
-        {
-            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
-            Debug.WriteLine(HttpContext.Session.GetString("UserID"));
-            Debug.WriteLine(user.ID);
-            ViewBag.UserID = user.ID;
-            ViewBag.Email =userEmail;
-            ViewBag.SID = user.SID;
-            ViewBag.Name = user.Name;
-            ViewBag.Status = user.Status;
-            return View();
-        }
-
         public IActionResult History()
         {
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.user = user;
             ViewBag.Matchs = db.Matchings;
-
-            ViewBag.Dates = "(12/12/2562)";
-            ViewBag.Rank1 = "บ.ปูน";
-            ViewBag.Rank2 = "บ.ไอ";
-            ViewBag.Rank3 = "บ.ไม่รู้";
-            ViewBag.RankComplete = "บริษัท ปูน...";
             ViewBag.Status = user.Status;
 
             int maxRound = int.Parse(db.Matchings.Max(p => p.MID));
@@ -112,16 +93,6 @@ namespace CSFinder.Controllers
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.user = user;
             ViewBag.userEmail = userEmail;
-            ViewBag.studentName = "Anicha Harnpa";
-            ViewBag.studentStatus = "รอนัดสัมภาษณ์";
-            ViewBag.studentFirstname = "อณิชา";
-            ViewBag.studentLastname = "หารป่า";
-            ViewBag.studentAddress = "4 หมู่9 ต.หางดง อ.หางดง จ.เชียงใหม่ 50230";
-            ViewBag.studentPhone = "0903186625";
-            ViewBag.studentFacebook = "Anicha Harnpa";
-            ViewBag.studentEmail = "anicha_h@gmail.com";
-            ViewBag.studentRanking = "1. บริษัท ปูนซีเมนต์ไทย จำกัด (มหาชน)";
-            ViewBag.studentResume = "";
             return View();
         }
 
@@ -145,7 +116,36 @@ namespace CSFinder.Controllers
             ViewBag.postCompanyList = pc;
             ViewBag.user = user;
             ViewBag.userEmail = userEmail;
+            ViewBag.rank1Name = db.Companies.Where(x => x.CID == user.Rank1).FirstOrDefault().Name;
+            ViewBag.rank2Name = db.Companies.Where(x => x.CID == user.Rank2).FirstOrDefault().Name;
+            ViewBag.rank3Name = db.Companies.Where(x => x.CID == user.Rank3).FirstOrDefault().Name;
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult changeRank(string change, string to)
+        {
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+            if (change == "1")
+            {
+                if(user.Rank2 == to) user.Rank2 = user.Rank1;
+                else if (user.Rank3 == to) user.Rank3 = user.Rank1;
+                user.Rank1 = to; 
+            }
+            else if(change =="2")
+            {
+                if (user.Rank1 == to) user.Rank1 = user.Rank2;
+                else if (user.Rank3 == to) user.Rank3 = user.Rank2;
+                user.Rank2 = to;
+            }
+            else
+            {
+                if (user.Rank1 == to) user.Rank1 = user.Rank3;
+                else if (user.Rank2 == to) user.Rank2 = user.Rank3;
+                user.Rank3 = to;
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index","Student") ;
         }
         public IActionResult Logout()
         {
