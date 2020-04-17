@@ -1,0 +1,180 @@
+﻿@{
+    ViewData["Title"] = "Matching";
+    Layout = "_ComSciLayout";
+}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Roboto:ital@1&display=swap" rel="stylesheet">
+<style>
+    .card-img1 {
+        border-radius: 50%;
+        margin: 3px;
+        margin-left: 10%;
+        width: 50px;
+        height: 50px;
+        border: 1px solid #ddd;
+    }
+
+    img {
+        margin: 20px;
+        width: 500px;
+    }
+
+    .card-img {
+        border-radius: 50%;
+        margin: 20px;
+        border: 1px solid #ddd;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .head-table, .numOfStudent,
+    th {
+        text-align: center;
+    }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 10px;
+    }
+
+    table#t01 th {
+        background-color: black;
+        color: white;
+    }
+
+    table#t02 th {
+        background-color: black;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    th {
+        width: 250px;
+    }
+
+    .row {
+        display: flex;
+        content: "";
+        clear: both;
+    }
+
+    /* Main column */
+    .main {
+        flex: 70%;
+        background-color: white;
+        padding: 20px;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .collapsible {
+        background-color: #ced6e0;
+        color: lightslategray;
+        border: none;
+        margin-left: 130px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .collapsible:hover {
+            background-color: #f1f1f1;
+        }
+
+        .collapsible:disabled {
+            background-color: #f1f1f1;
+            color: #aaa;
+            cursor: auto;
+        }
+
+    .content {
+        padding: 0 18px;
+        display: none;
+        overflow: hidden;
+        background-color: #f1f1f1;
+    }
+
+    .column1 {
+        float: left;
+        width: 25%;
+        padding-right: 10px;
+        height: auto;
+        background-color: #f1f1f1;
+        position: fixed;
+        border-radius: 30px;
+        font-family: 'Kanit', sans-serif;
+    }
+
+    .column2 {
+        float: left;
+        width: 100%;
+        padding-left: 40%;
+        height: 100%;
+        font-family: 'Kanit', sans-serif;
+    }
+
+    input{
+        border-radius: 10px;
+        color:white;
+        padding:7px;
+        margin-right:10px;
+        margin-top:10px;
+        margin-bottom:20px;
+        
+    }
+</style>
+
+<div class="row">
+    <div class="column1" align='center'>
+        <img class="card-img" src="https://sv1.picz.in.th/images/2020/04/10/QMoxDI.th.png" alt="QMoxDI.png" border="0" />
+        <p>
+            <b>ภาควิชาวิทยาการคอมพิวเตอร์</b> <br>
+            คณะวิทยาศาสตร์ มหาวิทยาลัยเชียงใหม่
+        </p>
+        <p>
+            <b>ที่อยู่ติดต่อ:</b> 239 ถนนห้วยแก้ว ต.สุเทพ <br>
+            อ.เมือง จ.เชียงใหม่ 50200 <br>
+            <b>เบอร์ติดต่อ:</b> 053-222180 <br>
+            <b>E-mail:</b> Comsci@cmu.ac.th
+        </p><br>
+    </div>
+
+    <div class="column2">
+        <div class="main">
+            <h1>Matching</h1>
+            <input type="button" value="Start Matching" onclick="location.href='@Url.Action("Home", "ComSci")'" style="background-color: #4CAF50;" />
+            <input type="button" value="Stop Matching" onclick="location.href='@Url.Action("Home", "ComSci")'" style="background-color: #FF3333;"/>
+
+            @if (ViewBag.next != null)
+            {
+                <div>
+                    <h5 style="color:blue;">Next match Time : @ViewBag.next</h5>
+                </div>
+            }
+            else
+            {
+                <div>
+                    <h5 style="color:gray;">No schedule match, please start matching.</h5>
+                </div>
+            }
+
+        </div>
+        </div>
+    </div>

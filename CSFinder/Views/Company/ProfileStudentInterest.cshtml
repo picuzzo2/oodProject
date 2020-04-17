@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewData["Title"] = "ProfileStudentInterest";
+    Layout = "_CompanyLayout";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        img {
+            margin: 20px;
+            width: 500px;
+        }
+
+        .card-img {
+            border-radius: 50%;
+            margin-top: 10px;
+            margin-left: 10px;
+            width: 200px;
+        }
+
+
+
+
+        button {
+            border: 3px solid #22a6b3;
+            border-radius: 10px;
+            margin-left: 425px;
+            margin-top: -30px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+            *
+            body {
+                font-family: Arial;
+                margin: 0;
+            }
+        /* Column container */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Main column */
+        .main {
+            flex: 70%;
+            background-color: white;
+            padding: 20px;
+        }
+
+        .header {
+            margin-left: 90px;
+        }
+
+        .column1 {
+            float: left;
+            width: 25%;
+            padding-right: 10px;
+            height: 42%;
+            background-color: #f1f1f1;
+            position: fixed;
+            border-radius: 30px;
+        }
+
+        .column2 {
+            float: left;
+            width: 100%;
+            padding-left: 40%;
+            height: 100%;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <!-- The flexible grid (content) -->
+    <div class="row">
+        <div class="column1" align='center'>
+            <img class="card-img" src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" /><br />
+            <p><b>ชื่อ:</b> @ViewBag.studentName</p>
+           
+        </div>
+        <div class="column2">
+            <div class="main">
+                <p><b>ชื่อ:</b> @ViewBag.studentFirstname <b>นามสกุล:</b> @ViewBag.studentLastname</p>
+                <p><b>ที่อยู่:</b> @ViewBag.studentAddress  </p>
+                <p><b>เบอร์โทรศัพท์:</b> @ViewBag.studentPhone  </p>
+                <p><b>Facebook:</b> @ViewBag.studentFacebook  </p>
+                <p><b>Email:</b> @ViewBag.studentEmail  </p>
+                <p><b>Resume:</b></p><img src="@ViewBag.studentResume" border="0" />
+
+            </div>
+
+        </div>
+        </div>
+
+</body>
+</html>
+
+

@@ -1,4 +1,4 @@
-﻿@model CSFinder.Models.Post
+@model CSFinder.Models.Post
 @{
     ViewData["Title"] = "Home";
     Layout = "_CompanyLayout";
@@ -187,21 +187,17 @@
                 margin: 0;
             }
 
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 10px;
+    }
 
-        .box {
-            width: 620px;
-            padding: 10px;
-            border: 5px solid #CACFD2;
-            margin: 0;
-            border-radius: 10px;
-            background-color: #D7DBDD;
-        }
-
-        .float-right {
-            margin: 0px 110px 0px 80px;
-        }
-
-
+    table#t01 th {
+        background-color: black;
+        color: white;
+    }
     </style>
 </head>
 <body>

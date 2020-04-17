@@ -128,6 +128,8 @@ namespace CSFinder.Controllers
                     addstu.Phone = objUser.Phone;
                     addstu.Detail = objUser.Detail;
                     addstu.Address = objUser.Address;
+                    addstu.Type = objUser.Type;
+                    
                     db.Students.Add(addstu);
                     db.SaveChanges();
 
@@ -190,7 +192,7 @@ namespace CSFinder.Controllers
                     addacc.Email = objUser.Email;
                     
 
-                    string LastCID = LastCID = db.Companies.Max(p => p.CID); ;
+                    string LastCID = db.Companies.Max(p => p.CID); 
 
                     Debug.WriteLine("LastCid = " + LastCID);
                     if (LastCID == null)

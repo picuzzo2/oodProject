@@ -1,4 +1,10 @@
-﻿
+﻿<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Roboto:ital@1&display=swap" rel="stylesheet">
+<style>
+    header{
+        font-family: 'Roboto', sans-serif;
+    }
+
+</style>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +39,9 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="ComSci" asp-action="Home">Home</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ComSci" asp-action="Matching">Matching</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="ComSci" asp-action="Company">Company</a>
                         </li>
                         <li class="nav-item">
@@ -53,11 +62,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - CSFinder - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -78,6 +83,8 @@
         </script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

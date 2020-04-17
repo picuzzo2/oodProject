@@ -1,5 +1,7 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Profile";
+    Layout = "_CompanyLayout";
 }
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
@@ -21,7 +23,7 @@
         width: 500px;
     }
 
-    .card-img {
+    .card-img1 {
         border-radius: 50%;
         margin: 20px;
         border: 1px solid #ddd;
@@ -70,7 +72,6 @@
         background-color: #f1f1f1;
         padding: 20px;
         width: 300px;
-
     }
 
     /* Main column */
@@ -84,7 +85,7 @@
         margin: 0;
     }
 
- .column1 {
+    .column1 {
         float: left;
         width: 25%;
         padding-right: 10px;
@@ -105,37 +106,25 @@
 
 <div class="row">
     <div class="column1" align='center'>
-
-        <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" align='center' /><br />
-        <p><b>ชื่อ</b> @ViewBag.user.Name</p>
-        <p><b>สถานะ:</b> @ViewBag.user.Status </p>
-        <button onclick="window.location.href = '/Student/EditProfile';">แก้ไขข้อมูล</button>
-
+        <img class="card-img1" src="@ViewBag.user.ImgProfile" border="0" /><br />
+        <p><b>@ViewBag.user.Name</b></p>
+        <p><b>ที่อยู่ : </b>@ViewBag.user.Address</p>
+        <p><b>โทร : </b>@ViewBag.user.Phone</p>
+        <p><b>Email : </b>@ViewBag.userEmail</p>
+        <button onclick="window.location.href = '/Company/EditProfile';">แก้ไขข้อมูล</button>
     </div>
 
-
     <div class="column2">
-        <div class="main" >
-                <table>
-                    <tr  style="margin-left: 10%;">
-                        <p><b>ชื่อ:</b> @ViewBag.user.Name </p>
-                        <p><b>เบอร์โทรศัพท์:</b> @ViewBag.user.Phone  </p>
-                        <p><b>Email:</b> @ViewBag.userEmail  </p>
-                        <p><b>อันดับที่เลือก:</b> @ViewBag.user.Rank1  </p>
-                    </tr>
-                    <tr>
-                        @if (ViewBag.user.ImgResume != null)
-                        {
-                            <p><b>Resume:</b></p>
-                            <img src="@ViewBag.user.ImgResume" alt="Resume" border="0" />
-                        }
-                        @if (ViewBag.user.ImgTranscript != null)
-                        {
-                            <p><b>Transcript:</b></p>
-
-                        }
-                    </tr>
-                </table>
+        <div class="main">
+            @foreach(var post in ViewBag.posts)
+            {
+                <div>
+                    <img class="card-img1" src="@post.company.ImgProfile">
+                    @post.company.Name <br />
+                    @post.post.Detail <br />
+                    <img src="@post.post.ImgLink">
+                </div>
+            }
         </div>
     </div>
 </div>

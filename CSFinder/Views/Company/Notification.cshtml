@@ -1,4 +1,4 @@
-﻿
+@model CSFinder.Models.Message
 @{
     ViewData["Title"] = "Notification";
     Layout = "_CompanyLayout";
@@ -9,6 +9,7 @@
 <html>
 <head>
     <style>
+
         .card-img1 {
             border-radius: 50%;
             margin: 3px;
@@ -18,12 +19,13 @@
             border: 1px solid #ddd;
         }
 
+
         img {
             margin: 20px;
             width: 500px;
         }
 
-        .card-img {
+        .card-img1 {
             border-radius: 50%;
             margin: 20px;
             border: 1px solid #ddd;
@@ -32,17 +34,7 @@
             height: 150px;
         }
 
-        input {
-            position: relative;
-            width: 700px;
-            height: 120px;
-            background: #ced6e0;
-            border: 3px solid #22a6b3;
-            border-radius: 10px;
-            margin-bottom: 3px;
-            width: 100%;
-            padding: 20px;
-        }
+
 
         button {
             border: 3px solid #22a6b3;
@@ -70,6 +62,7 @@
             background-color: white;
             padding: 20px;
         }
+
         .box {
             width: 500px;
             height: 600px;
@@ -77,35 +70,161 @@
             margin-top: 10px;
             border-radius: 10px;
         }
+
         .student {
             margin-left: 180px;
             margin-top: -90px;
         }
-        .header{
+
+        .header {
             margin-left: 90px;
         }
-          p {
-        margin: 0;
-    }
 
-    .column1 {
-        float: left;
-        width: 25%;
-        padding-right: 10px;
-        height: 50%;
-        background-color: #f1f1f1;
-        position: fixed;
-        border-radius: 30px;
+        p {
+            margin: 0;
+        }
 
-    }
+        .column1 {
+            float: left;
+            width: 25%;
+            padding-right: 10px;
+            height: 50%;
+            background-color: #f1f1f1;
+            position: fixed;
+            border-radius: 30px;
+        }
 
-    .column2 {
-        float: left;
-        width: 100%;
-        padding-left: 35%;
-        height: 100%;
-    }
+        .column2 {
+            float: left;
+            width: 100%;
+            padding-left: 35%;
+            height: 100%;
+        }
 
+        .column1 {
+            float: left;
+            width: 25%;
+            padding-right: 10px;
+            height: 52%;
+            background-color: #f1f1f1;
+            position: fixed;
+            border-radius: 30px;
+        }
+
+        .column2 {
+            float: left;
+            width: 100%;
+            padding-left: 40%;
+            height: 100%;
+        }
+
+        .open-button1 {
+            background-color: #4682B4;
+            color: white;
+            padding: 9px;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+            margin-top: 15px;
+            bottom: 23px;
+            right: 28px;
+            width: 120px;
+            border-radius:10px;
+            margin-right: 5%;
+            text-decoration: none;
+        }
+        .open-button1:hover {
+            color:white;
+            background-color:#003366;
+            text-decoration: none;
+        }
+
+        .open-button2 {
+            background-color: #228B22;
+            color: white;
+            padding: 6px;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+            margin-top: 15px;
+            bottom: 23px;
+            right: 28px;
+            width: 120px;
+        }
+            .open-button2:hover{
+color:white;
+            background-color:#006633;
+
+            }
+        /* The popup form - hidden by default */
+        .form-popup {
+            width: 380px;
+            height: auto;
+            display: none;
+            background-color: #bdc3c7;
+            bottom: 0;
+            right: 15px;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+            box-shadow: 5px 10px;
+        }
+
+        /* Add styles to the form container */
+        .form-container {
+            max-width: 300px;
+            padding: 10px;
+            background-color: #bdc3c7;
+        }
+
+
+
+            /* Set a style for the submit/login button */
+            .form-container .btn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px 20px;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                margin-bottom: 10px;
+                opacity: 0.8;
+                margin-top: 2px;
+                margin-left: 10px;
+            }
+
+            /* Add a red background color to the cancel button */
+            .form-container .cancel {
+                background-color:red;
+                margin-top: 10px;
+                width: 100px;
+                margin-left:10%;
+            }
+
+            /* Add some hover effects to buttons */
+            .form-container .btn:hover, .open-button:hover {
+                opacity: 1;
+            }
+
+        input {
+            position: relative;
+            background: #dfe4ea;
+            border: 3px solid #ced6e0;
+            border-radius: 20px;
+            margin-bottom: 3px;
+            margin-left: 10%;
+        }
+
+        label {
+            margin-left: 10%;
+        }
+
+        .date {
+            position: relative;
+            background: #dfe4ea;
+            border: 3px solid #ced6e0;
+            border-radius: 10px;
+            margin-bottom: 3px;
+        }
     </style>
 </head>
 <body>
@@ -113,52 +232,68 @@
     <!-- The flexible grid (content) -->
     <div class="row">
         <div class="column1" align='center'>
-            <img class="card-img" src="@ViewBag.Post1Img" border="0" /><br />
-            <p><b>@ViewBag.companyName</b></p>
-            <p><b>ที่อยู่ : </b>@ViewBag.companyAddress</p>
-            <p><b>โทร : </b>@ViewBag.companyPhone</p>
-            <p><b>Email : </b>@ViewBag.companyEmail</p>
-            <button>แก้ไขข้อมูล</button>
+            <img class="card-img1" src="@ViewBag.user.ImgProfile" border="0" /><br />
+            <p><b>@ViewBag.user.Name</b></p>
+            <p><b>ที่อยู่ : </b>@ViewBag.user.Address</p>
+            <p><b>โทร : </b>@ViewBag.user.Phone</p>
+            <p><b>Email : </b>@ViewBag.userEmail</p>
         </div>
 
         <div class="column2">
-            <div class="main">
-                <b class="header">รายชื่อนักศึกษาที่สนใจฝึกงาน/สหกิจศึกษา</b><br>
-                <div class="box">
-                    <table>
-                        <tr>
-                            <td>
-                                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
-                                <div class="student">
-                                    @ViewBag.studentInterestName1<br>
-                                    <a href="">ข้อมูลนักศึกษา</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
-                                <div class="student">
-                                    @ViewBag.studentInterestName2<br>
-                                    <a href="">ข้อมูลนักศึกษา</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
-                                <div class="student">
-                                    @ViewBag.studentInterestName3<br>
-                                    <a href="">ข้อมูลนักศึกษา</a>
-                            </td>
-                        </tr>
-                    </table>
+            <div>
+                @{ int i = 0;
+                @foreach (StudentNameMatching sm in @ViewBag.StudentNameMatchingList)
+                {
+
+                    <div class="main">
+                        <div class="box">
+                            <div style="padding-left:10%;">
+                                <img class="card-img1" src="@sm.student.ImgProfile" border="0" />
+                                <p>ชื่อ: @sm.student.Name</p>
+                                @Html.ActionLink("Student Detail", "GetStudent", "Public", new { id = sm.student.SID }, new { @class = "open-button1", target = "_blank" })
+                                @if (sm.matching.Result == "Waiting for interview")
+                                {
+                                    i++;
+                                    { int target = i; 
+                                    <a href="#interview" class="btn btn-info" data-toggle="collapse">นัดสัมภาษณ์</a>
+                                    <div id ="interview" class="collapse">
+                                        <form id="@i" class="form-container">
+                                            <label for="interview">วันที่นัดสัมภาษณ์</label>
+                                            @Html.EditorFor(model => model.Date, new { type = "date" })<br>
+                                            <label for="interview">รายละเอียดในการนัดสัมภาษณ์</label>
+                                            @Html.EditorFor(model => model.Detail, null)
+
+                                            <button type="button" class="btn cancel" onclick="confirm(@target,@ViewBag.user.CID, @sm.matching.SID, @sm.matching.MID)">ยืนยัน</button>
+                                        </form>
+                                    </div>
+                                } }
+                                else
+                                {
+                                    <!--ทำยืนยันผลสัมภาษณ์-->
+                                }
+                            </div>  
+                        </div>
                     </div>
-                </div>
+
+                }}
             </div>
         </div>
-        </div>
-
 </body>
 </html>
-
+<script>
+    function confirm(target, from, to, MID) {
+        
+        var data = $("#" + target).serialize();
+        data = data + "&from=" + from;
+        data = data + "&to=" + to;
+        data = data + "&MID=" + MID;
+        $.ajax({
+            type: "POST",
+            data: data ,
+            url: "/Company/InterviewAppointment",
+            success(response) {
+                alert(response);
+            }
+        })
+    }
+</script>

@@ -1,6 +1,6 @@
-﻿@model CSFinder.Models.Student
+﻿
 @{
-    ViewData["Title"] = "History";
+    ViewData["Title"] = "ReplyHistory";
 }
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,8 +14,6 @@
         margin: 3px;
         margin-left: 10%;
         width: 50px;
-        height: 50px;
-        border: 1px solid #ddd;
     }
 
     img {
@@ -31,7 +29,6 @@
         width: 150px;
         height: 150px;
     }
-
 
     input {
         position: relative;
@@ -61,19 +58,10 @@
         }
     /* Column container */
     .row {
-        display: flex;
+        display: table;
         content: "";
         clear: both;
     }
-
-    /* Sidebar/left column */
-    .side {
-        flex: 30%;
-        background-color: #f1f1f1;
-        padding: 20px;
-        width: 300px;
-    }
-
     /* Main column */
     .main {
         flex: 70%;
@@ -121,24 +109,21 @@
                         <tr>
                             <td bgcolor="#D3D3D3"
                                 style="border-style:solid;
-                                border-width:4px;
-                                border-color:#D3D3D3 gray gray #D3D3D3;">
-                                @foreach (CompanyNameMatching i in @ViewBag.CompanyNameMatchingList)
-                                {
-                                    <p><b>รอบที่ : @ViewBag.maxRound (@i.matching.Date)</b></p>
+                        border-width:4px;
+                        border-color:#D3D3D3 gray gray #D3D3D3;">
+                                <p><b>รอบที่ 1 @ViewBag.Dates</b></p>
                                 <hr>
-                                <p><b>อันดับที่เลือก</b></p>
+                                <p><b>อันดับที่ได้</b></p>
                                 <p align='center'>
-                                    <b>อันดับ 1 : </b><p1 style="color:#333399;">@i.r1Name</p1><br>
-                                    <b>อันดับ 2 : </b><p1 style="color:#333399;"> @i.r2Name</p1><br>
-                                    <b>อันดับ 3 : </b><p1 style="color:#333399;"> @i.r3Name</p1><br>
+                                    <p1 style="color:#333399;">@ViewBag.RankComplete</p1><br>
                                 </p>
                                 <br>
                                 <p align='right'>
-                                    <b>บริษัทที่ได้ :</b> <p1 style="color:#333399;">@i.resultName</p1><br>
-                                    <b>สถานะ : @i.matching.Result</b>
+                                    <b>บริษัทที่ได้ :</b> <p1 style="color:#333399;">@ViewBag.RankComplete</p1><br>
+                                    <b>สถานะ : @ViewBag.Status</b><br />
+                                    <button>ยืนยัน</button>
+                                    <button>ปฏิเสธ</button>
                                 </p>
-                                }
                             </td>
                         </tr>
                     </table>
@@ -147,3 +132,4 @@
         </div>
     </div>
 </div>
+
