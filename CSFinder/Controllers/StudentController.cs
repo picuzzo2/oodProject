@@ -122,12 +122,66 @@ namespace CSFinder.Controllers
             ViewBag.studentResume = "";
             return View();
         }
-
-
         public IActionResult EditProfile()
         {
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.user = user;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult EditProfile(StudentAccount objStu)
+        {
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+            ViewBag.user = user;
+            Debug.WriteLine("------------------------");
+            Debug.WriteLine(objStu.Email);
+            Debug.WriteLine(objStu.Name);
+            Debug.WriteLine(objStu.Address);
+            Debug.WriteLine(objStu.Phone);
+            Debug.WriteLine("------------------------");
+
+            if (ModelState.IsValid)
+            {
+                String msg = "";
+                //check dup acc
+                //check dup sid
+                //check dup email
+              
+                if (msg == "")
+                {
+                    foreach (Account acc in db.Accounts)
+                    {
+                        if (acc.Email.Equals(objStu.Email))
+                        {
+                            msg = "Email: " + objStu.Email + " already exist";
+                            break;
+                        }
+                    }
+                }
+
+                if (msg == "")
+                {
+                    Account addacc = new Account();
+                    Student addstu = new Student();
+                    addacc.Email = objStu.Email;
+                    db.Accounts.Add(addacc);
+                    db.SaveChanges();
+
+                    addstu.Name = objStu.Name;
+                    addstu.Phone = objStu.Phone;
+                    addstu.Address = objStu.Address;
+                    db.Students.Add(addstu);
+                    db.SaveChanges();
+
+                    msg = "Edit profile complete!";
+
+                    return Json(new { success = true, responseText = msg });
+                }
+                else
+                {
+                    return Json(new { success = false, responseText = msg });
+                }
+            }
             return View();
         }
         public IActionResult Index()
