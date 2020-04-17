@@ -89,7 +89,7 @@ namespace CSFinder.Controllers
                 {
                     StudentMatching newAddStu = new StudentMatching();
                     newAddStu.SID = stu.SID;
-                    newAddStu.Type = stu.Type;
+                    newAddStu.Type = (int)stu.Type;
                     newAddStu.Rank1 = stu.Rank1;
                     newAddStu.Rank2 = stu.Rank2;
                     newAddStu.Rank3 = stu.Rank3;

@@ -178,13 +178,30 @@ namespace CSFinder.Controllers
         public IActionResult EditProfile()
         {
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
-            ViewBag.user = user;
-            ViewBag.companyName = "บริษัท เอ็ม เอฟ อี ซี จำกัด (มหาชน)";
-            ViewBag.companyAddress = "699 อาคารโมเดอร์นฟอร์มทาวเวอร์ ชั้น 27 ถนนศรีนครินทร์ แขวงพัฒนาการ เขตสวนหลวง กรุงเทพมหานคร 10250";
-            ViewBag.companyPhone = "+66 (0) 2821-7999";
-            ViewBag.companyEmail = "sales@mfec.com";
-            ViewBag.Post1Img = "https://sv1.picz.in.th/images/2020/04/11/UWg8eR.jpg";
-            return View();
+            var model = user;
+            ViewBag.userEmail = userEmail;
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult EditProfile(Company objUser)
+        {
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+            Company model = user;
+            ViewBag.userEmail = userEmail;
+            if (ModelState.IsValid)
+            {
+                user.Name = objUser.Name;
+                user.TrainneeNeed = objUser.TrainneeNeed;
+                user.CoopNeed = objUser.CoopNeed;
+                user.Phone = objUser.Phone;
+                user.Detail = objUser.Detail;
+                user.Address = objUser.Address;
+                db.SaveChanges();
+                string msg = "Profile information saved";
+                return Json(new { success = true, responseText = msg });
+            }
+            return View(model);
         }
 
         public IActionResult Logout()

@@ -55,15 +55,19 @@ namespace CSFinder.Controllers
             int maxRound = int.Parse(db.Matchings.Max(p => p.MID));
             ViewBag.maxRound = maxRound;
 
-            List<Matching> showMatch = new List<Matching>();
-            foreach(Matching mat in db.Matchings.ToList())
+            List<CompanyNameMatching> cm = new List<CompanyNameMatching>();
+            foreach(Matching m in db.Matchings)
             {           
-                if(mat.SID == user.SID)
+                if(m.SID == user.SID)
                 {
-                    showMatch.Add(mat);
+                    string r1 = db.Companies.Where(b => b.CID.Equals(m.sRank1)).FirstOrDefault().Name;
+                    string r2 = db.Companies.Where(b => b.CID.Equals(m.sRank2)).FirstOrDefault().Name;
+                    string r3 = db.Companies.Where(b => b.CID.Equals(m.sRank3)).FirstOrDefault().Name;
+                    string resultName = db.Companies.Where(b => b.CID.Equals(m.CID)).FirstOrDefault().Name;
+                    cm.Add(new CompanyNameMatching(m, r1, r2, r3, resultName));
                 }
             }
-            ViewBag.showMatch = showMatch;
+            ViewBag.CompanyNameMatchingList = cm;
 
             return View();
         }
@@ -95,13 +99,30 @@ namespace CSFinder.Controllers
             ViewBag.userEmail = userEmail;
             return View();
         }
-
-
         public IActionResult EditProfile()
         {
-            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+            if (!setUser()) { Debug.WriteLine("Redirecting");  return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.user = user;
-            return View();
+            Student model = user;
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult EditProfile(Student objUser)
+        {
+            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+            Student model = user;
+
+            if (ModelState.IsValid)
+            {
+                user.Name = objUser.Name;
+                user.Type = objUser.Type;
+                user.Detail = objUser.Detail;
+                user.Phone = objUser.Phone;
+                user.Address = objUser.Address;
+                string msg = "Profile information saved";
+                return Json(new { success = true, responseText = msg });
+            }
+            return View(model);
         }
         public IActionResult Index()
         {
