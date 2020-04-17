@@ -1,3 +1,4 @@
+@model CSFinder.Models.Message
 @{
     ViewData["Title"] = "Notification";
     Layout = "_CompanyLayout";
@@ -248,17 +249,18 @@ color:white;
                             <div style="padding-left:10%;">
                                 <img class="card-img1" src="@sm.student.ImgProfile" border="0" />
                                 <p>ชื่อ: @sm.student.Name</p>
-                                @Html.ActionLink("Student Detail", "GetStudent", "Public",new { id = sm.student.SID }, new {@class ="open-button1", target = "_blank" })
+                                @Html.ActionLink("Student Detail", "GetStudent", "Public", new { id = sm.student.SID }, new { @class = "open-button1", target = "_blank" })
                                 @if (sm.matching.Result == "Waiting for interview")
                                 {
-                                    <button class="open-button2" onclick="openForm()">นัดสัมภาษณ์</button>
-                                    <div class="form-popup" id="myForm">
-                                        <form action="/action_page.php" class="form-container">
+                                    <a href="#interview" class="btn btn-info" data-toggle="collapse">นัดสัมภาษณ์</a>
+                                    <div id ="interview" class="collapse">
+                                        <form id="intForm" class="form-container">
                                             <label for="interview">วันที่นัดสัมภาษณ์</label>
-                                            <input class="date" type="date" id="interview" name="interview"><br>
+                                            @Html.EditorFor(model => model.Date, new { type = "date" })<br>
                                             <label for="interview">รายละเอียดในการนัดสัมภาษณ์</label>
-                                            <input type="text" id="text" style="width:300px; height:100px;">
-                                            <button type="button" class="btn cancel" onclick="closeForm()">ยืนยัน</button>
+                                            @Html.EditorFor(model => model.Detail,null,"Date")
+
+                                            <button type="button" class="btn cancel" onclick="confirm(@ViewBag.user.CID, @sm.matching.SID, @sm.matching.MID)">ยืนยัน</button>
                                         </form>
                                     </div>
                                 }
@@ -266,23 +268,28 @@ color:white;
                                 {
                                     <!--ทำยืนยันผลสัมภาษณ์-->
                                 }
-                            </div>
+                            </div>  
                         </div>
                     </div>
 
                 }
-
-                <script>
-                    function openForm() {
-                        document.getElementById("myForm").style.display = "block";
-                    }
-
-                    function closeForm() {
-                        document.getElementById("myForm").style.display = "none";
-                    }
-                </script>
             </div>
         </div>
 </body>
 </html>
-
+<script>
+    function confirm(from, to, MID) {
+        var data = $("#intForm").serialize();
+        data = data + "&from=" + from;
+        data = data + "&to=" + to;
+        data = data + "&MID=" + MID;
+        $.ajax({
+            type: "POST",
+            data: data ,
+            url: "/Company/InterviewAppointment",
+            success(response) {
+                alert(response);
+            }
+        })
+    }
+</script>

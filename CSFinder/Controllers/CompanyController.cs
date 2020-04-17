@@ -139,6 +139,18 @@ namespace CSFinder.Controllers
             return View();
 
         }
+        [HttpPost]
+        public IActionResult InterviewAppointment(Message message, string MID)
+        {
+            Debug.WriteLine("############################################################");
+            Debug.WriteLine(message.Date);
+            Debug.WriteLine(message.Detail);
+            Debug.WriteLine(message.from);
+            Debug.WriteLine(message.to);
+            Debug.WriteLine(MID);
+
+            return Json("hi");
+        }
 
 
         public IActionResult Notification_Announcement()
