@@ -1,4 +1,4 @@
-@model CSFinder.Models.Post
+﻿@model CSFinder.Models.Post
 @{
     ViewData["Title"] = "Home";
     Layout = "_CompanyLayout";
@@ -8,19 +8,22 @@
 <html>
 <head>
     <style>
-        .card-img1 {
-            border-radius: 50%;
-            margin: 3px;
-            margin-left: 10%;
-            width: 50px;
-            height: 50px;
-            border: 1px solid #ddd;
-        }
+    .card-img1 {
+        border-radius: 50%;
+        margin: 3px;
+        margin-top: 19px;
+        margin-left: 22px;
+        width: 50px;
+        height: 50px;
+        border: 1px solid #ddd;
+    }
 
-        img {
-            margin: 20px;
-            width: 500px;
-        }
+    img {
+        object-fit: cover;
+        margin: 20px;
+        width: 500px;
+        border-radius: 30px;
+    }
 
         .card-img {
             border-radius: 50%;
@@ -29,25 +32,137 @@
             padding: 5px;
             width: 150px;
             height: 150px;
+            box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
         }
 
-
-        input {
-            position: relative;
-            width: 700px;
-            height: 120px;
-            background: #ced6e0;
-            border: 3px solid #22a6b3;
-            border-radius: 10px;
-            margin-bottom: 3px;
-            width: 100%;
-            padding: 20px;
+        .name {
+            margin-top: -41px;
+            margin-left: 54px;
+            background-color: #2bcbba;
+            width: 517px;
+            height: 27px;
+            /* padding-right: 10px; */
+            padding-left: 23px;
+            box-shadow: 6px 5px #0fb9b1
         }
+
+        .profile {
+            background-color: #2bcbba;
+            width: 200px;
+            height: 27px;
+            /* padding-right: 10px; */
+            /* padding-left: 23px; */
+            box-shadow: 6px 5px #0fb9b1;
+        }
+
 
         button {
-            border: 3px solid #22a6b3;
-            border-radius: 10px;
+            background-color: #f1f1f1;
+            color: #227093;
+            border: none;
+            margin-left: 130px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 13px;
+            margin-bottom: -21px;
+            font-family: 'Kanit', sans-serif;
         }
+
+            button:hover {
+                background-color: #f7f1e3;
+                font-family: 'Kanit', sans-serif;
+            }
+
+            button:disabled {
+                background-color: #12CBC4;
+                color: black;
+                cursor: auto;
+                font-family: 'Kanit', sans-serif;
+            }
+
+        * {
+            box-sizing: border-box;
+        }
+
+            *
+            body {
+                font-family: Arial;
+                margin: 0;
+            }
+
+        .column1 {
+            float: left;
+            width: 25%;
+            padding-right: 10px;
+            height: auto;
+            background-color: #f1f1f1;
+            position: fixed;
+            border-radius: 30px;
+            box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
+            font-family: 'Kanit', sans-serif;
+        }
+
+            .column1:hover {
+                box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
+            }
+
+        .main {
+            flex: 70%;
+            padding: 20px;
+            float: left;
+            width: 100%;
+            padding-right: 10px;
+            height: auto;
+            background-color: #f1f1f1;
+            border-radius: 30px;
+            box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
+        }
+
+        .detail {
+            width: max-content;
+            padding-right: 10px;
+            height: auto;
+            margin-bottom: 20px;
+            margin-left: 23px;
+            background-color: #c8d6e5;
+            border-radius: 30px;
+            box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
+            font-family: 'Kanit', sans-serif;
+        }
+
+            .detail:hover {
+                box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
+            }
+
+        .column2 {
+            float: left;
+            width: 100%;
+            padding-left: 30%;
+            height: 100%;
+        }
+
+        .collapse {
+            background-color: antiquewhite;
+            margin-left: 60px;
+            margin-top: 9px;
+            width: 503px;
+            border-radius: 15px;
+            padding: 10px;
+            font-family: 'Kanit', sans-serif;
+        }
+
+        .row {
+            display: flex;
+            content: "";
+            clear: both;
+        }
+
+        .row {
+            display: flex;
+            content: "";
+            clear: both;
+        }
+
 
         hr {
             margin: 0;
@@ -71,25 +186,7 @@
                 font-family: Arial;
                 margin: 0;
             }
-        /* Column container */
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-        }
 
-        /* Sidebar/left column */
-        .side {
-            flex: 30%;
-            background-color: #f1f1f1;
-            padding: 20px;
-        }
-
-        /* Main column */
-        .main {
-            flex: 70%;
-            background-color: white;
-            padding: 20px;
-        }
 
         .box {
             width: 620px;
@@ -104,26 +201,6 @@
             margin: 0px 110px 0px 80px;
         }
 
-              p {
-        margin: 0;
-    }
-
-        .column1 {
-            float: left;
-            width: 25%;
-            padding-right: 10px;
-            height: 50%;
-            background-color: #f1f1f1;
-            position: fixed;
-            border-radius: 30px;
-        }
-
-    .column2 {
-        float: left;
-        width: 100%;
-        padding-left: 35%;
-        height: 100%;
-    }
 
     </style>
 </head>
@@ -136,8 +213,7 @@
             <p><b>@ViewBag.company.Name</b></p>
             <p><b>ที่อยู่ : </b>@ViewBag.company.Address</p>
             <p><b>โทร : </b>@ViewBag.company.Phone</p>
-            <p><b>Email : </b>@ViewBag.userEmail</p>
-            <button>แก้ไขข้อมูล</button>
+            <p><b>Email : </b>@ViewBag.userEmail</p><br>
         </div>
 
         <div class="column2">
@@ -168,17 +244,30 @@
                         </div>
                     </div><br />
                 </form>
-
-                @foreach (PostCompany p in ViewBag.postCompanyList)
+                @foreach (PostCompany pc in ViewBag.postCompanyList)
                 {
-                    <div class="oneOfPost">
-                        <img class="card-img1" src="@p.company.ImgProfile" border="0">
-                        <b>@p.company.Name</b><br>
-                        <p style="margin-left: 10%;">@p.post.Detail</p>
-                        <img style="margin-left: 10%;" src="@p.post.ImgLink" border="0">
+                    <div class="detail">
+                        <p>
+                            <img class="card-img1" src="@pc.company.ImgProfile" />
+                            <div class="name"><b>@pc.company.Name</b></div>
+                        </p>
+                        <div>
+                            <a href="#detail" class="btn btn-info" data-toggle="collapse" style="margin-left: 76px; margin-top: 15px;">Detail</a>
+                            <div id="detail" class="collapse" style="margin-left: 10%;">
+                                @pc.post.Detail
+                            </div>
+                        </div>
+                        <img style="margin-left: 76px;" src="@pc.post.ImgLink" />
                     </div>
+
+
                 }
+
+                <script>
+                </script>
             </div>
+            </div>
+
         </div>
         </div>
 
