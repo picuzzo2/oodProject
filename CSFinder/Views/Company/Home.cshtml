@@ -4,10 +4,16 @@
     Layout = "_CompanyLayout";
 }
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Roboto:ital@1&display=swap" rel="stylesheet">
 <!DOCTYPE html>
 <html>
 <head>
     <style>
+
         .card-img1 {
             border-radius: 50%;
             margin: 3px;
@@ -29,6 +35,53 @@
             padding: 5px;
             width: 150px;
             height: 150px;
+        }
+            table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .head-table, .numOfStudent,
+    th {
+        text-align: center;
+    }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 10px;
+    }
+
+    table#t01 th {
+        background-color: black;
+        color: white;
+    }
+
+    table#t02 th {
+        background-color: black;
+        color: white;
+    }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        th {
+            width: 250px;
+        }
+
+        .row {
+            display: flex;
+            content: "";
+            clear: both;
+        }
+
+        .row {
+            display: flex;
+            content: "";
+            clear: both;
         }
 
 
@@ -100,13 +153,35 @@
             background-color: #D7DBDD;
         }
 
-        .float-right {
-            margin: 0px 110px 0px 80px;
+
+        p {
+            margin: 0;
+        }
+            .collapsible {
+        background-color: #ced6e0;
+        color: lightslategray;
+        border: none;
+        margin-left: 130px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .collapsible:hover {
+            background-color: #f1f1f1;
         }
 
-              p {
-        margin: 0;
-    }
+        .collapsible:disabled {
+            background-color: #f1f1f1;
+            color: #aaa;
+            cursor: auto;
+        }
+
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
 
         .column1 {
             float: left;
@@ -118,12 +193,12 @@
             border-radius: 30px;
         }
 
-    .column2 {
-        float: left;
-        width: 100%;
-        padding-left: 35%;
-        height: 100%;
-    }
+        .column2 {
+            float: left;
+            width: 100%;
+            padding-left: 35%;
+            height: 100%;
+        }
 
     </style>
 </head>
@@ -156,38 +231,94 @@
                                     @Html.TextBoxFor(a => a.ImgLink, new { @class = "form-control", @placeholder = "Link something..." })
                                     @Html.ValidationMessageFor(a => a.Detail)
                                 </div>
-                                <a href="home" class="btn btn-primary" onclick="PostImgCompany()">Upload image</a><br />
+
+
+                                <input type="file" class="form-control file-up" name="photoup[]" id="photo-up<?=$i?>" style="display:none;">
+                                <a href="home" class="btn btn-sm btn-default btn-upload btn-primary" onclick="PostImgCompany()"> Upload Image</a>
+                                <div class="btn btn-sm btn-danger mg-top btn-remove-file" style="display:none;">X</div>
+                                <a href="home" class="btn btn-primary float-right" onclick="PostCompany()">Post</a>
+
+
                             </div>
                         </div>
                     </div>
+                    <div class="container">
 
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <a href="home" class="btn btn-primary float-right" onclick="PostCompany()">Post</a>
-                        </div>
-                    </div><br />
-                </form>
+                        <div class="container">
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                                    crossorigin="anonymous"></script>
+                            <script type="text/javascript">
+                                $(function () {
+                                    // เมื่อคลิกที่ปุ่มเลือกไฟล์
+                                    $(".btn-upload").on("click", function () {
+                                        // ให้ input file เกิด event click
+                                        $(this).prev("input:file").trigger("click");
+                                    });
 
-                @foreach (PostCompany p in ViewBag.postCompanyList)
-                {
-                    <div class="oneOfPost">
-                        <img class="card-img1" src="@p.company.ImgProfile" border="0">
-                        <b>@p.company.Name</b><br>
-                        <p style="margin-left: 10%;">@p.post.Detail</p>
-                        <img style="margin-left: 10%;" src="@p.post.ImgLink" border="0">
+                                    // ถ้าคลิกที่ปุ่มยกเลิกเลือกไฟล์
+                                    $(".btn-remove-file").on("click", function () {
+                                        var el = $(this).prevAll("input:file");
+                                        el.wrap('<form>').closest('form').get(0).reset();
+                                        el.unwrap();
+                                        $(this).prev(".btn-upload").text("Choose File");
+                                        $(this).hide();
+                                    });
+                                });
+                            </script>
+                        </div><br />
                     </div>
-                }
+                </form>
+                    @foreach (PostCompany pc in ViewBag.postCompanyList)
+                    {
+                        <p>
+                            <img class="card-img1" src="@pc.company.ImgProfile" />
+                            @pc.company.Name
+                        </p>
+
+                        <button class="collapsible">More Detail</button>
+
+
+                        <div class="content" style="margin-left: 10%;">
+                            @pc.post.Detail
+                        </div>
+
+                        <img style="margin-left: 20%;" src="@pc.post.ImgLink" />
+
+
+                    }
+
+                    <script>
+                        var coll = document.getElementsByClassName("collapsible");
+                        var i;
+
+                        for (i = 0; i < coll.length; i++) {
+                            coll[i].addEventListener("click", function () {
+                                this.classList.toggle("active");
+                                var content = this.nextElementSibling;
+                                if (content.style.display === "block") {
+                                    content.style.display = "none";
+                                } else {
+                                    content.style.display = "block";
+                                }
+                            });
+                        }
+                    </script>
+                </div>
             </div>
+
         </div>
-        </div>
+
+
 
 </body>
 </html>
 <script>
     var PostCompany = function () {
-        
+
         var data = $("#postForm").serialize();
-        
+
         $.ajax({
             type: "Post",
             url: "/Company/Home",
@@ -195,9 +326,9 @@
             success: function (response) {
                 alert(response.responseText);
                 window.location.href = "/RegisLogin/Login";
-                }
+            }
 
-            
+
         })
         debugger
     }
