@@ -63,26 +63,24 @@ namespace CSFinder.Controllers
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.user = user;
             ViewBag.Matchs = db.Matchings;
-
-            ViewBag.Dates = "(12/12/2562)";
-            ViewBag.Rank1 = "บ.ปูน";
-            ViewBag.Rank2 = "บ.ไอ";
-            ViewBag.Rank3 = "บ.ไม่รู้";
-            ViewBag.RankComplete = "บริษัท ปูน...";
             ViewBag.Status = user.Status;
 
             int maxRound = int.Parse(db.Matchings.Max(p => p.MID));
             ViewBag.maxRound = maxRound;
 
-            List<Matching> showMatch = new List<Matching>();
-            foreach(Matching mat in db.Matchings.ToList())
+            List<CompanyNameMatching> cm = new List<CompanyNameMatching>();
+            foreach(Matching m in db.Matchings)
             {           
-                if(mat.SID == user.SID)
+                if(m.SID == user.SID)
                 {
-                    showMatch.Add(mat);
+                    string r1 = db.Companies.Where(b => b.CID.Equals(m.sRank1)).FirstOrDefault().Name;
+                    string r2 = db.Companies.Where(b => b.CID.Equals(m.sRank2)).FirstOrDefault().Name;
+                    string r3 = db.Companies.Where(b => b.CID.Equals(m.sRank3)).FirstOrDefault().Name;
+                    string resultName = db.Companies.Where(b => b.CID.Equals(m.CID)).FirstOrDefault().Name;
+                    cm.Add(new CompanyNameMatching(m, r1, r2, r3, resultName));
                 }
             }
-            ViewBag.showMatch = showMatch;
+            ViewBag.CompanyNameMatchingList = cm;
 
             return View();
         }
