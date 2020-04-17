@@ -137,18 +137,12 @@ namespace CSFinder.Controllers
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
 
             List<PostCompany> pc = new List<PostCompany>();
-            foreach(Post p in db.Posts)
+            foreach(Post p in db.Posts.OrderByDescending(x=>x.PID))
             {
                 Company c = db.Companies.Where(a => a.CID.Equals(p.CID)).FirstOrDefault();
                 pc.Add(new PostCompany (c,  p ));
             }
             ViewBag.postCompanyList = pc;
-            //ViewBag.Posts = db.Posts;
-            foreach(PostCompany p in pc)
-            {
-                Debug.WriteLine(p.post.PID);
-                Debug.WriteLine(p.company.Name);
-            }
             ViewBag.user = user;
             ViewBag.userEmail = userEmail;
             return View();

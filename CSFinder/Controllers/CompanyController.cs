@@ -43,7 +43,7 @@ namespace CSFinder.Controllers
             Debug.WriteLine("homepost5555555555");
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             List<PostCompany> pc = new List<PostCompany>();
-            foreach (Post p in db.Posts)
+            foreach (Post p in db.Posts.OrderByDescending(x=>x.PID))
             {
                 Company c = db.Companies.Where(a => a.CID.Equals(p.CID)).FirstOrDefault();
                 pc.Add(new PostCompany(c, p));

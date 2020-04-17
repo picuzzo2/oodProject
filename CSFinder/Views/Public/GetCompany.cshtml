@@ -132,26 +132,48 @@
         <img class="card-img" src="@ViewBag.obj.ImgProfile" alt="Avatar" /><br />
         <p><b>ชื่อบริษัท:</b> @ViewBag.obj.Name </p>
         <p><b>Email:</b> @ViewBag.userEmail  </p>
+        <p><b>Phone:</b> @ViewBag.obj.Phone  </p>
+        <p><b>Address:</b> @ViewBag.obj.Address  </p>
+        <p><b>Trainnee Need:</b> @ViewBag.obj.TrainneeNeed  </p>
+        <p><b>Trainnee Got:</b> @ViewBag.obj.TrainneeGot  </p>
+        <p><b>Cooporative Need:</b> @ViewBag.obj.CoopNeed  </p>
+        <p><b>Cooporative Got:</b> @ViewBag.obj.CoopGot  </p>
+        <p><b>Detail:</b> @ViewBag.obj.Detail  </p>
         <br>
     </div>
 
-
     <div class="column2">
         <div class="main">
+            @foreach(var post in ViewBag.posts)
+            {
+                <div>
 
-            <div class="head"><b>ADDRESS</b></div>
-            <div class="detail">@ViewBag.obj.Address</div>
-            <div class="head"><b>PHONE</b></div>
-            <div class="detail">@ViewBag.obj.Phone</div>
-            <div class="head"><b>DETAIL</b></div>
-            <div class="detail">@ViewBag.obj.Detail</div>
-            <div class="head"><b>TRAINEE NEED</b></div>
-            <div class="detail"><b>จำนวนนักศึกษาที่ต้องการรับเข้าฝึกงาน :</b> @ViewBag.obj.TrainneeNeed</div>
-            <div class="head"><b>COOPERATIVE NEED</b></div>
-            <div class="detail"><b>จำนวนนักศึกษาที่ต้องการรับเข้าสหกิจศึกษา :</b> @ViewBag.obj.CoopNeed</div>
+                        <img class="card-img" src="@post.company.ImgProfile" alt="Avatar" />
+                         @post.company.Name
+                
+                        @post.post.Detail
+                        <img src="@post.post.ImgLink" alt="Avatar" />
+                
+                </div>
+            }
+            <!--
+            <div class="column2">
+                <div class="main">
+
+                    <div class="head"><b>ADDRESS</b></div>
+                    <div class="detail">@ViewBag.obj.Address</div>
+                    <div class="head"><b>PHONE</b></div>
+                    <div class="detail">@ViewBag.obj.Phone</div>
+                    <div class="head"><b>DETAIL</b></div>
+                    <div class="detail">@ViewBag.obj.Detail</div>
+                    <div class="head"><b>TRAINEE NEED</b></div>
+                    <div class="detail"><b>จำนวนนักศึกษาที่ต้องการรับเข้าฝึกงาน :</b> @ViewBag.obj.TrainneeNeed</div>
+                    <div class="head"><b>COOPERATIVE NEED</b></div>
+                    <div class="detail"><b>จำนวนนักศึกษาที่ต้องการรับเข้าสหกิจศึกษา :</b> @ViewBag.obj.CoopNeed</div>
 
 
+                </div>
+            -->
         </div>
-</div>
-</div>
+    </div>
 

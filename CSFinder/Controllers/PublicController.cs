@@ -24,8 +24,15 @@ namespace CSFinder.Controllers
         public IActionResult GetCompany(string id)
         {
             var obj = db.Companies.Where(x => x.CID == id).FirstOrDefault();
+            
+            List<PostCompany> cpost = new List<PostCompany>();
+            foreach(Post p in db.Posts.OrderByDescending(x=>x.PID).Where(x => x.CID == obj.CID).ToList())
+            {
+                cpost.Add(new PostCompany( obj, p ));
+            }
             ViewBag.obj = obj;
             ViewBag.userEmail = db.Accounts.Where(x => x.ID.Equals(obj.ID)).FirstOrDefault().Email;
+            ViewBag.posts = cpost;
             return View();
         }
 
