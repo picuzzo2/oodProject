@@ -33,17 +33,7 @@
             height: 150px;
         }
 
-        input {
-            position: relative;
-            width: 700px;
-            height: 120px;
-            background: #ced6e0;
-            border: 3px solid #22a6b3;
-            border-radius: 10px;
-            margin-bottom: 3px;
-            width: 100%;
-            padding: 20px;
-        }
+
 
         button {
             border: 3px solid #22a6b3;
@@ -88,27 +78,27 @@
         .header {
             margin-left: 90px;
         }
-          p {
-        margin: 0;
-    }
 
-    .column1 {
-        float: left;
-        width: 25%;
-        padding-right: 10px;
-        height: 50%;
-        background-color: #f1f1f1;
-        position: fixed;
-        border-radius: 30px;
+        p {
+            margin: 0;
+        }
 
-    }
+        .column1 {
+            float: left;
+            width: 25%;
+            padding-right: 10px;
+            height: 50%;
+            background-color: #f1f1f1;
+            position: fixed;
+            border-radius: 30px;
+        }
 
-    .column2 {
-        float: left;
-        width: 100%;
-        padding-left: 35%;
-        height: 100%;
-    }
+        .column2 {
+            float: left;
+            width: 100%;
+            padding-left: 35%;
+            height: 100%;
+        }
 
         .column1 {
             float: left;
@@ -127,29 +117,43 @@
             height: 100%;
         }
 
-        .open-button {
-            background-color: #555;
+        .open-button1 {
+            background-color: #4682B4;
             color: white;
-            padding: 16px 20px;
+            padding: 5px;
             border: none;
             cursor: pointer;
             opacity: 0.8;
-            margin: 0px;
+            margin-top: 15px;
             bottom: 23px;
             right: 28px;
-            width: 280px;
+            width: 120px;
+        }
+
+        .open-button2 {
+            background-color: #228B22;
+            color: white;
+            padding: 5px;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+            margin-top: 15px;
+            bottom: 23px;
+            right: 28px;
+            width: 120px;
         }
 
         /* The popup form - hidden by default */
         .form-popup {
-            width: 400px;
-            hight: 600px;
+            width: 380px;
+            height: auto;
             display: none;
             background-color: #bdc3c7;
             bottom: 0;
             right: 15px;
             border: 3px solid #f1f1f1;
             z-index: 9;
+            box-shadow: 5px 10px;
         }
 
         /* Add styles to the form container */
@@ -177,8 +181,10 @@
 
             /* Add a red background color to the cancel button */
             .form-container .cancel {
-                background-color: red;
+                background-color:red;
                 margin-top: 10px;
+                width: 100px;
+                margin-left:10%;
             }
 
             /* Add some hover effects to buttons */
@@ -190,8 +196,13 @@
             position: relative;
             background: #dfe4ea;
             border: 3px solid #ced6e0;
-            border-radius: 10px;
+            border-radius: 20px;
             margin-bottom: 3px;
+            margin-left: 10%;
+        }
+
+        label {
+            margin-left: 10%;
         }
 
         .date {
@@ -217,39 +228,42 @@
 
         <div class="column2">
             <div>
-            @foreach (StudentNameMatching sm in @ViewBag.StudentNameMatchingList)
-            {
-                <div class="main">
-                    <div class="box">
-                        <img class="card-img1" src="@sm.student.ImgProfile" border="0" />
-                        <p>@sm.student.Name</p>
-                        @Html.ActionLink("Student detail", "GetStudent", "Public", new { id = sm.student.SID }, new { target = "_blank" })
-                        <button class="open-button" onclick="openForm()">นัดสัมภาษณ์</button>
-                        <div class="form-popup" id="myForm">
-                            <form action="/action_page.php" class="form-container">
-                                <label for="interview">วันที่นัดสัมภาษณ์</label>
-                                <input class="date" type="date" id="interview" name="interview"><br>
-                                <label for="interview">รายละเอียดในการนัดสัมภาษณ์</label>
-                                <input type="text" id="text" style="width:300px; ">
-                                <button type="button" class="btn cancel" onclick="closeForm()">ยืนยัน</button>
-                            </form>
+
+                @foreach (StudentNameMatching sm in @ViewBag.StudentNameMatchingList)
+                {
+                    <div class="main">
+                        <div class="box">
+                            <div style="padding-left:10%;">
+                                <img class="card-img1" src="@ViewBag.studentPhotoexample" border="0" />
+                                <p>ชื่อ: @sm.student.Name</p>
+                                <button class="open-button1" onclick="window.location.href='/Company/ProfileStudentInterest'">ข้อมูลนักศึกษา</button><br />
+                                <button class="open-button2" onclick="openForm()">นัดสัมภาษณ์</button>
+                                <div class="form-popup" id="myForm">
+                                    <form action="/action_page.php" class="form-container">
+                                        <label for="interview">วันที่นัดสัมภาษณ์</label>
+                                        <input class="date" type="date" id="interview" name="interview"><br>
+                                        <label for="interview">รายละเอียดในการนัดสัมภาษณ์</label>
+                                        <input type="text" id="text" style="width:300px; height:100px;">
+                                        <button type="button" class="btn cancel" onclick="closeForm()" >ยืนยัน</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    </div>
 
+                }
+
+                <script>
+                    function openForm() {
+                        document.getElementById("myForm").style.display = "block";
                     }
 
-                    <script>
-                        function openForm() {
-                            document.getElementById("myForm").style.display = "block";
-                        }
-
-                        function closeForm() {
-                            document.getElementById("myForm").style.display = "none";
-                        }
-                    </script>
-                </div>
+                    function closeForm() {
+                        document.getElementById("myForm").style.display = "none";
+                    }
+                </script>
             </div>
+        </div>
 </body>
 </html>
 
