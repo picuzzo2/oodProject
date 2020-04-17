@@ -4,29 +4,26 @@
     Layout = "_CompanyLayout";
 }
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Roboto:ital@1&display=swap" rel="stylesheet">
 <!DOCTYPE html>
 <html>
 <head>
     <style>
+    .card-img1 {
+        border-radius: 50%;
+        margin: 3px;
+        margin-top: 19px;
+        margin-left: 22px;
+        width: 50px;
+        height: 50px;
+        border: 1px solid #ddd;
+    }
 
-        .card-img1 {
-            border-radius: 50%;
-            margin: 3px;
-            margin-left: 10%;
-            width: 50px;
-            height: 50px;
-            border: 1px solid #ddd;
-        }
-
-        img {
-            margin: 20px;
-            width: 500px;
-        }
+    img {
+        object-fit: cover;
+        margin: 20px;
+        width: 500px;
+        border-radius: 30px;
+    }
 
         .card-img {
             border-radius: 50%;
@@ -35,72 +32,137 @@
             padding: 5px;
             width: 150px;
             height: 150px;
-        }
-            table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    .head-table, .numOfStudent,
-    th {
-        text-align: center;
-    }
-
-    td,
-    th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 10px;
-    }
-
-    table#t01 th {
-        background-color: black;
-        color: white;
-    }
-
-    table#t02 th {
-        background-color: black;
-        color: white;
-    }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
+            box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
         }
 
-        th {
-            width: 250px;
+        .name {
+            margin-top: -41px;
+            margin-left: 54px;
+            background-color: #2bcbba;
+            width: 517px;
+            height: 27px;
+            /* padding-right: 10px; */
+            padding-left: 23px;
+            box-shadow: 6px 5px #0fb9b1
         }
 
-        .row {
-            display: flex;
-            content: "";
-            clear: both;
+        .profile {
+            background-color: #2bcbba;
+            width: 200px;
+            height: 27px;
+            /* padding-right: 10px; */
+            /* padding-left: 23px; */
+            box-shadow: 6px 5px #0fb9b1;
         }
 
-        .row {
-            display: flex;
-            content: "";
-            clear: both;
-        }
-
-
-        input {
-            position: relative;
-            width: 700px;
-            height: 120px;
-            background: #ced6e0;
-            border: 3px solid #22a6b3;
-            border-radius: 10px;
-            margin-bottom: 3px;
-            width: 100%;
-            padding: 20px;
-        }
 
         button {
-            border: 3px solid #22a6b3;
-            border-radius: 10px;
+            background-color: #f1f1f1;
+            color: #227093;
+            border: none;
+            margin-left: 130px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 13px;
+            margin-bottom: -21px;
+            font-family: 'Kanit', sans-serif;
         }
+
+            button:hover {
+                background-color: #f7f1e3;
+                font-family: 'Kanit', sans-serif;
+            }
+
+            button:disabled {
+                background-color: #12CBC4;
+                color: black;
+                cursor: auto;
+                font-family: 'Kanit', sans-serif;
+            }
+
+        * {
+            box-sizing: border-box;
+        }
+
+            *
+            body {
+                font-family: Arial;
+                margin: 0;
+            }
+
+        .column1 {
+            float: left;
+            width: 25%;
+            padding-right: 10px;
+            height: auto;
+            background-color: #f1f1f1;
+            position: fixed;
+            border-radius: 30px;
+            box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
+            font-family: 'Kanit', sans-serif;
+        }
+
+            .column1:hover {
+                box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
+            }
+
+        .main {
+            flex: 70%;
+            padding: 20px;
+            float: left;
+            width: 100%;
+            padding-right: 10px;
+            height: auto;
+            background-color: #f1f1f1;
+            border-radius: 30px;
+            box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
+        }
+
+        .detail {
+            width: max-content;
+            padding-right: 10px;
+            height: auto;
+            margin-bottom: 20px;
+            margin-left: 23px;
+            background-color: #c8d6e5;
+            border-radius: 30px;
+            box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
+            font-family: 'Kanit', sans-serif;
+        }
+
+            .detail:hover {
+                box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
+            }
+
+        .column2 {
+            float: left;
+            width: 100%;
+            padding-left: 30%;
+            height: 100%;
+        }
+
+        .collapse {
+            background-color: antiquewhite;
+            margin-left: 60px;
+            margin-top: 9px;
+            width: 503px;
+            border-radius: 15px;
+            padding: 10px;
+            font-family: 'Kanit', sans-serif;
+        }
+
+        .row {
+            display: flex;
+            content: "";
+            clear: both;
+        }
+
+        .row {
+            display: flex;
+            content: "";
+            clear: both;
+        }
+
 
         hr {
             margin: 0;
@@ -124,82 +186,18 @@
                 font-family: Arial;
                 margin: 0;
             }
-        /* Column container */
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-        }
 
-        /* Sidebar/left column */
-        .side {
-            flex: 30%;
-            background-color: #f1f1f1;
-            padding: 20px;
-        }
-
-        /* Main column */
-        .main {
-            flex: 70%;
-            background-color: white;
-            padding: 20px;
-        }
-
-        .box {
-            width: 620px;
-            padding: 10px;
-            border: 5px solid #CACFD2;
-            margin: 0;
-            border-radius: 10px;
-            background-color: #D7DBDD;
-        }
-
-
-        p {
-            margin: 0;
-        }
-            .collapsible {
-        background-color: #ced6e0;
-        color: lightslategray;
-        border: none;
-        margin-left: 130px;
-        border-radius: 4px;
-        cursor: pointer;
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 10px;
     }
 
-        .collapsible:hover {
-            background-color: #f1f1f1;
-        }
-
-        .collapsible:disabled {
-            background-color: #f1f1f1;
-            color: #aaa;
-            cursor: auto;
-        }
-
-        .content {
-            padding: 0 18px;
-            display: none;
-            overflow: hidden;
-            background-color: #f1f1f1;
-        }
-
-        .column1 {
-            float: left;
-            width: 25%;
-            padding-right: 10px;
-            height: 50%;
-            background-color: #f1f1f1;
-            position: fixed;
-            border-radius: 30px;
-        }
-
-        .column2 {
-            float: left;
-            width: 100%;
-            padding-left: 35%;
-            height: 100%;
-        }
-
+    table#t01 th {
+        background-color: black;
+        color: white;
+    }
     </style>
 </head>
 <body>
@@ -211,7 +209,7 @@
             <p><b>@ViewBag.company.Name</b></p>
             <p><b>ที่อยู่ : </b>@ViewBag.company.Address</p>
             <p><b>โทร : </b>@ViewBag.company.Phone</p>
-            <p><b>Email : </b>@ViewBag.userEmail</p>
+            <p><b>Email : </b>@ViewBag.userEmail</p><br>
         </div>
 
         <div class="column2">
@@ -231,94 +229,51 @@
                                     @Html.TextBoxFor(a => a.ImgLink, new { @class = "form-control", @placeholder = "Link something..." })
                                     @Html.ValidationMessageFor(a => a.Detail)
                                 </div>
-
-
-                                <input type="file" class="form-control file-up" name="photoup[]" id="photo-up<?=$i?>" style="display:none;">
-                                <a href="home" class="btn btn-sm btn-default btn-upload btn-primary" onclick="PostImgCompany()"> Upload Image</a>
-                                <div class="btn btn-sm btn-danger mg-top btn-remove-file" style="display:none;">X</div>
-                                <a href="home" class="btn btn-primary float-right" onclick="PostCompany()">Post</a>
-
-
+                                <a href="home" class="btn btn-primary" onclick="PostImgCompany()">Upload image</a><br />
                             </div>
                         </div>
                     </div>
-                    <div class="container">
 
-                        <div class="container">
-                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-                            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-                                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-                                    crossorigin="anonymous"></script>
-                            <script type="text/javascript">
-                                $(function () {
-                                    // เมื่อคลิกที่ปุ่มเลือกไฟล์
-                                    $(".btn-upload").on("click", function () {
-                                        // ให้ input file เกิด event click
-                                        $(this).prev("input:file").trigger("click");
-                                    });
-
-                                    // ถ้าคลิกที่ปุ่มยกเลิกเลือกไฟล์
-                                    $(".btn-remove-file").on("click", function () {
-                                        var el = $(this).prevAll("input:file");
-                                        el.wrap('<form>').closest('form').get(0).reset();
-                                        el.unwrap();
-                                        $(this).prev(".btn-upload").text("Choose File");
-                                        $(this).hide();
-                                    });
-                                });
-                            </script>
-                        </div><br />
-                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <a href="home" class="btn btn-primary float-right" onclick="PostCompany()">Post</a>
+                        </div>
+                    </div><br />
                 </form>
-                    @foreach (PostCompany pc in ViewBag.postCompanyList)
-                    {
+                @foreach (PostCompany pc in ViewBag.postCompanyList)
+                {
+                    <div class="detail">
                         <p>
                             <img class="card-img1" src="@pc.company.ImgProfile" />
-                            @pc.company.Name
+                            <div class="name"><b>@pc.company.Name</b></div>
                         </p>
-
-                        <button class="collapsible">More Detail</button>
-
-
-                        <div class="content" style="margin-left: 10%;">
-                            @pc.post.Detail
+                        <div>
+                            <a href="#detail" class="btn btn-info" data-toggle="collapse" style="margin-left: 76px; margin-top: 15px;">Detail</a>
+                            <div id="detail" class="collapse" style="margin-left: 10%;">
+                                @pc.post.Detail
+                            </div>
                         </div>
+                        <img style="margin-left: 76px;" src="@pc.post.ImgLink" />
+                    </div>
 
-                        <img style="margin-left: 20%;" src="@pc.post.ImgLink" />
 
+                }
 
-                    }
-
-                    <script>
-                        var coll = document.getElementsByClassName("collapsible");
-                        var i;
-
-                        for (i = 0; i < coll.length; i++) {
-                            coll[i].addEventListener("click", function () {
-                                this.classList.toggle("active");
-                                var content = this.nextElementSibling;
-                                if (content.style.display === "block") {
-                                    content.style.display = "none";
-                                } else {
-                                    content.style.display = "block";
-                                }
-                            });
-                        }
-                    </script>
-                </div>
+                <script>
+                </script>
+            </div>
             </div>
 
         </div>
-
-
+        </div>
 
 </body>
 </html>
 <script>
     var PostCompany = function () {
-
+        
         var data = $("#postForm").serialize();
-
+        
         $.ajax({
             type: "Post",
             url: "/Company/Home",
@@ -326,9 +281,9 @@
             success: function (response) {
                 alert(response.responseText);
                 window.location.href = "/RegisLogin/Login";
-            }
+                }
 
-
+            
         })
         debugger
     }
