@@ -143,28 +143,28 @@
                                                 @if (i.matching.Result == "Waiting for interview")
                                                 {
                                                     <!-- GREY -->
-                                                    <b>สถานะ : @i.matching.Result</b>
+                                                    <p style="color:blue"><b>สถานะ :</b> @i.matching.Result</p>
                                                 }
                                                 else if (i.matching.Result == "Employed")
                                                 {
                                                     <!-- GREY -->
-                                                    <b>สถานะ : You can't choose other company</b>
+                                                    <p style="color:grey"><b>สถานะ :</b> You can't choose other company</p>
                                                 }
                                                 else if (i.matching.Result == "Waiting for interview result")
                                                 {
                                                     <!-- YELLOW -->
-                                                    <b>สถานะ : @i.matching.Result</b>
+                                                    <p style="color:gold"><b>สถานะ :</b> @i.matching.Result</p>
                                                 }
                                                 else if (i.matching.Result == "Company rejected"
                                                     || i.matching.Result == "Student rejected")
                                                 {
                                                     <!-- RED -->
-                                                    <b>สถานะ : @i.matching.Result</b>
+                                                    <p style="color: red"><b>สถานะ :</b> @i.matching.Result</p>
                                                 }
                                                 else if (i.matching.Result == "Student accepted")
                                                 {
                                                     <!--GREEN-->
-                                                    <b>สถานะ : You've chose this company</b>
+                                                    <p style="color:green"><b>สถานะ :</b> You've chose this company</p>
                                                 }
                                             }
                                             else

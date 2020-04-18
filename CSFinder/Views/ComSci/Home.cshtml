@@ -39,7 +39,7 @@
     }
 
     .name {
-        margin-top: -60px;
+        margin-top: -41px;
         margin-left: 54px;
         background-color: #2bcbba;
         width: 517px;
@@ -93,6 +93,23 @@
             margin: 0;
         }
 
+     .row {
+        display: flex;
+        content: "";
+        clear: both;
+    }
+
+    /* Main column */
+    .main {
+        flex: 70%;
+        background-color: white;
+        padding: 20px;
+    }
+
+    p {
+        margin: 0;
+    }
+
     .column1 {
         float: left;
         width: 25%;
@@ -101,32 +118,29 @@
         background-color: #f1f1f1;
         position: fixed;
         border-radius: 30px;
-        box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
         font-family: 'Kanit', sans-serif;
+        box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
     }
 
         .column1:hover {
             box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
         }
 
-    .main {
-        flex: 70%;
-        padding: 20px;
+    .column2 {
         float: left;
         width: 100%;
-        padding-right: 10px;
-        height: auto;
-        background-color: #f1f1f1;
-        border-radius: 30px;
-        box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
+        padding-left: 35%;
+        height: 100%;
+        margin-top: 3%;
+        font-family: 'Kanit', sans-serif;
     }
 
     .detail {
         width: max-content;
         padding-right: 10px;
         height: auto;
-        margin-bottom: 20px;
-        margin-left: 80px;
+        margin-top: -48px;
+        margin-bottom: 80px;
         background-color: #c8d6e5;
         border-radius: 30px;
         box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
@@ -137,12 +151,7 @@
             box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
         }
 
-    .column2 {
-        float: left;
-        width: 100%;
-        padding-left: 30%;
-        height: 100%;
-    }
+
 
     .collapse {
         background-color: antiquewhite;
@@ -152,7 +161,6 @@
         border-radius: 15px;
         padding: 10px;
         font-family: 'Kanit', sans-serif;
-
     }
     
 </style>
@@ -160,17 +168,12 @@
 
 <div class="row">
     <div class="column1" align='center'>
-        <img class="card-img" src="https://sv1.picz.in.th/images/2020/04/10/QMoxDI.th.png" alt="QMoxDI.png" border="0" />
-        <p>
-            <b>ภาควิชาวิทยาการคอมพิวเตอร์</b> <br>
-            คณะวิทยาศาสตร์ มหาวิทยาลัยเชียงใหม่
-        </p>
-        <p>
-            <b>ที่อยู่ติดต่อ:</b> 239 ถนนห้วยแก้ว ต.สุเทพ <br>
-            อ.เมือง จ.เชียงใหม่ 50200 <br>
-            <b>เบอร์ติดต่อ:</b> 053-222180 <br>
-            <b>E-mail:</b> Comsci@cmu.ac.th
-        </p><br>
+        <img class="card-img" src="@ViewBag.comsci.ImgProfile" alt="ComSciLogo" /><br />
+        <p><b>@ViewBag.comsci.Department</b></p>
+        <p>@ViewBag.comsci.University</p>
+        <p><b>Address: </b> @ViewBag.comsci.Address </p>
+        <p><b>Tel: </b> @ViewBag.comsci.Phone </p>
+        <p><b>E-Mail: </b> @ViewBag.userEmail </p><br>
     </div>
 
     <div class="column2">
@@ -183,7 +186,7 @@
                         <div class="name"><b>@pc.company.Name</b></div>
                     </p>
                     <div>
-                        <a href="#detail" class="btn btn-info" data-toggle="collapse" style="margin-left: 76px;">Detail</a>
+                        <a href="#detail" class="btn btn-info" data-toggle="collapse" style="margin-top: 22px; margin-left: 76px;">Detail</a>
                         <div id="detail" class="collapse" style="margin-left: 10%;">
                             @pc.post.Detail
                         </div>
