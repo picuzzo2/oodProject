@@ -45,8 +45,20 @@ namespace CSFinder.Controllers
             List<PostCompany> pc = new List<PostCompany>();
             foreach (Post p in db.Posts.OrderByDescending(x=>x.PID))
             {
-                Company c = db.Companies.Where(a => a.CID.Equals(p.CID)).FirstOrDefault();
-                pc.Add(new PostCompany(c, p));
+                if (p.CID == "1000000")
+                {
+                    Admin a = db.Admins.Where(x => x.ID == "cscmu").FirstOrDefault();
+                    Company c = new Company();
+                    c.CID = "1000000";
+                    c.ImgProfile = a.ImgProfile;
+                    c.Name = a.Department;
+                    pc.Add(new PostCompany(c, p));
+                }
+                else
+                {
+                    Company c = db.Companies.Where(a => a.CID.Equals(p.CID)).FirstOrDefault();
+                    pc.Add(new PostCompany(c, p));
+                }
             }
             Post newPost = new Post();
             ViewBag.postCompanyList = pc;

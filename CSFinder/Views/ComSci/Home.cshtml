@@ -193,7 +193,7 @@
 
         <div class="form-group">
             <div class="col-md-12">
-                <a href="home" class="btn btn-primary float-right" style="margin-top: -54px; margin-right: 37px;" onclick="post()">Post</a>
+                <a href="#" class="btn btn-primary float-right" style="margin-top: -30px; margin-right: 37px;" onclick="post()">Post</a>
             </div>
         </div><br />
         
@@ -226,6 +226,17 @@
     function post() {
         var data = $("#postForm").serialize();
         var sendEmail = $("#isEmail").is(":checked");
+        if (!$("#postForm").valid()) {
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            url: "/ComSci/Post",
+            data: data + "&Send=" + sendEmail,
+            success: function (response) {
+                alert(response);
+            }
+        })
         debugger
     }
 </script>
