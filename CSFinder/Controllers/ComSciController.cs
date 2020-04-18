@@ -125,14 +125,11 @@ namespace CSFinder.Controllers
 
             for (int i = 1; i <= 3; i++)
             {
-                Debug.WriteLine("");
-                Debug.WriteLine("");
-                Debug.WriteLine("start Match Rank:" + i);
                 foreach (StudentMatching stu in stuMatch.ToList())
                 {
                     if (i == 1)
                     {
-                        if(stu.Type == 1)
+                        if(stu.Type == 0)
                         {
                             //trainnee
                             var com = comMatch.Where(x => x.CID == stu.Rank1).FirstOrDefault();
@@ -160,7 +157,7 @@ namespace CSFinder.Controllers
                                 continue;
                             }
                         }
-                        else if(stu.Type==0)
+                        else if(stu.Type==1)
                         {
                             //coop
                             var com = comMatch.Where(x => x.CID == stu.Rank1).FirstOrDefault();
@@ -191,7 +188,7 @@ namespace CSFinder.Controllers
                     }
                     else if (i == 2)
                     {
-                        if (stu.Type == 1)
+                        if (stu.Type == 0)
                         {
                             //trainnee
                             var com = comMatch.Where(x => x.CID == stu.Rank2).FirstOrDefault();
@@ -220,7 +217,7 @@ namespace CSFinder.Controllers
                                 continue;
                             }
                         }
-                        else if (stu.Type == 0)
+                        else if (stu.Type == 1)
                         {
                             //coop
                             var com = comMatch.Where(x => x.CID == stu.Rank2).FirstOrDefault();
@@ -252,7 +249,7 @@ namespace CSFinder.Controllers
                     }
                     else if(i==3)
                     {
-                        if (stu.Type == 1)
+                        if (stu.Type == 0)
                         {
                             //trainnee
                             var com = comMatch.Where(x => x.CID == stu.Rank3).FirstOrDefault();
@@ -281,7 +278,7 @@ namespace CSFinder.Controllers
                                 continue;
                             }
                         }
-                        else if (stu.Type == 0)
+                        else if (stu.Type == 1)
                         {
                             //coop
                             var com = comMatch.Where(x => x.CID == stu.Rank3).FirstOrDefault();
