@@ -49,8 +49,20 @@ namespace CSFinder.Controllers
             List<PostCompany> pc = new List<PostCompany>();
             foreach (Post p in db.Posts.OrderByDescending(x=>x.PID))
             {
-                Company c = db.Companies.Where(a => a.CID.Equals(p.CID)).FirstOrDefault();
-                pc.Add(new PostCompany(c, p));
+                if (p.CID == "1000000")
+                {
+                    Company c = new Company();
+                    c.CID = "1000000";
+                    c.ImgProfile = user.ImgProfile;
+                    c.Name = user.Department;
+                    pc.Add(new PostCompany(c, p));
+                }
+                else
+                {
+                    Company c = db.Companies.Where(a => a.CID.Equals(p.CID)).FirstOrDefault();
+                    pc.Add(new PostCompany(c, p));
+                }
+                
             }
             ViewBag.postCompanyList = pc;
             ViewBag.comsci = user;
@@ -58,6 +70,45 @@ namespace CSFinder.Controllers
             ViewBag.postList = db.Posts.ToList();
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Post(string Detail, bool Send)
+        {
+            string msg="";
+            Post newpost = new Post();
+            newpost.CID = "1000000";
+            newpost.PID = db.Posts.Max(x => x.PID)+1;
+            newpost.Detail = Detail;
+            db.Posts.Add(newpost);
+            db.SaveChanges();
+            if(Send)
+            {
+                List<string> result = sendEmail(Detail);
+                foreach(var i in result)
+                {
+                    Debug.WriteLine(i);
+                }
+                if(result.Count == 0)
+                {
+                    msg = "Emails had been send to all companies";
+                }
+                else
+                {
+                    foreach(var i in result)
+                    {
+                        msg += i + "\n";
+                    }
+                }
+            }
+            return Json(msg);
+        }
+
+        private List<string> sendEmail(string Detail)
+        {
+            List<string> errorList = new EmailController(db).SendEmailToCompany(Detail);
+            return errorList;
+        }
+
         private DateTime? GetNextExecutionTime(string id)
         {
             try

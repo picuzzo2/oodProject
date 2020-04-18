@@ -123,9 +123,21 @@
 
     <div class="column2">
 
+        <div class="col-md-12">
+            <div class="box">
+                <form id="postForm">
+                    <div id="Post">
+                        Create Post
+                        @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
+                        @Html.ValidationMessageFor(a => a.Detail, "", new { @class = "text-danger" })
+                    </div>
+                </form>
+                <input type="checkbox" id="isEmail" name="isEmail"> Send Email to all companies
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-12">
-                <a href="home" class="btn btn-primary float-right" style="margin-top: -54px; margin-right: 37px;" onclick="post()">Post</a>
+                <a href="#" class="btn btn-primary float-right" style="margin-top: -30px; margin-right: 37px;" onclick="post()">Post</a>
             </div>
         </div><br />
         
@@ -159,3 +171,21 @@
               </div>
     </div>
 </div>
+<script>
+    function post() {
+        var data = $("#postForm").serialize();
+        var sendEmail = $("#isEmail").is(":checked");
+        if (!$("#postForm").valid()) {
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            url: "/ComSci/Post",
+            data: data + "&Send=" + sendEmail,
+            success: function (response) {
+                alert(response);
+            }
+        })
+        debugger
+    }
+</script>
