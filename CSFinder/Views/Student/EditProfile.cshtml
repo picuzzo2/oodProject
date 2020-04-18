@@ -34,14 +34,13 @@
         width: 100%;
     }
     .detail {
-        width: 600px;
-        padding-right: 50px;
-        height:600px;
+        width: max-content;
+        padding: 5%;
+        height: auto;
         margin-bottom: 20px;
-        margin-left: 50px;
-        background-color: #c8d6e5;
-        border-radius: 10px;
-        border: 2px solid #4682B4;
+        margin-left: 70px;
+        background-color: #f1f1f1;
+        border-radius: 30px;
         box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
         font-family: 'Kanit', sans-serif;
     }
@@ -49,7 +48,6 @@
         .detail:hover {
             box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
         }
-
 
     p {
         margin: 0;
@@ -71,6 +69,24 @@
         padding-left: 40%;
         height: 100%;
     }
+    
+    .input--style-4 {
+        line-height: 24px;
+        background: #fafafa;
+        -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+        -moz-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+        box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        padding: 0 20px;
+        font-size: 16px;
+        color: #666;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
 </style>
 
 <div class="row">
@@ -80,141 +96,134 @@
         <p><b>ชื่อ</b> @Model.Name</p>
         <p><b>สถานะ:</b> @Model.Status </p>
     </div>
-
-
-    <div class="column2">
-        <div class="main">
-            <div class="col-md-9">
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <h3>Edit profile Student</h3>
-                        </div>
-                    </div>
-                    <div class="col-75">
-                        <div class="detail">
-                            <form id="myForm" action="/action_page.php">
-                                <div class="row">
-                                    <div class="col-50">
-                                        <label style=""><b>@Html.LabelFor(model => model.Name)</b></label>
-                                        <span style="margin-top: -13px;">
-                                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @Value = Model.Name })
-                                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                                        </span>
-                                    </div>&nbsp;
-                                    <div class="col-50">
-                                        <label><b>@Html.LabelFor(model => model.Phone)</b></label>
-                                        <span style="width: 388px;
-">
-                                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @Value = Model.Phone })
-                                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                                        </span>
-                                    </div>
-                                </div><br>
-
-                                <div style=" width:430px;">
-                                    <label><b>@Html.LabelFor(model => model.Address)</b></label>
-                                    <span>
-                                        @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @Value = Model.Address })
-                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-                                    </span><br>
-                                </div>
-                                <div style=" width:430px;">
-
-                                    <label><b>@Html.LabelFor(model => model.Detail)</b></label>
-                                    <span>
-                                        @Html.TextAreaFor(model => model.Detail, new { @class = "form-control", @Value = Model.Detail })
-                                    </span><br>
-                                </div>
-                                <div style=" width:430px;">
-                                    <label><b>@Html.LabelFor(model => model.Type)</b></label>
-                                    <span>
-                                        @Html.DropDownListFor(model => model.Type, new SelectList(Enum.GetValues(typeof(Types))))
-                                    </span><br>
-                                </div>
-
-                            </form>
-
-                            <div align="left" class="col-md-12">
-                                <p><b>Resume:</b></p>
-                                <div class="file-upload">
-                                    <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
-                                    <script>
-                                        Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
-                                            const hiddenInput = button.parentElement.querySelector('.file-upload__input');
-                                            const label = button.parentElement.querySelector('.file-upload__label');
-                                            const defaultLabelText = 'No file(s) selected';
-
-                                            label.textContent = defaultLabelText;
-                                            label.title = defaultLabelText;
-
-                                            button.addEventListener("click", function () {
-                                                hiddenInput.click();
-                                            });
-
-                                            hiddenInput.addEventListener("change", function () {
-                                                console.log(hiddenInput.files);
-                                                const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
-                                                    return file.name;
-                                                });
-
-                                                label.textContent = filenameList.join(',') || defaultLabelText;
-                                                label.title = label.textContent;
-
-                                            });
-                                    </script>
-                                </div>
-                            </div>
-                            <div align="left" class="col-md-12">
-                                <p><b>Transcript:</b></p>
-                                <div class="file-upload">
-                                    <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
-                                    <script>
-                                        Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
-                                            const hiddenInput = button.parentElement.querySelector('.file-upload__input');
-                                            const label = button.parentElement.querySelector('.file-upload__label');
-                                            const defaultLabelText = 'No file(s) selected';
-
-                                            label.textContent = defaultLabelText;
-                                            label.title = defaultLabelText;
-
-                                            button.addEventListener("click", function () {
-                                                hiddenInput.click();
-                                            });
-
-                                            hiddenInput.addEventListener("change", function () {
-                                                console.log(hiddenInput.files);
-                                                const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
-                                                    return file.name;
-                                                });
-
-                                                label.textContent = filenameList.join(',') || defaultLabelText;
-                                                label.title = label.textContent;
-
-                                            });
-                                    </script>
-                                </div><br>
-                            </div>
-                            <a href="Profile" class="btn btn-primary float-right" style="margin-top : 10px;background-color: #CD2E57;">Cancel</a>
-                            <a href="#" class="btn btn-primary float-right" style="margin-top : 10px;background-color: #4682B4;" onclick="Save()">Save</a>
-                        </div>
-
-                        
-                        
-                    </div>
-
-                        </div>
-                    </div>
-
-                                       
-                      
-
-
-                            
-                        </div>
-                    </div>
-
 </div>
+
+<div class="column2">
+    <div class="main">
+        <div class="detail">
+            <h2 class="title">Edit profile Student</h2>
+            <form id="myForm">
+                <div class="row row-space">
+                    <div class="col-8">
+                        <div class="input-group">
+                            <label class="label">Name</label>
+                            @Html.TextBoxFor(model => model.Name, new { @class = "input--style-4", @Value = Model.Name })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row row-space">
+
+                    <div class="col-6">
+                        <div class="input-group">
+                            <label class="label">Tel</label>
+                            @Html.TextBoxFor(model => model.Phone, new { @class = "input--style-4", @Value = Model.Phone })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-space">
+
+                    <div class="col-10">
+                        <div class="input-group">
+                            <label class="label">Address</label>
+                            @Html.TextBoxFor(model => model.Address, new { @class = "input--style-4", @Value = Model.Address })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-space">
+                    <div class="col-7">
+                        <div class="input-group">
+                            <label class="label">Details</label>
+                            @Html.TextAreaFor(model => model.Detail, new { @class = "input--style-4", @Value = Model.Detail })
+                        </div>
+                    </div>
+                </div><br />
+                <div class="row row-space">
+                    <div class="col-6">
+                        <div class="input-group">
+                            <label class="label">Type</label>
+                            @Html.DropDownListFor(model => model.Type, new SelectList(Enum.GetValues(typeof(Types))), new { @class = "input--style-4" })
+                        </div>
+                    </div>
+                </div><br />
+                <div align="left" class="col-md-12">
+                    <p><b>Resume:</b></p>
+                    <div class="file-upload">
+                        <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
+                        <script>
+                            Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
+                                const hiddenInput = button.parentElement.querySelector('.file-upload__input');
+                                const label = button.parentElement.querySelector('.file-upload__label');
+                                const defaultLabelText = 'No file(s) selected';
+
+                                label.textContent = defaultLabelText;
+                                label.title = defaultLabelText;
+
+                                button.addEventListener("click", function () {
+                                    hiddenInput.click();
+                                });
+
+                                hiddenInput.addEventListener("change", function () {
+                                    console.log(hiddenInput.files);
+                                    const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
+                                        return file.name;
+                                    });
+
+                                    label.textContent = filenameList.join(',') || defaultLabelText;
+                                    label.title = label.textContent;
+
+                                });
+                        </script>
+                    </div>
+                </div>
+                <div align="left" class="col-md-12">
+                    <p><b>Transcript:</b></p>
+                    <div class="file-upload">
+                        <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
+                        <script>
+                            Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
+                                const hiddenInput = button.parentElement.querySelector('.file-upload__input');
+                                const label = button.parentElement.querySelector('.file-upload__label');
+                                const defaultLabelText = 'No file(s) selected';
+
+                                label.textContent = defaultLabelText;
+                                label.title = defaultLabelText;
+
+                                button.addEventListener("click", function () {
+                                    hiddenInput.click();
+                                });
+
+                                hiddenInput.addEventListener("change", function () {
+                                    console.log(hiddenInput.files);
+                                    const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
+                                        return file.name;
+                                    });
+
+                                    label.textContent = filenameList.join(',') || defaultLabelText;
+                                    label.title = label.textContent;
+
+                                });
+                        </script>
+                    </div>
+                </div><br>
+
+                      <div class="text-center">
+                          <div class="form-group">
+                              <div class="col-md-12">
+                                  <a href="#" class="btn btn-primary " style="background-color: #4682B4;" onclick="Save()">Save</a>
+                                  <a href="Profile" class="btn btn-primary" style="background-color: #CD2E57;">Cancel</a>
+                              </div>
+                          </div>
+                      </div>
+            </form>
+        </div>
+    </div>
 </div>
+
 <script>
     function Save() {
 
