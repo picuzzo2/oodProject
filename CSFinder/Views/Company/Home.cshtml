@@ -221,10 +221,10 @@
                             <div class="box">
                                 <div id="Post">
                                     Create Post
-                                    @{Model.CID = "1";}
-                                    @{Model.PID = 1;}
-                                    @Html.HiddenFor(a => a.CID);
-                                    @Html.HiddenFor(a => a.PID);
+                                    @{Model.CID = "1" ;}
+                                    @{Model.PID = 1 ;}
+                                    @Html.HiddenFor(a => a.CID)
+                                    @Html.HiddenFor(a => a.PID)
                                     @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
                                     @Html.ValidationMessageFor(a => a.Detail)
                                     @Html.TextBoxFor(a => a.ImgLink, new { @class = "form-control", @placeholder = "Link something..." })
@@ -256,17 +256,11 @@
                         </div>
                         <img style="margin-left: 76px;" src="@pc.post.ImgLink" />
                     </div>
-
-
                 }
 
-                <script>
-                </script>
             </div>
-            </div>
-
         </div>
-        </div>
+    </div>
 
 </body>
 </html>
