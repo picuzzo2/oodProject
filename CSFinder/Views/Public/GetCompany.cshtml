@@ -1,0 +1,220 @@
+﻿
+@{
+    ViewData["Title"] = "GetCompany";
+    Layout = "_ComSciLayout";
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Roboto:ital@1&display=swap" rel="stylesheet">
+<style>
+    .card-img1 {
+        border-radius: 50%;
+        margin: 3px;
+        margin-top: 19px;
+        margin-left: 22px;
+        width: 50px;
+        height: 50px;
+        border: 1px solid #ddd;
+    }
+
+    img {
+        object-fit: cover;
+        margin: 20px;
+        width: 500px;
+        border-radius: 30px;
+    }
+
+    .card-img {
+        border-radius: 50%;
+        margin: 20px;
+        border: 1px solid #ddd;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+        box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
+    }
+
+    .name {
+        margin-top: -60px;
+        margin-left: 54px;
+        background-color: #2bcbba;
+        width: 517px;
+        height: 27px;
+        /* padding-right: 10px; */
+        padding-left: 23px;
+        box-shadow: 6px 5px #0fb9b1
+    }
+
+    .profile {
+        background-color: #2bcbba;
+        width: 200px;
+        height: 27px;
+        /* padding-right: 10px; */
+        /* padding-left: 23px; */
+        box-shadow: 6px 5px #0fb9b1;
+    }
+
+
+
+    input {
+        position: relative;
+        background: #f1f1f1;
+        border: 3px solid #ced6e0;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-left: 5px;
+        height: 40px;
+        width: 100%;
+    }
+
+    button {
+        background-color: #f1f1f1;
+        color: #227093;
+        border: none;
+        margin-left: 130px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 13px;
+        margin-bottom: -21px;
+        font-family: 'Kanit', sans-serif;
+    }
+
+        button:hover {
+            background-color: #f7f1e3;
+            font-family: 'Kanit', sans-serif;
+        }
+
+        button:disabled {
+            background-color: #12CBC4;
+            color: black;
+            cursor: auto;
+            font-family: 'Kanit', sans-serif;
+        }
+
+    * {
+        box-sizing: border-box;
+    }
+
+        *
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+
+    .column1 {
+        float: left;
+        width: 25%;
+        padding-right: 10px;
+        height: auto;
+        background-color: #f1f1f1;
+        position: fixed;
+        border-radius: 30px;
+        box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
+        font-family: 'Kanit', sans-serif;
+    }
+
+        .column1:hover {
+            box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
+        }
+
+    .main {
+        flex: 70%;
+        padding: 20px;
+        float: left;
+        width: 100%;
+        padding-right: 10px;
+        height: auto;
+        background-color: #f1f1f1;
+        border-radius: 30px;
+        box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
+    }
+
+    .detail {
+        width: max-content;
+        padding-right: 10px;
+        height: auto;
+        margin-bottom: 20px;
+        margin-left: 70px;
+        background-color: #c8d6e5;
+        border-radius: 30px;
+        box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
+        font-family: 'Kanit', sans-serif;
+    }
+
+        .detail:hover {
+            box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
+        }
+
+    .column2 {
+        float: left;
+        width: 100%;
+        padding-left: 30%;
+        height: 100%;
+    }
+
+    .rank {
+        width: 80%;
+        height: 30px;
+        background-color: #ced6e0;
+        color: lightslategray;
+        border-radius: 4px;
+        margin-bottom: 3px;
+        margin-top: -31px;
+        margin-left: 83px;
+        font-family: 'Kanit', sans-serif;
+    }
+
+    .collapse {
+        background-color: antiquewhite;
+        margin-left: 60px;
+        margin-top: 9px;
+        width: 503px;
+        border-radius: 15px;
+        padding: 10px;
+        font-family: 'Kanit', sans-serif;
+    }
+</style>
+
+
+<div class="row">
+    <div class="column1" align='center'>
+
+        <img class="card-img" src="@ViewBag.obj.ImgProfile" alt="Avatar" /><br />
+        <p><b>ชื่อบริษัท:</b> @ViewBag.obj.Name </p>
+        <p><b>Email:</b> @ViewBag.userEmail  </p>
+        <p><b>Phone:</b> @ViewBag.obj.Phone  </p>
+        <p><b>Address:</b> @ViewBag.obj.Address  </p>
+        <p><b>Trainnee Need:</b> @ViewBag.obj.TrainneeNeed  </p>
+        <p><b>Trainnee Got:</b> @ViewBag.obj.TrainneeGot  </p>
+        <p><b>Cooporative Need:</b> @ViewBag.obj.CoopNeed  </p>
+        <p><b>Cooporative Got:</b> @ViewBag.obj.CoopGot  </p>
+        <p><b>Detail:</b> @ViewBag.obj.Detail  </p>
+        <br>
+    </div>
+
+    <div class="column2">
+        <div class="main">
+            
+                @foreach (var post in ViewBag.posts)
+                {
+                <div class="detail">
+                    <p>
+
+                        <img class="card-img1" src="@post.company.ImgProfile" alt="Avatar" />
+                        <div class="name"><b>@post.company.Name</b></div>
+                    </p>
+
+                    <div>
+                        <a href="#detail" class="btn btn-info" data-toggle="collapse" style="margin-left: 76px;">Detail</a>
+                        <div id="detail" class="collapse" style="margin-left: 10%;">
+                            @post.post.Detail
+                        </div>
+                    </div>
+                    <img style="margin-left: 76px;" src="@post.post.ImgLink" />
+
+
+                </div>
+                }
+
+            
+        </div>
+    </div>
