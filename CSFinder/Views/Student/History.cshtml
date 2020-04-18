@@ -140,7 +140,32 @@
                                             <b>บริษัทที่ได้ :</b> <p1 style="color:#333399;">@i.resultName</p1><br>
                                             @if (i.matching.Result != "Company accepted")
                                             {
-                                                <b>สถานะ : @i.matching.Result</b>
+                                                @if (i.matching.Result == "Waiting for interview")
+                                                {
+                                                    <!-- GREY -->
+                                                    <b>สถานะ : @i.matching.Result</b>
+                                                }
+                                                else if (i.matching.Result == "Employed")
+                                                {
+                                                    <!-- GREY -->
+                                                    <b>สถานะ : You can't choose other company</b>
+                                                }
+                                                else if (i.matching.Result == "Waiting for interview result")
+                                                {
+                                                    <!-- YELLOW -->
+                                                    <b>สถานะ : @i.matching.Result</b>
+                                                }
+                                                else if (i.matching.Result == "Company rejected"
+                                                    || i.matching.Result == "Student rejected")
+                                                {
+                                                    <!-- RED -->
+                                                    <b>สถานะ : @i.matching.Result</b>
+                                                }
+                                                else if (i.matching.Result == "Student accepted")
+                                                {
+                                                    <!--GREEN-->
+                                                    <b>สถานะ : You've chose this company</b>
+                                                }
                                             }
                                             else
                                             {

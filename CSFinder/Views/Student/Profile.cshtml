@@ -156,10 +156,15 @@
                         <p style="margin:3%;" font-size: 18px> : @ViewBag.userEmail  </p>
                         <div style="background-color: #40739e; box-shadow: 5px 10px #273c75; margin:2%;">
                             <p><b style=" margin-left: 10px; font-size: 18px; color: wheat;">อันดับที่เลือก</b> </p></div>
-                        <p style="margin:3%;" font-size: 18px> : @ViewBag.user.Rank1  </p>
+                        <p style="margin:3%;" font-size: 18px>
+                            1: @ViewBag.Rank1name <br/>
+                            2: @ViewBag.Rank2name <br/>
+                            3: @ViewBag.Rank3name <br/>
+
+                        </p>
                     </tr>
                     <tr>
-                        @if (ViewBag.user.ImgResume != null)
+                        @if (ViewBag.user.ImgResume != null || ViewBag.user.ImgResume != "")
                         {
                             <div style="background-color: #40739e; box-shadow: 5px 10px #273c75; margin:2%;">
                                 <p><b style=" margin-left: 10px; font-size: 18px; color: wheat;">Resume</b></p>
@@ -168,15 +173,17 @@
                                 <img src="@ViewBag.user.ImgResume" alt="Resume" border="0" />
                             </div>
                         }
-                        @if (ViewBag.user.ImgTranscript != null)
+                        @if (ViewBag.user.ImgTranscript != null || ViewBag.user.ImgResume != "")
                         {
-                            <div style="        background-color: #40739e;
-        box-shadow: 5px 10px #273c75;
-        margin: 2%;">
-                                <p><b style=" margin-left: 10px; font-size: 18px; color: wheat;">Transcript</b></p></div>
+                            <div style=" background-color: #40739e; box-shadow: 5px 10px #273c75; margin: 2%;">
+                                <p><b style=" margin-left: 10px; font-size: 18px; color: wheat;">Transcript</b></p>
+                            </div>
+                            <div align='center'>
+                                <img src="@ViewBag.user.ImgTranscript" alt="Resume" border="0" />
+                            </div>
 
-                                }
-                        </tr>
+                        }
+                    </tr>
                 </table>
             </div>
         </div>

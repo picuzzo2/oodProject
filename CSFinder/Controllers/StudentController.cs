@@ -97,6 +97,10 @@ namespace CSFinder.Controllers
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.user = user;
             ViewBag.userEmail = userEmail;
+            ViewBag.Rank1name = db.Companies.Where(x => x.CID == user.Rank1).FirstOrDefault().Name;
+            ViewBag.Rank2name = db.Companies.Where(x => x.CID == user.Rank2).FirstOrDefault().Name;
+            ViewBag.Rank3name = db.Companies.Where(x => x.CID == user.Rank3).FirstOrDefault().Name;
+
             return View();
         }
         public IActionResult EditProfile()
@@ -196,6 +200,12 @@ namespace CSFinder.Controllers
                         student.Status = CID;
                         mat.Result = "Student accepted";
                         msg = "You have been accepted to be company's trainnee";
+                        
+                        foreach(Matching m in db.Matchings.Where(x=>x.SID==SID && !(x.CID==CID && x.MID==MID)))
+                        {
+                            m.Result = "Employed";
+                        }
+
                         db.SaveChanges();
                     }
                 }
@@ -211,7 +221,11 @@ namespace CSFinder.Controllers
                         student.Status = CID;
                         mat.Result = "Student accepted";
                         msg = "You have been accepted to be company's cooperative student";
-                        
+
+                        foreach (Matching m in db.Matchings.Where(x => x.SID == SID && !(x.CID == CID && x.MID == MID)))
+                        {
+                            m.Result = "Employed";
+                        }
                         db.SaveChanges();
                     }
                 }
