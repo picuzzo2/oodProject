@@ -123,5 +123,39 @@
 
     <div class="column2">
 
+        <div class="form-group">
+            <div class="col-md-12">
+                <a href="home" class="btn btn-primary float-right" style="margin-top: -54px; margin-right: 37px;" onclick="post()">Post</a>
+            </div>
+        </div><br />
+        
+              <div class="main">
+                  @{int i = 0;
+                      @foreach (PostCompany pc in ViewBag.postCompanyList)
+                      {
+                          i++;
+                          {
+                              string post = "post" + i;
+                              <div class="detail">
+                                  <p>
+                                      <img class="card-img1" src="@pc.company.ImgProfile" />
+                                      <div class="name"><b>@pc.company.Name</b></div>
+                                  </p>
+                                  <div>
+                                      <a href="#@post" class="btn btn-info" data-toggle="collapse" style="margin-left: 76px; margin-top: 15px;">Detail</a>
+                                      <div id="@post" class="collapse" style="margin-left: 10%;">
+                                          @pc.post.Detail
+                                      </div>
+                                  </div>
+                                  <img style="margin-left: 76px;" src="@pc.post.ImgLink" />
+                              </div>
+                          }
+                      }}
+
+                  <script>
+
+                  </script>
+
+              </div>
     </div>
 </div>

@@ -147,11 +147,11 @@
                         <div class="col-md-12">
                             <div class="box">
                                 <div id="Post">
-                                    Create Post
+                                    <div style="margin-left:8%; margin-bottom:2%; font-size:18px;">Create Post</div>
                                     @{Model.CID = "1";}
                                     @{Model.PID = 1;}
-                                    @Html.HiddenFor(a => a.CID);
-                                    @Html.HiddenFor(a => a.PID);
+                                    @Html.HiddenFor(a => a.CID)
+                                    @Html.HiddenFor(a => a.PID)
                                     @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
                                     @Html.ValidationMessageFor(a => a.Detail)
                                     @Html.TextBoxFor(a => a.ImgLink, new { @class = "form-control", @placeholder = "Link something..." })
@@ -164,20 +164,31 @@
 
                     <div class="form-group">
                         <div class="col-md-12">
-                            <a href="home" class="btn btn-primary float-right" onclick="PostCompany()">Post</a>
+                            <a href="home" class="btn btn-primary float-right" style="margin-top: -54px;  margin-right: 12%;" onclick="PostCompany()">Post</a>
                         </div>
                     </div><br />
                 </form>
+                @{int i = 0;
+                    @foreach (PostCompany pc in ViewBag.postCompanyList)
+                    {
+                        i++;
+                        {string post = "post" + i;
+                            <div class="detail">
+                                <p>
+                                    <img class="card-img1" src="@pc.company.ImgProfile" />
+                                    <div class="name"><b>@pc.company.Name</b></div>
+                                </p>
+                                <div>
+                                    <a href="#@post" class="btn btn-info" data-toggle="collapse" style="margin-left: 76px; margin-top: 15px;">Detail</a>
+                                    <div id="@post" class="collapse" style="margin-left: 10%;">
+                                        @pc.post.Detail
+                                    </div>
+                                </div>
+                                <img style="margin-left: 76px;" src="@pc.post.ImgLink" />
+                            </div>
+                        }
+                    }}
 
-                @foreach (PostCompany p in ViewBag.postCompanyList)
-                {
-                    <div class="oneOfPost">
-                        <img class="card-img1" src="@p.company.ImgProfile" border="0">
-                        <b>@p.company.Name</b><br>
-                        <p style="margin-left: 10%;">@p.post.Detail</p>
-                        <img style="margin-left: 10%;" src="@p.post.ImgLink" border="0">
-                    </div>
-                }
             </div>
         </div>
         </div>
