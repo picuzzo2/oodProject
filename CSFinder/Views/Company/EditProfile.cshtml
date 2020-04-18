@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
 <style>
+
+
     .card-img1 {
         border-radius: 50%;
         margin: 3px;
@@ -75,6 +77,23 @@
         padding: 20px;
     }
 
+    .detail {
+        width: 600px;
+        padding-right: 50px;
+        height:650px;
+        margin-bottom: 20px;
+        margin-left: 50px;
+        background-color: #c8d6e5;
+        border-radius: 10px;
+        border: 2px solid #4682B4;
+        box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
+        font-family: 'Kanit', sans-serif;
+    }
+
+        .detail:hover {
+            box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
+        }
+
     p {
         margin: 0;
     }
@@ -109,168 +128,177 @@
     </div>
 
     <div class="column2">
+
         <div class="main">
             <div class="col-md-9">
-                <form id="myForm">
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <h3>Edit profile Student</h3>
-                        </div>
-                    </div>
-
-                    <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
-                        <div align="left" class="col-md-12">
-                            <span>@Html.LabelFor(model => model.Name)</span>
-                            <span>
-                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @Value = Model.Name })
-                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
-                        <div align="left" class="col-md-12">
-                            <span>@Html.LabelFor(model => model.Address)</span>
-                            <span>
-                                @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @Value = Model.Address })
-                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
-                        <div align="left" class="col-md-12">
-                            <span>@Html.LabelFor(model => model.Phone)</span>
-                            <span>
-                                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @Value = Model.Phone })
-                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
-                        <div align="left" class="col-md-12">
-                            <span>@Html.LabelFor(model => model.TrainneeNeed)</span>
-                            <span>
-                                @Html.TextBoxFor(model => model.TrainneeNeed, new { @class = "form-control", @Value = Model.TrainneeNeed })
-                                @Html.ValidationMessageFor(model => model.TrainneeNeed, "", new { @class = "text-danger" })
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 100px; border: 2px solid #ccc; border-radius: 6px;">
-                        <div align="left" class="col-md-12">
-                            <span>@Html.LabelFor(model => model.CoopNeed)</span>
-                            <span>
-                                @Html.TextBoxFor(model => model.CoopNeed, new { @class = "form-control", @Value = Model.CoopNeed })
-                                @Html.ValidationMessageFor(model => model.CoopNeed, "", new { @class = "text-danger" })
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group" style=" width: 320px; background-color: #f8f8f8; height: 125px; border: 2px solid #ccc; border-radius: 6px;">
-                        <div align="left" class="col-md-12">
-                            <span>@Html.LabelFor(model => model.Detail)</span>
-                            <span>
-                                @Html.TextAreaFor(model => model.Detail, new { @class = "form-control", @Value = Model.Detail })
-                            </span>
-                        </div>
-                    </div>
-
-                </form>
-
-                <div class="form-group" style=" width: 320px; background-color: #F0F8FF; height: 65px; border: 2px solid #ADD8E6; border-radius: 6px;">
-                    <div align="left" class="col-md-12">
-                        <p><b>Resume:</b></p>
-                        <div class="file-upload">
-                            <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
-                            <script>
-                                Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
-                                    const hiddenInput = button.parentElement.querySelector('.file-upload__input');
-                                    const label = button.parentElement.querySelector('.file-upload__label');
-                                    const defaultLabelText = 'No file(s) selected';
-
-                                    label.textContent = defaultLabelText;
-                                    label.title = defaultLabelText;
-
-                                    button.addEventListener("click", function () {
-                                        hiddenInput.click();
-                                    });
-
-                                    hiddenInput.addEventListener("change", function () {
-                                        console.log(hiddenInput.files);
-                                        const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
-                                            return file.name;
-                                        });
-
-                                        label.textContent = filenameList.join(',') || defaultLabelText;
-                                        label.title = label.textContent;
-
-                                    });
-                            </script>
-                        </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <h3>Edit profile Student</h3>
                     </div>
                 </div>
+                <div class="col-75">
+                    <div class="detail">
+                        <form id="myForm"action="/action_page.php">
+                            <div class="row">
+                                <div class="col-50">
+                                    <label style=""><b>@Html.LabelFor(model => model.Name)</b></label>
+                                    <span style="margin-top: -13px;">
+                                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @Value = Model.Name })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </span>
+                                </div>&nbsp;
+                                <div class="col-50">
+                                    <label><b>@Html.LabelFor(model => model.Phone)</b></label>
+                                    <span style="width: 388px;
+">
+                                        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @Value = Model.Phone })
+                                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                    </span>
+                                </div>
+                            </div><br>
 
-                <div class="form-group" style=" width: 320px; background-color: #F0F8FF; height: 65px; border: 2px solid #ADD8E6; border-radius: 6px;">
-                    <div align="left" class="col-md-12">
-                        <p><b>Transcript:</b></p>
-                        <div class="file-upload">
-                            <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
-                            <script>
-                                Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
-                                    const hiddenInput = button.parentElement.querySelector('.file-upload__input');
-                                    const label = button.parentElement.querySelector('.file-upload__label');
-                                    const defaultLabelText = 'No file(s) selected';
+                            <div style=" width:430px;">
+                                <label><b>@Html.LabelFor(model => model.Address)</b></label>
+                                <span>
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @Value = Model.Address })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                </span><br>
+                            </div>
+                            <div class="row">
+                                <div class="col-50">
+                                    <label><b>@Html.LabelFor(model => model.TrainneeNeed)</b></label>
+                                    <span style="margin-top: -13px;">
+                                        @Html.TextBoxFor(model => model.TrainneeNeed, new { @class = "form-control", @Value = Model.TrainneeNeed })
+                                        @Html.ValidationMessageFor(model => model.TrainneeNeed, "", new { @class = "text-danger" })
+                                    </span><br>
+                                </div>&nbsp;
 
-                                    label.textContent = defaultLabelText;
-                                    label.title = defaultLabelText;
+                                <div class="col-50">
+                                    <label><b>@Html.LabelFor(model => model.CoopNeed)</b></label>
+                                    <span style="margin-top: -13px;">
+                                        @Html.TextBoxFor(model => model.CoopNeed, new { @class = "form-control", @Value = Model.CoopNeed })
+                                        @Html.ValidationMessageFor(model => model.CoopNeed, "", new { @class = "text-danger" })
+                                    </span>
+                                </div>
+                            </div>
+                            <div style=" width:430px;">
 
-                                    button.addEventListener("click", function () {
-                                        hiddenInput.click();
-                                    });
+                                <label><b>@Html.LabelFor(model => model.Detail)</b></label>
+                                <span>
+                                    @Html.TextAreaFor(model => model.Detail, new { @class = "form-control", @Value = Model.Detail })
+                                </span><br>
+                            </div>
+                        </form>
+                        <div align="left" class="col-md-12">
+                            <p><b>Resume:</b></p>
+                            <div class="file-upload">
+                                <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
+                                <script>
+                                    Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
+                                        const hiddenInput = button.parentElement.querySelector('.file-upload__input');
+                                        const label = button.parentElement.querySelector('.file-upload__label');
+                                        const defaultLabelText = 'No file(s) selected';
 
-                                    hiddenInput.addEventListener("change", function () {
-                                        console.log(hiddenInput.files);
-                                        const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
-                                            return file.name;
+                                        label.textContent = defaultLabelText;
+                                        label.title = defaultLabelText;
+
+                                        button.addEventListener("click", function () {
+                                            hiddenInput.click();
                                         });
 
-                                        label.textContent = filenameList.join(',') || defaultLabelText;
-                                        label.title = label.textContent;
+                                        hiddenInput.addEventListener("change", function () {
+                                            console.log(hiddenInput.files);
+                                            const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
+                                                return file.name;
+                                            });
 
-                                    });
-                            </script>
-                        </div><br />
-                        <a href="Profile" class="btn btn-primary float-right " style="margin-top : 10px;background-color: #CD2E57;border: 2px solid #B22222;">Cancel</a>
-                        <a href="#" class="btn btn-primary float-right" style="margin-top : 10px;background-color: #6ED746;border: 2px solid #64CD3C;" onclick="Save()">Save</a>
+                                            label.textContent = filenameList.join(',') || defaultLabelText;
+                                            label.title = label.textContent;
+
+                                        });
+                                </script>
+                            </div>
+
+                        </div>
+                        <div align="left" class="col-md-12">
+                            <p><b>Transcript:</b></p>
+                            <div class="file-upload">
+                                <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
+                                <script>
+                                    Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
+                                        const hiddenInput = button.parentElement.querySelector('.file-upload__input');
+                                        const label = button.parentElement.querySelector('.file-upload__label');
+                                        const defaultLabelText = 'No file(s) selected';
+
+                                        label.textContent = defaultLabelText;
+                                        label.title = defaultLabelText;
+
+                                        button.addEventListener("click", function () {
+                                            hiddenInput.click();
+                                        });
+
+                                        hiddenInput.addEventListener("change", function () {
+                                            console.log(hiddenInput.files);
+                                            const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
+                                                return file.name;
+                                            });
+
+                                            label.textContent = filenameList.join(',') || defaultLabelText;
+                                            label.title = label.textContent;
+
+                                        });
+                                </script>
+
+                            </div><br />
+
+
+                        </div>
+                    
+                        <a href="Profile" class="btn btn-primary float-right " style="margin-top : 10px;background-color: #CD2E57;">Cancel</a>
+                        <a href="#" class="btn btn-primary float-right" style="margin-top : 10px;background-color: #4682B4;" onclick="Save()">Save</a>
                     </div>
                 </div>
             </div>
+
+
+
+            
+
+
+
         </div>
+    </div>
+    </div>
 
-            </div>
-</div>
-<script>
-    function Save() {
 
-        var data = $("#myForm").serialize();
-        var myFrom = $("#myForm");
 
-        if (!myFrom.valid()) {
-            return false;
-        }
-        debugger
-        $.ajax({
-            type: "Post",
-            url: "/Company/EditProfile",
-            data: data,
-            success: function (response) {
-                if (response.success) {
-                    alert(response.responseText);
-                    window.location.href = "/Company/Profile";
-                }
-                else if (!response.success) {
-                    alert(response.responseText);
-                    window.location.href = "/Company/EditProfile";
+
+        <script>
+            function Save() {
+
+                var data = $("#myForm").serialize();
+                var myFrom = $("#myForm");
+
+                if (!myFrom.valid()) {
+                    return false;
                 }
                 debugger
+                $.ajax({
+                    type: "Post",
+                    url: "/Company/EditProfile",
+                    data: data,
+                    success: function (response) {
+                        if (response.success) {
+                            alert(response.responseText);
+                            window.location.href = "/Company/Profile";
+                        }
+                        else if (!response.success) {
+                            alert(response.responseText);
+                            window.location.href = "/Company/EditProfile";
+                        }
+                        debugger
+                    }
+                })
             }
-        })
-    }
-</script>
+        </script>
+
