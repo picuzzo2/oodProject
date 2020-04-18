@@ -37,8 +37,6 @@ namespace CSFinder.Controllers
                     HttpContext.Session.SetString("IDType", obj.IDtype.ToString());
                     return RedirectToAction("UserDashBoard");
                 }
-
-
             }
             return View(objUser);
         }
@@ -125,7 +123,6 @@ namespace CSFinder.Controllers
                     db.SaveChanges();
                     addstu.ID = objUser.ID;
                     addstu.Name = objUser.Name;
-                    addstu.SID = objUser.SID;
                     addstu.Phone = objUser.Phone;
                     addstu.Detail = objUser.Detail;
                     addstu.Address = objUser.Address;
