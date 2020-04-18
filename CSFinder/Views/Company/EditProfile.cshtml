@@ -1,7 +1,7 @@
-﻿@model CSFinder.Models.Student
+﻿@model CSFinder.Models.Company
 @{
     ViewData["Title"] = "EditProfile";
-    Layout = "_StudentLayout";
+    Layout = "_CompanyLayout";
 }
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,6 +33,7 @@
         position: relative;
         width: 100%;
     }
+
     .detail {
         width: max-content;
         padding: 5%;
@@ -69,7 +70,7 @@
         padding-left: 40%;
         height: 100%;
     }
-    
+
     .input--style-4 {
         line-height: 24px;
         background: #fafafa;
@@ -89,19 +90,22 @@
     }
 </style>
 
+
+
 <div class="row">
     <div class="column1" align='center'>
-
-        <img class="card-img" src="@Model.ImgProfile" alt="Avatar" align='center'/><br />
-        <p><b>ชื่อ</b> @Model.Name</p>
-        <p><b>สถานะ:</b> @Model.Status </p>
+        <img class="card-img" src="@Model.ImgProfile" border="0" /><br />
+        <p><b>@Model.Name</b></p>
+        <p><b>ที่อยู่ : </b>@Model.Address</p>
+        <p><b>โทร : </b>@Model.Phone</p>
+        <p><b>Email : </b>@ViewBag.userEmail</p>
     </div>
 </div>
 
 <div class="column2">
     <div class="main">
         <div class="detail">
-            <h2 class="title">Edit profile Student</h2>
+            <h2 class="title">Edit profile Company</h2>
             <form id="myForm">
                 <div class="row row-space">
                     <div class="col-8">
@@ -135,6 +139,24 @@
                     </div>
                 </div>
                 <div class="row row-space">
+                    <div class="col-3">
+                        <div class="input-group">
+                            <label class="label">Internship Need</label>
+                            @Html.TextBoxFor(model => model.TrainneeNeed, new { @class = "input--style-4", @Value = Model.TrainneeNeed })
+                            @Html.ValidationMessageFor(model => model.TrainneeNeed, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-space">
+                    <div class="col-3">
+                        <div class="input-group">
+                            <label class="label">Cooperative Need</label>
+                            @Html.TextBoxFor(model => model.CoopNeed, new { @class = "input--style-4", @Value = Model.CoopNeed })
+                            @Html.ValidationMessageFor(model => model.CoopNeed, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-space">
                     <div class="col-7">
                         <div class="input-group">
                             <label class="label">Details</label>
@@ -142,115 +164,77 @@
                         </div>
                     </div>
                 </div><br />
-                <div class="row row-space">
-                    <div class="col-6">
-                        <div class="input-group">
-                            <label class="label">Type</label>
-                            @Html.DropDownListFor(model => model.Type, new SelectList(Enum.GetValues(typeof(Types))), new { @class = "input--style-4" })
-                        </div>
+                <div align="left" class="col-md-12">
+                    <p><b>Image Profile:</b></p>
+                    <div class="file-upload">
+                        <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
+                        <script>
+                            Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
+                                const hiddenInput = button.parentElement.querySelector('.file-upload__input');
+                                const label = button.parentElement.querySelector('.file-upload__label');
+                                const defaultLabelText = 'No file(s) selected';
+
+                                label.textContent = defaultLabelText;
+                                label.title = defaultLabelText;
+
+                                button.addEventListener("click", function () {
+                                    hiddenInput.click();
+                                });
+
+                                hiddenInput.addEventListener("change", function () {
+                                    console.log(hiddenInput.files);
+                                    const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
+                                        return file.name;
+                                    });
+
+                                    label.textContent = filenameList.join(',') || defaultLabelText;
+                                    label.title = label.textContent;
+
+                                });
+                        </script>
                     </div>
                 </div><br />
-                <div align="left" class="col-md-12">
-                    <p><b>Resume:</b></p>
-                    <div class="file-upload">
-                        <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
-                        <script>
-                            Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
-                                const hiddenInput = button.parentElement.querySelector('.file-upload__input');
-                                const label = button.parentElement.querySelector('.file-upload__label');
-                                const defaultLabelText = 'No file(s) selected';
-
-                                label.textContent = defaultLabelText;
-                                label.title = defaultLabelText;
-
-                                button.addEventListener("click", function () {
-                                    hiddenInput.click();
-                                });
-
-                                hiddenInput.addEventListener("change", function () {
-                                    console.log(hiddenInput.files);
-                                    const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
-                                        return file.name;
-                                    });
-
-                                    label.textContent = filenameList.join(',') || defaultLabelText;
-                                    label.title = label.textContent;
-
-                                });
-                        </script>
+                <div class="text-center">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <a href="#" class="btn btn-primary " style="background-color: #4682B4;" onclick="Save()">Save</a>
+                            <a href="Profile" class="btn btn-primary" style="background-color: #CD2E57;">Cancel</a>
+                        </div>
                     </div>
                 </div>
-                <div align="left" class="col-md-12">
-                    <p><b>Transcript:</b></p>
-                    <div class="file-upload">
-                        <input class="file-upload__input" type="file" name="myFile[]" id="myFile" multiple />
-                        <script>
-                            Array.prototype.forEach.call(document.querySelectorAll('.file-upload__boutton'), function (button) {
-                                const hiddenInput = button.parentElement.querySelector('.file-upload__input');
-                                const label = button.parentElement.querySelector('.file-upload__label');
-                                const defaultLabelText = 'No file(s) selected';
-
-                                label.textContent = defaultLabelText;
-                                label.title = defaultLabelText;
-
-                                button.addEventListener("click", function () {
-                                    hiddenInput.click();
-                                });
-
-                                hiddenInput.addEventListener("change", function () {
-                                    console.log(hiddenInput.files);
-                                    const filenameList = Array.prototype.map.call(hiddenInput.files, function (file) {
-                                        return file.name;
-                                    });
-
-                                    label.textContent = filenameList.join(',') || defaultLabelText;
-                                    label.title = label.textContent;
-
-                                });
-                        </script>
-                    </div>
-                </div><br>
-
-                      <div class="text-center">
-                          <div class="form-group">
-                              <div class="col-md-12">
-                                  <a href="#" class="btn btn-primary " style="background-color: #4682B4;" onclick="Save()">Save</a>
-                                  <a href="Profile" class="btn btn-primary" style="background-color: #CD2E57;">Cancel</a>
-                              </div>
-                          </div>
-                      </div>
             </form>
         </div>
     </div>
 </div>
+
+
 
 <script>
     function Save() {
 
         var data = $("#myForm").serialize();
         var myFrom = $("#myForm");
-        
+
         if (!myFrom.valid()) {
-             return false;
+            return false;
         }
         debugger
         $.ajax({
             type: "Post",
-            url: "/Student/EditProfile",
+            url: "/Company/EditProfile",
             data: data,
             success: function (response) {
                 if (response.success) {
                     alert(response.responseText);
-                    window.location.href = "/Student/Profile";
+                    window.location.href = "/Company/Profile";
                 }
                 else if (!response.success) {
                     alert(response.responseText);
-                    window.location.href = "/Student/EditProfile";
+                    window.location.href = "/Company/EditProfile";
                 }
                 debugger
             }
         })
     }
 </script>
-
 

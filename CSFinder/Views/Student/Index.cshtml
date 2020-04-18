@@ -1,10 +1,8 @@
-﻿@{
+
+@{
     ViewData["Title"] = "Home Page";
 }
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Roboto:ital@1&display=swap" rel="stylesheet">
 
 <style>
 
@@ -30,7 +28,6 @@
         width: 150px;
         height: 150px;
     }
-
 
     input {
         position: relative;
@@ -236,25 +233,25 @@
                 }
             }}
         
-
-        <script>
-
-            function changeRank(rankchoose, to) {
-
-                $.ajax({
-                    method: "POST",
-                    url: "/Student/changeRank",
-                    data: { change: rankchoose, to: to },
-                    success: function () {
-                        alert("Rank Saved");
-                        window.location.href = "/Student/Index";
-                    }
-                })
-
-            }
-        </script>
     </div>
 
 
 </div>
-    </div>
+</div>
+
+<script>
+
+    function changeRank(rankchoose, to) {
+
+        $.ajax({
+            method: "POST",
+            url: "/Student/changeRank",
+            data: { change: rankchoose, to: to },
+            success: function () {
+                alert("Rank Saved");
+                window.location.href = "/Student/Index";
+            }
+        })
+
+    }
+</script>

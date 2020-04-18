@@ -7,9 +7,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Roboto:ital@1&display=swap" rel="stylesheet">
 
 <style>
-.card-img1 {
+    .card-img1 {
         border-radius: 50%;
         margin: 3px;
         margin-left: 10%;
@@ -71,6 +72,7 @@
         flex: 70%;
         background-color: white;
         padding: 20px;
+        
     }
 
     p {
@@ -81,124 +83,89 @@
         float: left;
         width: 25%;
         padding-right: 10px;
-        height: 50%;
+        height: auto;
         background-color: #f1f1f1;
         position: fixed;
         border-radius: 30px;
+        font-family: 'Kanit', sans-serif;
+        box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
     }
+
+        .column1:hover {
+            box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
+        }
+
 
     .column2 {
         float: left;
         width: 100%;
         padding-left: 35%;
         height: 100%;
+        font-family: 'Kanit', sans-serif;
     }
 </style>
 
 <div class="row">
     <div class="column1" align='center'>
-
-                    <img class="card-img" src="https://sv1.picz.in.th/images/2020/04/10/QMoxDI.th.png" alt="QMoxDI.png" border="0" />
-                    <p>
-                        <b>ภาควิชาวิทยาการคอมพิวเตอร์</b> <br>
-                        คณะวิทยาศาสตร์ มหาวิทยาลัยเชียงใหม่
-                    </p>
-                    <p>
-                        <b>ที่อยู่ติดต่อ:</b> 239 ถนนห้วยแก้ว ต.สุเทพ <br>
-                        อ.เมือง จ.เชียงใหม่ 50200 <br>
-                        <b>เบอร์ติดต่อ:</b> 053-222180 <br>
-                        <b>E-mail:</b> Comsci@cmu.ac.th
-                    </p>
-                </div>
+        <img class="card-img" src="@ViewBag.comsci.ImgProfile" alt="ComSciLogo" /><br />
+        <p><b>@ViewBag.comsci.Department</b></p>
+        <p>@ViewBag.comsci.University</p>
+        <p><b>Address: </b> @ViewBag.comsci.Address </p>
+        <p><b>Tel: </b> @ViewBag.comsci.Phone </p>
+        <p><b>E-Mail: </b> @ViewBag.userEmail </p><br>
+    </div>
 
 
 
-        <div class="column2">
-            <div class="main">
-                <div class="text" style="position: absolute;top: 35%;left: 44%;margin-top: -150px; margin-left: -5px;">
-                    <div class="table1">
-                        <style>
-                            table {
-                                font-family: arial, sans-serif;
-                                border-collapse: collapse;
-                                width: 100%;
-                            }
+    <div class="column2">
+        <div class="main">
 
-                            td, th {
-                                border: 2px solid #dddddd;
-                                text-align: left;
-                                padding: 8px;
-                            }
+            <div class="table1">
+                <style>
+                    table {
+                        font-family: 'Kanit', sans-serif;
+                        border-collapse: collapse;
+                        width: 100%;
+                        box-shadow: 11px 13px  #95afc0;
+                    }
 
-                            tr:nth-child(even) {
-                                background-color: #dddddd;
-                            }
-                        </style>
+                    td, th {
+                        align-content: center;
+                        border: 4px solid #b2bec3;
+                        text-align: center;
+                        padding: 8px;
+                    }
 
-                        <h2>รายชื่อบริษัท</h2>
-                        <table>
-                            <tr>
-                                <th>รายชื่อบริษัทที่ลงทะเบียน</th>
-                                <th>จำนวนที่รับ (คน)</th>
-                                <th>จำนวนที่ได้ (คน)</th>
-                            </tr>
-                            <tr>
-                                <td>@ViewBag.Com1</td>
-                                <td>4</td>
-                                <td>4</td>
-                            </tr>
-                            <tr>
-                                <td>@ViewBag.Com2</td>
-                                <td>3</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>@ViewBag.Com3</td>
-                                <td>2</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>@ViewBag.Com4</td>
-                                <td>4</td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <td>@ViewBag.Com5</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>@ViewBag.Com6</td>
-                                <td>2</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>@ViewBag.Com7</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>@ViewBag.Com8</td>
-                                <td>3</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>@ViewBag.Com9</td>
-                                <td>2</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>@ViewBag.Com10</td>
-                                <td>2</td>
-                                <td>2</td>
-                            </tr>
-                        </table>
-                        </div>
-                    </div>
-                </div>
+                    tr:nth-child(even) {
+                        background-color: #dfe6e9;
+                    }
+                </style>
+
+                <h2>รายชื่อบริษัท</h2>
+                <table>
+                    <tr>
+                        <th>รายชื่อบริษัทที่ลงทะเบียน</th>
+                        <th>จำนวนคนที่รับ (ฝึกงาน)</th>
+                        <th>จำนวนคนที่ได้ (ฝึกงาน)</th>
+                        <th>จำนวนคนที่รับ (สหกิจ)</th>
+                        <th>จำนวนคนที่ได้ (สหกิจ)</th>
+                    </tr>
+                    @foreach (Company com in ViewBag.companyList)
+                    {
+                        <tr>
+                            <td>@Html.ActionLink(com.Name, "GetCompany", "Public", new { id = com.CID }, new { target = "_blank" })</td>
+                            <td>@com.TrainneeNeed</td>
+                            <td>@com.TrainneeGot</td>
+                            <td>@com.CoopNeed</td>
+                            <td>@com.CoopGot</td>
+                        </tr>
+                    }
+                </table>
             </div>
         </div>
+
     </div>
+</div>
 
 
 

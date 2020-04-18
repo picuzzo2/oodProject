@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewData["Title"] = "ReplyHistory";
+}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+<style>
+    .card-img1 {
+        border-radius: 50%;
+        margin: 3px;
+        margin-left: 10%;
+        width: 50px;
+    }
+
+    img {
+        margin: 20px;
+        width: 500px;
+    }
+
+    .card-img {
+        border-radius: 50%;
+        margin: 20px;
+        border: 1px solid #ddd;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+
+    input {
+        position: relative;
+        width: 700px;
+        height: 120px;
+        background: #ced6e0;
+        border: 3px solid #22a6b3;
+        border-radius: 10px;
+        margin-bottom: 3px;
+        width: 100%;
+        padding: 20px;
+    }
+
+    button {
+        border: 3px solid #22a6b3;
+        border-radius: 10px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+        *
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+    /* Column container */
+    .row {
+        display: table;
+        content: "";
+        clear: both;
+    }
+    /* Main column */
+    .main {
+        flex: 70%;
+        background-color: white;
+        padding: 20px;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .column1 {
+        float: left;
+        width: 25%;
+        padding-right: 10px;
+        height: 50%;
+        background-color: #f1f1f1;
+        position: fixed;
+        border-radius: 30px;
+    }
+
+    .column2 {
+        float: left;
+        width: 100%;
+        padding-left: 35%;
+        height: 100%;
+    }
+</style>
+
+<div class="row">
+    <div class="column1" align='center'>
+
+        <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" align='center' /><br />
+        <p><b>ชื่อ</b> @ViewBag.user.Name</p>
+        <p><b>สถานะ:</b> @ViewBag.user.Status </p>
+
+    </div>
+    <div class="column2">
+        <div class="main">
+            <div class="text" style="width: 200px;height: 200px;position: absolute;top: 35%;left: 50%; margin-top: -170px; margin-left: -75px;">
+                <br />
+                <div class="history">
+                    <table width=250% cellpadding="4" cellspacing="1"
+                           style="border:1px solid #D3D3D3; margin-left: 10%;">
+                        <tr>
+                            <td bgcolor="#D3D3D3"
+                                style="border-style:solid;
+                        border-width:4px;
+                        border-color:#D3D3D3 gray gray #D3D3D3;">
+                                <p><b>รอบที่ 1 @ViewBag.Dates</b></p>
+                                <hr>
+                                <p><b>อันดับที่ได้</b></p>
+                                <p align='center'>
+                                    <p1 style="color:#333399;">@ViewBag.RankComplete</p1><br>
+                                </p>
+                                <br>
+                                <p align='right'>
+                                    <b>บริษัทที่ได้ :</b> <p1 style="color:#333399;">@ViewBag.RankComplete</p1><br>
+                                    <b>สถานะ : @ViewBag.Status</b><br />
+                                    <button>ยืนยัน</button>
+                                    <button>ปฏิเสธ</button>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

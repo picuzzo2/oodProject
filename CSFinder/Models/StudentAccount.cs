@@ -16,14 +16,16 @@ namespace CSFinder.Models
         public string ConfirmPassword { get; set; }
         [Required(ErrorMessage = "Please enter an Student ID")]
         [StringLength(9, MinimumLength = 9, ErrorMessage = "Student ID must be 10 digits")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "Student ID can be only 0-9")]
         public string SID { get; set; }
 
         [Required(ErrorMessage = "Please enter Firstname and Lastname")]
         [RegularExpression(@"^[A-Za-z]+\s[A-Za-z]+$", ErrorMessage = "Name is not valid")]
         public string Name { get; set; }
-#nullable enable
-        public int? Type { get; set; }
-#nullable disable
+
+        [Required(ErrorMessage = "Please enter a type of training")]
+        public Types Type { get; set; }
+
         [Required(ErrorMessage = "Please enter an Email")]
         [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" + @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" + @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Email is not valid")]
         public string Email { get; set; }
@@ -36,6 +38,8 @@ namespace CSFinder.Models
         public string? Detail { get; set; }
 #nullable disable
         public string Status { get; set; }
+        [Required(ErrorMessage = "Please an address")]
         public string Address { get; set; }
     }
+
 }

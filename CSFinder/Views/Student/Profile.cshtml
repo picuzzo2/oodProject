@@ -5,6 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Roboto:ital@1&display=swap" rel="stylesheet">
 
 <style>
     .card-img1 {
@@ -43,9 +44,30 @@
         padding: 20px;
     }
 
-    button {
-        border: 3px solid #22a6b3;
-        border-radius: 10px;
+   button {
+        background-color: #5F9EA0;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 4%;
+        margin-bottom: 5%;
+        font-family: 'Kanit', sans-serif;
+        text-align:center;
+        padding:1%
+    }
+
+    button:hover {
+        background-color: #2F4F4F;
+        font-family: 'Kanit', sans-serif;
+        color: white
+    }
+
+    button:disabled {
+        background-color: #2F4F4F;
+        color: white;
+        cursor: auto;
+        font-family: 'Kanit', sans-serif;
     }
 
     * {
@@ -70,7 +92,6 @@
         background-color: #f1f1f1;
         padding: 20px;
         width: 300px;
-
     }
 
     /* Main column */
@@ -84,7 +105,7 @@
         margin: 0;
     }
 
- .column1 {
+    .column1 {
         float: left;
         width: 25%;
         padding-right: 10px;
@@ -92,6 +113,7 @@
         background-color: #f1f1f1;
         position: fixed;
         border-radius: 30px;
+        font-family: 'Kanit', sans-serif;
     }
 
     .column2 {
@@ -99,6 +121,7 @@
         width: 100%;
         padding-left: 40%;
         height: 100%;
+        font-family: 'Kanit', sans-serif;
     }
 </style>
 
@@ -106,35 +129,63 @@
 <div class="row">
     <div class="column1" align='center'>
 
-            <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar"  align='center' /><br />
-            <p><b>ชื่อ</b> @ViewBag.user.Name</p>
-            <p><b>สถานะ:</b> @ViewBag.user.Status </p>
+        <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" align='center' /><br />
+        <p><b>ชื่อ</b> @ViewBag.user.Name</p>
+        <p><b>สถานะ:</b> @ViewBag.user.Status </p>
+        <button onclick="window.location.href = '/Student/EditProfile';">แก้ไขข้อมูล</button>
 
     </div>
 
 
     <div class="column2">
-        <div class="main" >
+        <div class="main">
+            <div style=" height: auto; background-color: #f1f1f1; border-radius: 30px;">
                 <table>
-                    <tr  style="margin-left: 10%;">
-                        <p><b>ชื่อ:</b> @ViewBag.user.Name </p>
-                        <p><b>เบอร์โทรศัพท์:</b> @ViewBag.user.Phone  </p>
-                        <p><b>Email:</b> @ViewBag.userEmail  </p>
-                        <p><b>อันดับที่เลือก:</b> @ViewBag.user.Rank1  </p>
+                    <tr style="margin-left: 10%;">
+                        <div style="background-color: #40739e; box-shadow: 5px 10px #273c75; margin:2%;">
+                            <p><b style=" margin-left: 10px; font-size: 18px; color: wheat;">ชื่อ-นามสกุล</b></p>
+                        </div>
+                        <p style="margin:3%; font-size: 18px"> : @ViewBag.user.Name </p>
+                        <div style="background-color: #40739e; box-shadow: 5px 10px #273c75; margin:2%;">
+                            <p><b style=" margin-left: 10px; font-size: 18px; color: wheat;">เบอร์โทรศัพท์</b> </p>
+                        </div>
+                        <p style="margin:3%;" font-size: 18px> : @ViewBag.user.Phone  </p>
+                        <div style="background-color: #40739e; box-shadow: 5px 10px #273c75; margin:2%;">
+                            <p><b style=" margin-left: 10px; font-size: 18px; color: wheat;">Email:</b></p>
+                        </div>
+                        <p style="margin:3%;" font-size: 18px> : @ViewBag.userEmail  </p>
+                        <div style="background-color: #40739e; box-shadow: 5px 10px #273c75; margin:2%;">
+                            <p><b style=" margin-left: 10px; font-size: 18px; color: wheat;">อันดับที่เลือก</b> </p></div>
+                        <p style="margin:3%;" font-size: 18px>
+                            1: @ViewBag.Rank1name <br/>
+                            2: @ViewBag.Rank2name <br/>
+                            3: @ViewBag.Rank3name <br/>
+
+                        </p>
                     </tr>
                     <tr>
-                        @if (ViewBag.user.ImgResume != null)
+                        @if (ViewBag.user.ImgResume != null || ViewBag.user.ImgResume != "")
                         {
-                            <p><b>Resume:</b></p>
-                            <img src="@ViewBag.user.ImgResume" alt="Resume" border="0" />
+                            <div style="background-color: #40739e; box-shadow: 5px 10px #273c75; margin:2%;">
+                                <p><b style=" margin-left: 10px; font-size: 18px; color: wheat;">Resume</b></p>
+                            </div>
+                            <div align='center'>
+                                <img src="@ViewBag.user.ImgResume" alt="Resume" border="0" />
+                            </div>
                         }
-                        @if (ViewBag.user.ImgTranscript != null)
+                        @if (ViewBag.user.ImgTranscript != null || ViewBag.user.ImgResume != "")
                         {
-                            <p><b>Transcript:</b></p>
+                            <div style=" background-color: #40739e; box-shadow: 5px 10px #273c75; margin: 2%;">
+                                <p><b style=" margin-left: 10px; font-size: 18px; color: wheat;">Transcript</b></p>
+                            </div>
+                            <div align='center'>
+                                <img src="@ViewBag.user.ImgTranscript" alt="Resume" border="0" />
+                            </div>
 
                         }
                     </tr>
                 </table>
+            </div>
         </div>
     </div>
 </div>
