@@ -165,13 +165,13 @@ namespace CSFinder.Controllers
                 Student s = db.Students.Where(x => x.SID == m.SID).FirstOrDefault();
                 s.Status = m.CID;
                 db.SaveChanges();
-                msg += "Student Rejected";
+                msg += "Student Accepted";
             }
             else if(message.Detail == "Failed_Status")
             {
                 m.Result = "Company rejected";
                 db.SaveChanges();
-                msg += "Student Accepted";
+                msg += "Student Rejected";
             }
             return Json(msg);
         }
