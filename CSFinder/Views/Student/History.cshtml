@@ -1,4 +1,4 @@
-﻿@model CSFinder.Models.Student
+﻿    @model CSFinder.Models.Student
 @{
     ViewData["Title"] = "History";
 }
@@ -123,22 +123,42 @@
                            style=" margin-top: 50px; margin-left: 10%; box-shadow: 11px 13px #95afc0; border-radius: 20px;">
                         <tr>
                             <td style="padding: 20px; background-color: lightgoldenrodyellow; border-radius: 20px;">
+                                @{int id=0; 
                                 @foreach (CompanyNameMatching i in @ViewBag.CompanyNameMatchingList)
                                 {
-                                    <p><b>รอบที่ : @ViewBag.maxRound (@i.matching.Date)</b></p>
-                                    <hr>
-                                    <p><b>อันดับที่เลือก</b></p>
-                                    <p align='center'>
-                                        <b>อันดับ 1 : </b><p1 style="color:#333399;">@i.r1Name</p1><br>
-                                        <b>อันดับ 2 : </b><p1 style="color:#333399;"> @i.r2Name</p1><br>
-                                        <b>อันดับ 3 : </b><p1 style="color:#333399;"> @i.r3Name</p1><br>
-                                    </p>
-                                    <br>
-                                    <p align='right'>
-                                        <b>บริษัทที่ได้ :</b> <p1 style="color:#333399;">@i.resultName</p1><br>
-                                        <b>สถานะ : @i.matching.Result</b>
-                                    </p>
-                                }
+                                    <div>
+                                        <p><b>รอบที่ : @i.matching.MID (@i.matching.Date)</b></p>
+                                        <hr>
+                                        <p><b>อันดับที่เลือก</b></p>
+                                        <p align='center'>
+                                            <b>อันดับ 1 : </b><p1 style="color:#333399;">@i.r1Name</p1><br>
+                                            <b>อันดับ 2 : </b><p1 style="color:#333399;"> @i.r2Name</p1><br>
+                                            <b>อันดับ 3 : </b><p1 style="color:#333399;"> @i.r3Name</p1><br>
+                                        </p>
+                                        <br>
+                                        <div align='right'>
+                                            <b>บริษัทที่ได้ :</b> <p1 style="color:#333399;">@i.resultName</p1><br>
+                                            @if (i.matching.Result != "Company accepted")
+                                            {
+                                                <b>สถานะ : @i.matching.Result</b>
+                                            }
+                                            else
+                                            {
+                                                id++;
+                                                <label>ตอบรับ : </label>
+                                                <select id="@id">
+                                                    <option class="Wait" value="Wait_Status">You passed an interview</option>
+                                                    <option class="Accept" value="Accept">Accept</option>
+                                                    <option class="Reject" value="Reject">Reject</option>
+                                                </select>
+                                                <button type="button" class="btn btn-dark"
+                                                        onclick="studentAnswer(@id,@i.matching.CID, @ViewBag.user.SID, @i.matching.MID)">
+                                                    ยืนยัน
+                                                </button>
+                                            }
+                                        </div>
+                                    </div>
+                                }}
                             </td>
                         </tr>
                     </table>
