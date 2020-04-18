@@ -154,6 +154,28 @@ namespace CSFinder.Controllers
             return Json("The Email has send");
         }
 
+        [HttpPost]
+        public IActionResult InterviewConfirmation(Message message, string MID)
+        {
+            string msg ="";
+            Matching m = db.Matchings.Where(x => x.MID == MID && x.SID == message.to && x.CID == message.from).FirstOrDefault();
+            if (message.Detail== "Pass_Status")
+            {
+                m.Result = "Company accepted";
+                Student s = db.Students.Where(x => x.SID == m.SID).FirstOrDefault();
+                s.Status = m.CID;
+                db.SaveChanges();
+                msg += "Student Accepted";
+            }
+            else if(message.Detail == "Failed_Status")
+            {
+                m.Result = "Company rejected";
+                db.SaveChanges();
+                msg += "Student Rejected";
+            }
+            return Json(msg);
+        }
+
 
         public IActionResult Notification_Announcement()
         {

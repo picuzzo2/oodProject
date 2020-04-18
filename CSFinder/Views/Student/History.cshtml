@@ -147,3 +147,22 @@
         </div>
     </div>
 </div>
+<script>
+    function studentAnswer(id, company, student, MID) {
+        var data = $("#" + id + " :selected").val();
+        if (data.toString() == "Wait_Status") {
+            return false;
+        }
+        var message = "Ans=";
+        message = message + data + "&CID=" + company + "&SID=" + student + "&MID=" + MID;
+        $.ajax({
+            type: "POST",
+            url: "/Student/Answer",
+            data: message,
+            success(response) {
+                alert(response);
+                window.location.href = "/Student/History";
+            }
+        })
+    }
+</script>

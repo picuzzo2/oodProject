@@ -168,6 +168,64 @@ namespace CSFinder.Controllers
             db.SaveChanges();
             return RedirectToAction("Index","Student") ;
         }
+
+        [HttpPost]
+        public IActionResult Answer(string Ans, string CID, string SID, string MID )
+        {
+            Debug.WriteLine("#########################################");
+            Debug.WriteLine(Ans);
+            Debug.WriteLine(CID);
+            Debug.WriteLine(SID);
+            Debug.WriteLine(MID);
+            Student student = db.Students.Where(x => x.SID == SID).FirstOrDefault();
+            Matching mat = db.Matchings.Where(x => x.MID == MID && x.SID == SID && x.CID == CID).FirstOrDefault();
+
+            string msg="";
+            if(Ans == "Accept")
+            {
+                Company com = db.Companies.Where(x => x.CID == CID).FirstOrDefault();
+                if(mat.Type==0)
+                {
+                    if(com.TrainneeNeed - com.TrainneeGot < 1)
+                    {
+                        msg = "Number of the company's trainnee exceeded";
+                    }
+                    else
+                    {
+                        com.TrainneeGot++;
+                        student.Status = CID;
+                        mat.Result = "Student accepted";
+                        msg = "You have been accepted to be company's trainnee";
+                        db.SaveChanges();
+                    }
+                }
+                else if(mat.Type==1)
+                {
+                    if (com.CoopNeed - com.CoopGot < 1)
+                    {
+                        msg = "Number of the company's cooperative students exceeded";
+                    }
+                    else
+                    {
+                        com.CoopGot++;
+                        student.Status = CID;
+                        mat.Result = "Student accepted";
+                        msg = "You have been accepted to be company's cooperative student";
+                        
+                        db.SaveChanges();
+                    }
+                }
+
+            }
+            else if(Ans == "Reject")
+            {
+                mat.Result = "Student rejected";
+                msg = "Rejection completed";
+                db.SaveChanges();
+            }
+
+            return Json(msg);
+        }
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
