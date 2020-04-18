@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Roboto:ital@1&display=swap" rel="stylesheet">
 
 <style>
     .card-img1 {
@@ -79,6 +79,7 @@
         flex: 70%;
         background-color: white;
         padding: 20px;
+        font-family: 'Kanit', sans-serif;
     }
 
     p {
@@ -93,6 +94,8 @@
         background-color: #f1f1f1;
         position: fixed;
         border-radius: 30px;
+        box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
+        font-family: 'Kanit', sans-serif;
     }
 
     .column2 {
@@ -114,50 +117,28 @@
     <div class="column2">
         <div class="main">
             <div class="text" style="width: 200px;height: 200px;position: absolute;top: 35%;left: 50%; margin-top: -170px; margin-left: -75px;">
-                <br />
+
                 <div class="history">
                     <table width=250% cellpadding="4" cellspacing="1"
-                           style="border:1px solid #D3D3D3; margin-left: 10%;">
+                           style=" margin-top: 50px; margin-left: 10%; box-shadow: 11px 13px #95afc0; border-radius: 20px;">
                         <tr>
-                            <td bgcolor="#D3D3D3"
-                                style="border-style:solid;
-                                border-width:4px;
-                                border-color:#D3D3D3 gray gray #D3D3D3;">
-                                @{int id=0; 
+                            <td style="padding: 20px; background-color: lightgoldenrodyellow; border-radius: 20px;">
                                 @foreach (CompanyNameMatching i in @ViewBag.CompanyNameMatchingList)
-                                 {
-                                    <div>
-                                        <p><b>รอบที่ : @i.matching.MID (@i.matching.Date)</b></p>
-                                        <hr>
-                                        <p><b>อันดับที่เลือก</b></p>
-                                        <p align='center'>
-                                            <b>อันดับ 1 : </b><p1 style="color:#333399;">@i.r1Name</p1><br>
-                                            <b>อันดับ 2 : </b><p1 style="color:#333399;"> @i.r2Name</p1><br>
-                                            <b>อันดับ 3 : </b><p1 style="color:#333399;"> @i.r3Name</p1><br>
-                                        </p>
-                                            <br>
-                                        <div align='right'>
-                                            <b>บริษัทที่ได้ :</b> <p1 style="color:#333399;">@i.resultName</p1><br>
-                                            @if (i.matching.Result != "Company accepted")
-                                            {
-                                                <b>สถานะ : @i.matching.Result</b>
-                                            }
-                                            else
-                                            {
-                                                id++;
-                                                <label>ตอบรับ : </label>
-                                                <select id="@id">
-                                                    <option class="Wait" value="Wait_Status">You passed an interview</option>
-                                                    <option class="Accept" value="Accept">Accept</option>
-                                                    <option class="Reject" value="Reject">Reject</option>
-                                                </select>
-                                                <button type="button" class="btn btn-dark" 
-                                                        onclick="studentAnswer(@id,@i.matching.CID, @ViewBag.user.SID, @i.matching.MID)">
-                                                        ยืนยัน</button>
-                                            }
-                                        </div>
-                                    </div>
-                                 }}
+                                {
+                                    <p><b>รอบที่ : @ViewBag.maxRound (@i.matching.Date)</b></p>
+                                    <hr>
+                                    <p><b>อันดับที่เลือก</b></p>
+                                    <p align='center'>
+                                        <b>อันดับ 1 : </b><p1 style="color:#333399;">@i.r1Name</p1><br>
+                                        <b>อันดับ 2 : </b><p1 style="color:#333399;"> @i.r2Name</p1><br>
+                                        <b>อันดับ 3 : </b><p1 style="color:#333399;"> @i.r3Name</p1><br>
+                                    </p>
+                                    <br>
+                                    <p align='right'>
+                                        <b>บริษัทที่ได้ :</b> <p1 style="color:#333399;">@i.resultName</p1><br>
+                                        <b>สถานะ : @i.matching.Result</b>
+                                    </p>
+                                }
                             </td>
                         </tr>
                     </table>
