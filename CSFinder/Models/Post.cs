@@ -13,6 +13,7 @@ namespace CSFinder.Models
         [Key]
         public int PID { get; set; }
         public string CID { get; set; }
+        [Required(ErrorMessage = "Please enter post body")]
         public string Detail { get; set; }
 
         public string ImgLink { get; set; }
