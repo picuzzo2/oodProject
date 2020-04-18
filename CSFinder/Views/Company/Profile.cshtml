@@ -185,10 +185,20 @@
     <div class="column1" align='center'>
         <img class="card-img" src="@ViewBag.user.ImgProfile" border="0" /><br />
         <p><b>@ViewBag.user.Name</b></p>
-        <p><b>ที่อยู่ : </b>@ViewBag.user.Address</p>
-        <p><b>โทร : </b>@ViewBag.user.Phone</p>
-        <p><b>Email : </b>@ViewBag.userEmail</p>
-            <button onclick="window.location.href = '/Company/EditProfile';">แก้ไขข้อมูล</button>
+        <p><b>Address : </b>@ViewBag.user.Address</p>
+        <p><b>Tel : </b>@ViewBag.user.Phone</p>
+        <p><b>E-mail : </b>@ViewBag.userEmail</p>
+        <p>
+            <b>Trainnee Need:</b> @ViewBag.user.TrainneeNeed &nbsp;
+            <b>Trainnee Got:</b> @ViewBag.user.TrainneeGot
+        </p>
+        <p>
+            <b>Cooporative Need:</b> @ViewBag.user.CoopNeed &nbsp;
+            <b>Cooporative Got:</b> @ViewBag.user.CoopGot
+        </p>
+        <p style="margin-bottom:3%;"><b>Detail:</b> @ViewBag.user.Detail  </p>
+
+        <button onclick="window.location.href = '/Company/EditProfile';">Edit Profile </button>
     </div>
 
     <div class="column2">

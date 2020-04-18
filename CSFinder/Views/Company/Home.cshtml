@@ -123,7 +123,7 @@
             padding-right: 10px;
             height: auto;
             margin-bottom: 20px;
-            margin-left: 23px;
+            margin-left:10%;
             background-color: #c8d6e5;
             border-radius: 30px;
             box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
@@ -199,6 +199,32 @@
         background-color: black;
         color: white;
     }
+    .form-control {
+    display: block;
+    width: 85%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    margin-left: 8%;
+    margin-left: 8%;
+}
+
+    
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    margin-top: 2%;
+    margin-left: 8%;
+}
     </style>
 </head>
 <body>
@@ -208,9 +234,19 @@
         <div class="column1" align='center'>
             <img class="card-img" src="@ViewBag.company.ImgProfile" border="0" /><br />
             <p><b>@ViewBag.company.Name</b></p>
-            <p><b>ที่อยู่ : </b>@ViewBag.company.Address</p>
-            <p><b>โทร : </b>@ViewBag.company.Phone</p>
-            <p><b>Email : </b>@ViewBag.userEmail</p><br>
+            <p><b>Address : </b>@ViewBag.company.Address</p>
+            <p><b>Tel : </b>@ViewBag.company.Phone</p>
+            <p><b>E-mail : </b>@ViewBag.userEmail</p>
+            <p>
+                <b>Trainnee Need:</b> @ViewBag.company.TrainneeNeed &nbsp;
+                <b>Trainnee Got:</b> @ViewBag.company.TrainneeGot
+            </p>
+            <p>
+                <b>Cooporative Need:</b> @ViewBag.company.CoopNeed &nbsp;
+                <b>Cooporative Got:</b> @ViewBag.company.CoopGot
+            </p>
+            <p style="padding-bottom:3%;"><b>Detail:</b> @ViewBag.company.Detail  </p>
+
         </div>
 
         <div class="column2">
@@ -220,11 +256,11 @@
                         <div class="col-md-12">
                             <div class="box">
                                 <div id="Post">
-                                    Create Post
+                                    <div style="margin-left:8%; margin-bottom:2%; font-size:18px;">Create Post</div>
                                     @{Model.CID = "1";}
                                     @{Model.PID = 1;}
-                                    @Html.HiddenFor(a => a.CID);
-                                    @Html.HiddenFor(a => a.PID);
+                                    @Html.HiddenFor(a => a.CID)
+                                    @Html.HiddenFor(a => a.PID)
                                     @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
                                     @Html.ValidationMessageFor(a => a.Detail)
                                     @Html.TextBoxFor(a => a.ImgLink, new { @class = "form-control", @placeholder = "Link something..." })
@@ -237,7 +273,7 @@
 
                     <div class="form-group">
                         <div class="col-md-12">
-                            <a href="home" class="btn btn-primary float-right" style="margin-top: -54px; margin-right: 37px;" onclick="PostCompany()">Post</a>
+                            <a href="home" class="btn btn-primary float-right" style="margin-top: -54px;  margin-right: 12%;" onclick="PostCompany()">Post</a>
                         </div>
                     </div><br />
                 </form>
