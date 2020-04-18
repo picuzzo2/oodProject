@@ -57,7 +57,6 @@ namespace CSFinder.Controllers
         [HttpPost]
         public IActionResult Home(Post objPost)
         {
-            Debug.WriteLine("homepost11111111111111111111111111");
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
            
 
@@ -72,15 +71,6 @@ namespace CSFinder.Controllers
                 ViewBag.postCompanyList = pc;
                 ViewBag.company = user;
                 ViewBag.userEmail = userEmail;
-
-
-                ViewBag.AllStudent = "18";
-                ViewBag.CooStudent = "8";
-                ViewBag.TrainStudent = "10";
-                Debug.WriteLine("5555555555555555555555555555555");
-                Debug.WriteLine(objPost.Detail);
-                Debug.WriteLine(objPost.ImgLink);
-                Debug.WriteLine(ModelState.IsValid);
                 String msg = "";
 
                 Post addpost = new Post();
