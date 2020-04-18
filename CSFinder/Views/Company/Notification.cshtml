@@ -10,28 +10,31 @@
 <head>
     <style>
 
-        .card-img1 {
-            border-radius: 50%;
-            margin: 3px;
-            margin-left: 10%;
-            width: 50px;
-            height: 50px;
-            border: 1px solid #ddd;
-        }
-
+     .card-img1 {
+        border-radius: 50%;
+        margin: 3px;
+        margin-top: 19px;
+        margin-left: 22px;
+        width: 50px;
+        height: 50px;
+        border: 1px solid #ddd;
+    }
 
         img {
+            object-fit: cover;
             margin: 20px;
             width: 500px;
+            border-radius: 30px;
         }
 
-        .card-img1 {
+        .card-img {
             border-radius: 50%;
             margin: 20px;
             border: 1px solid #ddd;
             padding: 5px;
             width: 150px;
             height: 150px;
+            box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
         }
 
 
@@ -278,11 +281,20 @@
     <!-- The flexible grid (content) -->
     <div class="row">
         <div class="column1" align='center'>
-            <img class="card-img1" src="@ViewBag.user.ImgProfile" border="0" /><br />
+            <img class="card-img" src="@ViewBag.user.ImgProfile" border="0" /><br />
             <p><b>@ViewBag.user.Name</b></p>
-            <p><b>ที่อยู่ : </b>@ViewBag.user.Address</p>
-            <p><b>โทร : </b>@ViewBag.user.Phone</p>
-            <p><b>Email : </b>@ViewBag.userEmail</p>
+            <p><b>Address : </b>@ViewBag.user.Address</p>
+            <p><b>Tel : </b>@ViewBag.user.Phone</p>
+            <p><b>E-mail : </b>@ViewBag.userEmail</p>
+            <p>
+                <b>Trainnee Need:</b> @ViewBag.user.TrainneeNeed &nbsp;
+                <b>Trainnee Got:</b> @ViewBag.user.TrainneeGot
+            </p>
+            <p>
+                <b>Cooporative Need:</b> @ViewBag.user.CoopNeed &nbsp;
+                <b>Cooporative Got:</b> @ViewBag.user.CoopGot
+            </p>
+            <p><b>Detail:</b> @ViewBag.user.Detail  </p>
         </div>
 
         <div class="column2">
@@ -296,7 +308,7 @@
                         <div class="main">
                             <div class="box" style="text-align:center;">
                                 <div class="detail" style="text-align: center;">
-                                    <img class="card-img1" src="@sm.student.ImgProfile" border="0" />
+                                    <img class="card-img" src="@sm.student.ImgProfile" border="0" />
                                     <p style="margin-top:1%; margin-bottom:4%;">ชื่อ: @sm.student.Name</p>
                                     @Html.ActionLink("Student Detail", "GetStudent", "Public", new { id = sm.student.SID }, new { @class = "open-button1", target = "_blank" })
                                     @if (sm.matching.Result == "Waiting for interview")

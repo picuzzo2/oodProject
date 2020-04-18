@@ -1,4 +1,4 @@
-﻿@model CSFinder.Models.Post
+
 @{
     ViewData["Title"] = "Home";
     Layout = "_ComSciLayout";
@@ -9,23 +9,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Roboto:ital@1&display=swap" rel="stylesheet">
+
 <style>
     .card-img1 {
         border-radius: 50%;
         margin: 3px;
-        margin-top: 19px;
-        margin-left: 22px;
+        margin-left: 10%;
         width: 50px;
         height: 50px;
         border: 1px solid #ddd;
     }
 
     img {
-        object-fit: cover;
         margin: 20px;
         width: 500px;
-        border-radius: 30px;
     }
 
     .card-img {
@@ -35,65 +32,45 @@
         padding: 5px;
         width: 150px;
         height: 150px;
-        box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
     }
 
-    .name {
-        margin-top: -41px;
-        margin-left: 54px;
-        background-color: #2bcbba;
-        width: 517px;
-        height: 27px;
-        /* padding-right: 10px; */
-        padding-left: 23px;
-        box-shadow: 6px 5px #0fb9b1
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
     }
 
-    .profile {
-        background-color: #2bcbba;
-        width: 200px;
-        height: 27px;
-        /* padding-right: 10px; */
-        /* padding-left: 23px; */
-        box-shadow: 6px 5px #0fb9b1;
+    .head-table, .numOfStudent,
+    th {
+        text-align: center;
     }
 
-
-    button {
-        background-color: #f1f1f1;
-        color: #227093;
-        border: none;
-        margin-left: 130px;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-top: 13px;
-        margin-bottom: -21px;
-        font-family: 'Kanit', sans-serif;
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 10px;
     }
 
-        button:hover {
-            background-color: #f7f1e3;
-            font-family: 'Kanit', sans-serif;
-        }
-
-        button:disabled {
-            background-color: #12CBC4;
-            color: black;
-            cursor: auto;
-            font-family: 'Kanit', sans-serif;
-        }
-
-    * {
-        box-sizing: border-box;
+    table#t01 th {
+        background-color: black;
+        color: white;
     }
 
-        *
-        body {
-            font-family: Arial;
-            margin: 0;
-        }
+    table#t02 th {
+        background-color: black;
+        color: white;
+    }
 
-     .row {
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    th {
+        width: 250px;
+    }
+
+    .row {
         display: flex;
         content: "";
         clear: both;
@@ -114,70 +91,38 @@
         float: left;
         width: 25%;
         padding-right: 10px;
-        height: auto;
+        height: 50%;
         background-color: #f1f1f1;
         position: fixed;
         border-radius: 30px;
-        font-family: 'Kanit', sans-serif;
-        box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
     }
-
-        .column1:hover {
-            box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
-        }
 
     .column2 {
         float: left;
         width: 100%;
-        padding-left: 35%;
+        padding-left: 75%;
         height: 100%;
-        margin-top: 3%;
-        font-family: 'Kanit', sans-serif;
     }
-
-    .detail {
-        width: max-content;
-        padding-right: 10px;
-        height: auto;
-        margin-top: -48px;
-        margin-bottom: 80px;
-        background-color: #c8d6e5;
-        border-radius: 30px;
-        box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
-        font-family: 'Kanit', sans-serif;
-    }
-
-        .detail:hover {
-            box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
-        }
-
-
-
-    .collapse {
-        background-color: antiquewhite;
-        margin-left: 60px;
-        margin-top: 9px;
-        width: 503px;
-        border-radius: 15px;
-        padding: 10px;
-        font-family: 'Kanit', sans-serif;
-    }
-    
 </style>
 
 
 <div class="row">
     <div class="column1" align='center'>
-        <img class="card-img" src="@ViewBag.comsci.ImgProfile" alt="ComSciLogo" /><br />
-        <p><b>@ViewBag.comsci.Department</b></p>
-        <p>@ViewBag.comsci.University</p>
-        <p><b>Address: </b> @ViewBag.comsci.Address </p>
-        <p><b>Tel: </b> @ViewBag.comsci.Phone </p>
-        <p><b>E-Mail: </b> @ViewBag.userEmail </p><br>
+        <img class="card-img" src="https://sv1.picz.in.th/images/2020/04/10/QMoxDI.th.png" alt="QMoxDI.png" border="0" />
+        <p>
+            <b>ภาควิชาวิทยาการคอมพิวเตอร์</b> <br>
+            คณะวิทยาศาสตร์ มหาวิทยาลัยเชียงใหม่
+        </p>
+        <p>
+            <b>ที่อยู่ติดต่อ:</b> 239 ถนนห้วยแก้ว ต.สุเทพ <br>
+            อ.เมือง จ.เชียงใหม่ 50200 <br>
+            <b>เบอร์ติดต่อ:</b> 053-222180 <br>
+            <b>E-mail:</b> Comsci@cmu.ac.th
+        </p>
     </div>
 
     <div class="column2">
-        
+
         <div class="col-md-12">
             <div class="box">
                 <form id="postForm">
@@ -190,37 +135,41 @@
                 <input type="checkbox" id="isEmail" name="isEmail"> Send Email to all companies
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-md-12">
                 <a href="#" class="btn btn-primary float-right" style="margin-top: -30px; margin-right: 37px;" onclick="post()">Post</a>
             </div>
         </div><br />
         
-        <div class="main">
-            @foreach (PostCompany pc in ViewBag.postCompanyList)
-            {
-                <div class="detail">
-                    <p>
-                        <img class="card-img1" src="@pc.company.ImgProfile" />
-                        <div class="name"><b>@pc.company.Name</b></div>
-                    </p>
-                    <div>
-                        <a href="#detail" class="btn btn-info" data-toggle="collapse" style="margin-top: 22px; margin-left: 76px;">Detail</a>
-                        <div id="detail" class="collapse" style="margin-left: 10%;">
-                            @pc.post.Detail
-                        </div>
-                    </div>
-                    <img style="margin-left: 76px;" src="@pc.post.ImgLink" />
-                </div>
-            }
-            <script>
+              <div class="main">
+                  @{int i = 0;
+                      @foreach (PostCompany pc in ViewBag.postCompanyList)
+                      {
+                          i++;
+                          {
+                              string post = "post" + i;
+                              <div class="detail">
+                                  <p>
+                                      <img class="card-img1" src="@pc.company.ImgProfile" />
+                                      <div class="name"><b>@pc.company.Name</b></div>
+                                  </p>
+                                  <div>
+                                      <a href="#@post" class="btn btn-info" data-toggle="collapse" style="margin-left: 76px; margin-top: 15px;">Detail</a>
+                                      <div id="@post" class="collapse" style="margin-left: 10%;">
+                                          @pc.post.Detail
+                                      </div>
+                                  </div>
+                                  <img style="margin-left: 76px;" src="@pc.post.ImgLink" />
+                              </div>
+                          }
+                      }}
 
-            </script>
+                  <script>
 
-        </div>
+                  </script>
+
+              </div>
     </div>
-
 </div>
 <script>
     function post() {
