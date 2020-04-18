@@ -3,7 +3,7 @@
     ViewData["Title"] = "Notification";
     Layout = "_CompanyLayout";
 }
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Roboto:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Roboto:ital@1&display=swap" rel="stylesheet">
 
 <!DOCTYPE html>
 <html>
@@ -67,11 +67,11 @@
             background-color: #f1f1f1;
             border-radius: 30px;
             box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
+            margin-bottom: 5%;
         }
 
         .box {
             width: 500px;
-            height: 600px;
             background-color: #f1f1f1;
             margin-top: 10px;
             border-radius: 10px;
@@ -145,7 +145,7 @@
             right: 28px;
             width: 120px;
             border-radius: 5px;
-            margin-right: 5%;
+            margin: 5%;
             text-decoration: none;
         }
 
@@ -253,12 +253,24 @@
                 box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
             }
 
-            textarea {
-    overflow: auto;
-    resize: vertical;
-    width: 85%;
-    border-radius: 10px;
-}
+        textarea {
+            overflow: auto;
+            resize: vertical;
+            width: 85%;
+            border-radius: 10px;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            margin-top: 7%;
+        }
+
+        .btn-dark {
+            color: #fff;
+            background-color: #343a40;
+            border-color: #343a40;
+            margin: 3%;
     </style>
 </head>
 <body>
@@ -276,76 +288,76 @@
         <div class="column2">
             <div>
                 @{ int i = 0;
-                   int j = 1000;
-                @foreach (StudentNameMatching sm in @ViewBag.StudentNameMatchingList)
-                {
-                    i++;
-                    j++;
-                <div class="main">
-                    <div class="box" style="text-align:center;">
-                        <div class="detail" style="text-align:center;">
-                            <img class="card-img1" src="@sm.student.ImgProfile" border="0" />
-                            <p style="margin-top:1%; margin-bottom:4%;">ชื่อ: @sm.student.Name</p>
-                            @Html.ActionLink("Student Detail", "GetStudent", "Public", new { id = sm.student.SID }, new { @class = "open-button1", target = "_blank" })
-                            @if (sm.matching.Result == "Waiting for interview")
-                            {
+                    int j = 1000;
+                    @foreach (StudentNameMatching sm in @ViewBag.StudentNameMatchingList)
+                    {
+                        i++;
+                        j++;
+                        <div class="main">
+                            <div class="box" style="text-align:center;">
+                                <div class="detail" style="text-align: center;">
+                                    <img class="card-img1" src="@sm.student.ImgProfile" border="0" />
+                                    <p style="margin-top:1%; margin-bottom:4%;">ชื่อ: @sm.student.Name</p>
+                                    @Html.ActionLink("Student Detail", "GetStudent", "Public", new { id = sm.student.SID }, new { @class = "open-button1", target = "_blank" })
+                                    @if (sm.matching.Result == "Waiting for interview")
+                                    {
 
-                                string interview = "interview" + j;
-                                {
-                                    int target = i;
-                                    <a href="#@interview" class="btn btn-info" data-toggle="collapse">นัดสัมภาษณ์</a>
-                                    <div id="@interview" class="collapse">
-                                        <form id="@i" class="form-container">
-                                            <label for="interview">วันที่นัดสัมภาษณ์</label>
-                                            @Html.EditorFor(model => model.Date, new { type = "date" })<br>
-                                            <label for="interview">รายละเอียดในการนัดสัมภาษณ์</label>
-                                            @Html.TextAreaFor(model => model.Detail, null)
+                                        string interview = "interview" + j;
+                                        {
+                                            int target = i;
+                                            <a href="#@interview" class="btn btn-info" data-toggle="collapse">นัดสัมภาษณ์</a>
+                                            <div id="@interview" class="collapse">
+                                                <form id="@i" class="form-container">
+                                                    <label for="interview">วันที่นัดสัมภาษณ์</label>
+                                                    @Html.EditorFor(model => model.Date, new { type = "date" })<br>
+                                                    <label for="interview">รายละเอียดในการนัดสัมภาษณ์</label>
+                                                    @Html.TextAreaFor(model => model.Detail, null)
 
-                                            <button type="button" class="btn cancel" onclick="confirm(@target,@ViewBag.user.CID, @sm.matching.SID, @sm.matching.MID)">ยืนยัน</button>
+                                                    <button type="button" class="btn cancel" onclick="confirm(@target,@ViewBag.user.CID, @sm.matching.SID, @sm.matching.MID)">ยืนยัน</button>
+                                                </form>
+                                            </div>
+                                        }
+                                    }
+                                    else if (sm.matching.Result == "Waiting for interview result")
+                                    {
+                                        int status = j;
+                                        <form>
+
+                                            <label>สถานะ : </label>
+                                            <select id="@status">
+                                                <option class="Wait" value="Wait_Status">Wait</option>
+                                                <option class="Pass" value="Pass_Status">Passed</option>
+                                                <option class="Failed" value="Failed_Status">Failed</option>
+                                            </select>
+                                            <button type="button" class="btn btn-dark" onclick="statusSubmit(@status,@ViewBag.user.CID, @sm.matching.SID, @sm.matching.MID)">ยืนยัน</button>
                                         </form>
-                                    </div>
-                                }
-                            }
-                            else if (sm.matching.Result == "Waiting for interview result")
-                            {
-                                int status = j;
-                                <form>
 
-                                    <label>สถานะ : </label>
-                                    <select id="@status">
-                                        <option class="Wait" value="Wait_Status">Wait</option>
-                                        <option class="Pass" value="Pass_Status">Passed</option>
-                                        <option class="Failed" value="Failed_Status">Failed</option>
-                                    </select>
-                                    <button type="button" class="btn btn-dark" onclick="statusSubmit(@status,@ViewBag.user.CID, @sm.matching.SID, @sm.matching.MID)">ยืนยัน</button>
-                                </form>
-
-                            }
-                            else if (sm.matching.Result == "Company accepted")
-                            {
-                                <!-- YELLOW -->
-                                <div class="btn btn-danger">Waiting for student confirmation</div>
-                            }
-                            else if (sm.matching.Result == "Company rejected")
-                            {
-                                <!-- RED -->
-                                <div class="btn btn-danger">Rejected</div>
-                            }
-                            else if (sm.matching.Result == "Student accepted")
-                            {
-                                <!-- GREEN -->
-                                <div class="btn btn-danger">Student accepted</div>
-                            }
-                            else if (sm.matching.Result == "Student rejected")
-                            {
-                                <!-- REDD -->
-                                <div class="btn btn-danger">Student rejected</div>
-                            }
+                                    }
+                                    else if (sm.matching.Result == "Company accepted")
+                                    {
+                                        <!-- YELLOW -->
+                                        <div class="btn btn-danger" style="background-color:yellow;">Waiting for student confirmation</div>
+                                    }
+                                    else if (sm.matching.Result == "Company rejected")
+                                    {
+                                        <!-- RED -->
+                                        <div class="btn btn-danger" style="background-color:red;">Rejected</div>
+                                    }
+                                    else if (sm.matching.Result == "Student accepted")
+                                    {
+                                        <!-- GREEN -->
+                                        <div class="btn btn-danger" style="background-color:green;">Student accepted</div>
+                                    }
+                                    else if (sm.matching.Result == "Student rejected")
+                                    {
+                                        <!-- REDD -->
+                                        <div class="btn btn-danger" style="background-color:red;">Student rejected</div>
+                                    }
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                }}
+                    }}
             </div>
         </div>
     </div>
@@ -353,19 +365,17 @@
 </html>
 <script>
     function confirm(target, from, to, MID) {
-        
+
         var data = $("#" + target).serialize();
         var intday = $("#" + target).serializeArray()[0].value;
         var detail = $("#" + target).serializeArray()[1].value;
         var today = new Date();
         var todaytime = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2) + "T" + today.getHours() + ":" + today.getMinutes();
-        if (!compairTime(intday, todaytime))
-        {
+        if (!compairTime(intday, todaytime)) {
             alert("Please enter time that greater than today");
             return false;
         }
-        if (detail == "")
-        {
+        if (detail == "") {
             alert("Please enter details");
             return false;
         }
@@ -374,7 +384,7 @@
         data = data + "&MID=" + MID;
         $.ajax({
             type: "POST",
-            data: data ,
+            data: data,
             url: "/Company/InterviewAppointment",
             success(response) {
                 alert(response);
@@ -398,13 +408,12 @@
         return false;
     }
 
-    function statusSubmit(target, from, to, MID)
-    {
+    function statusSubmit(target, from, to, MID) {
         var data = $("#" + target + " :selected").val();
         var message = "";
         if (data.toString() == "Wait_Status") { return false; }
         else {
-             message = message + "Detail=" + data + "&from=" + from + "&to=" + to + "&MID=" + MID;
+            message = message + "Detail=" + data + "&from=" + from + "&to=" + to + "&MID=" + MID;
         }
         $.ajax({
             type: "POST",
@@ -415,7 +424,7 @@
                 window.location.href = "/Company/Notification";
             }
         })
-       
+
         debugger
     }
 </script>
