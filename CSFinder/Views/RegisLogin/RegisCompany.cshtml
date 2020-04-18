@@ -668,7 +668,7 @@ input {
                         <div class="col-6">
                             <div class="input-group">
                                 <label class="label">Password</label>
-                                @Html.TextBoxFor(a => a.Password, new { @class = "input--style-4", @placeholder = "Password" })
+                                @Html.PasswordFor(a => a.Password, new { @class = "input--style-4", @placeholder = "Password" })
                                 @Html.ValidationMessageFor(a => a.Password, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -692,7 +692,7 @@ input {
                         <div class="col-6">
                             <div class="input-group">
                                 <label class="label">Address</label>
-                                @Html.TextBoxFor(a => a.Address, new { @class = "input--style-4", @placeholder = "More Details" })
+                                @Html.TextBoxFor(a => a.Address, new { @class = "input--style-4", @placeholder = "Address" })
                             </div>
                         </div>
                     </div>

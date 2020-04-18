@@ -666,7 +666,7 @@
                         <div class="col-6">
                             <div class="input-group">
                                 <label class="label">Password</label>
-                                @Html.TextBoxFor(a => a.Password, new { @class = "input--style-4", @placeholder = "Password" })
+                                @Html.PasswordFor(a => a.Password, new { @class = "input--style-4", @placeholder = "Password" })
                                 @Html.ValidationMessageFor(a => a.Password, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -704,19 +704,27 @@
                         </div>
                         <div class="col-6">
                             <div class="input-group">
-                                <label class="label">Details (Optional) </label>
-                                @Html.TextBoxFor(a => a.Detail, new { @class = "input--style-4", @placeholder = "More Details" })
+                                <label class="label">Student ID</label>
+                                @Html.TextBoxFor(a => a.SID, new { @class = "input--style-4", @placeholder = "Student ID" })
                             </div>
                         </div>
                     </div>
                     <div class="row row-space">
                         <div class="col-6">
                             <div class="input-group">
-                                <label class="label">Select Type </label>
-                                @Html.DropDownList("Type",
-                            new SelectList(Enum.GetValues(typeof(Types))),
-                            "Select type",
-                            new { @class = "input--style-4" })
+                                <label class="label">Details (Optional) </label>
+                                @Html.TextBoxFor(a => a.Detail, new { @class = "input--style-4", @placeholder = "More Details" })
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group">
+                                <label class="label">Select Type </label><br />
+                                <div style="margin: 4px 30px 10px 0px">
+                                    @Html.DropDownList("Type",
+                                new SelectList(Enum.GetValues(typeof(Types))),
+                                "Select type",
+                                new { @class = "input--style-4" })
+                                </div>
                             </div>
                         </div>
                     </div><br />
