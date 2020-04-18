@@ -65,7 +65,7 @@ namespace CSFinder.Controllers
                 
             }
             ViewBag.postCompanyList = pc;
-            ViewBag.comsci = user;
+            ViewBag.user = user;
             ViewBag.userEmail = userEmail;
             ViewBag.postList = db.Posts.ToList();
             return View();
