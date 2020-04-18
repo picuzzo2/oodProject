@@ -72,6 +72,7 @@
         flex: 70%;
         background-color: white;
         padding: 20px;
+        
     }
 
     p {
@@ -87,7 +88,13 @@
         position: fixed;
         border-radius: 30px;
         font-family: 'Kanit', sans-serif;
+        box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
     }
+
+        .column1:hover {
+            box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
+        }
+
 
     .column2 {
         float: left;
@@ -103,9 +110,9 @@
         <img class="card-img" src="@ViewBag.comsci.ImgProfile" alt="ComSciLogo" /><br />
         <p><b>@ViewBag.comsci.Department</b></p>
         <p>@ViewBag.comsci.University</p>
-        <p><b>ที่อยู่ติดต่อ: </b> @ViewBag.comsci.Address </p>
-        <p><b>เบอร์ติดต่อ: </b> @ViewBag.comsci.Phone </p>
-        <p><b>อีเมล: </b> @ViewBag.userEmail </p><br>
+        <p><b>Address: </b> @ViewBag.comsci.Address </p>
+        <p><b>Tel: </b> @ViewBag.comsci.Phone </p>
+        <p><b>E-Mail: </b> @ViewBag.userEmail </p><br>
     </div>
 
 

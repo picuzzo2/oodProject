@@ -76,6 +76,8 @@ namespace CSFinder.Controllers
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             DateTime? next = GetNextExecutionTime("Matching");
             ViewBag.next = next;
+            ViewBag.user = user;
+            ViewBag.userEmail = userEmail;
             return View();
         }
 
