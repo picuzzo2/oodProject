@@ -94,8 +94,8 @@
     <div class="column2">
         <div class="main">
             <h1>Matching</h1>
-            <input type="button" value="Start Matching" onclick="location.href='@Url.Action("Home", "ComSci")'" style="background-color: #4CAF50;" />
-            <input type="button" value="Stop Matching" onclick="location.href='@Url.Action("Home", "ComSci")'" style="background-color: #FF3333;" />
+            <input type="button" value="Start Matching" onclick="location.href='@Url.Action("AddMatchSchedule", "ComSci")'" style="background-color: #4CAF50;" />
+            <input type="button" value="Stop Matching" onclick="location.href='@Url.Action("RemoveMatchSchedule", "ComSci")'" style="background-color: #FF3333;" />
 
             @if (ViewBag.next != null)
             {

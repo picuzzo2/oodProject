@@ -222,7 +222,7 @@
                         </p>
                     </tr>
                     <tr>
-                        @if (ViewBag.user.ImgResume != null || ViewBag.user.ImgResume != "")
+                        @if (ViewBag.user.ImgResume != null && ViewBag.user.ImgResume != "")
                         {
                             <div style="background-color: #40739e; box-shadow: 5px 10px #273c75; margin:2%;">
                                 <p><b style=" margin-left: 10px; font-size: 18px; color: wheat;">Resume</b></p>
@@ -231,7 +231,7 @@
                                 <img src="@ViewBag.user.ImgResume" alt="Resume" border="0" />
                             </div>
                         }
-                        @if (ViewBag.user.ImgTranscript != null || ViewBag.user.ImgResume != "")
+                        @if (ViewBag.user.ImgTranscript != null && ViewBag.user.ImgResume != "")
                         {
                             <div style=" background-color: #40739e; box-shadow: 5px 10px #273c75; margin: 2%;">
                                 <p><b style=" margin-left: 10px; font-size: 18px; color: wheat;">Transcript</b></p>

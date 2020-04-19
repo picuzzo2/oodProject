@@ -266,6 +266,7 @@
                                 <b>Create Post</b>
                                 @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
                                 @Html.ValidationMessageFor(a => a.Detail, "", new { @class = "text-danger" })
+                                @Html.TextAreaFor(a=>a.ImgLink, new { @class = "form-control", @placeholder = "Link of an image" })
                             </div>
 
                             <input type="checkbox" id="isEmail" name="isEmail"><b style="margin-left:-340px;"> Send Email to all companies</b>

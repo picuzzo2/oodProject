@@ -69,7 +69,7 @@ namespace CSFinder.Controllers
         public IActionResult Home(Post objPost)
         {
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
-           
+            String msg = "";
 
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace CSFinder.Controllers
                 ViewBag.postCompanyList = pc;
                 ViewBag.company = user;
                 ViewBag.userEmail = userEmail;
-                String msg = "";
+                
 
                 Post addpost = new Post();
                 Post userP = new Post();
@@ -110,14 +110,14 @@ namespace CSFinder.Controllers
 
                     msg = "Post Success";
 
-                    return Json(new { success = true, responseText = msg });
+                    return Json(msg);
                 }
                 else
                 {
-                    return Json(new { success = false, responseText = msg });
+                    return Json(msg);
                 }
             }
-                    return View(objPost);
+            return Json(msg);
         }
      
         public IActionResult Notification()

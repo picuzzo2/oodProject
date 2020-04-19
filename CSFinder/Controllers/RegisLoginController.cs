@@ -87,12 +87,7 @@ namespace CSFinder.Controllers
 
                 foreach (Student stu in db.Students)
                 {
-                    if (stu.ID.Equals(objUser.ID))
-                    {
-                        msg = "Username: " + objUser.ID + " already exist";
-                        break;
-                    }
-                    else if (stu.SID.Equals(objUser.SID))
+                    if (stu.SID.Equals(objUser.SID))
                     {
                         msg = "Student ID: " + objUser.SID + " already exist";
                         break;
@@ -102,6 +97,11 @@ namespace CSFinder.Controllers
                 {
                     foreach(Account acc in db.Accounts)
                     {
+                        if (acc.ID.Equals(objUser.ID))
+                        {
+                            msg = "Username: " + objUser.ID + " already exist";
+                            break;
+                        }
                         if (acc.Email.Equals(objUser.Email))
                         {
                             msg = "Email: " + objUser.Email + " already exist";
@@ -121,6 +121,7 @@ namespace CSFinder.Controllers
                     addacc.Email = objUser.Email;
                     db.Accounts.Add(addacc);
                     db.SaveChanges();
+                    addstu.SID = objUser.SID;
                     addstu.ID = objUser.ID;
                     addstu.Name = objUser.Name;
                     addstu.Phone = objUser.Phone;

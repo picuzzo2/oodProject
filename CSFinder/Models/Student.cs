@@ -31,9 +31,9 @@ namespace CSFinder.Models
         public string? ImgTranscript { get; set; }
         public string? ImgResume { get; set; }
 
-        public string? Rank1 { get; set; } = "";
-        public string? Rank2 { get; set; } = "";
-        public string? Rank3 { get; set; } = "";
+        public string? Rank1 { get; set; } 
+        public string? Rank2 { get; set; } 
+        public string? Rank3 { get; set; } 
 #nullable disable
         [Required(ErrorMessage = "Please enter an address")]
         public string Address { get; set; }

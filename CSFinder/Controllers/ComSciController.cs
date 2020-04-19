@@ -71,18 +71,20 @@ namespace CSFinder.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(string Detail, bool Send)
+        public IActionResult Post(Post message, bool Send)
         {
             string msg="";
             Post newpost = new Post();
             newpost.CID = "1000000";
-            newpost.PID = db.Posts.Max(x => x.PID)+1;
-            newpost.Detail = Detail;
+            if (db.Posts.Count() == 0) newpost.PID = 1;
+            else newpost.PID = db.Posts.Max(x => x.PID)+1;
+            newpost.Detail = message.Detail;
+            newpost.ImgLink = message.ImgLink;
             db.Posts.Add(newpost);
             db.SaveChanges();
             if(Send)
             {
-                List<string> result = sendEmail(Detail);
+                List<string> result = sendEmail(message.Detail);
                 foreach(var i in result)
                 {
                     Debug.WriteLine(i);
@@ -117,7 +119,12 @@ namespace CSFinder.Controllers
             try
             {
                 var job = JobStorage.Current.GetConnection().GetRecurringJobs().Single(x => x.Id == id);
-                return job == null ? null : job.NextExecution;
+                if (job == null) return null;
+                else {
+                    DateTime nextExac = (DateTime)job.NextExecution;
+                    nextExac = nextExac.AddHours(7);
+                    return nextExac;
+                }
             }
             catch (Exception)
             {
@@ -183,7 +190,7 @@ namespace CSFinder.Controllers
             {
                 foreach (StudentMatching stu in stuMatch.ToList())
                 {
-                    if (i == 1)
+                    if (i == 1 && stu.Rank1 != null)
                     {
                         if(stu.Type == 0)
                         {
@@ -242,7 +249,7 @@ namespace CSFinder.Controllers
                             }
                         }
                     }
-                    else if (i == 2)
+                    else if (i == 2 && stu.Rank2 != null)
                     {
                         if (stu.Type == 0)
                         {
@@ -303,7 +310,7 @@ namespace CSFinder.Controllers
                             }
                         }
                     }
-                    else if(i==3)
+                    else if(i==3 && stu.Rank3 != null)
                     {
                         if (stu.Type == 0)
                         {
@@ -371,6 +378,11 @@ namespace CSFinder.Controllers
         public IActionResult AddMatchSchedule()
         {
             RecurringJob.AddOrUpdate("Matching", () => StartMatch(), Cron.Weekly, TimeZoneInfo.Local);
+            return RedirectToAction("Matching", "ComSci");
+        }
+        public IActionResult RemoveMatchSchedule()
+        {
+            RecurringJob.RemoveIfExists("Matching");
             return RedirectToAction("Matching", "ComSci");
         }
         public IActionResult Company()
