@@ -144,16 +144,13 @@ namespace CSFinder.Controllers
         [HttpPost]
         public IActionResult InterviewAppointment(Message message, string MID)
         {
-            Debug.WriteLine("############################################################");
-            Debug.WriteLine(message.Date);
-            Debug.WriteLine(message.Detail);
-            Debug.WriteLine(message.from);
-            Debug.WriteLine(message.to);
-            Debug.WriteLine(MID);
+            string subject = "Interview appointment";
+            string detail = "An interview will be happended on " + message.Date +" and the details are : "+"<br>"+message.Detail;
+            string result = sendEmail(message, subject, detail);
             Matching m = db.Matchings.Where(x => x.MID == MID && x.SID == message.to && x.CID == message.from).FirstOrDefault();
             m.Result = "Waiting for interview result";
             db.SaveChanges();
-            return Json("The Email has send");
+            return Json(result);
         }
 
         [HttpPost]
@@ -161,23 +158,41 @@ namespace CSFinder.Controllers
         {
             string msg ="";
             Matching m = db.Matchings.Where(x => x.MID == MID && x.SID == message.to && x.CID == message.from).FirstOrDefault();
+            string subject = "Interview Result";
             if (message.Detail== "Pass_Status")
             {
+                string detail = "You passed the interview, please confirm the result";
+                string result = sendEmail(message, subject, detail);
+
                 m.Result = "Company accepted";
                 Student s = db.Students.Where(x => x.SID == m.SID).FirstOrDefault();
                 s.Status = m.CID;
                 db.SaveChanges();
-                msg += "Student Accepted";
+                msg += "Student Accepted"+"\n" +result;
             }
             else if(message.Detail == "Failed_Status")
             {
+                string detail = "You failed the interview.";
+                string result = sendEmail(message, subject, detail);
+
                 m.Result = "Company rejected";
                 db.SaveChanges();
-                msg += "Student Rejected";
+                msg += "Student Rejected"+"\n"+result;
             }
             return Json(msg);
         }
 
+        private string sendEmail(Message message, string subject, string detail)
+        {
+
+            Company user = db.Companies.Where(x => x.CID == message.from).FirstOrDefault();
+            string userEmail = db.Accounts.Where(x => x.ID == user.ID).FirstOrDefault().Email;
+            Student target = db.Students.Where(x => x.SID == message.to).FirstOrDefault();
+            string targetEmail = db.Accounts.Where(x => x.ID == target.ID).FirstOrDefault().Email;
+            string result = new EmailController(db).SendEmailTo(userEmail, targetEmail, user.Name, target.Name,subject,detail);
+
+            return result;
+        }
 
         public IActionResult Notification_Announcement()
         {

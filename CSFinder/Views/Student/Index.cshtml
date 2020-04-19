@@ -202,7 +202,10 @@
                         </p>
                         <div>
                             <a href="#@post" class="btn btn-info" data-toggle="collapse" style="margin-left: 76px;">Detail</a>
+                            @if (pc.company.CID != "1000000")
+                            {
                             <a href="#@rank" class="btn btn-info" data-toggle="collapse" style="margin-left: 0px">Rank</a>
+                            }
                             <div id="@post" class="collapse" style="margin-left: 10%;">
                                 @pc.post.Detail
                             </div>

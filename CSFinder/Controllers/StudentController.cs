@@ -68,26 +68,9 @@ namespace CSFinder.Controllers
                 }
             }
             ViewBag.CompanyNameMatchingList = cm;
-
-            return View();
-        }
-        public IActionResult ReplyHistory()
-        {
-            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
-            ViewBag.user = user;
-            ViewBag.Dates = "(12/12/2562)";
-            ViewBag.RankComplete = "บริษัท ปูน...";
-            ViewBag.Status = user.Status;
-
-            return View();
-        }
-        public IActionResult CompleteHistory()
-        {
-            if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
-            ViewBag.user = user;
-            ViewBag.Dates = "(12/12/2562)";
-            ViewBag.RankComplete = "บริษัท ปูน...";
-            ViewBag.Status = user.Status;
+            ViewBag.rank1Name = db.Companies.Where(x => x.CID == user.Rank1).FirstOrDefault().Name;
+            ViewBag.rank2Name = db.Companies.Where(x => x.CID == user.Rank2).FirstOrDefault().Name;
+            ViewBag.rank3Name = db.Companies.Where(x => x.CID == user.Rank3).FirstOrDefault().Name;
 
             return View();
         }
@@ -108,6 +91,9 @@ namespace CSFinder.Controllers
             if (!setUser()) { Debug.WriteLine("Redirecting");  return RedirectToAction("Login", "RegisLogin"); }
             ViewBag.user = user;
             Student model = user;
+            ViewBag.rank1Name = db.Companies.Where(x => x.CID == user.Rank1).FirstOrDefault().Name;
+            ViewBag.rank2Name = db.Companies.Where(x => x.CID == user.Rank2).FirstOrDefault().Name;
+            ViewBag.rank3Name = db.Companies.Where(x => x.CID == user.Rank3).FirstOrDefault().Name;
             return View(model);
         }
         [HttpPost]
@@ -115,7 +101,9 @@ namespace CSFinder.Controllers
         {
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
             Student model = user;
-
+            ViewBag.rank1Name = db.Companies.Where(x => x.CID == user.Rank1).FirstOrDefault().Name;
+            ViewBag.rank2Name = db.Companies.Where(x => x.CID == user.Rank2).FirstOrDefault().Name;
+            ViewBag.rank3Name = db.Companies.Where(x => x.CID == user.Rank3).FirstOrDefault().Name;
             if (ModelState.IsValid)
             {
                 user.Name = objUser.Name;
@@ -188,18 +176,20 @@ namespace CSFinder.Controllers
         [HttpPost]
         public IActionResult Answer(string Ans, string CID, string SID, string MID )
         {
-            Debug.WriteLine("#########################################");
-            Debug.WriteLine(Ans);
-            Debug.WriteLine(CID);
-            Debug.WriteLine(SID);
-            Debug.WriteLine(MID);
             Student student = db.Students.Where(x => x.SID == SID).FirstOrDefault();
             Matching mat = db.Matchings.Where(x => x.MID == MID && x.SID == SID && x.CID == CID).FirstOrDefault();
+            Company com = db.Companies.Where(x => x.CID == CID).FirstOrDefault();
+
+            string fromEmail = db.Accounts.Where(x => x.ID == student.ID).FirstOrDefault().Email;
+            string fromName = student.Name;
+            string toEmail = db.Accounts.Where(x => x.ID == com.ID).FirstOrDefault().Email;
+            string subject = "Interview comfirmation from student";
+
 
             string msg="";
             if(Ans == "Accept")
             {
-                Company com = db.Companies.Where(x => x.CID == CID).FirstOrDefault();
+                
                 if(mat.Type==0)
                 {
                     if(com.TrainneeNeed - com.TrainneeGot < 1)
@@ -209,7 +199,7 @@ namespace CSFinder.Controllers
                     else
                     {
                         com.TrainneeGot++;
-                        student.Status = CID;
+                        student.Status = "Confirmed to be an intern at "+db.Companies.Where(x=>x.CID==CID).FirstOrDefault().Name;
                         mat.Result = "Student accepted";
                         msg = "You have been accepted to be company's trainnee";
                         
@@ -217,6 +207,9 @@ namespace CSFinder.Controllers
                         {
                             m.Result = "Employed";
                         }
+                        string detail ="Student accepted to be your Intern";
+                        string result = new EmailController(db).SendEmailTo(fromEmail, toEmail, student.Name, com.Name, subject, detail);
+                        msg += "\n" + result;
 
                         db.SaveChanges();
                     }
@@ -230,7 +223,7 @@ namespace CSFinder.Controllers
                     else
                     {
                         com.CoopGot++;
-                        student.Status = CID;
+                        student.Status = "Confirmed to be a coorperative student at " + db.Companies.Where(x => x.CID == CID).FirstOrDefault().Name;
                         mat.Result = "Student accepted";
                         msg = "You have been accepted to be company's cooperative student";
 
@@ -238,6 +231,9 @@ namespace CSFinder.Controllers
                         {
                             m.Result = "Employed";
                         }
+                        string detail = "Student accepted to be your cooperative student";
+                        string result = new EmailController(db).SendEmailTo(fromEmail, toEmail, student.Name, com.Name, subject, detail);
+                        msg += "\n" + result;
                         db.SaveChanges();
                     }
                 }
@@ -247,6 +243,9 @@ namespace CSFinder.Controllers
             {
                 mat.Result = "Student rejected";
                 msg = "Rejection completed";
+                string detail = "Student rejected";
+                string result = new EmailController(db).SendEmailTo(fromEmail, toEmail, student.Name, com.Name, subject, detail);
+                msg += "\n" + result;
                 db.SaveChanges();
             }
 

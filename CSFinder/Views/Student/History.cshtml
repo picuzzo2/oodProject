@@ -145,48 +145,55 @@
                                         <br>
                                         <div align='right'>
                                             <b>บริษัทที่ได้ :</b> <p1 style="color:#333399;">@i.resultName</p1><br>
-                                            @if (i.matching.Result != "Company accepted")
+                                            @if (ViewBag.user.Status == "Waiting for matching")
                                             {
-                                                @if (i.matching.Result == "Waiting for interview")
+                                                @if (i.matching.Result != "Company accepted")
                                                 {
-                                                    <!-- GREY -->
-                                                    <p style="color:blue"><b>สถานะ :</b> @i.matching.Result</p>
+                                                    @if (i.matching.Result == "Waiting for interview")
+                                                    {
+                                                        <!-- GREY -->
+                                                        <p style="color:blue"><b>สถานะ :</b> @i.matching.Result</p>
+                                                    }
+                                                    else if (i.matching.Result == "Waiting for interview result")
+                                                    {
+                                                        <!-- YELLOW -->
+                                                        <p style="color:gold"><b>สถานะ :</b> @i.matching.Result</p>
+                                                    }
+                                                    else if (i.matching.Result == "Company rejected"
+                                                        || i.matching.Result == "Student rejected")
+                                                    {
+                                                        <!-- RED -->
+                                                        <p style="color: red"><b>สถานะ :</b> @i.matching.Result</p>
+                                                    }
+        
+                                                }
+                                                else
+                                                {
+                                                    id++;
+                                                    <label>ตอบรับ : </label>
+                                                    <select id="@id">
+                                                        <option class="Wait" value="Wait_Status">You passed an interview</option>
+                                                        <option class="Accept" value="Accept">Accept</option>
+                                                        <option class="Reject" value="Reject">Reject</option>
+                                                    </select>
+                                                    <button type="button" class="btn btn-dark"
+                                                            onclick="studentAnswer(@id,@i.matching.CID, @ViewBag.user.SID, @i.matching.MID)">
+                                                        ยืนยัน
+                                                    </button>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (i.matching.Result == "Student accepted")
+                                                {
+                                                    <!--GREEN-->
+                                                    <p style="color:green"><b>สถานะ :</b> You've chose this company</p>
                                                 }
                                                 else if (i.matching.Result == "Employed")
                                                 {
                                                     <!-- GREY -->
                                                     <p style="color:grey"><b>สถานะ :</b> You can't choose other company</p>
                                                 }
-                                                else if (i.matching.Result == "Waiting for interview result")
-                                                {
-                                                    <!-- YELLOW -->
-                                                    <p style="color:gold"><b>สถานะ :</b> @i.matching.Result</p>
-                                                }
-                                                else if (i.matching.Result == "Company rejected"
-                                                    || i.matching.Result == "Student rejected")
-                                                {
-                                                    <!-- RED -->
-                                                    <p style="color: red"><b>สถานะ :</b> @i.matching.Result</p>
-                                                }
-                                                else if (i.matching.Result == "Student accepted")
-                                                {
-                                                    <!--GREEN-->
-                                                    <p style="color:green"><b>สถานะ :</b> You've chose this company</p>
-                                                }
-                                            }
-                                            else
-                                            {
-                                                id++;
-                                                <label>ตอบรับ : </label>
-                                                <select id="@id">
-                                                    <option class="Wait" value="Wait_Status">You passed an interview</option>
-                                                    <option class="Accept" value="Accept">Accept</option>
-                                                    <option class="Reject" value="Reject">Reject</option>
-                                                </select>
-                                                <button type="button" class="btn btn-dark"
-                                                        onclick="studentAnswer(@id,@i.matching.CID, @ViewBag.user.SID, @i.matching.MID)">
-                                                    ยืนยัน
-                                                </button>
                                             }
                                         </div>
                                     </div>

@@ -67,7 +67,6 @@ namespace CSFinder.Controllers
             ViewBag.postCompanyList = pc;
             ViewBag.user = user;
             ViewBag.userEmail = userEmail;
-            ViewBag.postList = db.Posts.ToList();
             return View();
         }
 
@@ -99,6 +98,10 @@ namespace CSFinder.Controllers
                         msg += i + "\n";
                     }
                 }
+            }
+            else
+            {
+                msg = "Post had been created";
             }
             return Json(msg);
         }

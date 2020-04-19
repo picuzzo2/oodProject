@@ -20,7 +20,7 @@ namespace CSFinder.Controllers
             username = "csfinder.ood@gmail.com";
             password = "csfinder204";
         }
-        public IActionResult SendEmailTo(string from, string to,string fromName, string toName,  string detail, string subject)
+        public string SendEmailTo(string from, string to,string fromName, string toName, string subject, string detail)
         {
             string result = "";
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
@@ -43,7 +43,7 @@ namespace CSFinder.Controllers
             {
                 result = "Can't sent email to : " + to;
             }
-            return Json(result);
+            return result;
         }
 
         public List<string> SendEmailToCompany(string detail)
