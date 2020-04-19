@@ -203,7 +203,8 @@ namespace CSFinder.Controllers
                                 Debug.WriteLine("Company TrainneeNeed: " + com.TrainneeNeed + " TrainneeGot:" + com.TrainneeGot);
                                 Matching addMatch = new Matching();
                                 addMatch.MID = LastMatch;
-                                addMatch.Date = DateTime.UtcNow;
+                                DateTime matchDate = DateTime.UtcNow;
+                                addMatch.Date = matchDate.AddHours(7);
                                 addMatch.CID = com.CID;
                                 addMatch.SID = stu.SID;
                                 addMatch.Type = stu.Type;
@@ -231,7 +232,8 @@ namespace CSFinder.Controllers
                                 Debug.WriteLine("Company Coopneed:" + com.CoopNeed + "CoopGot:" + com.CoopGot);
                                 Matching addMatch = new Matching();
                                 addMatch.MID = LastMatch;
-                                addMatch.Date = DateTime.UtcNow;
+                                DateTime matchDate = DateTime.UtcNow;
+                                addMatch.Date = matchDate.AddHours(7);
                                 addMatch.CID = com.CID;
                                 addMatch.SID = stu.SID;
                                 addMatch.Type = stu.Type;
@@ -263,7 +265,8 @@ namespace CSFinder.Controllers
                                 Debug.WriteLine("Company TrainneeNeed: " + com.TrainneeNeed + " TrainneeGot:" + com.TrainneeGot);
                                 Matching addMatch = new Matching();
                                 addMatch.MID = LastMatch;
-                                addMatch.Date = DateTime.UtcNow;
+                                DateTime matchDate = DateTime.UtcNow;
+                                addMatch.Date = matchDate.AddHours(7);
                                 addMatch.CID = com.CID;
                                 addMatch.SID = stu.SID;
                                 addMatch.Type = stu.Type;
@@ -292,7 +295,8 @@ namespace CSFinder.Controllers
                                 Debug.WriteLine("Company CoopNeed: " + com.CoopNeed + " CoopGot:" + com.CoopGot);
                                 Matching addMatch = new Matching();
                                 addMatch.MID = LastMatch;
-                                addMatch.Date = DateTime.UtcNow;
+                                DateTime matchDate = DateTime.UtcNow;
+                                addMatch.Date = matchDate.AddHours(7);
                                 addMatch.CID = com.CID;
                                 addMatch.SID = stu.SID;
                                 addMatch.Type = stu.Type;
@@ -324,7 +328,8 @@ namespace CSFinder.Controllers
                                 Debug.WriteLine("Company TrainneeNeed: " + com.TrainneeNeed + " TrainneeGot:" + com.TrainneeGot);
                                 Matching addMatch = new Matching();
                                 addMatch.MID = LastMatch;
-                                addMatch.Date = DateTime.UtcNow;
+                                DateTime matchDate = DateTime.UtcNow;
+                                addMatch.Date = matchDate.AddHours(7);
                                 addMatch.CID = com.CID;
                                 addMatch.SID = stu.SID;
                                 addMatch.Type = stu.Type;
@@ -353,7 +358,8 @@ namespace CSFinder.Controllers
                                 Debug.WriteLine("Company CoopNeed: " + com.CoopNeed + " CoopGot:" + com.CoopGot);
                                 Matching addMatch = new Matching();
                                 addMatch.MID = LastMatch;
-                                addMatch.Date = DateTime.UtcNow;
+                                DateTime matchDate = DateTime.UtcNow;
+                                addMatch.Date = matchDate.AddHours(7);
                                 addMatch.CID = com.CID;
                                 addMatch.SID = stu.SID;
                                 addMatch.Type = stu.Type;
