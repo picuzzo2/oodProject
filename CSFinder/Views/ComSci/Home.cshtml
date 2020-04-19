@@ -66,8 +66,8 @@
         border: 3px solid #ced6e0;
         border-radius: 10px;
         margin-top: 10px;
-        margin-left: 5px;
-        height: 40px;
+        margin-left: -349px;
+        height: 19px;
         width: 100%;
     }
 
@@ -121,6 +121,7 @@
             box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
         }
 
+
     .main {
         flex: 70%;
         padding: 20px;
@@ -138,7 +139,7 @@
         padding-right: 10px;
         height: auto;
         margin-bottom: 20px;
-        margin-left: 70px;
+        margin-left: 30px;
         background-color: #c8d6e5;
         border-radius: 30px;
         box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
@@ -177,70 +178,135 @@
         padding: 10px;
         font-family: 'Kanit', sans-serif;
     }
+
+    hr {
+        margin: 0;
+        margin-top: 0;
+        margin-bottom: 3px;
+        border: 0;
+        border-top: 1px solid #9da7b1;
+    }
+
+    .box {
+        width: 700px;
+    }
+
+
+    * {
+        box-sizing: border-box;
+    }
+
+        *
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 10px;
+    }
+
+    table#t01 th {
+        background-color: black;
+        color: white;
+    }
+
+    .form-control {
+        display: block;
+        width: 629px;
+        height: calc(1.5em + 0.75rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+ 
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+        margin-top: 2%;
+        margin-left: 8%;
+    }
+    .form-group {
+    margin-bottom: 1rem;
+    margin-left: 6%;
+}
 </style>
 
 
 <div class="row">
     <div class="column1" align='center'>
-        <div class="column1" align='center'>
-            <img class="card-img" src="@ViewBag.user.ImgProfile" alt="ComSciLogo" /><br />
-            <p><b>@ViewBag.user.Department</b></p>
-            <p>@ViewBag.user.University</p>
-            <p><b>Address: </b> @ViewBag.user.Address </p>
-            <p><b>Tel: </b> @ViewBag.user.Phone </p>
-            <p><b>E-Mail: </b> @ViewBag.userEmail </p><br>
-        </div>
+        <img class="card-img" src="@ViewBag.user.ImgProfile" alt="ComSciLogo" /><br />
+        <p><b>@ViewBag.user.Department</b></p>
+        <p>@ViewBag.user.University</p>
+        <p><b>Address: </b> @ViewBag.user.Address </p>
+        <p><b>Tel: </b> @ViewBag.user.Phone </p>
+        <p><b>E-Mail: </b> @ViewBag.userEmail </p><br>
+    </div>
 
-        <div class="column2">
+    <div class="column2">
+        <div class="main">
+            <form id="postForm">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="box">
 
-            <div class="col-md-12">
-                <div class="box">
-                    <form id="postForm">
-                        <div id="Post">
-                            Create Post
-                            @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
-                            @Html.ValidationMessageFor(a => a.Detail, "", new { @class = "text-danger" })
-                        </div>
-                    </form>
-                    <input type="checkbox" id="isEmail" name="isEmail"> Send Email to all companies
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-12">
-                    <a href="#" class="btn btn-primary float-right" style="margin-top: -30px; margin-right: 37px;" onclick="post()">Post</a>
-                </div>
-            </div><br />
-
-            <div class="main">
-                @{int i = 0;
-                    @foreach (PostCompany pc in ViewBag.postCompanyList)
-                    {
-                        i++;
-                        {
-                            string post = "post" + i;
-                            <div class="detail">
-                                <p>
-                                    <img class="card-img1" src="@pc.company.ImgProfile" />
-                                    <div class="name"><b>@pc.company.Name</b></div>
-                                </p>
-                                <div>
-                                    <a href="#@post" class="btn btn-info" data-toggle="collapse" style="margin-left: 76px; margin-top: 15px;">Detail</a>
-                                    <div id="@post" class="collapse" style="margin-left: 10%;">
-                                        @pc.post.Detail
-                                    </div>
-                                </div>
-                                <img style="margin-left: 76px;" src="@pc.post.ImgLink" />
+                            <div id="Post">
+                                <b>Create Post</b>
+                                @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
+                                @Html.ValidationMessageFor(a => a.Detail, "", new { @class = "text-danger" })
                             </div>
-                        }
-                    }}
 
-                <script>
+                            <input type="checkbox" id="isEmail" name="isEmail"><b style="margin-left:-340px;"> Send Email to all companies</b>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <a href="#" class="btn btn-primary float-right" style="margin-top: -30px; margin-right:53px;" onclick="post()">Post</a>
+                        </div>
+                    </div><br />
+            </form>
 
-                </script>
+            @{int i = 0;
+                @foreach (PostCompany pc in ViewBag.postCompanyList)
+                {
+                    i++;
+                    {
+                        string post = "post" + i;
+                        <div class="detail">
+                            <p>
+                                <img class="card-img1" src="@pc.company.ImgProfile" />
+                                <div class="name"><b>@pc.company.Name</b></div>
+                            </p>
+                            <div>
+                                <a href="#@post" class="btn btn-info" data-toggle="collapse" style="margin-left: 75px;">Detail</a>
+                                <div id="@post" class="collapse" style="margin-left: 10%;">
+                                    @pc.post.Detail
+                                </div>
+                            </div>
+                            <img style="margin-left: 76px;" src="@pc.post.ImgLink" />
+                        </div>
+                    }
+                }}
 
-            </div>
+            <script>
+
+            </script>
+
         </div>
     </div>
+</div>
 <script>
     function post() {
         var data = $("#postForm").serialize();
