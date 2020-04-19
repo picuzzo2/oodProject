@@ -181,6 +181,31 @@
         <p><b>Name:</b> @ViewBag.user.Name</p>
         <p><b>Status:</b> @ViewBag.user.Status </p>
         <p><b>Type:</b> @ViewBag.user.Type </p>
+        <p class="profile"><b>Currently rank choose</b></p>
+        @if (ViewBag.rank1Name != null)
+        {
+            <p><b>Rank 1:</b> @ViewBag.rank1Name </p>
+        }
+        else
+        {
+            <p><b>Rank 1:</b> Not choosing yet </p>
+        }
+        @if (ViewBag.rank2Name != null)
+        {
+            <p><b>Rank 2:</b> @ViewBag.rank2Name </p>
+        }
+        else
+        {
+            <p><b>Rank 2:</b> Not choosing yet </p>
+        }
+        @if (ViewBag.rank3Name != null)
+        {
+            <p><b>Rank 3:</b> @ViewBag.rank3Name </p>
+        }
+        else
+        {
+            <p><b>Rank 3:</b> Not choosing yet </p>
+        }
     </div>
 
 </div>
@@ -193,7 +218,8 @@
             {
                 i++;
                 j++;
-                {string post = "post" + i;
+                {
+                    string post = "post" + i;
                     string rank = "rank" + j;
                     <div class="detail">
                         <p>
@@ -204,7 +230,7 @@
                             <a href="#@post" class="btn btn-info" data-toggle="collapse" style="margin-left: 76px;">Detail</a>
                             @if (pc.company.CID != "1000000")
                             {
-                            <a href="#@rank" class="btn btn-info" data-toggle="collapse" style="margin-left: 0px">Rank</a>
+                                <a href="#@rank" class="btn btn-info" data-toggle="collapse" style="margin-left: 0px">Rank</a>
                             }
                             <div id="@post" class="collapse" style="margin-left: 10%;">
                                 @pc.post.Detail
@@ -235,7 +261,7 @@
                     </div>
                 }
             }}
-        
+
     </div>
 </div>
 
