@@ -164,8 +164,6 @@ namespace CSFinder.Controllers
                 string result = sendEmail(message, subject, detail);
 
                 m.Result = "Company accepted";
-                Student s = db.Students.Where(x => x.SID == m.SID).FirstOrDefault();
-                s.Status = m.CID;
                 db.SaveChanges();
                 msg += "Student Accepted"+"\n" +result;
             }
