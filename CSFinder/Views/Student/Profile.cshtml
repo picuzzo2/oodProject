@@ -11,15 +11,18 @@
     .card-img1 {
         border-radius: 50%;
         margin: 3px;
-        margin-left: 10%;
+        margin-top: 19px;
+        margin-left: 22px;
         width: 50px;
         height: 50px;
         border: 1px solid #ddd;
     }
 
     img {
+        object-fit: cover;
         margin: 20px;
         width: 500px;
+        border-radius: 30px;
     }
 
     .card-img {
@@ -29,46 +32,65 @@
         padding: 5px;
         width: 150px;
         height: 150px;
+        box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
     }
+
+    .name {
+        margin-top: -60px;
+        margin-left: 54px;
+        background-color: #2bcbba;
+        width: 517px;
+        height: 27px;
+        /* padding-right: 10px; */
+        padding-left: 23px;
+        box-shadow: 6px 5px #0fb9b1
+    }
+
+    .profile {
+        background-color: #2bcbba;
+        width: 200px;
+        height: 27px;
+        /* padding-right: 10px; */
+        /* padding-left: 23px; */
+        box-shadow: 6px 5px #0fb9b1;
+    }
+
 
 
     input {
         position: relative;
-        width: 700px;
-        height: 120px;
-        background: #ced6e0;
-        border: 3px solid #22a6b3;
+        background: #f1f1f1;
+        border: 3px solid #ced6e0;
         border-radius: 10px;
-        margin-bottom: 3px;
+        margin-top: 10px;
+        margin-left: 5px;
+        height: 40px;
         width: 100%;
-        padding: 20px;
     }
 
-   button {
-        background-color: #5F9EA0;
-        color: white;
+    button {
+        background-color: #f1f1f1;
+        color: #227093;
         border: none;
+        margin-left: 130px;
         border-radius: 4px;
         cursor: pointer;
-        margin-top: 4%;
-        margin-bottom: 5%;
+        margin-top: 13px;
+        margin-bottom: -21px;
         font-family: 'Kanit', sans-serif;
-        text-align:center;
-        padding:1%
     }
 
-    button:hover {
-        background-color: #2F4F4F;
-        font-family: 'Kanit', sans-serif;
-        color: white
-    }
+        button:hover {
+            background-color: #f7f1e3;
+            font-family: 'Kanit', sans-serif;
+        }
 
-    button:disabled {
-        background-color: #2F4F4F;
-        color: white;
-        cursor: auto;
-        font-family: 'Kanit', sans-serif;
-    }
+        button:disabled {
+            background-color: #12CBC4;
+            color: black;
+            cursor: auto;
+            font-family: 'Kanit', sans-serif;
+        }
 
     * {
         box-sizing: border-box;
@@ -79,31 +101,6 @@
             font-family: Arial;
             margin: 0;
         }
-    /* Column container */
-    .row {
-        display: flex;
-        content: "";
-        clear: both;
-    }
-
-    /* Sidebar/left column */
-    .side {
-        flex: 30%;
-        background-color: #f1f1f1;
-        padding: 20px;
-        width: 300px;
-    }
-
-    /* Main column */
-    .main {
-        flex: 70%;
-        background-color: white;
-        padding: 20px;
-    }
- p {
-        margin: 0;
-        margin-bottom: 1rem;
-    }
 
     .column1 {
         float: left;
@@ -121,26 +118,81 @@
             box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
         }
 
+    .main {
+        flex: 70%;
+        padding: 20px;
+        float: left;
+        width: 100%;
+        padding-right: 10px;
+        height: auto;
+        background-color: #f1f1f1;
+        border-radius: 30px;
+        box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
+    }
+
+    .detail {
+        width: max-content;
+        padding-right: 10px;
+        height: auto;
+        margin-bottom: 20px;
+        margin-left: 70px;
+        background-color: #c8d6e5;
+        border-radius: 30px;
+        box-shadow: 0px 15px 27px -20px rgba(79, 79, 79, 0.45);
+        font-family: 'Kanit', sans-serif;
+    }
+
+        .detail:hover {
+            box-shadow: 24px 30px 29px -20px rgba(79, 79, 79, 1);
+        }
+
     .column2 {
         float: left;
         width: 100%;
-        padding-left: 40%;
+        padding-left: 30%;
         height: 100%;
+    }
+    p{
         font-family: 'Kanit', sans-serif;
     }
+
 </style>
 
 
 <div class="row">
     <div class="column1" align='center'>
-
-        <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" align='center' /><br />
+        <img class="card-img" src="@ViewBag.user.ImgProfile" alt="Avatar" /><br />
         <p><b>Name:</b> @ViewBag.user.Name</p>
         <p><b>Status:</b> @ViewBag.user.Status </p>
         <p><b>Type:</b> @ViewBag.user.Type </p>
-        <button onclick="window.location.href = '/Student/EditProfile';">Edit Profile</button>
-
+        <p class="profile"><b>Currently rank choose</b></p>
+        @if (ViewBag.rank1Name != null)
+        {
+            <p><b>Rank 1:</b> @ViewBag.rank1Name </p>
+        }
+        else
+        {
+            <p><b>Rank 1:</b> Not choosing yet </p>
+        }
+        @if (ViewBag.rank2Name != null)
+        {
+            <p><b>Rank 2:</b> @ViewBag.rank2Name </p>
+        }
+        else
+        {
+            <p><b>Rank 2:</b> Not choosing yet </p>
+        }
+        @if (ViewBag.rank3Name != null)
+        {
+            <p><b>Rank 3:</b> @ViewBag.rank3Name </p>
+        }
+        else
+        {
+            <p><b>Rank 3:</b> Not choosing yet </p>
+        }
     </div>
+
+</div>
 
 
     <div class="column2">
