@@ -268,14 +268,8 @@
                             <div class="box">
                                 <div id="Post">
                                     <div style="margin-left:8%; margin-bottom:2%; font-size:18px;">Create Post</div>
-                                    @{Model.CID = "1";}
-                                    @{Model.PID = 1;}
-                                    @Html.HiddenFor(a => a.CID)
-                                    @Html.HiddenFor(a => a.PID)
                                     @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
-                                    @Html.ValidationMessageFor(a => a.Detail)
-                                    @Html.TextBoxFor(a => a.ImgLink, new { @class = "form-control", @placeholder = "Link something..." })
-                                    @Html.ValidationMessageFor(a => a.Detail)
+                                    @Html.ValidationMessageFor(a => a.Detail, "", new { @class = "text-danger" })
                                 </div>
                                 <a href="home" class="btn btn-primary" onclick="PostImgCompany()">Upload image</a><br />
                             </div>
@@ -316,9 +310,11 @@
 </html>
 <script>
     var PostCompany = function () {
-        
+
         var data = $("#postForm").serialize();
-        
+        if (!$("#postForm").valid()) {
+            return false;
+        }
         $.ajax({
             type: "Post",
             url: "/Company/Home",

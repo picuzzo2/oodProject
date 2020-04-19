@@ -13,6 +13,8 @@ namespace CSFinder.Models
         [Key]
         public int PID { get; set; }
         public string CID { get; set; }
+
+        [StringLength(65535,ErrorMessage ="Post body can be up to 65535 characters")]
         [Required(ErrorMessage = "Please enter post body")]
         public string Detail { get; set; }
 

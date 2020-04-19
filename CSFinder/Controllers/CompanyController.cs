@@ -69,6 +69,9 @@ namespace CSFinder.Controllers
         public IActionResult Home(Post objPost)
         {
             if (!setUser()) { return RedirectToAction("Login", "RegisLogin"); }
+            
+            ViewBag.company = user;
+            ViewBag.userEmail = userEmail;
             String msg = "";
 
             if (ModelState.IsValid)
@@ -80,9 +83,6 @@ namespace CSFinder.Controllers
                     pc.Add(new PostCompany(c, p));
                 }
                 ViewBag.postCompanyList = pc;
-                ViewBag.company = user;
-                ViewBag.userEmail = userEmail;
-                
 
                 Post addpost = new Post();
                 Post userP = new Post();
