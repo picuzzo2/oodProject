@@ -31,6 +31,7 @@ namespace CSFinder.Models
         [DisplayName("Detail (Optional)")]
         public string? Detail { get; set; }
 #nullable disable
+        [Required(ErrorMessage = "Please enter an address")]
         public string Address { get; set; }
     }
 }

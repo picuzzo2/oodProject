@@ -207,7 +207,7 @@
                 <div class="row row-space">
                     <div class="col-7">
                         <div class="input-group">
-                            <label class="label">Details</label>
+                            <label class="label">Details</label><br/>
                             @Html.TextAreaFor(model => model.Detail, new { @class = "input--style-4", @Value = Model.Detail })
                         </div>
                     </div>
@@ -215,7 +215,7 @@
                 <div class="row row-space">
                     <div class="col-6">
                         <div class="input-group">
-                            <label class="label">Type</label>
+                            <label class="label">Type</label><br/>
                             @Html.DropDownListFor(model => model.Type, new SelectList(Enum.GetValues(typeof(Types))), new { @class = "input--style-4" })
                         </div>
                     </div>

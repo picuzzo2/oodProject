@@ -269,7 +269,9 @@
                                 <div id="Post">
                                     <div style="margin-left:8%; margin-bottom:2%; font-size:18px;">Create Post</div>
                                     @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @placeholder = "Post something..." })
-                                    @Html.ValidationMessageFor(a => a.Detail, "", new { @class = "text-danger" })
+                                    <p style="margin-left:8%; margin-bottom:2%;">
+                                    @Html.ValidationMessageFor(a => a.Detail, "", new { @class = "text-danger" })</p>
+                                    @Html.TextAreaFor(a => a.ImgLink, new { @class = "form-control", @placeholder = "Link of an image" })
                                 </div>
                                 <a href="home" class="btn btn-primary" onclick="PostImgCompany()">Upload image</a><br />
                             </div>
@@ -278,7 +280,7 @@
 
                     <div class="form-group">
                         <div class="col-md-12">
-                            <a href="home" class="btn btn-primary float-right" style="margin-top: -54px;  margin-right: 12%;" onclick="PostCompany()">Post</a>
+                            <a href="#" class="btn btn-primary float-right" style="margin-top: -54px;  margin-right: 12%;" onclick="PostCompany()">Post</a>
                         </div>
                     </div><br />
                 </form>

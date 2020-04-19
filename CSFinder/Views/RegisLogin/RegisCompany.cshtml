@@ -693,6 +693,7 @@ input {
                             <div class="input-group">
                                 <label class="label">Address</label>
                                 @Html.TextBoxFor(a => a.Address, new { @class = "input--style-4", @placeholder = "Address" })
+                                @Html.ValidationMessageFor(a => a.Address, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
