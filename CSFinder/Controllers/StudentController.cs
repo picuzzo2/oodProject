@@ -72,9 +72,9 @@ namespace CSFinder.Controllers
             if (user.Rank1 == null) ViewBag.rank1Name = "Not choose yet";
             else ViewBag.rank1Name = db.Companies.Where(x => x.CID == user.Rank1).FirstOrDefault().Name;
             if (user.Rank2 == null) ViewBag.rank2Name = "Not choose yet";
-            else ViewBag.rank2Name = db.Companies.Where(x => x.CID == user.Rank1).FirstOrDefault().Name;
+            else ViewBag.rank2Name = db.Companies.Where(x => x.CID == user.Rank2).FirstOrDefault().Name;
             if (user.Rank3 == null) ViewBag.rank3Name = "Not choose yet";
-            else ViewBag.rank3Name = db.Companies.Where(x => x.CID == user.Rank1).FirstOrDefault().Name;
+            else ViewBag.rank3Name = db.Companies.Where(x => x.CID == user.Rank3).FirstOrDefault().Name;
 
 
             return View();
@@ -88,9 +88,9 @@ namespace CSFinder.Controllers
             if (user.Rank1 == null) ViewBag.rank1Name = "Not choose yet";
             else ViewBag.rank1Name = db.Companies.Where(x => x.CID == user.Rank1).FirstOrDefault().Name;
             if (user.Rank2 == null) ViewBag.rank2Name = "Not choose yet";
-            else ViewBag.rank2Name = db.Companies.Where(x => x.CID == user.Rank1).FirstOrDefault().Name;
+            else ViewBag.rank2Name = db.Companies.Where(x => x.CID == user.Rank2).FirstOrDefault().Name;
             if (user.Rank3 == null) ViewBag.rank3Name = "Not choose yet";
-            else ViewBag.rank3Name = db.Companies.Where(x => x.CID == user.Rank1).FirstOrDefault().Name;
+            else ViewBag.rank3Name = db.Companies.Where(x => x.CID == user.Rank3).FirstOrDefault().Name;
 
             return View();
         }
