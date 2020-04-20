@@ -126,6 +126,9 @@ namespace CSFinder.Controllers
                 user.Detail = objUser.Detail;
                 user.Phone = objUser.Phone;
                 user.Address = objUser.Address;
+                user.ImgProfile = objUser.ImgProfile;
+                user.ImgResume = objUser.ImgResume;
+                user.ImgTranscript = objUser.ImgTranscript;
                 string msg = "Profile information saved";
                 return Json(new { success = true, responseText = msg });
             }

@@ -207,7 +207,7 @@
                 <div class="row row-space">
                     <div class="col-7">
                         <div class="input-group">
-                            <label class="label">Details</label><br/>
+                            <label class="label">Details</label><br />
                             @Html.TextAreaFor(model => model.Detail, new { @class = "input--style-4", @Value = Model.Detail })
                         </div>
                     </div>
@@ -215,11 +215,37 @@
                 <div class="row row-space">
                     <div class="col-6">
                         <div class="input-group">
-                            <label class="label">Type</label><br/>
+                            <label class="label">Type</label><br />
                             @Html.DropDownListFor(model => model.Type, new SelectList(Enum.GetValues(typeof(Types))), new { @class = "input--style-4" })
                         </div>
                     </div>
                 </div><br />
+                <div class="row row-space">
+                    <div class="col-7">
+                        <div class="input-group">
+                            <label class="label">Profile Image link</label><br />
+                            @Html.TextAreaFor(model => model.ImgProfile, new { @class = "input--style-4", @Value = Model.ImgProfile })
+                        </div>
+                    </div>
+                </div><br />
+                <div class="row row-space">
+                    <div class="col-7">
+                        <div class="input-group">
+                            <label class="label">Resume Image link</label><br />
+                            @Html.TextAreaFor(model => model.ImgResume, new { @class = "input--style-4", @Value = Model.ImgResume })
+                        </div>
+                    </div>
+                </div><br />
+                <div class="row row-space">
+                    <div class="col-7">
+                        <div class="input-group">
+                            <label class="label">Transcript link</label><br />
+                            @Html.TextAreaFor(model => model.ImgTranscript, new { @class = "input--style-4", @Value = Model.ImgTranscript })
+                        </div>
+                    </div>
+                </div><br />
+
+                
                 <div align="left" class="col-md-12">
                     <p><b>Resume:</b></p>
                     <div class="file-upload">
@@ -281,14 +307,14 @@
                     </div>
                 </div><br>
 
-                      <div class="text-center">
-                          <div class="form-group">
-                              <div class="col-md-12">
-                                  <a href="#" class="btn btn-primary " style="background-color: #4682B4;" onclick="Save()">Save</a>
-                                  <a href="Profile" class="btn btn-primary" style="background-color: #CD2E57;">Cancel</a>
-                              </div>
-                          </div>
-                      </div>
+                <div class="text-center">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <a href="#" class="btn btn-primary " style="background-color: #4682B4;" onclick="Save()">Save</a>
+                            <a href="Profile" class="btn btn-primary" style="background-color: #CD2E57;">Cancel</a>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

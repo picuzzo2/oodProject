@@ -229,6 +229,7 @@ namespace CSFinder.Controllers
                 user.Phone = objUser.Phone;
                 user.Detail = objUser.Detail;
                 user.Address = objUser.Address;
+                user.ImgProfile = objUser.ImgProfile;
                 db.SaveChanges();
                 string msg = "Profile information saved";
                 return Json(new { success = true, responseText = msg });
